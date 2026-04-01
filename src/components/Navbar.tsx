@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navLinks = ["About", "Experience", "Skills", "Portfolio", "Contact"];
+const navLinks = ["About", "Experience", "Skills", "Now", "Portfolio", "Contact"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
