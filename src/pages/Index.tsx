@@ -1,16 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ToolsMarquee from "@/components/ToolsMarquee";
+import ExperienceSection from "@/components/ExperienceSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
+import EducationSection from "@/components/EducationSection";
+import ContactSection from "@/components/ContactSection";
+import spaceBg from "@/assets/space-bg.jpg";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
-  );
-};
+const Index = () => (
+  <div className="relative min-h-screen">
+    {/* Fixed cosmic background */}
+    <div
+      className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30"
+      style={{ backgroundImage: `url(${spaceBg})` }}
+    />
+    <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
 
-const Index = PlaceholderIndex;
+    <Navbar />
+    <HeroSection />
+    <ToolsMarquee />
+    <ExperienceSection />
+    <PortfolioSection />
+    <AboutSection />
+    <SkillsSection />
+    <EducationSection />
+    <ContactSection />
+
+    <footer className="border-t border-border/40 py-8 text-center">
+      <p className="text-xs text-muted-foreground">© 2024 Saurabh Anand. All rights reserved.</p>
+    </footer>
+  </div>
+);
 
 export default Index;
