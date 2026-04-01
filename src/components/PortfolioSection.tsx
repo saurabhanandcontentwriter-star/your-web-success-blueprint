@@ -7,7 +7,7 @@ const projects = [
     stat: "+120% Traffic",
     description: "A complete technical and content SEO overhaul for a travel booking platform.",
     tags: ["Technical SEO", "Content Strategy", "E-commerce"],
-    image: "https://picsum.photos/seed/ecommerce-seo/800/500",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=500&fit=crop",
   },
   {
     title: "SaaS Content Authority",
@@ -15,7 +15,7 @@ const projects = [
     stat: "+85% Leads",
     description: "Building a content engine that drives qualified leads with topic cluster strategy.",
     tags: ["Link Building", "Topic Clusters", "SaaS"],
-    image: "https://picsum.photos/seed/saas-seo/800/500",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
   },
   {
     title: "Local SEO for Multi-location Brand",
@@ -23,7 +23,7 @@ const projects = [
     stat: "+200% Visibility",
     description: "Optimized Google Business Profiles and localized content for 50+ locations.",
     tags: ["Local SEO", "GBP Optimization", "Scalable SEO"],
-    image: "https://picsum.photos/seed/local-seo-case/800/500",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop",
   },
 ];
 
@@ -44,7 +44,7 @@ const PortfolioSection = () => (
             className="glass-card-hover overflow-hidden group"
           >
             <div className="relative h-48 overflow-hidden">
-              <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
               <div className="absolute top-3 right-3 badge-glass font-semibold text-primary">{p.stat}</div>
             </div>
             <div className="p-5">

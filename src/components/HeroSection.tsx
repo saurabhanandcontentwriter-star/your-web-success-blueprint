@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
-import heroImg from "@/assets/hero-portrait.jpg";
+import heroImg from "@/assets/hero-portrait.png";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -38,9 +38,13 @@ const HeroSection = () => (
           >
             View Experience <ArrowRight size={16} />
           </button>
-          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors">
+          <a
+            href="/Saurabh_Anand_Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors"
+          >
             Download CV <Download size={16} />
-          </button>
+          </a>
         </div>
       </motion.div>
 
