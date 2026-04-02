@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import heroImg from "@/assets/hero-portrait.png";
+import seoImg from "@/assets/saurabh-seo.jpg";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -58,7 +59,7 @@ const HeroSection = () => (
           <img src={heroImg} alt="Saurabh Anand" className="w-full h-full object-cover" />
         </div>
         <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-card px-4 py-3 flex items-center gap-3">
-          <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google" className="w-6 h-6" />
+          <img src={seoImg} alt="Saurabh Anand" className="w-10 h-10 rounded-full object-cover object-top" />
           <div>
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Expertise in</p>
             <p className="text-sm font-display font-semibold">Google SEO</p>

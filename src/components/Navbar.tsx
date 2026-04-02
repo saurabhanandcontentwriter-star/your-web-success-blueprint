@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
 const navLinks = ["About", "Experience", "Skills", "Now", "Portfolio", "Contact"];
 
@@ -20,8 +21,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2">
-          <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="logo" className="w-6 h-6" />
-          <span className="text-lg font-display font-bold tracking-tight text-foreground">SAURABH<span className="text-primary">.</span></span>
+          <img src={logo} alt="Saurabh Anand logo" className="h-8" />
         </button>
 
         <div className="hidden md:flex items-center gap-8">
