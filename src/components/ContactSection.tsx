@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Send } from "lucide-react";
+import { MapPin, Phone, Send, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -33,6 +33,10 @@ const ContactSection = () => {
                 <Phone size={18} className="text-primary shrink-0" />
                 +91 7667926418
               </div>
+              <a href="https://www.linkedin.com/in/saurabh-anand-seo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Linkedin size={18} className="text-primary shrink-0" />
+                LinkedIn Profile
+              </a>
             </div>
           </div>
 

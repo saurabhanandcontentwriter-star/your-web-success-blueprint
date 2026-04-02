@@ -13,10 +13,10 @@ const HeroSection = () => (
         className="space-y-6"
       >
         <div className="flex flex-wrap gap-3">
-          <span className="badge-glass">
+          <a href="https://www.linkedin.com/in/saurabh-anand-seo/" target="_blank" rel="noopener noreferrer" className="badge-glass hover:border-primary/40 transition-colors">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="w-4 h-4" />
             LinkedIn Top Voice
-          </span>
+          </a>
           <span className="badge-glass">
             <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google" className="w-4 h-4" />
             Google Certified
