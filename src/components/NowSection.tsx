@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Palette, MessageCircle } from "lucide-react";
+import { TrendingUp, Palette } from "lucide-react";
 import aboutPhoto from "@/assets/about-photo.jpg";
 
 const focusItems = [
@@ -16,7 +16,7 @@ const focusItems = [
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=300&h=200&fit=crop",
   },
   {
-    icon: <MessageCircle className="w-5 h-5 text-primary" />,
+    icon: <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="w-5 h-5" />,
     title: "LinkedIn Voice",
     description: "Consistently sharing insights as a LinkedIn Top Voice 2024 to help the community navigate digital marketing challenges.",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=300&h=200&fit=crop",
@@ -27,7 +27,6 @@ const NowSection = () => (
   <section id="now" className="py-24">
     <div className="container mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-12 items-start">
-        {/* Left */}
         <div>
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-semibold mb-6">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -41,7 +40,6 @@ const NowSection = () => (
             A snapshot of my current professional focus, industry involvement, and personal growth journey in the ever-evolving digital landscape.
           </p>
 
-          {/* Availability card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +58,6 @@ const NowSection = () => (
           </motion.div>
         </div>
 
-        {/* Right — focus cards */}
         <div className="space-y-4">
           {focusItems.map((item, i) => (
             <motion.div
@@ -74,7 +71,7 @@ const NowSection = () => (
               <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg object-cover shrink-0" loading="lazy" />
               <div>
                 <h3 className="font-display font-semibold text-sm flex items-center gap-2 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  {item.icon}
                   {item.title}
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>

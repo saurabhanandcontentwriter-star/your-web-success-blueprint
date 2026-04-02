@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import aboutPhoto from "@/assets/about-photo.jpg";
 
 const seoQuotes = [
   {
@@ -35,10 +34,9 @@ const AboutSection = () => (
             SEO starts with a site that search engines can actually understand. I focus on crawlability, indexability, and site architecture to ensure every piece of content has the best chance to rank.
           </p>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="glass-card p-6 flex flex-col items-center">
-          <img src={aboutPhoto} alt="Saurabh Anand" className="w-32 h-32 rounded-full object-cover object-top mb-4 border-2 border-primary/30" />
-          <h3 className="font-display font-semibold text-lg mb-1">Content Authority</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="glass-card p-6">
+          <h3 className="font-display font-semibold text-lg mb-3">Content Authority</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Content is the bridge between your brand and your audience. I help create valuable, high-intent assets that rank and convert.
           </p>
         </motion.div>
