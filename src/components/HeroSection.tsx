@@ -59,7 +59,7 @@ const HeroSection = () => (
           <img src={heroImg} alt="Saurabh Anand" className="w-full h-full object-cover" />
         </div>
         <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-card px-4 py-3 flex items-center gap-3">
-          <img src={seoImg} alt="Saurabh Anand" className="w-9 h-9 rounded-full object-cover object-top border border-border/40" />
+          <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google" className="w-8 h-8" />
           <div>
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Expertise in</p>
             <p className="text-sm font-display font-semibold">Google SEO</p>
