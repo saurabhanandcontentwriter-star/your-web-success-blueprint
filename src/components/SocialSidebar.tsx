@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter, Instagram, Github, Mail } from "lucide-react";
 
 const socials = [
-  { icon: Linkedin, href: "https://www.linkedin.com/in/saurabh-anand-seo/", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
-  { icon: Twitter, href: "https://twitter.com/", label: "Twitter / X", color: "hover:bg-[#1DA1F2]" },
-  { icon: Instagram, href: "https://instagram.com/", label: "Instagram", color: "hover:bg-[#E4405F]" },
-  { icon: Github, href: "https://github.com/", label: "GitHub", color: "hover:bg-[#333]" },
-  { icon: Mail, href: "mailto:saurabhanand@example.com", label: "Email", color: "hover:bg-primary" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/saurabhanandseo/", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
+  { icon: Twitter, href: "https://x.com/saurabhanandseo", label: "Twitter / X", color: "hover:bg-[#1DA1F2]" },
+  { icon: Instagram, href: "https://instagram.com/saurabhanandseo", label: "Instagram", color: "hover:bg-[#E4405F]" },
+  { icon: Github, href: "https://github.com/saurabhanandseo", label: "GitHub", color: "hover:bg-[#333]" },
+  { icon: Mail, href: "mailto:saurabhanandseo@gmail.com", label: "Email", color: "hover:bg-primary" },
 ];
 
 const SocialSidebar = () => (
