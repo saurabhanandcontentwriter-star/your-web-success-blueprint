@@ -8,6 +8,7 @@ import SkillsSection from "@/components/SkillsSection";
 import NowSection from "@/components/NowSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
+import GallerySection from "@/components/GallerySection";
 import SocialSidebar from "@/components/SocialSidebar";
 import spaceBg from "@/assets/space-bg.jpg";
 
@@ -28,6 +29,7 @@ const Index = () => (
     <PortfolioSection />
     <AboutSection />
     <SkillsSection />
+    <GallerySection />
     <NowSection />
     <EducationSection />
     <ContactSection />
