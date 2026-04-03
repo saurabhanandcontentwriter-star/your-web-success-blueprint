@@ -8,10 +8,12 @@ import SkillsSection from "@/components/SkillsSection";
 import NowSection from "@/components/NowSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
+import SocialSidebar from "@/components/SocialSidebar";
 import spaceBg from "@/assets/space-bg.jpg";
 
 const Index = () => (
   <div className="relative min-h-screen">
+    <SocialSidebar />
     {/* Fixed cosmic background */}
     <div
       className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30"
