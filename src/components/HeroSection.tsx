@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Linkedin } from "lucide-react";
 import heroImg from "@/assets/hero-portrait.png";
 import seoImg from "@/assets/saurabh-seo.jpg";
 
