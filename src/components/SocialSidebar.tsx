@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Instagram, Github, Mail } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Github, Mail, Globe } from "lucide-react";
 
 const socials = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/saurabhanandseo/", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
@@ -7,6 +7,8 @@ const socials = [
   { icon: Instagram, href: "https://instagram.com/saurabhanandseo", label: "Instagram", color: "hover:bg-[#E4405F]" },
   { icon: Github, href: "https://github.com/saurabhanandseo", label: "GitHub", color: "hover:bg-[#333]" },
   { icon: Mail, href: "mailto:saurabhanandseo@gmail.com", label: "Email", color: "hover:bg-primary" },
+  { icon: Globe, href: "https://crazyseoteam.in", label: "Crazy SEO Team", color: "hover:bg-[#F59E0B]" },
+  { icon: Globe, href: "https://www.papajupiter.com/", label: "Papa Jupiter", color: "hover:bg-[#8B5CF6]" },
 ];
 
 const SocialSidebar = () => (
