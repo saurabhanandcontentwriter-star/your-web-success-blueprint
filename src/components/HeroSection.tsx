@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Linkedin } from "lucide-react";
 import heroImg from "@/assets/hero-portrait.png";
 import seoImg from "@/assets/saurabh-seo.jpg";
 
@@ -14,7 +14,7 @@ const HeroSection = () => (
       >
         <div className="flex flex-wrap gap-3">
           <a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="badge-glass hover:border-primary/40 transition-colors">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="w-4 h-4" />
+            <Linkedin size={16} className="text-[#0A66C2]" />
             LinkedIn Top Voice
           </a>
           <span className="badge-glass">
