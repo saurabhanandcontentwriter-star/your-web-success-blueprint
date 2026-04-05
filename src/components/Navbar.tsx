@@ -1,16 +1,32 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
-const navLinks = ["About", "Experience", "Skills", "Now", "Portfolio", "Contact"];
+const navLinks = [
+  { label: "About", path: "/about" },
+  { label: "Experience", path: "/experience" },
+  { label: "Skills", path: "/skills" },
+  { label: "Now", path: "/now" },
+  { label: "Portfolio", path: "/portfolio" },
+  { label: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+  const handleNav = (link: { label: string; path: string }) => {
     setOpen(false);
+    if (location.pathname === "/") {
+      // On homepage, smooth scroll to section
+      document.getElementById(link.label.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // On other pages, navigate to the slug route
+      navigate(link.path);
+    }
   };
 
   return (
@@ -20,17 +36,17 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-card border-t-0 rounded-none border-x-0"
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2">
+        <button onClick={() => { navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center gap-2">
           <img src={logo} alt="Saurabh Anand logo" className="h-8" />
         </button>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
-            <button key={l} onClick={() => scrollTo(l)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              {l}
+            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              {l.label}
             </button>
           ))}
-          <button onClick={() => scrollTo("contact")} className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <button onClick={() => handleNav({ label: "Contact", path: "/contact" })} className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
           </button>
         </div>
@@ -43,8 +59,8 @@ const Navbar = () => {
       {open && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="md:hidden glass-card mx-4 mb-4 rounded-xl p-4 flex flex-col gap-3">
           {navLinks.map((l) => (
-            <button key={l} onClick={() => scrollTo(l)} className="text-sm text-muted-foreground hover:text-foreground py-2">
-              {l}
+            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2">
+              {l.label}
             </button>
           ))}
         </motion.div>
