@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://luminous-pages-lab.lovable.app/sitemap.xml
+Sitemap: https://saurabhanandseo.com/sitemap.xml
