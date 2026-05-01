@@ -1,13 +1,12 @@
 import Navbar from "@/components/Navbar";
 import PortfolioSection from "@/components/PortfolioSection";
 import SEO from "@/components/SEO";
-import spaceBg from "@/assets/space-bg.jpg";
+import PageBackground from "@/components/PageBackground";
 
 const PortfolioPage = () => (
   <div className="relative min-h-screen">
     <SEO title="Portfolio & Projects" description="Browse Saurabh Anand's featured SEO and digital marketing projects, case studies, and successful campaigns with measurable results." path="/portfolio" />
-    <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
-    <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+    <PageBackground variant="portfolio" />
     <Navbar />
     <div className="pt-24">
       <PortfolioSection />
