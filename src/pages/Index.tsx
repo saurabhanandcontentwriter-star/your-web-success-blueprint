@@ -9,18 +9,19 @@ import NowSection from "@/components/NowSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import GallerySection from "@/components/GallerySection";
-import spaceBg from "@/assets/space-bg.jpg";
+import PageBackground from "@/components/PageBackground";
+import HomeBgAdmin from "@/components/HomeBgAdmin";
+import { useHomeBgSettings } from "@/components/useHomeBgSettings";
 
-const Index = () => (
-  <div className="relative min-h-screen">
-    {/* Fixed cosmic background */}
-    <div
-      className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30"
-      style={{ backgroundImage: `url(${spaceBg})` }}
-    />
-    <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+const Index = () => {
+  const { settings } = useHomeBgSettings();
+  const isAdmin = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("admin") === "1";
 
-    <Navbar />
+  return (
+    <div className="relative min-h-screen">
+      <PageBackground variant={settings.variant} opacity={settings.opacity} />
+
+      <Navbar />
     <HeroSection />
     <ToolsMarquee />
     <ExperienceSection />
@@ -61,7 +62,9 @@ const Index = () => (
         </div>
       </div>
     </footer>
-  </div>
-);
+      {isAdmin && <HomeBgAdmin />}
+    </div>
+  );
+};
 
 export default Index;
