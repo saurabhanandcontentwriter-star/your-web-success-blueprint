@@ -62,7 +62,9 @@ const Index = () => {
         </div>
       </div>
     </footer>
-  </div>
-);
+      {isAdmin && <HomeBgAdmin />}
+    </div>
+  );
+};
 
 export default Index;
