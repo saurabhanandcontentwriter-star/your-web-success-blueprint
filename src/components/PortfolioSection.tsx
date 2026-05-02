@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -59,14 +58,11 @@ const PortfolioSection = () => (
               <p className="text-xs text-muted-foreground mb-1">{p.company}</p>
               <h3 className="text-lg font-display font-semibold mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground mb-4">{p.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <span key={t} className="text-[11px] px-2 py-1 rounded-md bg-secondary text-secondary-foreground">{t}</span>
                 ))}
               </div>
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary group-hover:gap-2.5 transition-all">
-                View Case Study <ExternalLink className="w-3 h-3" />
-              </span>
             </div>
           </motion.a>
         ))}
