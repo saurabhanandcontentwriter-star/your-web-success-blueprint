@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -8,6 +9,7 @@ const projects = [
     description: "A complete technical and content SEO overhaul for a travel booking platform.",
     tags: ["Technical SEO", "Content Strategy", "E-commerce"],
     image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=500&fit=crop",
+    url: "https://www.tripzygo.in/",
   },
   {
     title: "SaaS Content Authority",
@@ -16,6 +18,7 @@ const projects = [
     description: "Building a content engine that drives qualified leads with topic cluster strategy.",
     tags: ["Link Building", "Topic Clusters", "SaaS"],
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+    url: "https://guestbloggingtech.com/",
   },
   {
     title: "Local SEO for Multi-location Brand",
@@ -24,6 +27,7 @@ const projects = [
     description: "Optimized Google Business Profiles and localized content for 50+ locations.",
     tags: ["Local SEO", "GBP Optimization", "Scalable SEO"],
     image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop",
+    url: "https://crazyseoteam.in/",
   },
 ];
 
