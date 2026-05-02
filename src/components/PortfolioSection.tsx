@@ -39,13 +39,17 @@ const PortfolioSection = () => (
 
       <div className="grid md:grid-cols-3 gap-6">
         {projects.map((p, i) => (
-          <motion.div
+          <motion.a
             key={i}
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${p.title} case study (opens in new tab)`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="glass-card-hover overflow-hidden group"
+            className="glass-card-hover overflow-hidden group block"
           >
             <div className="relative h-48 overflow-hidden">
               <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
@@ -55,13 +59,16 @@ const PortfolioSection = () => (
               <p className="text-xs text-muted-foreground mb-1">{p.company}</p>
               <h3 className="text-lg font-display font-semibold mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground mb-4">{p.description}</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {p.tags.map((t) => (
                   <span key={t} className="text-[11px] px-2 py-1 rounded-md bg-secondary text-secondary-foreground">{t}</span>
                 ))}
               </div>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary group-hover:gap-2.5 transition-all">
+                View Case Study <ExternalLink className="w-3 h-3" />
+              </span>
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </div>
