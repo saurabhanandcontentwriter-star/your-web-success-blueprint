@@ -14,3 +14,38 @@ User-agent: *
 Allow: /
 
 Sitemap: https://saurabhanandseo.com/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/about/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/Experience/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/Skill/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/NOW/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/PROTOFOLIO/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/CONTACT/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabhanandseo.com/HIREME/sitemap.xml
