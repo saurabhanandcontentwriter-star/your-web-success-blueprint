@@ -35,10 +35,23 @@ const Index = () => {
 
     <footer className="border-t border-border/40 py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="font-display font-semibold text-sm mb-3">Saurabh Anand</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">SEO Analyst & Digital Marketing Professional based in New Delhi, India.</p>
+          </div>
+          <div>
+            <h3 className="font-display font-semibold text-sm mb-3">Explore</h3>
+            <ul className="space-y-2">
+              <li><a href="/about" className="text-xs text-muted-foreground hover:text-foreground transition-colors">About</a></li>
+              <li><a href="/experience" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Experience</a></li>
+              <li><a href="/skills" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Skills</a></li>
+              <li><a href="/now" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Now</a></li>
+              <li><a href="/portfolio" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Portfolio</a></li>
+              <li><a href="/gallery" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Gallery</a></li>
+              <li><a href="/education" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Education</a></li>
+              <li><a href="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Contact</a></li>
+            </ul>
           </div>
           <div>
             <h3 className="font-display font-semibold text-sm mb-3">My Websites</h3>
