@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import AboutSection from "@/components/AboutSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -13,7 +12,6 @@ const AboutPage = () => (
     <div className="pt-24">
       <AboutSection />
     </div>
-    <Footer />
   </div>
 );
 

@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ExperienceSection from "@/components/ExperienceSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -13,7 +12,6 @@ const ExperiencePage = () => (
     <div className="pt-24">
       <ExperienceSection />
     </div>
-    <Footer />
   </div>
 );
 

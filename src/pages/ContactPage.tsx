@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -13,7 +12,6 @@ const ContactPage = () => (
     <div className="pt-24">
       <ContactSection />
     </div>
-    <Footer />
   </div>
 );
 

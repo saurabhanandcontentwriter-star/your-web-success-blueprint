@@ -12,7 +12,6 @@ import GallerySection from "@/components/GallerySection";
 import PageBackground from "@/components/PageBackground";
 import HomeBgAdmin from "@/components/HomeBgAdmin";
 import { useHomeBgSettings } from "@/components/useHomeBgSettings";
-import Footer from "@/components/Footer";
 
 const Index = () => {
   const { settings } = useHomeBgSettings();
@@ -34,7 +33,6 @@ const Index = () => {
     <EducationSection />
     <ContactSection />
 
-    <Footer />
       {isAdmin && <HomeBgAdmin />}
     </div>
   );

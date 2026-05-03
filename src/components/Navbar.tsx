@@ -62,7 +62,7 @@ const Navbar = () => {
               </button>
             }
           />
-          <a href="/Saurabh_Anand_Resume.pdf" download className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <a href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
           </a>
         </div>
@@ -86,8 +86,8 @@ const Navbar = () => {
               </button>
             }
           />
-          <a href="/Saurabh_Anand_Resume.pdf" download className="text-sm font-medium py-2 text-left">
-            Hire Me (Download Resume)
+          <a href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">
+            Hire Me
           </a>
         </motion.div>
       )}
