@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
+import ContactDialog from "@/components/ContactDialog";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -13,7 +14,6 @@ const navLinks = [
   { label: "Gallery", path: "/gallery" },
   { label: "Education", path: "/education" },
   { label: "Now", path: "/now" },
-  { label: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
