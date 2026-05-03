@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ExperienceSection from "@/components/ExperienceSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
