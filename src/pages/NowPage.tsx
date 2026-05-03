@@ -13,6 +13,7 @@ const NowPage = () => (
     <div className="pt-24">
       <NowSection />
     </div>
+    <Footer />
   </div>
 );
 

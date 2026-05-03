@@ -13,6 +13,7 @@ const ExperiencePage = () => (
     <div className="pt-24">
       <ExperienceSection />
     </div>
+    <Footer />
   </div>
 );
 

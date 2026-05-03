@@ -13,6 +13,7 @@ const ContactPage = () => (
     <div className="pt-24">
       <ContactSection />
     </div>
+    <Footer />
   </div>
 );
 

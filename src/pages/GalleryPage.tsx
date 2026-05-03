@@ -13,6 +13,7 @@ const GalleryPage = () => (
     <div className="pt-24">
       <GallerySection />
     </div>
+    <Footer />
   </div>
 );
 

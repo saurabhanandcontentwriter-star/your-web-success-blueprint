@@ -13,6 +13,7 @@ const AboutPage = () => (
     <div className="pt-24">
       <AboutSection />
     </div>
+    <Footer />
   </div>
 );
 

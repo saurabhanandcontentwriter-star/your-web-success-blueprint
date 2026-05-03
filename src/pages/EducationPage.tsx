@@ -13,6 +13,7 @@ const EducationPage = () => (
     <div className="pt-24">
       <EducationSection />
     </div>
+    <Footer />
   </div>
 );
 

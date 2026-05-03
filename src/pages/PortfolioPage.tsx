@@ -12,6 +12,7 @@ const PortfolioPage = () => (
     <div className="pt-24">
       <PortfolioSection />
     </div>
+    <Footer />
   </div>
 );
 
