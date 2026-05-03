@@ -34,5 +34,9 @@ const Index = () => {
     <ContactSection />
 
     <Footer />
+      {isAdmin && <HomeBgAdmin />}
+    </div>
+  );
+};
 
 export default Index;
