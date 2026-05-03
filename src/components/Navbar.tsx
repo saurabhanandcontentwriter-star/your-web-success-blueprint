@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
+import ContactDialog from "@/components/ContactDialog";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -13,7 +14,6 @@ const navLinks = [
   { label: "Gallery", path: "/gallery" },
   { label: "Education", path: "/education" },
   { label: "Now", path: "/now" },
-  { label: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -55,9 +55,16 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
-          <button onClick={() => handleNav({ label: "Contact", path: "/contact" })} className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <ContactDialog
+            trigger={
+              <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Contact
+              </button>
+            }
+          />
+          <a href="/Saurabh_Anand_Resume.pdf" download className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
-          </button>
+          </a>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
@@ -68,10 +75,20 @@ const Navbar = () => {
       {open && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="md:hidden glass-card mx-4 mb-4 rounded-xl p-4 flex flex-col gap-3">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2">
+            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">
               {l.label}
             </button>
           ))}
+          <ContactDialog
+            trigger={
+              <button className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">
+                Contact
+              </button>
+            }
+          />
+          <a href="/Saurabh_Anand_Resume.pdf" download className="text-sm font-medium py-2 text-left">
+            Hire Me (Download Resume)
+          </a>
         </motion.div>
       )}
     </motion.nav>
