@@ -75,10 +75,20 @@ const Navbar = () => {
       {open && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="md:hidden glass-card mx-4 mb-4 rounded-xl p-4 flex flex-col gap-3">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2">
+            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">
               {l.label}
             </button>
           ))}
+          <ContactDialog
+            trigger={
+              <button className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">
+                Contact
+              </button>
+            }
+          />
+          <a href="/Saurabh_Anand_Resume.pdf" download className="text-sm font-medium py-2 text-left">
+            Hire Me (Download Resume)
+          </a>
         </motion.div>
       )}
     </motion.nav>
