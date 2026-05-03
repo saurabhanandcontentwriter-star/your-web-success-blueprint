@@ -28,7 +28,7 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
         </DialogHeader>
         <div className="space-y-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> New Delhi, India</div>
-          <div className="flex items-center gap-2"><Phone size={16} className="text-primary" /> +91 7667926418</div>
+          <div className="flex items-center gap-2"><Phone size={16} className="text-primary" /> +91 7209742159</div>
           <a href="mailto:saurabhanandseo@gmail.com" className="flex items-center gap-2 hover:text-foreground"><Mail size={16} className="text-primary" /> saurabhanandseo@gmail.com</a>
           <a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground"><Linkedin size={16} className="text-primary" /> LinkedIn</a>
         </div>
