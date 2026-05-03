@@ -55,9 +55,9 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
-          <button onClick={() => handleNav({ label: "Contact", path: "/contact" })} className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <a href="/Saurabh_Anand_Resume.pdf" download className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
-          </button>
+          </a>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
