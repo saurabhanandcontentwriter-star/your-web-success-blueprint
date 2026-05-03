@@ -23,13 +23,19 @@ const Navbar = () => {
 
   const handleNav = (link: { label: string; path: string }) => {
     setOpen(false);
-    if (location.pathname === "/") {
-      // On homepage, smooth scroll to section
-      document.getElementById(link.label.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // On other pages, navigate to the slug route
-      navigate(link.path);
+    if (link.path === "/") {
+      navigate("/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
+    if (location.pathname === "/") {
+      const el = document.getElementById(link.label.toLowerCase());
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+    navigate(link.path);
   };
 
   return (
