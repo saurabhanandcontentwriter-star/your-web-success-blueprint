@@ -55,6 +55,13 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
+          <ContactDialog
+            trigger={
+              <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Contact
+              </button>
+            }
+          />
           <a href="/Saurabh_Anand_Resume.pdf" download className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
           </a>
