@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import PortfolioSection from "@/components/PortfolioSection";
 import SEO from "@/components/SEO";
 import PageBackground from "@/components/PageBackground";
@@ -12,7 +11,6 @@ const PortfolioPage = () => (
     <div className="pt-24">
       <PortfolioSection />
     </div>
-    <Footer />
   </div>
 );
 
