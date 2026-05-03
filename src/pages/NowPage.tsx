@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import NowSection from "@/components/NowSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -12,6 +13,7 @@ const NowPage = () => (
     <div className="pt-24">
       <NowSection />
     </div>
+    <Footer />
   </div>
 );
 

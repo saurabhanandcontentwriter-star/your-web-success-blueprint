@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import GallerySection from "@/components/GallerySection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -12,6 +13,7 @@ const GalleryPage = () => (
     <div className="pt-24">
       <GallerySection />
     </div>
+    <Footer />
   </div>
 );
 
