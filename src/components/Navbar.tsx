@@ -5,11 +5,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
 const navLinks = [
+  { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Experience", path: "/experience" },
   { label: "Skills", path: "/skills" },
-  { label: "Now", path: "/now" },
   { label: "Portfolio", path: "/portfolio" },
+  { label: "Gallery", path: "/gallery" },
+  { label: "Education", path: "/education" },
+  { label: "Now", path: "/now" },
   { label: "Contact", path: "/contact" },
 ];
 
