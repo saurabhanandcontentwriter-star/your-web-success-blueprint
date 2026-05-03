@@ -1,25 +1,23 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import ExperiencePage from "./pages/ExperiencePage.tsx";
-import SkillsPage from "./pages/SkillsPage.tsx";
-import NowPage from "./pages/NowPage.tsx";
-import PortfolioPage from "./pages/PortfolioPage.tsx";
-import ContactPage from "./pages/ContactPage.tsx";
-import GalleryPage from "./pages/GalleryPage.tsx";
-import EducationPage from "./pages/EducationPage.tsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Pages
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import AboutPage from "./pages/AboutPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import SkillsPage from "./pages/SkillsPage";
+import NowPage from "./pages/NowPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import ContactPage from "./pages/ContactPage";
+import GalleryPage from "./pages/GalleryPage";
+import EducationPage from "./pages/EducationPage";
 
 const queryClient = new QueryClient();
-function Home() {
-  return <h1>Home</h1>;
-}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -38,7 +36,8 @@ const App = () => (
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+            {/* 404 fallback */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
@@ -46,19 +45,5 @@ const App = () => (
     </HelmetProvider>
   </QueryClientProvider>
 );
-function Contact() {
-  return <h1>Contact</h1>;
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
 
 export default App;
