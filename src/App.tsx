@@ -16,6 +16,9 @@ import PortfolioPage from "./pages/PortfolioPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
+import CookieConsent from "./components/CookieConsent";
+import MobileFab from "./components/MobileFab";
+import AuroraBackground from "./components/AuroraBackground";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +29,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <AuroraBackground />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
@@ -40,6 +44,8 @@ const App = () => (
             {/* 404 fallback */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <MobileFab />
+          <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>

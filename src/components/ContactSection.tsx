@@ -31,7 +31,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone size={18} className="text-primary shrink-0" />
-                +91 7667926418
+                +91 7209742159
               </div>
               <a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Linkedin size={18} className="text-primary shrink-0" />
