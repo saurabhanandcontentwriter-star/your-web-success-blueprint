@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import IPhoneMockup from "@/components/IPhoneMockup";
 
 const jobs = [
   {
@@ -46,8 +47,20 @@ const jobs = [
 ];
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-24">
-    <div className="container mx-auto px-6">
+  <section id="experience" className="relative py-24">
+    {/* Floating iPhone mockups on the corners (desktop only) */}
+    <IPhoneMockup
+      src="/"
+      label="Portfolio running on iPhone"
+      className="hidden xl:block absolute left-4 top-32 z-10"
+    />
+    <IPhoneMockup
+      src="/portfolio"
+      label="Portfolio page on iPhone"
+      className="hidden xl:block absolute right-4 bottom-16 z-10"
+    />
+
+    <div className="container mx-auto px-6 relative">
       <p className="section-label mb-2">Career Path</p>
       <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Work Experience</h2>
       <p className="text-muted-foreground max-w-xl mb-12">
