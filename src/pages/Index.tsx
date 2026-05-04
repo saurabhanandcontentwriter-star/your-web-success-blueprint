@@ -11,14 +11,48 @@ import ContactSection from "@/components/ContactSection";
 import GallerySection from "@/components/GallerySection";
 import PageBackground from "@/components/PageBackground";
 import HomeBgAdmin from "@/components/HomeBgAdmin";
+import SEO from "@/components/SEO";
 import { useHomeBgSettings } from "@/components/useHomeBgSettings";
 
 const Index = () => {
   const { settings } = useHomeBgSettings();
   const isAdmin = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("admin") === "1";
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Saurabh Anand",
+    url: "https://saurabhanandseo.com/",
+    jobTitle: "SEO Analyst & Digital Marketing Professional",
+    description:
+      "Results-driven SEO Analyst and Digital Marketing Professional with 2+ years of experience in search engine optimization, content strategy, and organic growth.",
+    sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "New Delhi",
+      addressCountry: "IN",
+    },
+    knowsAbout: [
+      "SEO",
+      "Digital Marketing",
+      "Content Strategy",
+      "Link Building",
+      "AI Marketing",
+      "Social Media Analytics",
+      "Google Analytics",
+    ],
+  };
+
   return (
     <div className="relative min-h-screen">
+      <SEO
+        isHome
+        title="Saurabh Anand | SEO Analyst & Digital Marketing Expert"
+        description="Saurabh Anand – Results-driven SEO Analyst & Digital Marketing Professional with 2+ years of experience in SEO, content strategy, link-building, and organic growth. LinkedIn Top Voice 2024."
+        path="/"
+        keywords="Saurabh Anand, SEO Analyst, Digital Marketing, LinkedIn Top Voice, Google Certified, Content Strategy, Link Building, Social Media Analyst, AI Marketer, SEO Expert India"
+        jsonLd={personJsonLd}
+      />
       <PageBackground variant={settings.variant} opacity={settings.opacity} />
 
       <Navbar />
