@@ -1,3 +1,43 @@
+User-agent: *
+Allow: /
+
+# AI crawlers / answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
@@ -10,42 +50,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
-
 Sitemap: https://saurabhanandseo.com/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/about/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/Experience/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/Skill/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/NOW/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/PROTOFOLIO/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/CONTACT/sitemap.xml
-
-User-agent: *
-Allow: /
-
-Sitemap: https://saurabhanandseo.com/HIREME/sitemap.xml
