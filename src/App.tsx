@@ -19,6 +19,7 @@ import EducationPage from "./pages/EducationPage";
 import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
+import AIChatWidget from "./components/AIChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <MobileFab />
+          <AIChatWidget />
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
