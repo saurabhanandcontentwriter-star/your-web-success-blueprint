@@ -43,6 +43,9 @@ const ExperienceSection = () => (
                     </li>
                   ))}
                 </ul>
+                <Link to={`/experience/${job.slug}`} className="inline-block mt-4 text-xs text-primary hover:underline">
+                  View role details →
+                </Link>
               </div>
             </div>
           </motion.div>
