@@ -13,6 +13,9 @@ import ExperiencePage from "./pages/ExperiencePage";
 import SkillsPage from "./pages/SkillsPage";
 import NowPage from "./pages/NowPage";
 import PortfolioPage from "./pages/PortfolioPage";
+import PortfolioProjectPage from "./pages/PortfolioProjectPage";
+import ExperienceRolePage from "./pages/ExperienceRolePage";
+import GalleryEventPage from "./pages/GalleryEventPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
@@ -35,10 +38,13 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/experience/:slug" element={<ExperienceRolePage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/now" element={<NowPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/gallery/:slug" element={<GalleryEventPage />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
