@@ -45,12 +45,8 @@ const PortfolioSection = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((p, i) => (
-              <motion.a
+              <motion.div
                 key={p.title}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${p.title} case study (opens in new tab)`}
                 layout
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -58,21 +54,23 @@ const PortfolioSection = () => {
                 transition={{ delay: i * 0.05 }}
                 className="glass-card-hover overflow-hidden group block"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                  <div className="absolute top-3 right-3 badge-glass font-semibold text-primary">{p.stat}</div>
-                </div>
-                <div className="p-5">
-                  <p className="text-xs text-muted-foreground mb-1">{p.company}</p>
-                  <h3 className="text-lg font-display font-semibold mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{p.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span key={t} className="text-[11px] px-2 py-1 rounded-md bg-secondary text-secondary-foreground">{t}</span>
-                    ))}
+                <Link to={`/portfolio/${p.slug}`} aria-label={`Open ${p.title} case study`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                    <div className="absolute top-3 right-3 badge-glass font-semibold text-primary">{p.stat}</div>
                   </div>
-                </div>
-              </motion.a>
+                  <div className="p-5">
+                    <p className="text-xs text-muted-foreground mb-1">{p.company}</p>
+                    <h3 className="text-lg font-display font-semibold mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{p.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <span key={t} className="text-[11px] px-2 py-1 rounded-md bg-secondary text-secondary-foreground">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </AnimatePresence>
         </div>
