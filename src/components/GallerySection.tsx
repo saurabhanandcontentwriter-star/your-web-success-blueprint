@@ -1,37 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import aiSummitFlags from "@/assets/gallery/ai-summit-flags.png";
-import aiSummitFountain from "@/assets/gallery/ai-summit-fountain.jpg";
-import aiSummitBanner from "@/assets/gallery/ai-summit-banner.jpg";
-import aiSummitInvite from "@/assets/gallery/ai-summit-invite.jpg";
-import devfestStage from "@/assets/gallery/devfest-stage.jpg";
-import devfestVenue from "@/assets/gallery/devfest-venue.jpg";
-import devfestFriend from "@/assets/gallery/devfest-friend.jpg";
-import devfestSpeaker from "@/assets/gallery/devfest-speaker.jpg";
-
-const events = [
-  {
-    title: "AI Impact Summit India 2026",
-    subtitle: "Central Government Initiative · Bharat Mandapam, New Delhi",
-    photos: [
-      { src: aiSummitInvite, alt: "AI Impact Summit 2026 - Official Delegate Invitation" },
-      { src: aiSummitFlags, alt: "AI Impact Summit 2026 - With International Flags" },
-      { src: aiSummitFountain, alt: "AI Impact Summit 2026 - At Bharat Mandapam" },
-      { src: aiSummitBanner, alt: "AI Impact Summit 2026 - Event Banner" },
-    ],
-  },
-  {
-    title: "Google DevFest Ranchi 2025",
-    subtitle: "Google Developer Groups · Ranchi",
-    photos: [
-      { src: devfestVenue, alt: "Google DevFest 2025 - Main Stage" },
-      { src: devfestStage, alt: "Google DevFest 2025 - Sponsor Wall" },
-      { src: devfestFriend, alt: "Google DevFest 2025 - Networking" },
-      { src: devfestSpeaker, alt: "Google DevFest 2025 - With Speaker" },
-    ],
-  },
-];
+import { events } from "@/data/gallery";
 
 const allPhotos = events.flatMap((e) => e.photos);
 
