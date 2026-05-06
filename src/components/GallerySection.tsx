@@ -35,9 +35,14 @@ const GallerySection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="mb-6">
-                    <h3 className="text-xl font-display font-semibold">{event.title}</h3>
-                    <p className="text-sm text-muted-foreground">{event.subtitle}</p>
+                  <div className="mb-6 flex items-end justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-display font-semibold">{event.title}</h3>
+                      <p className="text-sm text-muted-foreground">{event.subtitle}</p>
+                    </div>
+                    <Link to={`/gallery/${event.slug}`} className="text-xs text-primary hover:underline shrink-0">
+                      View event →
+                    </Link>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
