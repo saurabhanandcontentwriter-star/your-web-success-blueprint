@@ -7,7 +7,7 @@ const skillGroups = [
   },
   {
     title: "Digital Marketing",
-    skills: ["Guest Blogging", "Google Analytics", "Search Console", "Marketing Strategy,"Google Ads"],
+    skills: ["Guest Blogging", "Google Analytics", "Search Console", "Marketing Strategy","Google Ads",],
   },
   {
     title: "Design & UX",
