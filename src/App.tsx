@@ -19,6 +19,7 @@ import GalleryEventPage from "./pages/GalleryEventPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
+import CrawlerCheckPage from "./pages/CrawlerCheckPage";
 import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/gallery/:slug" element={<GalleryEventPage />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/crawler-check" element={<CrawlerCheckPage />} />
 
             {/* 404 fallback */}
             <Route path="*" element={<NotFound />} />
