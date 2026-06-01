@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Linkedin, Github, Mail, MessageCircle, Download, Briefcase, ShieldCheck } from "lucide-react";
 
 const exploreLinks = [
   { label: "Home", path: "/" },
@@ -10,6 +11,7 @@ const exploreLinks = [
   { label: "Gallery", path: "/gallery" },
   { label: "Education", path: "/education" },
   { label: "Contact", path: "/contact" },
+  { label: "Crawler Check", path: "/crawler-check" },
 ];
 
 const Footer = () => (
@@ -18,9 +20,12 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-8 mb-8">
         <div>
           <h3 className="font-display font-semibold text-sm mb-3">Saurabh Anand</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            SEO Analyst & Digital Marketing Professional based in New Delhi, India.
+          <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+            AI SEO Strategist • Vibe Coder • Automation Builder — based in New Delhi, India.
           </p>
+          <Link to="/contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs font-medium hover:opacity-90">
+            <Briefcase size={12} /> Hire Me
+          </Link>
         </div>
         <div>
           <h3 className="font-display font-semibold text-sm mb-3">Explore</h3>
@@ -35,8 +40,23 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h3 className="font-display font-semibold text-sm mb-3">My Websites</h3>
+          <h3 className="font-display font-semibold text-sm mb-3">Resources</h3>
           <ul className="space-y-2">
+            <li>
+              <a href="/Saurabh_Anand_Resume.pdf" download className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <Download size={12} /> SEO Resume (PDF)
+              </a>
+            </li>
+            <li>
+              <a href="/Saurabh_Anand_Vibe_Coding_Resume.pdf" download className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <Download size={12} /> Vibe Coding Resume (PDF)
+              </a>
+            </li>
+            <li>
+              <Link to="/crawler-check" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <ShieldCheck size={12} /> Crawler Dashboard
+              </Link>
+            </li>
             <li><a href="https://crazyseoteam.in" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">crazyseoteam.in</a></li>
             <li><a href="https://www.papajupiter.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">papajupiter.com</a></li>
           </ul>
@@ -44,15 +64,17 @@ const Footer = () => (
         <div>
           <h3 className="font-display font-semibold text-sm mb-3">Connect</h3>
           <ul className="space-y-2">
-            <li><a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"><Linkedin size={12} /> LinkedIn</a></li>
+            <li><a href="https://github.com/saurabhanandseo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"><Github size={12} /> GitHub</a></li>
+            <li><a href="mailto:saurabhanandseo@gmail.com" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"><Mail size={12} /> Email</a></li>
+            <li><a href="https://wa.me/917209742159" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"><MessageCircle size={12} /> WhatsApp</a></li>
             <li><a href="https://x.com/saurabhanandseo" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Twitter / X</a></li>
             <li><a href="https://instagram.com/saurabhanandseo" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Instagram</a></li>
-            <li><a href="https://github.com/saurabhanandseo" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub</a></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-border/40 pt-6 text-center">
-        <p className="text-xs text-muted-foreground">© 2025 Saurabh Anand. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Saurabh Anand. All rights reserved.</p>
       </div>
     </div>
   </footer>
