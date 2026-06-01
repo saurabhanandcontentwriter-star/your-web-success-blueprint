@@ -1,14 +1,20 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import CredibilityStrip from "@/components/CredibilityStrip";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import ExperienceSection from "@/components/ExperienceSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import AIPortfolioCategories from "@/components/AIPortfolioCategories";
+import VibeCodingSection from "@/components/VibeCodingSection";
+import AgenticAISection from "@/components/AgenticAISection";
+import DevFestSection from "@/components/DevFestSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import NowSection from "@/components/NowSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import GallerySection from "@/components/GallerySection";
+import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
 import HomeBgAdmin from "@/components/HomeBgAdmin";
 import SEO from "@/components/SEO";
@@ -57,15 +63,21 @@ const Index = () => {
 
       <Navbar />
     <HeroSection />
+    <CredibilityStrip />
     <ToolsMarquee />
+    <AIPortfolioCategories />
     <ExperienceSection />
     <PortfolioSection />
+    <VibeCodingSection />
+    <AgenticAISection />
     <AboutSection />
     <SkillsSection />
+    <DevFestSection />
     <GallerySection />
     <NowSection />
     <EducationSection />
     <ContactSection />
+    <Footer />
 
       {isAdmin && <HomeBgAdmin />}
     </div>
