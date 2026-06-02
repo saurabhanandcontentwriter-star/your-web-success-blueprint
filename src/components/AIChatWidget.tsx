@@ -1,46 +1,143 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Send,
+  Sparkles,
+  Mic,
+  MicOff,
+  Volume2,
+  VolumeX,
+  Trash2,
+  Minus,
+  Maximize2,
+  Minimize2,
+  Download,
+} from "lucide-react";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const STORAGE_KEY = "sa_chat_history_v1";
+
+const SUGGESTED = [
+  "What does Saurabh do?",
+  "Tell me about his AI SEO experience",
+  "How can I hire him?",
+  "What is GEO / LLM optimization?",
+];
+
+const WELCOME: Msg = {
+  role: "assistant",
+  content:
+    "Hi! 👋 I'm Saurabh's AI assistant. Ask me about his AI SEO, GEO, LLM optimization, vibe coding, automation work — or how to hire him.",
+};
+
+// ---- Speech Recognition (typed loosely; browser-vendored) ----
+const getSR = (): any =>
+  (typeof window !== "undefined" &&
+    ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)) ||
+  null;
 
 const AIChatWidget = () => {
   const [open, setOpen] = useState(false);
+  const [minimized, setMinimized] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hi! 👋 I'm Saurabh's AI assistant. Ask me anything about his SEO experience, skills, or how to hire him." },
-  ]);
+  const [listening, setListening] = useState(false);
+  const [ttsOn, setTtsOn] = useState(false);
+  const [messages, setMessages] = useState<Msg[]>(() => {
+    try {
+      const raw = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length) return parsed;
+      }
+    } catch {}
+    return [WELCOME];
+  });
   const scrollRef = useRef<HTMLDivElement>(null);
+  const recogRef = useRef<any>(null);
+  const speakBufferRef = useRef<string>("");
 
+  // Persist
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch {}
+  }, [messages]);
+
+  // Auto-scroll
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, open]);
+  }, [messages, open, minimized, loading]);
 
-  const send = async () => {
-    const text = input.trim();
+  // Cleanup speech on close
+  useEffect(() => {
+    if (!open) {
+      try { recogRef.current?.stop(); } catch {}
+      window.speechSynthesis?.cancel?.();
+    }
+  }, [open]);
+
+  const speak = (text: string) => {
+    if (!ttsOn || typeof window === "undefined" || !window.speechSynthesis) return;
+    try {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 1;
+      u.pitch = 1;
+      window.speechSynthesis.speak(u);
+    } catch {}
+  };
+
+  const toggleMic = () => {
+    const SR = getSR();
+    if (!SR) {
+      alert("Voice input isn't supported in this browser. Try Chrome or Edge.");
+      return;
+    }
+    if (listening) {
+      try { recogRef.current?.stop(); } catch {}
+      setListening(false);
+      return;
+    }
+    const r = new SR();
+    r.lang = navigator.language?.startsWith("hi") ? "hi-IN" : "en-US";
+    r.interimResults = true;
+    r.continuous = false;
+    r.onresult = (e: any) => {
+      let txt = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) txt += e.results[i][0].transcript;
+      setInput(txt);
+    };
+    r.onend = () => setListening(false);
+    r.onerror = () => setListening(false);
+    recogRef.current = r;
+    setListening(true);
+    try { r.start(); } catch { setListening(false); }
+  };
+
+  const send = async (override?: string) => {
+    const text = (override ?? input).trim();
     if (!text || loading) return;
     const userMsg: Msg = { role: "user", content: text };
-    setMessages((p) => [...p, userMsg]);
+    const baseHistory = [...messages, userMsg];
+    setMessages(baseHistory);
     setInput("");
     setLoading(true);
+    speakBufferRef.current = "";
 
     let acc = "";
+    setMessages((p) => [...p, { role: "assistant", content: "" }]);
     const upsert = (chunk: string) => {
       acc += chunk;
-      setMessages((prev) => {
-        const last = prev[prev.length - 1];
-        if (last?.role === "assistant" && last.content !== messages[messages.length - 1]?.content) {
-          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: acc } : m));
-        }
-        return [...prev, { role: "assistant", content: acc }];
-      });
+      setMessages((prev) =>
+        prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: acc } : m))
+      );
     };
-
-    // Seed empty assistant message
-    setMessages((p) => [...p, { role: "assistant", content: "" }]);
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -49,7 +146,7 @@ const AIChatWidget = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: [...messages, userMsg] }),
+        body: JSON.stringify({ messages: baseHistory }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -84,10 +181,14 @@ const AIChatWidget = () => {
           }
         }
       }
+      if (acc) speak(acc);
     } catch (e: any) {
       setMessages((prev) => {
         const copy = [...prev];
-        copy[copy.length - 1] = { role: "assistant", content: `⚠️ ${e.message || "Something went wrong."}` };
+        copy[copy.length - 1] = {
+          role: "assistant",
+          content: `⚠️ ${e.message || "Something went wrong."}`,
+        };
         return copy;
       });
     } finally {
@@ -95,8 +196,38 @@ const AIChatWidget = () => {
     }
   };
 
+  const clearHistory = () => {
+    if (!confirm("Clear this chat?")) return;
+    setMessages([WELCOME]);
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+  };
+
+  const exportChat = () => {
+    const text = messages
+      .map((m) => `${m.role === "user" ? "You" : "AI"}: ${m.content}`)
+      .join("\n\n");
+    const blob = new Blob([text], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `saurabh-chat-${new Date().toISOString().slice(0, 10)}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const panelSize = fullscreen
+    ? "w-screen h-screen max-w-none max-h-none rounded-none bottom-0 right-0 left-0 top-0"
+    : minimized
+    ? "w-[92vw] max-w-sm h-14"
+    : "w-[92vw] max-w-sm h-[70vh] max-h-[560px]";
+
   return (
-    <div className="fixed right-4 bottom-4 md:right-6 md:bottom-6 z-[60]" style={{ bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}>
+    <div
+      className={`fixed z-[60] ${fullscreen ? "inset-0" : "right-4 bottom-4 md:right-6 md:bottom-6"}`}
+      style={fullscreen ? {} : { bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
+    >
       <AnimatePresence>
         {open && (
           <motion.div
@@ -104,71 +235,145 @@ const AIChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 280, damping: 24 }}
-            className="absolute bottom-16 right-0 w-[92vw] max-w-sm h-[70vh] max-h-[520px] glass-card border-primary/30 shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.5)] flex flex-col overflow-hidden"
+            className={`${fullscreen ? "absolute inset-0" : "absolute bottom-16 right-0"} ${panelSize} glass-card border-primary/30 shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.5)] flex flex-col overflow-hidden`}
           >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-gradient-to-r from-primary/10 to-accent/10">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <Sparkles size={16} className="text-primary-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm font-display font-semibold">Ask about Saurabh</p>
-                  <p className="text-[10px] text-muted-foreground">AI-powered assistant</p>
-                </div>
-              </div>
-              <button onClick={() => setOpen(false)} aria-label="Close chat" className="text-muted-foreground hover:text-foreground">
-                <X size={18} />
-              </button>
-            </div>
-
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
-              {messages.map((m, i) => (
-                <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div
-                    className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap leading-relaxed ${
-                      m.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-sm"
-                        : "bg-secondary text-foreground rounded-bl-sm"
-                    }`}
-                  >
-                    {m.content || <span className="opacity-60">…</span>}
+            {/* Header */}
+            <div className="flex items-center justify-between px-3 py-2.5 border-b border-border bg-gradient-to-r from-primary/15 via-accent/10 to-primary/15">
+              <div className="flex items-center gap-2 min-w-0">
+                {/* Pulsing AI avatar */}
+                <div className="relative shrink-0">
+                  <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
+                  <div className={`relative h-9 w-9 rounded-full bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center ${loading ? "animate-pulse" : ""}`}>
+                    <Sparkles size={16} className="text-primary-foreground" />
                   </div>
                 </div>
-              ))}
+                <div className="min-w-0">
+                  <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
+                  <p className="text-[10px] text-muted-foreground truncate">
+                    {loading ? "typing…" : listening ? "listening…" : "Voice + AI • Online"}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 shrink-0">
+                <button onClick={() => setTtsOn((v) => !v)} title={ttsOn ? "Mute voice" : "Speak replies"} className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  {ttsOn ? <Volume2 size={15} /> : <VolumeX size={15} />}
+                </button>
+                <button onClick={exportChat} title="Export chat" className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  <Download size={15} />
+                </button>
+                <button onClick={clearHistory} title="Clear history" className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  <Trash2 size={15} />
+                </button>
+                <button onClick={() => setMinimized((v) => !v)} title={minimized ? "Expand" : "Minimize"} className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  <Minus size={15} />
+                </button>
+                <button onClick={() => setFullscreen((v) => !v)} title={fullscreen ? "Exit fullscreen" : "Fullscreen"} className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  {fullscreen ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+                </button>
+                <button onClick={() => setOpen(false)} title="Close" aria-label="Close chat" className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
+                  <X size={16} />
+                </button>
+              </div>
             </div>
 
-            <form
-              onSubmit={(e) => { e.preventDefault(); send(); }}
-              className="border-t border-border p-3 flex items-center gap-2"
-            >
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about experience, skills, hiring…"
-                className="flex-1 px-3 py-2 rounded-full bg-secondary border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                disabled={loading}
-              />
-              <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                aria-label="Send"
-                className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground flex items-center justify-center disabled:opacity-50"
-              >
-                <Send size={15} />
-              </button>
-            </form>
+            {!minimized && (
+              <>
+                {/* Messages */}
+                <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
+                  {messages.map((m, i) => (
+                    <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                      <div
+                        className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap leading-relaxed ${
+                          m.role === "user"
+                            ? "bg-primary text-primary-foreground rounded-br-sm"
+                            : "bg-secondary text-foreground rounded-bl-sm"
+                        }`}
+                      >
+                        {m.content || <span className="opacity-60">…</span>}
+                      </div>
+                    </div>
+                  ))}
+                  {loading && messages[messages.length - 1]?.content === "" && (
+                    <div className="flex justify-start">
+                      <div className="bg-secondary rounded-2xl rounded-bl-sm px-3 py-2.5 flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: "120ms" }} />
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: "240ms" }} />
+                        <span className="text-[11px] text-muted-foreground ml-1">AI is typing…</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Suggested questions (only when conversation is fresh) */}
+                  {messages.length <= 1 && !loading && (
+                    <div className="pt-2 flex flex-wrap gap-2">
+                      {SUGGESTED.map((q) => (
+                        <button
+                          key={q}
+                          onClick={() => send(q)}
+                          className="text-[11px] px-2.5 py-1.5 rounded-full border border-primary/30 text-foreground/80 hover:bg-primary/10 transition-colors"
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Composer */}
+                <form
+                  onSubmit={(e) => { e.preventDefault(); send(); }}
+                  className="border-t border-border p-2.5 flex items-center gap-2"
+                >
+                  <button
+                    type="button"
+                    onClick={toggleMic}
+                    aria-label={listening ? "Stop voice" : "Voice input"}
+                    title={listening ? "Stop" : "Speak"}
+                    className={`h-9 w-9 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                      listening
+                        ? "bg-red-500 text-white animate-pulse"
+                        : "bg-secondary text-foreground hover:bg-secondary/80"
+                    }`}
+                  >
+                    {listening ? <MicOff size={15} /> : <Mic size={15} />}
+                  </button>
+                  <input
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder={listening ? "Listening…" : "Ask about AI SEO, GEO, hiring…"}
+                    className="flex-1 px-3 py-2 rounded-full bg-secondary border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                    disabled={loading}
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading || !input.trim()}
+                    aria-label="Send"
+                    className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground flex items-center justify-center disabled:opacity-50 shrink-0"
+                  >
+                    <Send size={15} />
+                  </button>
+                </form>
+              </>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.button
-        whileTap={{ scale: 0.92 }}
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close AI chat" : "Open AI chat"}
-        className="hidden md:flex h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] items-center justify-center ring-1 ring-primary/40"
-      >
-        {open ? <X size={22} /> : <MessageCircle size={22} />}
-      </motion.button>
+      {/* Floating launcher with pulse halo */}
+      {!fullscreen && (
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={() => { setOpen((v) => !v); setMinimized(false); }}
+          aria-label={open ? "Close AI chat" : "Open AI chat"}
+          className="relative hidden md:flex h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] items-center justify-center ring-1 ring-primary/40"
+        >
+          {!open && <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />}
+          <span className="relative">
+            {open ? <X size={22} /> : <MessageCircle size={22} />}
+          </span>
+        </motion.button>
+      )}
     </div>
   );
 };

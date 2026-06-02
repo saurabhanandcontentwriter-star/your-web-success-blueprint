@@ -94,7 +94,7 @@ const HeroSection = () => {
             <a href="#vibe-coding" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-foreground font-medium text-sm hover:bg-primary/10 transition-colors">
               <Sparkles size={15} /> Explore AI Projects
             </a>
-            <a href="/Saurabh_Anand_Resume.pdf" download className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors">
+            <a href="/Saurabh_Anand_Resume.pdf" download target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors">
               Download Resume <Download size={15} />
             </a>
           </div>

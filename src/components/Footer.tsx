@@ -43,12 +43,12 @@ const Footer = () => (
           <h3 className="font-display font-semibold text-sm mb-3">Resources</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/Saurabh_Anand_Resume.pdf" download className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/Saurabh_Anand_Resume.pdf" download target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
                 <Download size={12} /> SEO Resume (PDF)
               </a>
             </li>
             <li>
-              <a href="/Saurabh_Anand_Vibe_Coding_Resume.pdf" download className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/Saurabh_Anand_Vibe_Coding_Resume.pdf" download target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
                 <Download size={12} /> Vibe Coding Resume (PDF)
               </a>
             </li>
