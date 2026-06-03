@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award, ArrowRight } from "lucide-react";
 
 const EducationSection = () => (
   <section className="py-24">
@@ -34,6 +35,15 @@ const EducationSection = () => (
             </li>
           </ul>
         </motion.div>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <Link
+          to="/about"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/40 text-sm text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
+        >
+          View Full Profile <ArrowRight size={14} />
+        </Link>
       </div>
     </div>
   </section>

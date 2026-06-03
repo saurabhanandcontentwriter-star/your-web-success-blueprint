@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -5,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ArrowRight } from "lucide-react";
 
 const backgroundAreas = [
   "SEO Strategy",
@@ -153,7 +155,7 @@ const AboutSection = () => (
       </div>
 
       {/* FAQ */}
-      <div>
+      <div className="mb-8">
         <h2 className="text-2xl font-display font-semibold mb-4">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="glass-card px-6">
           {faqs.map((f, i) => (
@@ -164,6 +166,21 @@ const AboutSection = () => (
           ))}
         </Accordion>
       </div>
+
+      {/* Link to full About page */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex justify-center"
+      >
+        <Link
+          to="/about"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.5)]"
+        >
+          Read Full Bio & FAQ <ArrowRight size={16} />
+        </Link>
+      </motion.div>
     </div>
   </section>
 );
