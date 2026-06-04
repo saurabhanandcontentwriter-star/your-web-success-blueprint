@@ -57,7 +57,10 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <MobileFab />
+          <StickyHireMe />
+          <WhatsAppFab />
           <AIChatWidget />
+          <WebsiteTour />
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
