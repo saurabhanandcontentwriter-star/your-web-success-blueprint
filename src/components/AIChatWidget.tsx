@@ -15,6 +15,9 @@ import {
   Minimize2,
   Download,
 } from "lucide-react";
+import AIAvatar, { type AvatarState } from "./AIAvatar";
+
+const FIRST_VISIT_KEY = "sa_chat_first_visit_v1";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
