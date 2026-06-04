@@ -105,6 +105,9 @@ const AIChatWidget = () => {
       const u = new SpeechSynthesisUtterance(text);
       u.rate = 1;
       u.pitch = 1;
+      u.onstart = () => setIsSpeaking(true);
+      u.onend = () => setIsSpeaking(false);
+      u.onerror = () => setIsSpeaking(false);
       window.speechSynthesis.speak(u);
     } catch {}
   };
