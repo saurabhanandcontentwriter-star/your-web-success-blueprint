@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  MessageCircle,
   X,
   Send,
-  Sparkles,
   Mic,
   MicOff,
   Volume2,
