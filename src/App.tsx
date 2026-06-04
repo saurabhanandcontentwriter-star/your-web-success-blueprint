@@ -24,6 +24,9 @@ import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
 import AIChatWidget from "./components/AIChatWidget";
+import WebsiteTour from "./components/WebsiteTour";
+import StickyHireMe from "./components/StickyHireMe";
+import WhatsAppFab from "./components/WhatsAppFab";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +57,10 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <MobileFab />
+          <StickyHireMe />
+          <WhatsAppFab />
           <AIChatWidget />
+          <WebsiteTour />
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
