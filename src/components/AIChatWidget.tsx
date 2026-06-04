@@ -244,8 +244,12 @@ const AIChatWidget = () => {
 
   return (
     <div
-      className={`fixed z-[60] ${fullscreen ? "inset-0" : "right-4 bottom-4 md:right-6 md:bottom-6"}`}
-      style={fullscreen ? {} : { bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
+      className={`fixed z-[60] ${fullscreen ? "inset-0" : "right-4 md:right-6"}`}
+      style={
+        fullscreen
+          ? {}
+          : { bottom: "calc(env(safe-area-inset-bottom) + 5.5rem)" }
+      }
     >
       <AnimatePresence>
         {open && (
