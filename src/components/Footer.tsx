@@ -73,8 +73,14 @@ const Footer = () => (
           </ul>
         </div>
       </div>
-      <div className="border-t border-border/40 pt-6 text-center">
+      <div className="border-t border-border/40 pt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
         <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Saurabh Anand. All rights reserved.</p>
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors underline-offset-2 hover:underline"
+        >
+          Cookie settings
+        </button>
       </div>
     </div>
   </footer>
