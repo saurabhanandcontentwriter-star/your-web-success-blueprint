@@ -268,13 +268,6 @@ const AIChatWidget = () => {
                   </p>
                 </div>
               </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
-                  <p className="text-[10px] text-muted-foreground truncate">
-                    {loading ? "typing…" : listening ? "listening…" : "Voice + AI • Online"}
-                  </p>
-                </div>
-              </div>
               <div className="flex items-center gap-1 shrink-0">
                 <button onClick={() => setTtsOn((v) => !v)} title={ttsOn ? "Mute voice" : "Speak replies"} className="p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground">
                   {ttsOn ? <Volume2 size={15} /> : <VolumeX size={15} />}
