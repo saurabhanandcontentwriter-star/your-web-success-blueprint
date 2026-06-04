@@ -259,13 +259,15 @@ const AIChatWidget = () => {
             {/* Header */}
             <div className="flex items-center justify-between px-3 py-2.5 border-b border-border bg-gradient-to-r from-primary/15 via-accent/10 to-primary/15">
               <div className="flex items-center gap-2 min-w-0">
-                {/* Pulsing AI avatar */}
-                <div className="relative shrink-0">
-                  <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
-                  <div className={`relative h-9 w-9 rounded-full bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center ${loading ? "animate-pulse" : ""}`}>
-                    <Sparkles size={16} className="text-primary-foreground" />
-                  </div>
+                {/* Premium 3D AI avatar */}
+                <AIAvatar state={avatarState} size={36} />
+                <div className="min-w-0">
+                  <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
+                  <p className="text-[10px] text-muted-foreground truncate">
+                    {loading ? "thinking…" : isSpeaking ? "speaking…" : listening ? "listening…" : "Voice + AI • Online"}
+                  </p>
                 </div>
+              </div>
                 <div className="min-w-0">
                   <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
                   <p className="text-[10px] text-muted-foreground truncate">
