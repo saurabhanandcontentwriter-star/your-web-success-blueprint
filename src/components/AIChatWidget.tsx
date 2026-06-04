@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  MessageCircle,
   X,
   Send,
-  Sparkles,
   Mic,
   MicOff,
   Volume2,
@@ -15,6 +13,9 @@ import {
   Minimize2,
   Download,
 } from "lucide-react";
+import AIAvatar, { type AvatarState } from "./AIAvatar";
+
+const FIRST_VISIT_KEY = "sa_chat_first_visit_v1";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -61,6 +62,19 @@ const AIChatWidget = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const recogRef = useRef<any>(null);
   const speakBufferRef = useRef<string>("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [firstVisit, setFirstVisit] = useState<boolean>(() => {
+    try { return !localStorage.getItem(FIRST_VISIT_KEY); } catch { return true; }
+  });
+
+  // Derived avatar state
+  const avatarState: AvatarState = isSpeaking
+    ? "speaking"
+    : loading
+    ? "thinking"
+    : listening
+    ? "listening"
+    : "idle";
 
   // Persist
   useEffect(() => {
@@ -89,6 +103,9 @@ const AIChatWidget = () => {
       const u = new SpeechSynthesisUtterance(text);
       u.rate = 1;
       u.pitch = 1;
+      u.onstart = () => setIsSpeaking(true);
+      u.onend = () => setIsSpeaking(false);
+      u.onerror = () => setIsSpeaking(false);
       window.speechSynthesis.speak(u);
     } catch {}
   };
@@ -225,8 +242,12 @@ const AIChatWidget = () => {
 
   return (
     <div
-      className={`fixed z-[60] ${fullscreen ? "inset-0" : "right-4 bottom-4 md:right-6 md:bottom-6"}`}
-      style={fullscreen ? {} : { bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
+      className={`fixed z-[60] ${fullscreen ? "inset-0" : "right-4 md:right-6"}`}
+      style={
+        fullscreen
+          ? {}
+          : { bottom: "calc(env(safe-area-inset-bottom) + 5.5rem)" }
+      }
     >
       <AnimatePresence>
         {open && (
@@ -240,17 +261,12 @@ const AIChatWidget = () => {
             {/* Header */}
             <div className="flex items-center justify-between px-3 py-2.5 border-b border-border bg-gradient-to-r from-primary/15 via-accent/10 to-primary/15">
               <div className="flex items-center gap-2 min-w-0">
-                {/* Pulsing AI avatar */}
-                <div className="relative shrink-0">
-                  <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />
-                  <div className={`relative h-9 w-9 rounded-full bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center ${loading ? "animate-pulse" : ""}`}>
-                    <Sparkles size={16} className="text-primary-foreground" />
-                  </div>
-                </div>
+                {/* Premium 3D AI avatar */}
+                <AIAvatar state={avatarState} size={36} />
                 <div className="min-w-0">
                   <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
                   <p className="text-[10px] text-muted-foreground truncate">
-                    {loading ? "typing…" : listening ? "listening…" : "Voice + AI • Online"}
+                    {loading ? "thinking…" : isSpeaking ? "speaking…" : listening ? "listening…" : "Voice + AI • Online"}
                   </p>
                 </div>
               </div>
@@ -360,18 +376,29 @@ const AIChatWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* Floating launcher with pulse halo */}
+      {/* Floating launcher — avatar-based, desktop + mobile */}
       {!fullscreen && (
         <motion.button
           whileTap={{ scale: 0.92 }}
-          onClick={() => { setOpen((v) => !v); setMinimized(false); }}
+          whileHover={{ scale: 1.05 }}
+          onClick={() => {
+            setOpen((v) => !v);
+            setMinimized(false);
+            if (firstVisit) {
+              try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+              setFirstVisit(false);
+            }
+          }}
           aria-label={open ? "Close AI chat" : "Open AI chat"}
-          className="relative hidden md:flex h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] items-center justify-center ring-1 ring-primary/40"
+          className="relative flex h-14 w-14 rounded-full items-center justify-center"
         >
-          {!open && <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />}
-          <span className="relative">
-            {open ? <X size={22} /> : <MessageCircle size={22} />}
-          </span>
+          {open ? (
+            <span className="h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] ring-1 ring-primary/40 flex items-center justify-center">
+              <X size={22} />
+            </span>
+          ) : (
+            <AIAvatar state={avatarState} size={56} showWave={firstVisit} />
+          )}
         </motion.button>
       )}
     </div>
