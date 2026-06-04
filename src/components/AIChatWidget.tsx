@@ -378,18 +378,29 @@ const AIChatWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* Floating launcher with pulse halo */}
+      {/* Floating launcher — avatar-based, desktop + mobile */}
       {!fullscreen && (
         <motion.button
           whileTap={{ scale: 0.92 }}
-          onClick={() => { setOpen((v) => !v); setMinimized(false); }}
+          whileHover={{ scale: 1.05 }}
+          onClick={() => {
+            setOpen((v) => !v);
+            setMinimized(false);
+            if (firstVisit) {
+              try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+              setFirstVisit(false);
+            }
+          }}
           aria-label={open ? "Close AI chat" : "Open AI chat"}
-          className="relative hidden md:flex h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] items-center justify-center ring-1 ring-primary/40"
+          className="relative flex h-14 w-14 rounded-full items-center justify-center"
         >
-          {!open && <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />}
-          <span className="relative">
-            {open ? <X size={22} /> : <MessageCircle size={22} />}
-          </span>
+          {open ? (
+            <span className="h-14 w-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] ring-1 ring-primary/40 flex items-center justify-center">
+              <X size={22} />
+            </span>
+          ) : (
+            <AIAvatar state={avatarState} size={56} showWave={firstVisit} />
+          )}
         </motion.button>
       )}
     </div>
