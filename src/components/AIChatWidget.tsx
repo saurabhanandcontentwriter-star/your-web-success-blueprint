@@ -64,6 +64,19 @@ const AIChatWidget = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const recogRef = useRef<any>(null);
   const speakBufferRef = useRef<string>("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [firstVisit, setFirstVisit] = useState<boolean>(() => {
+    try { return !localStorage.getItem(FIRST_VISIT_KEY); } catch { return true; }
+  });
+
+  // Derived avatar state
+  const avatarState: AvatarState = isSpeaking
+    ? "speaking"
+    : loading
+    ? "thinking"
+    : listening
+    ? "listening"
+    : "idle";
 
   // Persist
   useEffect(() => {
