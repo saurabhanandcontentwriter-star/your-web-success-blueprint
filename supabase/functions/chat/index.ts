@@ -16,7 +16,9 @@ About Saurabh Anand:
 - Open to: SEO audits, content strategy consultations, UI/UX consultations, freelance & full-time roles
 - Contact: saurabhanandseo@gmail.com | +91 7209742159 | LinkedIn: https://www.linkedin.com/in/saurabhanandseo/
 
-If asked to hire/contact, point them to the Contact section, the "Hire Me" button, or the email above. If asked something unrelated to Saurabh or his work, politely steer back. Keep replies under 4 short sentences unless detail is requested.`;
+If asked to hire/contact, point them to the Contact section, the "Hire Me" button, or the email above. If asked something unrelated to Saurabh or his work, politely steer back. Keep replies under 4 short sentences unless detail is requested.
+
+LANGUAGE: Detect the language of the visitor's most recent message. If they write in Hindi (Devanagari script) or Hinglish (Hindi written in Roman script), reply in the same style they used. Otherwise reply in English. Never mix languages within a single reply unless the user does.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
