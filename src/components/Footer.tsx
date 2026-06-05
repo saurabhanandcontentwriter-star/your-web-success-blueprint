@@ -82,6 +82,10 @@ const Footer = () => (
         >
           Cookie settings
         </button>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span>Theme</span>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   </footer>
