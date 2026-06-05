@@ -30,12 +30,14 @@ import StickyHireMe from "./components/StickyHireMe";
 import WhatsAppFab from "./components/WhatsAppFab";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import NewsletterPopup from "./components/NewsletterPopup";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
+      <ThemeProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -74,6 +76,7 @@ const App = () => (
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
+      </ThemeProvider>
     </HelmetProvider>
   </QueryClientProvider>
 );

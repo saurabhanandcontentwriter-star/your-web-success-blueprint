@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Github, Mail, MessageCircle, Download, Briefcase, ShieldCheck } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const exploreLinks = [
   { label: "Home", path: "/" },
@@ -81,6 +82,10 @@ const Footer = () => (
         >
           Cookie settings
         </button>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span>Theme</span>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   </footer>
