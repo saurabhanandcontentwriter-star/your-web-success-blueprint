@@ -76,6 +76,7 @@ const App = () => (
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
+      </ThemeProvider>
     </HelmetProvider>
   </QueryClientProvider>
 );
