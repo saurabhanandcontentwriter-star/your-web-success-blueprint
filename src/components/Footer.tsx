@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Github, Mail, MessageCircle, Download, Briefcase, ShieldCheck } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const exploreLinks = [
   { label: "Home", path: "/" },
