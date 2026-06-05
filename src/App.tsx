@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -30,7 +30,6 @@ import StickyHireMe from "./components/StickyHireMe";
 import WhatsAppFab from "./components/WhatsAppFab";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import NewsletterPopup from "./components/NewsletterPopup";
-import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +55,11 @@ const App = () => (
             <Route path="/education" element={<EducationPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/crawler-check" element={<CrawlerCheckPage />} />
+            <Route path="/newsletter" element={<NewsletterPage />} />
+
+            {/* Common typo redirects */}
+            <Route path="/experince" element={<Navigate to="/experience" replace />} />
+            <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
 
             {/* 404 fallback */}
             <Route path="*" element={<NotFound />} />
@@ -65,6 +69,8 @@ const App = () => (
           <WhatsAppFab />
           <AIChatWidget />
           <WebsiteTour />
+          <ExitIntentPopup />
+          <NewsletterPopup />
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
