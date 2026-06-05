@@ -20,6 +20,7 @@ import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
 import CrawlerCheckPage from "./pages/CrawlerCheckPage";
+import NewsletterPage from "./pages/NewsletterPage";
 import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
@@ -27,6 +28,9 @@ import AIChatWidget from "./components/AIChatWidget";
 import WebsiteTour from "./components/WebsiteTour";
 import StickyHireMe from "./components/StickyHireMe";
 import WhatsAppFab from "./components/WhatsAppFab";
+import ExitIntentPopup from "./components/ExitIntentPopup";
+import NewsletterPopup from "./components/NewsletterPopup";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
