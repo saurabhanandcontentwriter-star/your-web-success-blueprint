@@ -46,7 +46,7 @@ const AboutPage = () => {
     <div className="relative min-h-screen">
       <SEO
         title="About Saurabh Anand | AI SEO Consultant, GEO & LLMO Expert India"
-        description="Meet Saurabh Anand — AI SEO Consultant, Technical SEO Specialist, GEO & LLM Optimization expert, Vibe Coder and AI Automation strategist. LinkedIn Top Voice 2024 helping brands rank in Google, ChatGPT, Gemini & Perplexity."
+        description="Saurabh Anand — AI SEO Consultant, GEO & LLMO expert, Vibe Coder and AI Automation strategist. LinkedIn Top Voice 2024 helping brands win in Google, ChatGPT, Gemini & Perplexity."
         path="/about"
         isHome
         keywords="About Saurabh Anand, AI SEO Consultant India, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant, Generative Engine Optimization, LLM Optimization"
