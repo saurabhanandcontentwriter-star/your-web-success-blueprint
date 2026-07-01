@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -9,180 +10,236 @@ import {
 import { ArrowRight } from "lucide-react";
 
 const backgroundAreas = [
-  "SEO Strategy",
-  "Technical SEO",
-  "AI Search Optimization",
-  "SaaS Marketing",
-  "Digital Marketing",
-  "AI Automation",
-  "Agentic AI Workflows",
-  "Vibe Coding Projects",
+  "AI SEO Strategy",
+  "Technical SEO Audits",
+  "Generative Engine Optimization (GEO)",
+  "LLM Optimization (LLMO)",
+  "SaaS SEO & Growth",
+  "Digital Marketing & Content Strategy",
+  "AI Automation & n8n Workflows",
+  "Agentic AI Systems",
+  "Vibe Coding & AI-Assisted Development",
+  "Programmatic SEO",
 ];
 
 const communities = [
-  "Google Developer Groups",
-  "Developer Conferences",
-  "AI Communities",
-  "Technical Workshops",
-  "Startup Events",
+  "Google Developer Groups (GDG)",
+  "DevFest Ranchi Organizer",
+  "AI & LLM Communities",
+  "Technical SEO Workshops",
+  "Startup & SaaS Founder Circles",
 ];
 
 const expertise = [
-  { title: "Technical SEO", desc: "Website architecture, indexing, crawling, Core Web Vitals and search visibility." },
-  { title: "AI SEO", desc: "Optimizing content for AI-powered search experiences." },
-  { title: "GEO", desc: "Improving visibility within generative AI platforms and AI answer engines." },
-  { title: "LLM Optimization", desc: "Helping brands become discoverable inside AI assistants and large language models." },
-  { title: "Automation", desc: "Building AI workflows that save time and improve efficiency." },
-  { title: "Vibe Coding", desc: "Rapid prototyping and AI-assisted software development." },
+  { title: "Technical SEO", desc: "Website architecture, indexing, crawl budget, Core Web Vitals, schema markup and search visibility engineering." },
+  { title: "AI SEO", desc: "Optimizing content, structured data and entities for AI-powered search experiences like SGE and AI Overviews." },
+  { title: "GEO (Generative Engine Optimization)", desc: "Improving brand visibility inside generative AI platforms — ChatGPT, Gemini, Perplexity, Claude and Grok." },
+  { title: "LLM Optimization (LLMO)", desc: "Helping brands become citable and discoverable inside large language models and AI assistants." },
+  { title: "AI Automation", desc: "Building n8n, Make and custom AI workflows that scale SEO ops and marketing efficiency." },
+  { title: "Vibe Coding", desc: "Rapid prototyping and AI-assisted software development with Lovable, Cursor and modern LLM tooling." },
 ];
 
 const whyWork = [
-  "AI-first mindset",
-  "Technical SEO expertise",
-  "Community leadership",
-  "Automation experience",
-  "Future-ready strategies",
-  "Proven digital marketing experience",
+  "AI-first SEO mindset",
+  "Deep technical SEO expertise",
+  "Active community leadership (GDG)",
+  "Hands-on automation experience",
+  "Future-ready GEO & LLMO strategies",
+  "Proven digital marketing execution",
+  "LinkedIn Top Voice 2024",
+  "Vibe coder & AI builder",
 ];
 
 const faqs = [
-  { q: "What is AI SEO?", a: "AI SEO focuses on optimizing content and websites for AI-powered search experiences." },
-  { q: "What is GEO?", a: "Generative Engine Optimization improves brand visibility within AI-generated answers." },
-  { q: "What is LLM Optimization?", a: "LLM Optimization helps businesses become discoverable in large language models and AI assistants." },
-  { q: "What services does Saurabh Anand provide?", a: "AI SEO, Technical SEO, GEO, Automation Systems, Vibe Coding and AI Consulting." },
-  { q: "Does Saurabh work with startups?", a: "Yes. Startup founders, SaaS companies, agencies and enterprise organizations are supported." },
+  { q: "Who is Saurabh Anand?", a: "Saurabh Anand is an AI SEO Consultant, Technical SEO Specialist, Vibe Coder and AI Automation Expert based in India. He helps brands, SaaS companies and startups grow through AI-powered search, GEO and LLM optimization." },
+  { q: "What is AI SEO?", a: "AI SEO is the practice of optimizing websites and content so they perform well in AI-powered search experiences such as Google AI Overviews, ChatGPT Search, Perplexity and Gemini, in addition to traditional Google rankings." },
+  { q: "What is GEO (Generative Engine Optimization)?", a: "GEO improves how often and how accurately your brand is surfaced inside generative AI answer engines. It combines structured data, authoritative content, entity building and citation-worthy assets." },
+  { q: "What is LLM Optimization (LLMO)?", a: "LLM Optimization ensures your business, products and expertise are represented inside large language models like GPT, Gemini and Claude — so AI assistants recommend you when users ask relevant questions." },
+  { q: "What services does Saurabh Anand provide?", a: "AI SEO, Technical SEO, GEO, LLMO, SaaS SEO, AI Automation, Agentic AI workflows, Vibe Coding and end-to-end AI Consulting for founders and marketing teams." },
+  { q: "Does Saurabh work with startups and SaaS companies?", a: "Yes. Startup founders, SaaS companies, D2C brands, agencies and enterprise marketing teams are all supported with tailored AI-first growth strategies." },
+  { q: "Where is Saurabh Anand based?", a: "Saurabh is based in India and works with clients globally across the US, UK, UAE and APAC." },
 ];
 
-const AboutSection = () => (
-  <section id="about" className="py-24">
-    <div className="container mx-auto px-6 max-w-4xl">
-      <p className="section-label mb-2">About</p>
-      <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">About Saurabh Anand</h1>
+const AboutSection = () => {
+  const aboutJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Saurabh Anand — AI SEO Consultant, GEO & LLMO Expert",
+    url: "https://saurabhanandseo.com/about",
+    description:
+      "About Saurabh Anand — AI SEO Consultant, Technical SEO Specialist, GEO & LLMO expert, Vibe Coder and AI Automation strategist helping brands grow in AI-powered search.",
+    mainEntity: {
+      "@type": "Person",
+      name: "Saurabh Anand",
+      jobTitle: "AI SEO Consultant, Vibe Coder & AI Automation Expert",
+      url: "https://saurabhanandseo.com/about",
+      sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
+      knowsAbout: [
+        "AI SEO", "Technical SEO", "GEO", "LLM Optimization",
+        "AI Automation", "Vibe Coding", "SaaS SEO", "Agentic AI",
+      ],
+    },
+  };
 
-      {/* Intro */}
-      <h2 className="text-2xl md:text-3xl font-display font-semibold mb-4">
-        Helping Businesses Grow Through AI SEO, GEO and Automation
-      </h2>
-      <div className="space-y-4 text-muted-foreground leading-relaxed mb-12">
-        <p>
-          Saurabh Anand is an AI SEO Consultant, Technical SEO Specialist, Vibe Coder, and Automation
-          Strategist focused on helping businesses improve visibility across search engines, AI search
-          platforms, and large language models.
-        </p>
-        <p>
-          With expertise in Technical SEO, Generative Engine Optimization (GEO), LLM Optimization, SaaS
-          SEO, and AI-powered marketing systems, he helps organizations prepare for the future of search.
-        </p>
-        <p>
-          As a LinkedIn Top Voice 2024 and active contributor within Google Developer Groups, Saurabh
-          combines community leadership with practical implementation of modern AI technologies.
-        </p>
-      </div>
+  return (
+    <section id="about" className="py-24">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(aboutJsonLd)}</script>
+      </Helmet>
 
-      {/* Professional Background */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-        <h2 className="text-2xl font-display font-semibold mb-4">Professional Background</h2>
-        <p className="text-muted-foreground mb-4">Over the years, Saurabh has worked across:</p>
-        <div className="grid sm:grid-cols-2 gap-2">
-          {backgroundAreas.map((a) => (
-            <div key={a} className="glass-card px-4 py-2 text-sm">{a}</div>
-          ))}
+      <div className="container mx-auto px-6 max-w-4xl">
+        <p className="section-label mb-2">About</p>
+
+        {/* SEO-optimized H1 */}
+        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+          About Saurabh Anand — AI SEO Consultant, GEO &amp; LLMO Expert
+        </h1>
+
+        {/* SEO-optimized H2 */}
+        <h2 className="text-2xl md:text-3xl font-display font-semibold mb-4">
+          Helping Brands Grow Through AI SEO, Generative Engine Optimization and Intelligent Automation
+        </h2>
+
+        <div className="space-y-4 text-muted-foreground leading-relaxed mb-12">
+          <p>
+            <strong>Saurabh Anand</strong> is an <strong>AI SEO Consultant</strong>, <strong>Technical SEO Specialist</strong>,
+            <strong> Vibe Coder</strong> and <strong>AI Automation Strategist</strong> helping businesses grow visibility
+            across Google, ChatGPT, Gemini, Perplexity and other AI answer engines. With deep expertise in
+            <strong> Generative Engine Optimization (GEO)</strong>, <strong>LLM Optimization (LLMO)</strong>,
+            <strong> SaaS SEO</strong> and AI-driven marketing systems, Saurabh partners with founders, marketing leaders
+            and agencies to build growth engines that are ready for the next decade of search.
+          </p>
+          <p>
+            Named a <strong>LinkedIn Top Voice 2024</strong> and an active contributor within
+            <strong> Google Developer Groups</strong>, Saurabh sits at the intersection of search, AI and community.
+            His work blends the fundamentals of technical SEO — crawlability, indexation, schema, Core Web Vitals and
+            information architecture — with the emerging science of getting brands cited inside large language models,
+            AI Overviews and agentic search products.
+          </p>
+          <p>
+            Over the past few years, Saurabh has led SEO and AI initiatives across travel, SaaS, ed-tech, D2C and
+            digital agency environments. He has scaled organic traffic for multiple brands, engineered programmatic SEO
+            systems, launched AI content workflows using n8n and Make, and shipped production-grade vibe coding
+            projects powered by modern LLM tooling like Lovable, Cursor and Claude.
+          </p>
         </div>
-        <p className="text-muted-foreground mt-4">
-          His work focuses on combining human creativity with AI systems to build scalable growth frameworks.
-        </p>
-      </motion.div>
 
-      {/* Education */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 glass-card p-6">
-        <h2 className="text-2xl font-display font-semibold mb-3">Education</h2>
-        <p className="font-medium">Bachelor's Degree</p>
-        <p className="text-muted-foreground mb-4">Allama Iqbal College, Bihar Sharif, Nalanda</p>
-        <p className="text-sm font-medium mb-2">Specialized interests:</p>
-        <ul className="text-sm text-muted-foreground space-y-1">
-          <li>• Computer Applications</li>
-          <li>• Digital Marketing</li>
-          <li>• AI Systems</li>
-          <li>• Search Technologies</li>
-        </ul>
-      </motion.div>
+        {/* Professional Background */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+          <h2 className="text-2xl font-display font-semibold mb-4">Professional Background &amp; Focus Areas</h2>
+          <p className="text-muted-foreground mb-4">
+            Saurabh's day-to-day work spans strategy, execution and AI systems design across these areas:
+          </p>
+          <div className="grid sm:grid-cols-2 gap-2">
+            {backgroundAreas.map((a) => (
+              <div key={a} className="glass-card px-4 py-2 text-sm">{a}</div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mt-4">
+            The common thread across every engagement is combining <strong>human creativity</strong> with
+            <strong> AI systems</strong> to build scalable, defensible growth — not just rankings, but durable
+            visibility across every surface where buyers now search.
+          </p>
+        </motion.div>
 
-      {/* Community Leadership */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-        <h2 className="text-2xl font-display font-semibold mb-4">Community Leadership</h2>
-        <p className="text-muted-foreground mb-4">Saurabh actively contributes to developer communities including:</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {communities.map((c) => (
-            <span key={c} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm border border-primary/20">{c}</span>
-          ))}
+        {/* Education */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 glass-card p-6">
+          <h2 className="text-2xl font-display font-semibold mb-3">Education</h2>
+          <p className="font-medium">Bachelor's Degree</p>
+          <p className="text-muted-foreground mb-4">Allama Iqbal College, Bihar Sharif, Nalanda</p>
+          <p className="text-sm font-medium mb-2">Specialized interests:</p>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• Computer Applications</li>
+            <li>• Digital Marketing &amp; SEO</li>
+            <li>• AI Systems &amp; LLMs</li>
+            <li>• Search Technologies &amp; Information Retrieval</li>
+          </ul>
+        </motion.div>
+
+        {/* Community */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+          <h2 className="text-2xl font-display font-semibold mb-4">Community Leadership &amp; Speaking</h2>
+          <p className="text-muted-foreground mb-4">
+            Saurabh actively contributes to developer and marketing communities, including:
+          </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {communities.map((c) => (
+              <span key={c} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm border border-primary/20">{c}</span>
+            ))}
+          </div>
+          <p className="text-muted-foreground">
+            He regularly shares insights on <strong>AI SEO</strong>, <strong>automation</strong>,
+            <strong> LLM optimization</strong> and emerging search technologies through talks, LinkedIn content,
+            open-source experiments and community meetups.
+          </p>
+        </motion.div>
+
+        {/* Expertise */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-display font-semibold mb-6">Areas of Expertise</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {expertise.map((e, i) => (
+              <motion.div
+                key={e.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="glass-card p-5"
+              >
+                <h3 className="font-display font-semibold mb-2">{e.title}</h3>
+                <p className="text-sm text-muted-foreground">{e.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <p className="text-muted-foreground">
-          He regularly shares insights on AI SEO, automation, LLM optimization, and emerging search technologies.
-        </p>
-      </motion.div>
 
-      {/* Areas of Expertise */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-display font-semibold mb-6">Areas of Expertise</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          {expertise.map((e, i) => (
-            <motion.div
-              key={e.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="glass-card p-5"
-            >
-              <h3 className="font-display font-semibold mb-2">{e.title}</h3>
-              <p className="text-sm text-muted-foreground">{e.desc}</p>
-            </motion.div>
-          ))}
+        {/* Why work */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-display font-semibold mb-4">Why Work With Saurabh Anand</h2>
+          <p className="text-muted-foreground mb-4">
+            Clients choose Saurabh because he treats SEO as an engineering and AI problem — not a checklist.
+            Every project ships with clear reporting, measurable outcomes and reusable AI systems your team can own.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-2">
+            {whyWork.map((w) => (
+              <div key={w} className="flex items-center gap-2 text-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                {w}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Why Work With */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-display font-semibold mb-4">Why Work With Saurabh Anand</h2>
-        <div className="grid sm:grid-cols-2 gap-2">
-          {whyWork.map((w) => (
-            <div key={w} className="flex items-center gap-2 text-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              {w}
-            </div>
-          ))}
+        {/* FAQ */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-display font-semibold mb-4">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="glass-card px-6">
+            {faqs.map((f, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-border/40 last:border-0">
+                <AccordionTrigger className="text-left font-display">{f.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-      </div>
 
-      {/* FAQ */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-display font-semibold mb-4">Frequently Asked Questions</h2>
-        <Accordion type="single" collapsible className="glass-card px-6">
-          {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-border/40 last:border-0">
-              <AccordionTrigger className="text-left font-display">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-
-      {/* Link to full About page */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex justify-center"
-      >
-        <Link
-          to="/about"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.5)]"
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
         >
-          Read Full Bio & FAQ <ArrowRight size={16} />
-        </Link>
-      </motion.div>
-    </div>
-  </section>
-);
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.5)]"
+          >
+            Read Full Bio &amp; FAQ <ArrowRight size={16} />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default AboutSection;
