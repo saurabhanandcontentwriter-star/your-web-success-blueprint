@@ -1,35 +1,103 @@
-const tools = [
-  { name: "Google Analytics", icon: "https://www.gstatic.com/images/branding/product/1x/analytics_48dp.png" },
-  { name: "Search Console", icon: "https://www.gstatic.com/images/branding/product/1x/search_console_48dp.png" },
-  { name: "Ahrefs", icon: "https://www.google.com/s2/favicons?domain=ahrefs.com&sz=128" },
-  { name: "SEMrush", icon: "https://www.google.com/s2/favicons?domain=semrush.com&sz=128" },
-  { name: "Screaming Frog", icon: "https://www.google.com/s2/favicons?domain=screamingfrog.co.uk&sz=128" },
-  { name: "Moz", icon: "https://www.google.com/s2/favicons?domain=moz.com&sz=128" },
-  { name: "Ubersuggest", icon: "https://www.google.com/s2/favicons?domain=neilpatel.com&sz=128" },
-  { name: "Surfer SEO", icon: "https://www.google.com/s2/favicons?domain=surferseo.com&sz=128" },
-  { name: "ChatGPT", icon: "https://www.google.com/s2/favicons?domain=openai.com&sz=128" },
-  { name: "Gemini", icon: "https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" },
-  { name: "Claude", icon: "https://www.google.com/s2/favicons?domain=anthropic.com&sz=128" },
-  { name: "OpenAI", icon: "https://www.google.com/s2/favicons?domain=openai.com&sz=128" },
-  { name: "Google AI", icon: "https://www.google.com/s2/favicons?domain=ai.google&sz=128" },
-  { name: "Perplexity", icon: "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" },
-  { name: "Google Ads", icon: "https://www.gstatic.com/images/branding/product/1x/ads_48dp.png" },
+import { motion } from "framer-motion";
+import {
+  Search,
+  Bot,
+  Workflow,
+  BarChart3,
+} from "lucide-react";
+
+const categories = [
+  {
+    title: "SEO Platforms",
+    icon: <Search size={16} className="text-primary" />,
+    color: "border-primary/30",
+    tools: [
+      "Ahrefs",
+      "Semrush",
+      "Screaming Frog",
+      "Sitebulb",
+      "Botify",
+      "BrightEdge",
+      "Conductor",
+    ],
+  },
+  {
+    title: "AI & GEO Tools",
+    icon: <Bot size={16} className="text-accent" />,
+    color: "border-accent/30",
+    tools: [
+      "ChatGPT",
+      "Claude",
+      "Perplexity",
+      "Gemini",
+      "Grok",
+      "Manus",
+      "Cursor",
+      "Windsurf",
+    ],
+  },
+  {
+    title: "Automation",
+    icon: <Workflow size={16} className="text-emerald-400" />,
+    color: "border-emerald-400/30",
+    tools: [
+      "n8n",
+      "Make",
+      "Zapier",
+      "Airtable",
+      "Notion AI",
+    ],
+  },
+  {
+    title: "Analytics",
+    icon: <BarChart3 size={16} className="text-amber-400" />,
+    color: "border-amber-400/30",
+    tools: [
+      "GA4",
+      "BigQuery",
+      "Looker Studio",
+      "Hotjar",
+      "Mixpanel",
+      "Heap",
+    ],
+  },
 ];
 
 const ToolsMarquee = () => (
-  <section className="py-12 border-y border-border/40 overflow-hidden">
-    <p className="section-label text-center mb-8">AI & SEO Tools I Work With</p>
-    <div className="relative">
-      <div className="flex gap-14 marquee-track w-max">
-        {[...tools, ...tools].map((t, i) => (
-          <div key={i} className="flex items-center gap-3 shrink-0 group">
-            <div className="p-2 rounded-lg bg-secondary/40 border border-border/40 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all">
-              <img src={t.icon} alt={t.name} className="w-7 h-7 group-hover:scale-110 transition-transform" />
+  <section className="py-16 border-y border-border/40">
+    <div className="container mx-auto px-6">
+      <p className="section-label text-center mb-2">Stack</p>
+      <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-12">
+        AI & SEO Tech Stack
+      </h2>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {categories.map((cat, i) => (
+          <motion.div
+            key={cat.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08 }}
+            className={`glass-card p-5 ${cat.color}`}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              {cat.icon}
+              <h3 className="font-display font-semibold text-sm">
+                {cat.title}
+              </h3>
             </div>
-            <span className="text-sm font-medium text-muted-foreground uppercase tracking-wide whitespace-nowrap group-hover:text-foreground transition-colors">
-              {t.name}
-            </span>
-          </div>
+            <div className="flex flex-wrap gap-2">
+              {cat.tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="px-2.5 py-1 rounded-md bg-secondary/60 text-xs text-muted-foreground border border-border/30 hover:text-foreground hover:border-primary/30 transition-colors"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
