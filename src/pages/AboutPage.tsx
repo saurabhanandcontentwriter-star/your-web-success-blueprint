@@ -45,11 +45,12 @@ const AboutPage = () => {
   return (
     <div className="relative min-h-screen">
       <SEO
-        title="Saurabh Anand | AI SEO Consultant, Vibe Coder & AI Automation Expert"
-        description="Learn about Saurabh Anand, AI SEO Consultant, LinkedIn Top Voice 2024, Google Developer Community Contributor, Vibe Coder, GEO Specialist, and AI Automation Expert helping brands grow with AI-powered search strategies."
+        title="About Saurabh Anand | AI SEO Consultant, GEO & LLMO Expert India"
+        description="Saurabh Anand — AI SEO Consultant, GEO & LLMO expert, Vibe Coder and AI Automation strategist. LinkedIn Top Voice 2024 helping brands win in Google, ChatGPT, Gemini & Perplexity."
         path="/about"
         isHome
-        keywords="Saurabh Anand, AI SEO Consultant, Vibe Coder, AI Automation Expert, GEO Specialist, LLM Optimization, Technical SEO, LinkedIn Top Voice 2024, Google Developer Community"
+        keywords="About Saurabh Anand, AI SEO Consultant India, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant, Generative Engine Optimization, LLM Optimization"
+        image="/og-thumbnail.jpg"
         jsonLd={[personJsonLd, faqJsonLd]}
       />
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
