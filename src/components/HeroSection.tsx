@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import heroImg from "@/assets/hero-portrait.png";
 
 const ROLES = [
-  "AI SEO Expert",
-  "Technical SEO Consultant",
-  "SaaS SEO Strategist",
-  "Prompt Engineer",
-  "Vibe Coding Specialist",
+  "Data Analyst",
+  "SEO & Digital Marketing Professional",
+  "Power BI & Tableau Developer",
+  "SQL & Python Analyst",
+  "GA4 & Looker Studio Expert",
+  "AI SEO Strategist",
   "Automation Architect",
-  "Agentic AI Builder",
 ];
 
 const useTyped = () => {
@@ -67,12 +67,16 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1]">
-            <span className="gradient-text">AI SEO Strategist</span>
+            <span className="gradient-text">Data Analyst</span>
             <span className="text-muted-foreground font-light"> • </span>
-            <span>Vibe Coder</span>
+            <span>SEO &amp; Digital Marketing</span>
             <span className="text-muted-foreground font-light"> • </span>
-            <span className="gradient-text">Automation Builder</span>
+            <span className="gradient-text">AI Growth</span>
           </h1>
+
+          <p className="text-lg md:text-xl font-display text-foreground/90">
+            Turning Data Into Insights and Driving Growth Through Analytics, SEO, and AI.
+          </p>
 
           <div className="h-8 text-lg md:text-xl font-display text-foreground/90">
             <span className="text-muted-foreground">I'm </span>
@@ -81,7 +85,7 @@ const HeroSection = () => {
           </div>
 
           <p className="text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed">
-            Helping brands scale using AI SEO, Prompt Engineering, Technical SEO, SaaS SEO, and Intelligent Automation Systems.
+            Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau, GA4 and AI — while scaling brands through SEO, content strategy and performance marketing.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">

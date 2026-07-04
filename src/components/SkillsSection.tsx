@@ -2,20 +2,45 @@ import { motion } from "framer-motion";
 
 const skillGroups = [
   {
-    title: "SEO Mastery",
-    skills: ["Keyword Research", "On-Page Optimization", "Off-Page & Link Building", "Technical SEO", "HTML SEO Optimization"],
+    title: "Data Analytics",
+    skills: [
+      "Microsoft Excel (Advanced)",
+      "SQL",
+      "Python (Pandas, NumPy, Matplotlib)",
+      "Data Cleaning & Transformation",
+      "Exploratory Data Analysis (EDA)",
+    ],
   },
   {
-    title: "Digital Marketing",
-    skills: ["Guest Blogging", "Google Analytics", "Search Console", "Marketing Strategy","Google Ads",],
+    title: "BI & Visualization",
+    skills: [
+      "Power BI",
+      "Tableau",
+      "Looker Studio",
+      "Dashboard Development",
+      "Data Visualization",
+      "KPI Reporting",
+    ],
   },
   {
-    title: "Design & UX",
-    skills: ["UI Design Fundamentals", "UX Optimization", "User Behavior Analysis", "Figma", "Visual Design"],
+    title: "Analytics & Testing",
+    skills: [
+      "Google Analytics 4 (GA4)",
+      "Google Search Console",
+      "SEO Analytics",
+      "A/B Testing",
+      "Keyword Research",
+    ],
   },
   {
-    title: "Development",
-    skills: ["Web Development Basics", "HTML/CSS", "AI Ethics", "Github",]
+    title: "SEO & Digital Marketing",
+    skills: [
+      "Technical SEO",
+      "On-Page & Off-Page SEO",
+      "Content Strategy",
+      "Link Building",
+      "Google Ads",
+    ],
   },
 ];
 
@@ -29,7 +54,9 @@ const SkillsSection = () => (
   <section id="skills" className="py-24">
     <div className="container mx-auto px-6">
       <p className="section-label mb-2">Expertise</p>
-      <h2 className="text-3xl md:text-4xl font-display font-bold mb-12">Technical Skills</h2>
+      <h2 className="text-3xl md:text-4xl font-display font-bold mb-12">
+        Data Analytics, BI &amp; SEO Skills
+      </h2>
 
       <div className="grid md:grid-cols-3 gap-6 mb-16">
         {stats.map((s, i) => (

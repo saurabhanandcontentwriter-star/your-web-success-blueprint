@@ -4,6 +4,7 @@ import CredibilityStrip from "@/components/CredibilityStrip";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import ExperienceSection from "@/components/ExperienceSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import DataAnalyticsSection from "@/components/DataAnalyticsSection";
 import AIPortfolioCategories from "@/components/AIPortfolioCategories";
 import VibeCodingSection from "@/components/VibeCodingSection";
 import AgenticAISection from "@/components/AgenticAISection";
@@ -29,9 +30,9 @@ const Index = () => {
     "@type": "Person",
     name: "Saurabh Anand",
     url: "https://saurabhanandseo.com/",
-    jobTitle: "SEO Analyst & Digital Marketing Professional",
+    jobTitle: "Data Analyst | SEO & Digital Marketing Professional",
     description:
-      "Results-driven SEO Analyst and Digital Marketing Professional with 2+ years of experience in search engine optimization, content strategy, and organic growth.",
+      "Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau and GA4 — while scaling brands through SEO, content strategy and AI.",
     sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     address: {
       "@type": "PostalAddress",
@@ -39,13 +40,16 @@ const Index = () => {
       addressCountry: "IN",
     },
     knowsAbout: [
+      "Data Analytics",
+      "SQL",
+      "Python",
+      "Power BI",
+      "Tableau",
+      "Google Analytics 4",
+      "Looker Studio",
       "SEO",
       "Digital Marketing",
-      "Content Strategy",
-      "Link Building",
-      "AI Marketing",
-      "Social Media Analytics",
-      "Google Analytics",
+      "AI SEO",
     ],
   };
 
@@ -53,10 +57,10 @@ const Index = () => {
     <div className="relative min-h-screen">
       <SEO
         isHome
-        title="Saurabh Anand | SEO Analyst & Digital Marketing Expert"
-        description="Saurabh Anand – Results-driven SEO Analyst & Digital Marketing Professional with 2+ years of experience in SEO, content strategy, link-building, and organic growth. LinkedIn Top Voice 2024."
+        title="Saurabh Anand | Data Analyst | SEO & Digital Marketing Professional"
+        description="Saurabh Anand — Data Analyst and Digital Marketing Professional. Turning data into insights with SQL, Python, Power BI, Tableau, GA4 and driving growth via SEO, analytics and AI."
         path="/"
-        keywords="Saurabh Anand, SEO Analyst, Digital Marketing, LinkedIn Top Voice, Google Certified, Content Strategy, Link Building, Social Media Analyst, AI Marketer, SEO Expert India"
+        keywords="Saurabh Anand, Data Analyst, SEO, Digital Marketing, Power BI, Tableau, SQL, Python, GA4, Looker Studio, Data Visualization, Dashboard Development, AI Analytics"
         jsonLd={personJsonLd}
       />
       <PageBackground variant={settings.variant} opacity={settings.opacity} />
@@ -68,6 +72,7 @@ const Index = () => {
     <AIPortfolioCategories />
     <ExperienceSection />
     <PortfolioSection />
+    <DataAnalyticsSection />
     <VibeCodingSection />
     <AgenticAISection />
     <AboutSection />
