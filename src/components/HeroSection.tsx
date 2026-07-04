@@ -85,7 +85,7 @@ const HeroSection = () => {
           </div>
 
           <p className="text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed">
-            Helping brands scale using AI SEO, Prompt Engineering, Technical SEO, SaaS SEO, and Intelligent Automation Systems.
+            Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau, GA4 and AI — while scaling brands through SEO, content strategy and performance marketing.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
