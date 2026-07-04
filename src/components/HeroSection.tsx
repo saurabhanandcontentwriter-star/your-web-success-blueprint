@@ -67,12 +67,16 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1]">
-            <span className="gradient-text">AI SEO Strategist</span>
+            <span className="gradient-text">Data Analyst</span>
             <span className="text-muted-foreground font-light"> • </span>
-            <span>Vibe Coder</span>
+            <span>SEO &amp; Digital Marketing</span>
             <span className="text-muted-foreground font-light"> • </span>
-            <span className="gradient-text">Automation Builder</span>
+            <span className="gradient-text">AI Growth</span>
           </h1>
+
+          <p className="text-lg md:text-xl font-display text-foreground/90">
+            Turning Data Into Insights and Driving Growth Through Analytics, SEO, and AI.
+          </p>
 
           <div className="h-8 text-lg md:text-xl font-display text-foreground/90">
             <span className="text-muted-foreground">I'm </span>
