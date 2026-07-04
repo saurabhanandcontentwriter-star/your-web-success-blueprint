@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import heroImg from "@/assets/hero-portrait.png";
 
 const ROLES = [
-  "AI SEO Expert",
-  "Technical SEO Consultant",
-  "SaaS SEO Strategist",
-  "Prompt Engineer",
-  "Vibe Coding Specialist",
+  "Data Analyst",
+  "SEO & Digital Marketing Professional",
+  "Power BI & Tableau Developer",
+  "SQL & Python Analyst",
+  "GA4 & Looker Studio Expert",
+  "AI SEO Strategist",
   "Automation Architect",
-  "Agentic AI Builder",
 ];
 
 const useTyped = () => {
