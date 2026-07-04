@@ -72,6 +72,7 @@ const Index = () => {
     <AIPortfolioCategories />
     <ExperienceSection />
     <PortfolioSection />
+    <DataAnalyticsSection />
     <VibeCodingSection />
     <AgenticAISection />
     <AboutSection />
