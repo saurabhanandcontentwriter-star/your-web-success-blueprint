@@ -92,37 +92,37 @@ const AboutSection = () => {
 
         {/* SEO-optimized H1 */}
         <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-          About Saurabh Anand — AI SEO Consultant, GEO &amp; LLMO Expert
+          About Saurabh Anand — Data Analyst, SEO &amp; Digital Marketing Professional
         </h1>
 
         {/* SEO-optimized H2 */}
         <h2 className="text-2xl md:text-3xl font-display font-semibold mb-4">
-          Helping Brands Grow Through AI SEO, Generative Engine Optimization and Intelligent Automation
+          Turning Data Into Insights and Driving Growth Through Analytics, SEO and AI
         </h2>
 
         <div className="space-y-4 text-muted-foreground leading-relaxed mb-12">
           <p>
-            <strong>Saurabh Anand</strong> is an <strong>AI SEO Consultant</strong>, <strong>Technical SEO Specialist</strong>,
-            <strong> Vibe Coder</strong> and <strong>AI Automation Strategist</strong> helping businesses grow visibility
-            across Google, ChatGPT, Gemini, Perplexity and other AI answer engines. With deep expertise in
-            <strong> Generative Engine Optimization (GEO)</strong>, <strong>LLM Optimization (LLMO)</strong>,
-            <strong> SaaS SEO</strong> and AI-driven marketing systems, Saurabh partners with founders, marketing leaders
-            and agencies to build growth engines that are ready for the next decade of search.
+            I am <strong>Saurabh Anand</strong>, a <strong>Data Analyst</strong> and
+            <strong> Digital Marketing professional</strong> with experience in SEO, content strategy and
+            performance marketing. I specialize in transforming raw data into actionable business insights
+            using <strong>Excel, SQL, Python, Power BI and Tableau</strong>.
           </p>
           <p>
-            Named a <strong>LinkedIn Top Voice 2024</strong> and an active contributor within
-            <strong> Google Developer Groups</strong>, Saurabh sits at the intersection of search, AI and community.
-            His work blends the fundamentals of technical SEO — crawlability, indexation, schema, Core Web Vitals and
-            information architecture — with the emerging science of getting brands cited inside large language models,
-            AI Overviews and agentic search products.
+            My background in organic growth and analytics enables me to bridge marketing and data — helping
+            businesses make <strong>data-driven decisions</strong>, improve user experiences and increase
+            measurable results. I am passionate about <strong>dashboard development</strong>,
+            <strong> data visualization</strong>, <strong>business intelligence</strong> and
+            <strong> AI-powered analytics solutions</strong>.
           </p>
           <p>
-            Over the past few years, Saurabh has led SEO and AI initiatives across travel, SaaS, ed-tech, D2C and
-            digital agency environments. He has scaled organic traffic for multiple brands, engineered programmatic SEO
-            systems, launched AI content workflows using n8n and Make, and shipped production-grade vibe coding
-            projects powered by modern LLM tooling like Lovable, Cursor and Claude.
+            Alongside analytics, I work as an <strong>AI SEO Consultant</strong> and
+            <strong> Technical SEO Specialist</strong>, helping brands grow visibility across Google,
+            ChatGPT, Gemini and Perplexity through GEO, LLM Optimization and intelligent automation.
+            Named a <strong>LinkedIn Top Voice 2024</strong>, I sit at the intersection of data, search
+            and AI — building growth engines that are ready for the next decade.
           </p>
         </div>
+
 
         {/* Professional Background */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
