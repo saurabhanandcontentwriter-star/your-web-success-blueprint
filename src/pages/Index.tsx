@@ -30,7 +30,7 @@ const Index = () => {
     "@type": "Person",
     name: "Saurabh Anand",
     url: "https://saurabhanandseo.com/",
-    title: "Saurabh Anand | Data Analyst | SEO & Digital Marketing Professional",
+    jobTitle: "Data Analyst | SEO & Digital Marketing Professional",
     description:
       "Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau and GA4 — while scaling brands through SEO, content strategy and AI.",
     sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
@@ -40,13 +40,16 @@ const Index = () => {
       addressCountry: "IN",
     },
     knowsAbout: [
+      "Data Analytics",
+      "SQL",
+      "Python",
+      "Power BI",
+      "Tableau",
+      "Google Analytics 4",
+      "Looker Studio",
       "SEO",
       "Digital Marketing",
-      "Content Strategy",
-      "Link Building",
-      "AI Marketing",
-      "Social Media Analytics",
-      "Google Analytics",
+      "AI SEO",
     ],
   };
 
