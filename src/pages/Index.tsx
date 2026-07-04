@@ -30,9 +30,9 @@ const Index = () => {
     "@type": "Person",
     name: "Saurabh Anand",
     url: "https://saurabhanandseo.com/",
-    jobTitle: "SEO Analyst & Digital Marketing Professional",
+    title: "Saurabh Anand | Data Analyst | SEO & Digital Marketing Professional",
     description:
-      "Results-driven SEO Analyst and Digital Marketing Professional with 2+ years of experience in search engine optimization, content strategy, and organic growth.",
+      "Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau and GA4 — while scaling brands through SEO, content strategy and AI.",
     sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     address: {
       "@type": "PostalAddress",
