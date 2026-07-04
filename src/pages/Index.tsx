@@ -57,10 +57,10 @@ const Index = () => {
     <div className="relative min-h-screen">
       <SEO
         isHome
-        title="Saurabh Anand | SEO Analyst & Digital Marketing Expert"
-        description="Saurabh Anand – Results-driven SEO Analyst & Digital Marketing Professional with 2+ years of experience in SEO, content strategy, link-building, and organic growth. LinkedIn Top Voice 2024."
+        title="Saurabh Anand | Data Analyst | SEO & Digital Marketing Professional"
+        description="Saurabh Anand — Data Analyst and Digital Marketing Professional. Turning data into insights with SQL, Python, Power BI, Tableau, GA4 and driving growth via SEO, analytics and AI."
         path="/"
-        keywords="Saurabh Anand, SEO Analyst, Digital Marketing, LinkedIn Top Voice, Google Certified, Content Strategy, Link Building, Social Media Analyst, AI Marketer, SEO Expert India"
+        keywords="Saurabh Anand, Data Analyst, SEO, Digital Marketing, Power BI, Tableau, SQL, Python, GA4, Looker Studio, Data Visualization, Dashboard Development, AI Analytics"
         jsonLd={personJsonLd}
       />
       <PageBackground variant={settings.variant} opacity={settings.opacity} />
