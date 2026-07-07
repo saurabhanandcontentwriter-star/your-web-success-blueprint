@@ -24,7 +24,56 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages } = await req.json();
+    const body = await req.json().catch(() => null);
+    const rawMessages = body?.messages;
+
+    const MAX_MESSAGES = 20;
+    const MAX_CONTENT_LEN = 4000;
+
+    if (!Array.isArray(rawMessages) || rawMessages.length === 0) {
+      return new Response(JSON.stringify({ error: "Invalid request: 'messages' must be a non-empty array." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    if (rawMessages.length > MAX_MESSAGES) {
+      return new Response(JSON.stringify({ error: `Too many messages. Max ${MAX_MESSAGES}.` }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const messages: Array<{ role: "user" | "assistant"; content: string }> = [];
+    for (const m of rawMessages) {
+      if (!m || typeof m !== "object") {
+        return new Response(JSON.stringify({ error: "Invalid message format." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const role = (m as { role?: unknown }).role;
+      const content = (m as { content?: unknown }).content;
+      if (role !== "user" && role !== "assistant") {
+        return new Response(JSON.stringify({ error: "Invalid message role. Only 'user' and 'assistant' are allowed." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (typeof content !== "string" || content.length === 0) {
+        return new Response(JSON.stringify({ error: "Message content must be a non-empty string." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (content.length > MAX_CONTENT_LEN) {
+        return new Response(JSON.stringify({ error: `Message content exceeds max length of ${MAX_CONTENT_LEN}.` }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      messages.push({ role, content });
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
