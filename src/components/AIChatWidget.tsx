@@ -66,6 +66,14 @@ const AIChatWidget = () => {
   const [firstVisit, setFirstVisit] = useState<boolean>(() => {
     try { return !localStorage.getItem(FIRST_VISIT_KEY); } catch { return true; }
   });
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
+
+  // Welcome popup for first-time visitors
+  useEffect(() => {
+    if (!firstVisit) return;
+    const timer = setTimeout(() => setShowWelcomePopup(true), 1200);
+    return () => clearTimeout(timer);
+  }, [firstVisit]);
 
   // Derived avatar state
   const avatarState: AvatarState = isSpeaking
