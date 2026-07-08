@@ -66,6 +66,14 @@ const AIChatWidget = () => {
   const [firstVisit, setFirstVisit] = useState<boolean>(() => {
     try { return !localStorage.getItem(FIRST_VISIT_KEY); } catch { return true; }
   });
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
+
+  // Welcome popup for first-time visitors
+  useEffect(() => {
+    if (!firstVisit) return;
+    const timer = setTimeout(() => setShowWelcomePopup(true), 1200);
+    return () => clearTimeout(timer);
+  }, [firstVisit]);
 
   // Derived avatar state
   const avatarState: AvatarState = isSpeaking
@@ -376,6 +384,51 @@ const AIChatWidget = () => {
         )}
       </AnimatePresence>
 
+      {/* Welcome message popup */}
+      <AnimatePresence>
+        {showWelcomePopup && !open && !fullscreen && (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 280, damping: 22 }}
+            className="absolute bottom-[4.5rem] right-0 w-[calc(100vw-2rem)] max-w-[260px] glass-card border-primary/30 shadow-[0_14px_40px_-8px_hsl(var(--primary)/0.45)] p-3 rounded-2xl cursor-pointer"
+            onClick={() => {
+              setOpen(true);
+              setMinimized(false);
+              setShowWelcomePopup(false);
+              if (firstVisit) {
+                try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                setFirstVisit(false);
+              }
+            }}
+          >
+            <div className="flex items-start gap-2.5">
+              <AIAvatar state="idle" size={32} />
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-display font-semibold text-foreground">Saurabh&apos;s AI Assistant</p>
+                <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-3 leading-relaxed">
+                  {WELCOME.content}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setShowWelcomePopup(false); }}
+                aria-label="Dismiss welcome message"
+                className="p-1 rounded hover:bg-secondary text-muted-foreground hover:text-foreground -mt-1 -mr-1"
+              >
+                <X size={12} />
+              </button>
+            </div>
+            <div className="mt-2 flex items-center justify-end">
+              <span className="text-[10px] font-medium text-primary">Click to chat →</span>
+            </div>
+            {/* Little arrow pointing to launcher */}
+            <span className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 bg-card border-r border-b border-primary/30" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating launcher — avatar-based, desktop + mobile */}
       {!fullscreen && (
         <motion.button
@@ -384,6 +437,7 @@ const AIChatWidget = () => {
           onClick={() => {
             setOpen((v) => !v);
             setMinimized(false);
+            setShowWelcomePopup(false);
             if (firstVisit) {
               try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
               setFirstVisit(false);
