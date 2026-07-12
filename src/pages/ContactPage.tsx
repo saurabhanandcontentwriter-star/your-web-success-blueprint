@@ -16,7 +16,6 @@ const ContactPage = () => {
       "@type": "Person",
       name: "Saurabh Anand",
       email: "mailto:saurabhanandseo@gmail.com",
-      telephone: "+91 7209742159",
       sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     },
   };
