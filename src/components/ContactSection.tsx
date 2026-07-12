@@ -19,7 +19,6 @@ const contactJsonLd = {
     "@type": "Person",
     name: "Saurabh Anand",
     email: `mailto:${EMAIL}`,
-    telephone: PHONE,
     url: "https://saurabhanandseo.com/",
     sameAs: [LINKEDIN],
     address: {
