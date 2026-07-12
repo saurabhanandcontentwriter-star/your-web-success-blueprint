@@ -5,7 +5,6 @@ import { MapPin, Phone, Send, Linkedin, Mail, Download, FileText } from "lucide-
 import { toast } from "sonner";
 
 const EMAIL = "saurabhanandseo@gmail.com";
-const PHONE = "+91 7209742159";
 const LINKEDIN = "https://www.linkedin.com/in/saurabhanandseo/";
 const RESUME_URL = "/Saurabh_Anand_Resume.pdf";
 
