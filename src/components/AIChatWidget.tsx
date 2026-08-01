@@ -12,8 +12,12 @@ import {
   Maximize2,
   Minimize2,
   Download,
+  Briefcase,
+  FolderOpen,
+  Mail,
 } from "lucide-react";
 import AIAvatar, { type AvatarState } from "./AIAvatar";
+
 
 const FIRST_VISIT_KEY = "sa_chat_first_visit_v1";
 
