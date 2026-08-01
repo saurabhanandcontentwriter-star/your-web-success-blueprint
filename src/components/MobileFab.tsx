@@ -57,12 +57,6 @@ const MobileFab = () => {
               }
             />
             <a
-              href="tel:+917209742159"
-              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
-            >
-              <Phone size={16} className="text-primary" /> Call
-            </a>
-            <a
               href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry"
               className="mt-1 w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
             >
