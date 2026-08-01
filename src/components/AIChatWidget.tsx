@@ -417,7 +417,12 @@ const AIChatWidget = () => {
               </div>
               <button
                 type="button"
-                onClick={(e) => { e.stopPropagation(); setShowWelcomePopup(false); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowWelcomePopup(false);
+                  try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                  setFirstVisit(false);
+                }}
                 aria-label="Dismiss welcome message"
                 className="p-1 rounded hover:bg-secondary text-muted-foreground hover:text-foreground -mt-1 -mr-1"
               >
