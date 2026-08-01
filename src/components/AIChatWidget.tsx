@@ -429,7 +429,41 @@ const AIChatWidget = () => {
                 <X size={12} />
               </button>
             </div>
-            <div className="mt-2 flex items-center justify-end">
+            {/* Quick actions */}
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {[
+                { label: "Services", icon: Briefcase, href: "/services" },
+                { label: "Portfolio", icon: FolderOpen, href: "/portfolio" },
+                { label: "Resume", icon: Download, href: "/Saurabh_Anand_Resume.pdf" },
+                { label: "Contact", icon: Mail, action: "chat" },
+              ].map((action) => {
+                const Icon = action.icon;
+                return (
+                  <button
+                    key={action.label}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowWelcomePopup(false);
+                      try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                      setFirstVisit(false);
+                      if (action.action === "chat") {
+                        setOpen(true);
+                        setMinimized(false);
+                      } else if (action.href?.endsWith(".pdf")) {
+                        window.open(action.href, "_blank");
+                      } else if (action.href) {
+                        window.location.href = action.href;
+                      }
+                    }}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-[10px] font-medium text-foreground hover:bg-primary/20 transition-colors"
+                  >
+                    <Icon size={10} className="text-primary" /> {action.label}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="mt-1.5 flex items-center justify-end">
               <span className="text-[10px] font-medium text-primary">Click to chat →</span>
             </div>
             {/* Little arrow pointing to launcher */}
