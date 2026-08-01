@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, Home, User, Briefcase, Image as ImageIcon, GraduationCap, Mail, Phone } from "lucide-react";
+import { Menu, X, Home, User, Briefcase, Image as ImageIcon, GraduationCap, Mail } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 
 const items = [
