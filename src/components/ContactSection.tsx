@@ -49,22 +49,22 @@ const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut" },
-};
+  transition: { duration: 0.6, ease: "easeOut" as const },
+} as const;
 
 const fadeInLeft = {
   initial: { opacity: 0, x: -20 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut", delay: 0.1 },
-};
+  transition: { duration: 0.6, ease: "easeOut" as const, delay: 0.1 },
+} as const;
 
 const fadeInRight = {
   initial: { opacity: 0, x: 20 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
-};
+  transition: { duration: 0.6, ease: "easeOut" as const, delay: 0.2 },
+} as const;
 
 const ContactSection = () => {
   const [form, setForm] = useState({
