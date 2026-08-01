@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   MapPin,
-  Phone,
   Send,
   Linkedin,
   Mail,
@@ -13,7 +12,6 @@ import {
 import { toast } from "sonner";
 
 const EMAIL = "saurabhanandseo@gmail.com";
-const PHONE = "+91 7667926418";
 const LINKEDIN = "https://www.linkedin.com/in/saurabhanandseo/";
 const RESUME_URL = "/Saurabh_Anand_Resume.pdf";
 
@@ -40,13 +38,33 @@ const contactJsonLd = {
         "@type": "ContactPoint",
         contactType: "Consulting & Hiring Inquiries",
         email: EMAIL,
-        telephone: PHONE,
         areaServed: "Worldwide",
         availableLanguage: ["English", "Hindi"],
       },
     ],
   },
 };
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: "easeOut" as const },
+} as const;
+
+const fadeInLeft = {
+  initial: { opacity: 0, x: -20 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: "easeOut" as const, delay: 0.1 },
+} as const;
+
+const fadeInRight = {
+  initial: { opacity: 0, x: 20 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: "easeOut" as const, delay: 0.2 },
+} as const;
 
 const ContactSection = () => {
   const [form, setForm] = useState({
@@ -104,52 +122,65 @@ const ContactSection = () => {
       </Helmet>
 
       <div className="container mx-auto px-6">
-        <p className="section-label mb-2">Get in touch</p>
+        <motion.div
+          initial={fadeInUp.initial}
+          whileInView={fadeInUp.whileInView}
+          viewport={fadeInUp.viewport}
+          transition={fadeInUp.transition}
+        >
+          <p className="section-label mb-2">Get in touch</p>
 
-        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-          Let's work{" "}
-          <span className="italic text-muted-foreground font-light">
-            together.
-          </span>
-        </h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+            Let&apos;s work{" "}
+            <span className="italic text-muted-foreground font-light">
+              together.
+            </span>
+          </h2>
 
-        <p className="text-muted-foreground max-w-2xl mb-10">
-          Available for Data Analyst roles, SEO & Digital Marketing
-          consulting, and freelance projects. Download my resume or send a
-          message below.
-        </p>
+          <p className="text-muted-foreground max-w-2xl mb-10">
+            Available for Data Analyst roles, SEO & Digital Marketing
+            consulting, and freelance projects. Download my resume or send a
+            message below.
+          </p>
 
-        <div className="flex flex-wrap gap-3 mb-12">
-          <a
-            href={RESUME_URL}
-            download="Saurabh_Anand_Resume.pdf"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            <Download size={16} />
-            Download Resume (PDF)
-          </a>
+          <div className="flex flex-wrap gap-3 mb-12">
+            <a
+              href={RESUME_URL}
+              download="Saurabh_Anand_Resume.pdf"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              <Download size={16} />
+              Download Resume (PDF)
+            </a>
 
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
-          >
-            <FileText size={16} />
-            View Resume
-          </a>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
+            >
+              <FileText size={16} />
+              View Resume
+            </a>
 
-          <a
-            href={`mailto:${EMAIL}?subject=Hire%20Inquiry`}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
-          >
-            <Mail size={16} />
-            Email Me
-          </a>
-        </div>
+            <a
+              href={`mailto:${EMAIL}?subject=Hire%20Inquiry`}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
+            >
+              <Mail size={16} />
+              Email Me
+            </a>
+          </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
-          <div className="space-y-6">
+          <motion.div
+            initial={fadeInLeft.initial}
+            whileInView={fadeInLeft.whileInView}
+            viewport={fadeInLeft.viewport}
+            transition={fadeInLeft.transition}
+            className="space-y-6"
+          >
             <p className="text-muted-foreground">
               Ready to turn data into growth? Reach out for analytics
               dashboards, SEO audits, content strategy, or full-time
@@ -163,14 +194,6 @@ const ContactSection = () => {
               >
                 <Mail size={18} className="text-primary shrink-0" />
                 {EMAIL}
-              </a>
-
-              <a
-                href={`tel:${PHONE.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Phone size={18} className="text-primary shrink-0" />
-                {PHONE}
               </a>
 
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -188,13 +211,14 @@ const ContactSection = () => {
                 linkedin.com/in/saurabhanandseo
               </a>
             </div>
-          </div>
+          </motion.div>
 
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={fadeInRight.initial}
+            whileInView={fadeInRight.whileInView}
+            viewport={fadeInRight.viewport}
+            transition={fadeInRight.transition}
             className="space-y-4"
           >
             <input
