@@ -119,6 +119,8 @@ const ContactSection = () => {
   }>({});
 
   const [sending, setSending] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const mountedAtRef = useRef<number>(Date.now());
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -130,7 +132,7 @@ const ContactSection = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const result = contactSchema.safeParse(form);
@@ -152,6 +154,22 @@ const ContactSection = () => {
     setSending(true);
 
     const { name, email, message } = result.data;
+
+    const logged = await logLead({
+      event: "contact_form",
+      name,
+      email,
+      message,
+      hp: honeypotRef.current?.value ?? "",
+      elapsed: Date.now() - mountedAtRef.current,
+    });
+
+    if (!logged.ok) {
+      toast.error(logged.error ?? "Could not send your message. Please try again.");
+      setSending(false);
+      return;
+    }
+
     const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
     const body = encodeURIComponent(
       `${message}\n\n— ${name} (${email})`
@@ -160,15 +178,17 @@ const ContactSection = () => {
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
-      toast.success("Opening your email client…");
+      toast.success("Message received — opening your email client…");
       setForm({
         name: "",
         email: "",
         message: "",
       });
+      mountedAtRef.current = Date.now();
       setSending(false);
     }, 400);
   };
+
 
   return (
     <section id="contact" className="py-24">
