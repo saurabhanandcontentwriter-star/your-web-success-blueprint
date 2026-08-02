@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
+import { logLead } from "@/lib/leadLog";
+
 
 const EMAIL = "saurabhanandseo@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/saurabhanandseo/";
