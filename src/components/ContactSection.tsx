@@ -230,6 +230,7 @@ const ContactSection = () => {
             <motion.a
               href={RESUME_URL}
               download="Saurabh_Anand_Resume.pdf"
+              onClick={() => logLead({ event: "resume_download" })}
               variants={smoothItem}
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -243,6 +244,7 @@ const ContactSection = () => {
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => logLead({ event: "resume_download" })}
               variants={smoothItem}
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -254,12 +256,14 @@ const ContactSection = () => {
 
             <motion.a
               href={`mailto:${EMAIL}?subject=Hire%20Inquiry`}
+              onClick={() => logLead({ event: "hire_click" })}
               variants={smoothItem}
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
             >
               <Mail size={16} />
+
               Email Me
             </motion.a>
           </motion.div>
