@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
+import { logLead } from "@/lib/leadLog";
 
 /**
  * Desktop sticky "Hire Me" CTA — appears on all pages.
@@ -16,6 +17,7 @@ const StickyHireMe = () => {
     >
       <Link
         to="/contact"
+        onClick={() => logLead({ event: "hire_click" })}
         className="group relative inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] ring-1 ring-primary/40 hover:shadow-[0_15px_40px_-5px_hsl(var(--primary)/0.7)] transition-shadow"
         aria-label="Hire Saurabh Anand"
       >

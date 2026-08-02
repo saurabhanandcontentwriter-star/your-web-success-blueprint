@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { logLead } from "@/lib/leadLog";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Home, User, Briefcase, Image as ImageIcon, GraduationCap, Mail } from "lucide-react";
@@ -58,6 +59,7 @@ const MobileFab = () => {
             />
             <a
               href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry"
+              onClick={() => logLead({ event: "hire_click" })}
               className="mt-1 w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
             >
               Hire Me

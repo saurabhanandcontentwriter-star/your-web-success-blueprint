@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 import ContactDialog from "@/components/ContactDialog";
 import ThemeToggle from "@/components/ThemeToggle";
+import { logLead } from "@/lib/leadLog";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -65,7 +66,7 @@ const Navbar = () => {
             }
           />
           <ThemeToggle />
-          <a href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
           </a>
         </div>
@@ -92,7 +93,7 @@ const Navbar = () => {
               </button>
             }
           />
-          <a href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">
+          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">
             Hire Me
           </a>
         </motion.div>
