@@ -326,6 +326,17 @@ const ContactSection = () => {
             transition={fadeInRight.transition}
             className="space-y-4"
           >
+            {/* Honeypot — hidden from humans, bots fill it and get silently dropped */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="company_website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute left-[-9999px] h-0 w-0 opacity-0"
+            />
+
             <motion.div
               className="space-y-4"
               variants={smoothContainer}
