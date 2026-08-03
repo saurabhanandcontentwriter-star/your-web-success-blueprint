@@ -23,11 +23,12 @@ const DEFAULT_IMAGE = "/og-thumbnail.jpg";
 const SEO = ({
   title,
   description,
-  path,
+  path = "",
   isHome = false,
   keywords,
   jsonLd,
   image = DEFAULT_IMAGE,
+  noindex = false,
 }: SEOProps) => {
   const url = `${BASE_URL}${path}`;
   const fullTitle = isHome ? title : `${title} | Saurabh Anand`;
@@ -37,9 +38,11 @@ const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content="Saurabh Anand" />
       <link rel="canonical" href={url} />
+
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
