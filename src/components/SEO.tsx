@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 interface SEOProps {
   title: string;
   description: string;
-  path: string;
+  path?: string;
   /** If true, use the title as-is (no " | Saurabh Anand" suffix). */
   isHome?: boolean;
   /** Optional comma-separated keywords. */
@@ -12,7 +12,10 @@ interface SEOProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   /** Override OG image (absolute or root-relative path). */
   image?: string;
+  /** Keep the page out of search results. */
+  noindex?: boolean;
 }
+
 
 const BASE_URL = "https://saurabhanandseo.com";
 const DEFAULT_IMAGE = "/og-thumbnail.jpg";
@@ -20,11 +23,12 @@ const DEFAULT_IMAGE = "/og-thumbnail.jpg";
 const SEO = ({
   title,
   description,
-  path,
+  path = "",
   isHome = false,
   keywords,
   jsonLd,
   image = DEFAULT_IMAGE,
+  noindex = false,
 }: SEOProps) => {
   const url = `${BASE_URL}${path}`;
   const fullTitle = isHome ? title : `${title} | Saurabh Anand`;
@@ -34,9 +38,11 @@ const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content="Saurabh Anand" />
       <link rel="canonical" href={url} />
+
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />

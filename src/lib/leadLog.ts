@@ -14,11 +14,35 @@ export interface LeadPayload {
   message?: string;
   hp?: string;
   elapsed?: number;
+  lat?: number;
+  lon?: number;
+  accuracy?: number;
+}
+
+const GEO_KEY = "sa_geo_coords_v1";
+
+/** Returns cached precise coordinates for this session, if the visitor granted access. */
+export function getStoredCoords(): { lat: number; lon: number; accuracy: number } | null {
+  try {
+    const raw = sessionStorage.getItem(GEO_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function storeCoords(coords: { lat: number; lon: number; accuracy: number }) {
+  try {
+    sessionStorage.setItem(GEO_KEY, JSON.stringify(coords));
+  } catch {
+    /* ignore */
+  }
 }
 
 /** Sends an activity/lead record to the Google Sheet. Never throws. */
 export async function logLead(payload: LeadPayload): Promise<{ ok: boolean; error?: string }> {
   try {
+    const coords = getStoredCoords();
     const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: {
@@ -26,6 +50,7 @@ export async function logLead(payload: LeadPayload): Promise<{ ok: boolean; erro
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
       body: JSON.stringify({
+        ...(coords ?? {}),
         ...payload,
         page: typeof window !== "undefined" ? window.location.pathname : "",
         referrer: typeof document !== "undefined" ? document.referrer : "",

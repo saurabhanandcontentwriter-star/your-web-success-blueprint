@@ -5,6 +5,9 @@ const GATEWAY = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const SHEET_ID = Deno.env.get("LEADS_SPREADSHEET_ID");
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 const SHEETS_KEY = Deno.env.get("GOOGLE_SHEETS_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") ?? "saurabhanandcontentwriter@gmail.com";
 
 const BodySchema = z.object({
   event: z.enum(["contact_form", "resume_download", "hire_click", "cta_click", "page_view"]),
@@ -13,6 +16,10 @@ const BodySchema = z.object({
   message: z.string().trim().max(2000).optional().default(""),
   page: z.string().trim().max(300).optional().default(""),
   referrer: z.string().trim().max(300).optional().default(""),
+  // precise browser geolocation (only sent when the visitor allows it)
+  lat: z.number().min(-90).max(90).optional(),
+  lon: z.number().min(-180).max(180).optional(),
+  accuracy: z.number().nonnegative().max(1_000_000).optional(),
   // spam protection fields
   hp: z.string().max(200).optional().default(""), // honeypot — must stay empty
   elapsed: z.number().int().nonnegative().optional().default(9999), // ms since form render
@@ -52,6 +59,31 @@ async function lookupLocation(ip: string) {
     return { city: j.city ?? "", region: j.regionName ?? "", country: j.country ?? "" };
   } catch {
     return { city: "", region: "", country: "" };
+  }
+}
+
+/** Fire an email alert for high-intent events. Never throws. */
+async function notify(subject: string, lines: string[]) {
+  if (!SUPABASE_URL || !SERVICE_KEY) return;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/send-transactional-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${SERVICE_KEY}`,
+      },
+      body: JSON.stringify({
+        templateName: "lead-alert",
+        recipientEmail: NOTIFY_EMAIL,
+        idempotencyKey: `lead-alert-${crypto.randomUUID()}`,
+        templateData: { subject, lines },
+      }),
+    });
+    if (!res.ok) {
+      console.error(`Lead alert email not sent [${res.status}]: ${await res.text()}`);
+    }
+  } catch (e) {
+    console.error("Lead alert email error:", e);
   }
 }
 
@@ -98,9 +130,12 @@ Deno.serve(async (req) => {
       hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
     }).formatToParts(now).reduce<Record<string, string>>((a, p) => ((a[p.type] = p.value), a), {});
 
+    const date = `${ist.year}-${ist.month}-${ist.day}`;
+    const time = `${ist.hour}:${ist.minute}:${ist.second}`;
+
     const row = [
-      `${ist.year}-${ist.month}-${ist.day}`,
-      `${ist.hour}:${ist.minute}:${ist.second}`,
+      date,
+      time,
       d.event,
       d.name,
       d.email,
@@ -112,10 +147,13 @@ Deno.serve(async (req) => {
       d.page,
       d.referrer,
       ua,
+      d.lat != null ? String(d.lat) : "",
+      d.lon != null ? String(d.lon) : "",
+      d.accuracy != null ? `${Math.round(d.accuracy)} m` : "",
     ];
 
     const res = await fetch(
-      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:M:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:P:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
       {
         method: "POST",
         headers: {
@@ -131,6 +169,22 @@ Deno.serve(async (req) => {
       const details = await res.text();
       console.error(`Sheets append failed [${res.status}]: ${details}`);
       return json({ error: "Could not save entry", status: res.status, details }, res.status);
+    }
+
+    // --- instant email alert for high-intent events ---
+    if (d.event === "contact_form" || d.event === "hire_click") {
+      const label = d.event === "contact_form" ? "New contact form submission" : "New “Hire Me” click";
+      await notify(`${label} — saurabhanandseo.com`, [
+        `Event: ${label}`,
+        `When: ${date} ${time} IST`,
+        d.name ? `Name: ${d.name}` : "",
+        d.email ? `Email: ${d.email}` : "",
+        d.message ? `Message: ${d.message}` : "",
+        `Location: ${[loc.city, loc.region, loc.country].filter(Boolean).join(", ") || "Unknown"}`,
+        d.lat != null && d.lon != null ? `Precise: ${d.lat}, ${d.lon}` : "",
+        `Page: ${d.page || "/"}`,
+        d.referrer ? `Referrer: ${d.referrer}` : "",
+      ].filter(Boolean));
     }
 
     return json({ ok: true });
