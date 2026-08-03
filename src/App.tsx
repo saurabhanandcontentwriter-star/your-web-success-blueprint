@@ -71,6 +71,9 @@ const App = () => (
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/admin/leads" element={<LeadsAdminPage />} />
+
+
 
             {/* Common typo redirects */}
             <Route path="/experince" element={<Navigate to="/experience" replace />} />
