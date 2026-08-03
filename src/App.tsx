@@ -33,8 +33,15 @@ import StickyHireMe from "./components/StickyHireMe";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import NewsletterPopup from "./components/NewsletterPopup";
 import { ThemeProvider } from "./components/ThemeProvider";
+import LeadsAdminPage from "./pages/LeadsAdminPage";
+import { useVisitorLocation } from "./hooks/useVisitorLocation";
 
 const queryClient = new QueryClient();
+
+const VisitorTracker = () => {
+  useVisitorLocation();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -45,7 +52,9 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <AuroraBackground />
+          <VisitorTracker />
           <Routes>
+
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
