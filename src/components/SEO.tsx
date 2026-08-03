@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 interface SEOProps {
   title: string;
   description: string;
-  path: string;
+  path?: string;
   /** If true, use the title as-is (no " | Saurabh Anand" suffix). */
   isHome?: boolean;
   /** Optional comma-separated keywords. */
@@ -12,7 +12,10 @@ interface SEOProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   /** Override OG image (absolute or root-relative path). */
   image?: string;
+  /** Keep the page out of search results. */
+  noindex?: boolean;
 }
+
 
 const BASE_URL = "https://saurabhanandseo.com";
 const DEFAULT_IMAGE = "/og-thumbnail.jpg";
