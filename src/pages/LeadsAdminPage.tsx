@@ -127,7 +127,7 @@ const LeadsAdminPage = () => {
   }, [filtered]);
 
   const exportCsv = () => {
-    const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy"];
+    const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy", "Location"];
     const rows = filtered.map((l) =>
       [l.date, l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy, l.locationFull]
         .map(csvEscape).join(","),

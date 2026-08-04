@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
       return json({ error: "Incorrect password" }, 401);
     }
 
-    const res = await fetch(`${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A1:P10000`, {
+    const res = await fetch(`${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A1:Q10000`, {
       headers: {
         Authorization: `Bearer ${LOVABLE_API_KEY}`,
         "X-Connection-Api-Key": SHEETS_KEY,
