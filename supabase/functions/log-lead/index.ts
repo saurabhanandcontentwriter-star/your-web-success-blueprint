@@ -62,6 +62,23 @@ async function lookupLocation(ip: string) {
   }
 }
 
+/** Reverse-geocode precise browser coordinates (more accurate than IP). */
+async function reverseGeocode(lat: number, lon: number) {
+  try {
+    const r = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
+    );
+    const j = await r.json();
+    return {
+      city: j.city || j.locality || "",
+      region: j.principalSubdivision || "",
+      country: j.countryName || "",
+    };
+  } catch {
+    return null;
+  }
+}
+
 /** Fire an email alert for high-intent events. Never throws. */
 async function notify(subject: string, lines: string[]) {
   if (!SUPABASE_URL || !SERVICE_KEY) return;
@@ -122,7 +139,12 @@ Deno.serve(async (req) => {
     }
     if (rateLimited(ip)) return json({ error: "Too many requests. Please try again shortly." }, 429);
 
-    const loc = await lookupLocation(ip);
+    let loc = await lookupLocation(ip);
+    if (d.lat != null && d.lon != null) {
+      const precise = await reverseGeocode(d.lat, d.lon);
+      if (precise && (precise.city || precise.region || precise.country)) loc = precise;
+    }
+    const locationFull = [loc.city, loc.region, loc.country].filter(Boolean).join(", ") || "Unknown";
     const now = new Date();
     const ist = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata",
@@ -150,10 +172,11 @@ Deno.serve(async (req) => {
       d.lat != null ? String(d.lat) : "",
       d.lon != null ? String(d.lon) : "",
       d.accuracy != null ? `${Math.round(d.accuracy)} m` : "",
+      locationFull,
     ];
 
     const res = await fetch(
-      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:P:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:Q:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
       {
         method: "POST",
         headers: {
@@ -180,7 +203,7 @@ Deno.serve(async (req) => {
         d.name ? `Name: ${d.name}` : "",
         d.email ? `Email: ${d.email}` : "",
         d.message ? `Message: ${d.message}` : "",
-        `Location: ${[loc.city, loc.region, loc.country].filter(Boolean).join(", ") || "Unknown"}`,
+        `Location: ${locationFull}`,
         d.lat != null && d.lon != null ? `Precise: ${d.lat}, ${d.lon}` : "",
         `Page: ${d.page || "/"}`,
         d.referrer ? `Referrer: ${d.referrer}` : "",
