@@ -16,7 +16,7 @@ const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/leads-report
 interface Lead {
   date: string; time: string; event: string; name: string; email: string; message: string;
   city: string; region: string; country: string; ip: string; page: string; referrer: string;
-  ua: string; lat: string; lon: string; accuracy: string;
+  ua: string; lat: string; lon: string; accuracy: string; locationFull: string;
 }
 
 const COLORS = ["hsl(var(--primary))", "hsl(var(--accent))", "#22d3ee", "#f59e0b", "#a855f7"];
@@ -31,8 +31,10 @@ const EVENT_LABELS: Record<string, string> = {
 
 function toLead(r: string[]): Lead {
   const [date = "", time = "", event = "", name = "", email = "", message = "", city = "", region = "",
-    country = "", ip = "", page = "", referrer = "", ua = "", lat = "", lon = "", accuracy = ""] = r;
-  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy };
+    country = "", ip = "", page = "", referrer = "", ua = "", lat = "", lon = "", accuracy = "",
+    locationFull = ""] = r;
+  const full = locationFull || [city, region, country].filter(Boolean).join(", ") || "Unknown";
+  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full };
 }
 
 function csvEscape(v: string) {
@@ -118,7 +120,7 @@ const LeadsAdminPage = () => {
   const byLocation = useMemo(() => {
     const map = new Map<string, number>();
     filtered.forEach((l) => {
-      const key = [l.city, l.country].filter(Boolean).join(", ") || "Unknown";
+      const key = l.locationFull || "Unknown";
       map.set(key, (map.get(key) ?? 0) + 1);
     });
     return [...map].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([name, count]) => ({ name, count }));
@@ -127,7 +129,7 @@ const LeadsAdminPage = () => {
   const exportCsv = () => {
     const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy"];
     const rows = filtered.map((l) =>
-      [l.date, l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy]
+      [l.date, l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy, l.locationFull]
         .map(csvEscape).join(","),
     );
     const csv = [cols.map(csvEscape).join(","), ...rows].join("\r\n");
@@ -296,7 +298,7 @@ const LeadsAdminPage = () => {
                     <td className="whitespace-nowrap px-4 py-2">{EVENT_LABELS[l.event] ?? l.event}</td>
                     <td className="px-4 py-2">{l.name}</td>
                     <td className="px-4 py-2">{l.email}</td>
-                    <td className="px-4 py-2">{[l.city, l.country].filter(Boolean).join(", ")}</td>
+                    <td className="px-4 py-2">{l.locationFull}</td>
                     <td className="px-4 py-2">{l.page}</td>
                   </tr>
                 ))}
