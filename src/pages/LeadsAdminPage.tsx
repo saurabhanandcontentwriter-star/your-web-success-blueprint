@@ -247,6 +247,36 @@ const LeadsAdminPage = () => {
               <option key={k} value={k}>{v}</option>
             ))}
           </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={countryFilter}
+            onChange={(e) => { setCountryFilter(e.target.value); setRegionFilter("all"); setCityFilter("all"); }}
+          >
+            <option value="all">All countries</option>
+            {countryOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={regionFilter}
+            onChange={(e) => { setRegionFilter(e.target.value); setCityFilter("all"); }}
+          >
+            <option value="all">All states</option>
+            {regionOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={cityFilter}
+            onChange={(e) => setCityFilter(e.target.value)}
+          >
+            <option value="all">All cities</option>
+            {cityOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          {(countryFilter !== "all" || regionFilter !== "all" || cityFilter !== "all") && (
+            <Button size="sm" variant="ghost" onClick={() => { setCountryFilter("all"); setRegionFilter("all"); setCityFilter("all"); }}>
+              Clear location
+            </Button>
+          )}
+
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
