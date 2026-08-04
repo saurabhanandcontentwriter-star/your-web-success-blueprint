@@ -50,6 +50,10 @@ const LeadsAdminPage = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [range, setRange] = useState<"7" | "30" | "all">("30");
   const [eventFilter, setEventFilter] = useState<string>("all");
+  const [countryFilter, setCountryFilter] = useState<string>("all");
+  const [regionFilter, setRegionFilter] = useState<string>("all");
+  const [cityFilter, setCityFilter] = useState<string>("all");
+
 
   const load = async (pw: string) => {
     setLoading(true);
@@ -85,15 +89,39 @@ const LeadsAdminPage = () => {
     if (ok) setAuthed(true);
   };
 
+  const norm = (v: string) => (v || "").trim();
+
+  const countryOptions = useMemo(
+    () => Array.from(new Set(leads.map((l) => norm(l.country)).filter(Boolean))).sort(),
+    [leads]
+  );
+  const regionOptions = useMemo(
+    () => Array.from(new Set(leads
+      .filter((l) => countryFilter === "all" || norm(l.country) === countryFilter)
+      .map((l) => norm(l.region)).filter(Boolean))).sort(),
+    [leads, countryFilter]
+  );
+  const cityOptions = useMemo(
+    () => Array.from(new Set(leads
+      .filter((l) => (countryFilter === "all" || norm(l.country) === countryFilter) &&
+        (regionFilter === "all" || norm(l.region) === regionFilter))
+      .map((l) => norm(l.city)).filter(Boolean))).sort(),
+    [leads, countryFilter, regionFilter]
+  );
+
   const filtered = useMemo(() => {
     const cutoff = range === "all" ? null : new Date(Date.now() - Number(range) * 86400000);
     return leads.filter((l) => {
       if (eventFilter !== "all" && l.event !== eventFilter) return false;
+      if (countryFilter !== "all" && norm(l.country) !== countryFilter) return false;
+      if (regionFilter !== "all" && norm(l.region) !== regionFilter) return false;
+      if (cityFilter !== "all" && norm(l.city) !== cityFilter) return false;
       if (!cutoff) return true;
       const d = new Date(`${l.date}T00:00:00`);
       return !isNaN(d.getTime()) && d >= cutoff;
     });
-  }, [leads, range, eventFilter]);
+  }, [leads, range, eventFilter, countryFilter, regionFilter, cityFilter]);
+
 
   const stats = useMemo(() => {
     const count = (e: string) => filtered.filter((l) => l.event === e).length;
@@ -219,6 +247,36 @@ const LeadsAdminPage = () => {
               <option key={k} value={k}>{v}</option>
             ))}
           </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={countryFilter}
+            onChange={(e) => { setCountryFilter(e.target.value); setRegionFilter("all"); setCityFilter("all"); }}
+          >
+            <option value="all">All countries</option>
+            {countryOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={regionFilter}
+            onChange={(e) => { setRegionFilter(e.target.value); setCityFilter("all"); }}
+          >
+            <option value="all">All states</option>
+            {regionOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select
+            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+            value={cityFilter}
+            onChange={(e) => setCityFilter(e.target.value)}
+          >
+            <option value="all">All cities</option>
+            {cityOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          {(countryFilter !== "all" || regionFilter !== "all" || cityFilter !== "all") && (
+            <Button size="sm" variant="ghost" onClick={() => { setCountryFilter("all"); setRegionFilter("all"); setCityFilter("all"); }}>
+              Clear location
+            </Button>
+          )}
+
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

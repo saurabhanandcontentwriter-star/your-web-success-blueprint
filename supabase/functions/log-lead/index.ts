@@ -197,18 +197,23 @@ Deno.serve(async (req) => {
     // --- instant email alert for high-intent events ---
     if (d.event === "contact_form" || d.event === "hire_click") {
       const label = d.event === "contact_form" ? "New contact form submission" : "New “Hire Me” click";
-      await notify(`${label} — saurabhanandseo.com`, [
+      await notify(`${label} — ${locationFull} — saurabhanandseo.com`, [
         `Event: ${label}`,
-        `When: ${date} ${time} IST`,
+        `Date: ${date}`,
+        `Time (24h IST): ${time}`,
         d.name ? `Name: ${d.name}` : "",
         d.email ? `Email: ${d.email}` : "",
         d.message ? `Message: ${d.message}` : "",
+        `City: ${loc.city || "Unknown"}`,
+        `State: ${loc.region || "Unknown"}`,
+        `Country: ${loc.country || "Unknown"}`,
         `Location: ${locationFull}`,
         d.lat != null && d.lon != null ? `Precise: ${d.lat}, ${d.lon}` : "",
         `Page: ${d.page || "/"}`,
         d.referrer ? `Referrer: ${d.referrer}` : "",
       ].filter(Boolean));
     }
+
 
     return json({ ok: true });
   } catch (e) {
