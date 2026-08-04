@@ -50,6 +50,10 @@ const LeadsAdminPage = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [range, setRange] = useState<"7" | "30" | "all">("30");
   const [eventFilter, setEventFilter] = useState<string>("all");
+  const [countryFilter, setCountryFilter] = useState<string>("all");
+  const [regionFilter, setRegionFilter] = useState<string>("all");
+  const [cityFilter, setCityFilter] = useState<string>("all");
+
 
   const load = async (pw: string) => {
     setLoading(true);
