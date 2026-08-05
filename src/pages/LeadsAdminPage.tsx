@@ -135,8 +135,8 @@ const LeadsAdminPage = () => {
       if (regionFilter !== "all" && norm(l.region) !== regionFilter) return false;
       if (cityFilter !== "all" && norm(l.city) !== cityFilter) return false;
       if (!cutoff) return true;
-      const d = new Date(`${l.date}T00:00:00`);
-      return !isNaN(d.getTime()) && d >= cutoff;
+      const d = parseLeadDate(l.date);
+      return !!d && !isNaN(d.getTime()) && d >= cutoff;
     });
   }, [leads, range, eventFilter, countryFilter, regionFilter, cityFilter]);
 
