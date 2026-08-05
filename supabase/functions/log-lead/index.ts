@@ -69,9 +69,19 @@ async function reverseGeocode(lat: number, lon: number) {
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
     );
     const j = await r.json();
+    const admins: Array<{ name?: string; adminLevel?: number; description?: string }> =
+      j?.localityInfo?.administrative ?? [];
+    const byLevel = (lvl: number) => admins.find((a) => a.adminLevel === lvl)?.name || "";
+    // adminLevel 5/6 is typically the district in India
+    const district =
+      byLevel(5) ||
+      byLevel(6) ||
+      admins.find((a) => /district/i.test(a.description ?? "") || /district/i.test(a.name ?? ""))?.name ||
+      "";
     return {
-      city: j.city || j.locality || "",
-      region: j.principalSubdivision || "",
+      city: j.city || j.locality || byLevel(7) || "",
+      district: district.replace(/\s+district$/i, "").trim(),
+      region: j.principalSubdivision || byLevel(4) || "",
       country: j.countryName || "",
     };
   } catch {
