@@ -164,11 +164,15 @@ Deno.serve(async (req) => {
     const ist = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata",
       year: "numeric", month: "2-digit", day: "2-digit",
-      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hour12: false, hourCycle: "h23",
     }).formatToParts(now).reduce<Record<string, string>>((a, p) => ((a[p.type] = p.value), a), {});
 
+    // DD/MM/YYYY and strict 24-hour HH:MM:SS (IST)
+    const hh = ist.hour === "24" ? "00" : ist.hour;
     const date = `${ist.day}/${ist.month}/${ist.year}`;
-    const time = `${ist.hour}:${ist.minute}:${ist.second}`;
+    const time = `${hh}:${ist.minute}:${ist.second}`;
+
 
     const row = [
       date,
