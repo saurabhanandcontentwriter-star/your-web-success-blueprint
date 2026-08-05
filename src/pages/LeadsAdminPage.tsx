@@ -16,7 +16,7 @@ const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/leads-report
 interface Lead {
   date: string; time: string; event: string; name: string; email: string; message: string;
   city: string; region: string; country: string; ip: string; page: string; referrer: string;
-  ua: string; lat: string; lon: string; accuracy: string; locationFull: string;
+  ua: string; lat: string; lon: string; accuracy: string; locationFull: string; district: string;
 }
 
 const COLORS = ["hsl(var(--primary))", "hsl(var(--accent))", "#22d3ee", "#f59e0b", "#a855f7"];
@@ -29,12 +29,30 @@ const EVENT_LABELS: Record<string, string> = {
   page_view: "Page view",
 };
 
+/** Parses both DD/MM/YYYY (new) and YYYY-MM-DD (legacy) rows. */
+function parseLeadDate(v: string): Date | null {
+  const s = (v || "").trim();
+  let m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+  if (m) return new Date(`${m[3]}-${m[2]}-${m[1]}T00:00:00`);
+  m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  if (m) return new Date(`${s}T00:00:00`);
+  return null;
+}
+
+/** Normalises any stored date to DD/MM/YYYY for display. */
+function displayDate(v: string): string {
+  const d = parseLeadDate(v);
+  if (!d || isNaN(d.getTime())) return v;
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()}`;
+}
+
 function toLead(r: string[]): Lead {
   const [date = "", time = "", event = "", name = "", email = "", message = "", city = "", region = "",
     country = "", ip = "", page = "", referrer = "", ua = "", lat = "", lon = "", accuracy = "",
-    locationFull = ""] = r;
+    locationFull = "", district = ""] = r;
   const full = locationFull || [city, region, country].filter(Boolean).join(", ") || "Unknown";
-  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full };
+  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full, district };
 }
 
 function csvEscape(v: string) {
