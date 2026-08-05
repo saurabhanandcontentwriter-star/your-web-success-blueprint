@@ -51,14 +51,14 @@ function looksSpammy(text: string) {
 }
 
 async function lookupLocation(ip: string) {
-  if (!ip || ip === "unknown") return { city: "", region: "", country: "" };
+  if (!ip || ip === "unknown") return { city: "", district: "", region: "", country: "" };
   try {
-    const r = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,regionName,country`);
+    const r = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,district,regionName,country`);
     const j = await r.json();
-    if (j.status !== "success") return { city: "", region: "", country: "" };
-    return { city: j.city ?? "", region: j.regionName ?? "", country: j.country ?? "" };
+    if (j.status !== "success") return { city: "", district: "", region: "", country: "" };
+    return { city: j.city ?? "", district: j.district ?? "", region: j.regionName ?? "", country: j.country ?? "" };
   } catch {
-    return { city: "", region: "", country: "" };
+    return { city: "", district: "", region: "", country: "" };
   }
 }
 
