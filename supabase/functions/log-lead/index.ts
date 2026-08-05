@@ -152,9 +152,14 @@ Deno.serve(async (req) => {
     let loc = await lookupLocation(ip);
     if (d.lat != null && d.lon != null) {
       const precise = await reverseGeocode(d.lat, d.lon);
-      if (precise && (precise.city || precise.region || precise.country)) loc = precise;
+      if (precise && (precise.city || precise.district || precise.region || precise.country)) {
+        loc = { ...precise, district: precise.district || loc.district };
+      }
     }
-    const locationFull = [loc.city, loc.region, loc.country].filter(Boolean).join(", ") || "Unknown";
+    const locationFull =
+      [loc.city, loc.district && loc.district !== loc.city ? `${loc.district} District` : "", loc.region, loc.country]
+        .filter(Boolean)
+        .join(", ") || "Unknown";
     const now = new Date();
     const ist = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata",
@@ -162,7 +167,7 @@ Deno.serve(async (req) => {
       hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
     }).formatToParts(now).reduce<Record<string, string>>((a, p) => ((a[p.type] = p.value), a), {});
 
-    const date = `${ist.year}-${ist.month}-${ist.day}`;
+    const date = `${ist.day}/${ist.month}/${ist.year}`;
     const time = `${ist.hour}:${ist.minute}:${ist.second}`;
 
     const row = [
@@ -183,10 +188,11 @@ Deno.serve(async (req) => {
       d.lon != null ? String(d.lon) : "",
       d.accuracy != null ? `${Math.round(d.accuracy)} m` : "",
       locationFull,
+      loc.district,
     ];
 
     const res = await fetch(
-      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:Q:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:R:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
       {
         method: "POST",
         headers: {
@@ -209,20 +215,24 @@ Deno.serve(async (req) => {
       const label = d.event === "contact_form" ? "New contact form submission" : "New “Hire Me” click";
       await notify(`${label} — ${locationFull} — saurabhanandseo.com`, [
         `Event: ${label}`,
-        `Date: ${date}`,
+        `Date (DD/MM/YYYY): ${date}`,
         `Time (24h IST): ${time}`,
         d.name ? `Name: ${d.name}` : "",
         d.email ? `Email: ${d.email}` : "",
         d.message ? `Message: ${d.message}` : "",
         `City: ${loc.city || "Unknown"}`,
+        `District: ${loc.district || "Unknown"}`,
         `State: ${loc.region || "Unknown"}`,
         `Country: ${loc.country || "Unknown"}`,
         `Location: ${locationFull}`,
-        d.lat != null && d.lon != null ? `Precise: ${d.lat}, ${d.lon}` : "",
+        d.lat != null && d.lon != null
+          ? `Precise: ${d.lat}, ${d.lon}${d.accuracy != null ? ` (±${Math.round(d.accuracy)} m)` : ""}`
+          : "",
         `Page: ${d.page || "/"}`,
         d.referrer ? `Referrer: ${d.referrer}` : "",
       ].filter(Boolean));
     }
+
 
 
     return json({ ok: true });
