@@ -366,7 +366,7 @@ const LeadsAdminPage = () => {
             <table className="w-full text-sm">
               <thead className="bg-muted/50 text-left">
                 <tr>
-                  {["Date", "Time", "Event", "Name", "Email", "Location", "Page"].map((h) => (
+                  {["Date", "Time", "Event", "Name", "Email", "District", "Location", "Page"].map((h) => (
                     <th key={h} className="whitespace-nowrap px-4 py-3 font-medium">{h}</th>
                   ))}
                 </tr>
@@ -374,17 +374,18 @@ const LeadsAdminPage = () => {
               <tbody>
                 {filtered.slice().reverse().slice(0, 100).map((l, i) => (
                   <tr key={i} className="border-t border-border">
-                    <td className="whitespace-nowrap px-4 py-2">{l.date}</td>
+                    <td className="whitespace-nowrap px-4 py-2">{displayDate(l.date)}</td>
                     <td className="whitespace-nowrap px-4 py-2">{l.time}</td>
                     <td className="whitespace-nowrap px-4 py-2">{EVENT_LABELS[l.event] ?? l.event}</td>
                     <td className="px-4 py-2">{l.name}</td>
                     <td className="px-4 py-2">{l.email}</td>
+                    <td className="px-4 py-2">{l.district || "—"}</td>
                     <td className="px-4 py-2">{l.locationFull}</td>
                     <td className="px-4 py-2">{l.page}</td>
                   </tr>
                 ))}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
+                  <tr><td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
                 )}
               </tbody>
             </table>
