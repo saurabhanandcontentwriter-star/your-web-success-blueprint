@@ -196,7 +196,7 @@ Deno.serve(async (req) => {
     ];
 
     const res = await fetch(
-      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:R:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:R:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
       {
         method: "POST",
         headers: {
