@@ -49,7 +49,7 @@ export function useVisitorLocation() {
           }
           log();
         },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 600000 },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 },
       );
     }, 1200);
 

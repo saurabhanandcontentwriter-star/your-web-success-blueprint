@@ -16,7 +16,7 @@ const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/leads-report
 interface Lead {
   date: string; time: string; event: string; name: string; email: string; message: string;
   city: string; region: string; country: string; ip: string; page: string; referrer: string;
-  ua: string; lat: string; lon: string; accuracy: string; locationFull: string;
+  ua: string; lat: string; lon: string; accuracy: string; locationFull: string; district: string;
 }
 
 const COLORS = ["hsl(var(--primary))", "hsl(var(--accent))", "#22d3ee", "#f59e0b", "#a855f7"];
@@ -29,12 +29,30 @@ const EVENT_LABELS: Record<string, string> = {
   page_view: "Page view",
 };
 
+/** Parses both DD/MM/YYYY (new) and YYYY-MM-DD (legacy) rows. */
+function parseLeadDate(v: string): Date | null {
+  const s = (v || "").trim();
+  let m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+  if (m) return new Date(`${m[3]}-${m[2]}-${m[1]}T00:00:00`);
+  m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  if (m) return new Date(`${s}T00:00:00`);
+  return null;
+}
+
+/** Normalises any stored date to DD/MM/YYYY for display. */
+function displayDate(v: string): string {
+  const d = parseLeadDate(v);
+  if (!d || isNaN(d.getTime())) return v;
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()}`;
+}
+
 function toLead(r: string[]): Lead {
   const [date = "", time = "", event = "", name = "", email = "", message = "", city = "", region = "",
     country = "", ip = "", page = "", referrer = "", ua = "", lat = "", lon = "", accuracy = "",
-    locationFull = ""] = r;
+    locationFull = "", district = ""] = r;
   const full = locationFull || [city, region, country].filter(Boolean).join(", ") || "Unknown";
-  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full };
+  return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full, district };
 }
 
 function csvEscape(v: string) {
@@ -117,8 +135,8 @@ const LeadsAdminPage = () => {
       if (regionFilter !== "all" && norm(l.region) !== regionFilter) return false;
       if (cityFilter !== "all" && norm(l.city) !== cityFilter) return false;
       if (!cutoff) return true;
-      const d = new Date(`${l.date}T00:00:00`);
-      return !isNaN(d.getTime()) && d >= cutoff;
+      const d = parseLeadDate(l.date);
+      return !!d && !isNaN(d.getTime()) && d >= cutoff;
     });
   }, [leads, range, eventFilter, countryFilter, regionFilter, cityFilter]);
 
@@ -141,8 +159,13 @@ const LeadsAdminPage = () => {
 
   const byDay = useMemo(() => {
     const map = new Map<string, number>();
-    filtered.forEach((l) => map.set(l.date, (map.get(l.date) ?? 0) + 1));
-    return [...map].sort((a, b) => a[0].localeCompare(b[0])).map(([date, count]) => ({ date, count }));
+    filtered.forEach((l) => {
+      const key = displayDate(l.date);
+      map.set(key, (map.get(key) ?? 0) + 1);
+    });
+    return [...map]
+      .sort((a, b) => (parseLeadDate(a[0])?.getTime() ?? 0) - (parseLeadDate(b[0])?.getTime() ?? 0))
+      .map(([date, count]) => ({ date, count }));
   }, [filtered]);
 
   const byLocation = useMemo(() => {
@@ -155,9 +178,9 @@ const LeadsAdminPage = () => {
   }, [filtered]);
 
   const exportCsv = () => {
-    const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy", "Location"];
+    const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy", "Location", "District"];
     const rows = filtered.map((l) =>
-      [l.date, l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy, l.locationFull]
+      [displayDate(l.date), l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy, l.locationFull, l.district]
         .map(csvEscape).join(","),
     );
     const csv = [cols.map(csvEscape).join(","), ...rows].join("\r\n");
@@ -343,7 +366,7 @@ const LeadsAdminPage = () => {
             <table className="w-full text-sm">
               <thead className="bg-muted/50 text-left">
                 <tr>
-                  {["Date", "Time", "Event", "Name", "Email", "Location", "Page"].map((h) => (
+                  {["Date", "Time", "Event", "Name", "Email", "District", "Location", "Page"].map((h) => (
                     <th key={h} className="whitespace-nowrap px-4 py-3 font-medium">{h}</th>
                   ))}
                 </tr>
@@ -351,17 +374,18 @@ const LeadsAdminPage = () => {
               <tbody>
                 {filtered.slice().reverse().slice(0, 100).map((l, i) => (
                   <tr key={i} className="border-t border-border">
-                    <td className="whitespace-nowrap px-4 py-2">{l.date}</td>
+                    <td className="whitespace-nowrap px-4 py-2">{displayDate(l.date)}</td>
                     <td className="whitespace-nowrap px-4 py-2">{l.time}</td>
                     <td className="whitespace-nowrap px-4 py-2">{EVENT_LABELS[l.event] ?? l.event}</td>
                     <td className="px-4 py-2">{l.name}</td>
                     <td className="px-4 py-2">{l.email}</td>
+                    <td className="px-4 py-2">{l.district || "—"}</td>
                     <td className="px-4 py-2">{l.locationFull}</td>
                     <td className="px-4 py-2">{l.page}</td>
                   </tr>
                 ))}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
+                  <tr><td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
                 )}
               </tbody>
             </table>
