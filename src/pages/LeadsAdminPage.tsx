@@ -159,8 +159,13 @@ const LeadsAdminPage = () => {
 
   const byDay = useMemo(() => {
     const map = new Map<string, number>();
-    filtered.forEach((l) => map.set(l.date, (map.get(l.date) ?? 0) + 1));
-    return [...map].sort((a, b) => a[0].localeCompare(b[0])).map(([date, count]) => ({ date, count }));
+    filtered.forEach((l) => {
+      const key = displayDate(l.date);
+      map.set(key, (map.get(key) ?? 0) + 1);
+    });
+    return [...map]
+      .sort((a, b) => (parseLeadDate(a[0])?.getTime() ?? 0) - (parseLeadDate(b[0])?.getTime() ?? 0))
+      .map(([date, count]) => ({ date, count }));
   }, [filtered]);
 
   const byLocation = useMemo(() => {
