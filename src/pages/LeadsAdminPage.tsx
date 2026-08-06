@@ -4,7 +4,9 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
   PieChart, Pie, Cell, Legend, LineChart, Line,
 } from "recharts";
-import { Download, Lock, RefreshCw, Users, Mail, FileText, MousePointerClick } from "lucide-react";
+import { Download, Lock, RefreshCw, Users, Mail, FileText, MousePointerClick, Satellite, Wifi, HelpCircle } from "lucide-react";
+import { MapContainer, TileLayer, CircleMarker, Tooltip as MapTooltip } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -54,6 +56,39 @@ function toLead(r: string[]): Lead {
   const full = locationFull || [city, region, country].filter(Boolean).join(", ") || "Unknown";
   return { date, time, event, name, email, message, city, region, country, ip, page, referrer, ua, lat, lon, accuracy, locationFull: full, district };
 }
+
+type SourceKind = "gps" | "ip" | "unknown";
+
+/** Where the stored location came from: precise browser GPS or IP lookup. */
+function leadSource(l: Lead): { kind: SourceKind; label: string; detail: string } {
+  const lat = Number(l.lat), lon = Number(l.lon);
+  if (l.lat && l.lon && !isNaN(lat) && !isNaN(lon)) {
+    return { kind: "gps", label: "GPS", detail: l.accuracy ? `precise ±${l.accuracy.replace(/\s*m$/, "")} m` : "precise" };
+  }
+  if (l.city || l.region || l.country) return { kind: "ip", label: "IP", detail: "approximate (IP lookup)" };
+  return { kind: "unknown", label: "Unknown", detail: "no location" };
+}
+
+const SOURCE_STYLES: Record<SourceKind, string> = {
+  gps: "bg-emerald-500/15 text-emerald-500 border-emerald-500/30",
+  ip: "bg-amber-500/15 text-amber-500 border-amber-500/30",
+  unknown: "bg-muted text-muted-foreground border-border",
+};
+
+const SOURCE_ICONS: Record<SourceKind, typeof Satellite> = { gps: Satellite, ip: Wifi, unknown: HelpCircle };
+
+const SourceBadge = ({ lead }: { lead: Lead }) => {
+  const src = leadSource(lead);
+  const Icon = SOURCE_ICONS[src.kind];
+  return (
+    <span
+      title={src.detail}
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${SOURCE_STYLES[src.kind]}`}
+    >
+      <Icon className="h-3 w-3" /> {src.label}
+    </span>
+  );
+};
 
 function csvEscape(v: string) {
   return `"${(v ?? "").replace(/"/g, '""')}"`;
@@ -177,12 +212,37 @@ const LeadsAdminPage = () => {
     return [...map].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([name, count]) => ({ name, count }));
   }, [filtered]);
 
+  const mapPoints = useMemo(
+    () =>
+      filtered
+        .map((l) => ({ lead: l, lat: Number(l.lat), lon: Number(l.lon) }))
+        .filter((p) => p.lead.lat && p.lead.lon && !isNaN(p.lat) && !isNaN(p.lon)),
+    [filtered],
+  );
+
+  const mapCenter: [number, number] = mapPoints.length
+    ? [mapPoints[0].lat, mapPoints[0].lon]
+    : [22.9734, 78.6569];
+
   const exportCsv = () => {
-    const cols = header.length ? header : ["Date", "Time", "Event", "Name", "Email", "Message", "City", "Region", "Country", "IP", "Page", "Referrer", "Device", "Latitude", "Longitude", "Accuracy", "Location", "District"];
-    const rows = filtered.map((l) =>
-      [displayDate(l.date), l.time, l.event, l.name, l.email, l.message, l.city, l.region, l.country, l.ip, l.page, l.referrer, l.ua, l.lat, l.lon, l.accuracy, l.locationFull, l.district]
-        .map(csvEscape).join(","),
-    );
+    const cols = [
+      "Date (DD/MM/YYYY)", "Time (24h IST)", "Event", "Name", "Email", "Message",
+      "City", "District", "State", "Country", "Full location", "Location source",
+      "Accuracy", "Latitude", "Longitude", "Map link", "Page", "Referrer", "IP", "Device",
+    ];
+    const rows = filtered
+      .slice()
+      .sort((a, b) => (parseLeadDate(a.date)?.getTime() ?? 0) - (parseLeadDate(b.date)?.getTime() ?? 0))
+      .map((l) => {
+        const src = leadSource(l);
+        const mapLink = l.lat && l.lon ? `https://www.google.com/maps?q=${l.lat},${l.lon}` : "";
+        return [
+          displayDate(l.date), l.time, EVENT_LABELS[l.event] ?? l.event, l.name, l.email,
+          (l.message || "").replace(/\r?\n/g, " "),
+          l.city, l.district, l.region, l.country, l.locationFull, src.label,
+          l.accuracy, l.lat, l.lon, mapLink, l.page, l.referrer, l.ip, l.ua,
+        ].map(csvEscape).join(",");
+      });
     const csv = [cols.map(csvEscape).join(","), ...rows].join("\r\n");
     const url = URL.createObjectURL(new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" }));
     const a = document.createElement("a");
@@ -361,12 +421,53 @@ const LeadsAdminPage = () => {
           </Card>
         </div>
 
+        <Card className="p-5">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <h2 className="font-display text-lg font-semibold">Leads on the map</h2>
+            <p className="text-xs text-muted-foreground">
+              {mapPoints.length} of {filtered.length} events have precise GPS coordinates
+            </p>
+          </div>
+          <div className="h-[420px] overflow-hidden rounded-lg">
+            <MapContainer center={mapCenter} zoom={mapPoints.length ? 5 : 4} scrollWheelZoom style={{ height: "100%", width: "100%" }}>
+              <TileLayer
+                attribution='&copy; OpenStreetMap contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {mapPoints.map((p, i) => (
+                <CircleMarker
+                  key={i}
+                  center={[p.lat, p.lon]}
+                  radius={7}
+                  pathOptions={{ color: "hsl(var(--primary))", fillColor: "hsl(var(--primary))", fillOpacity: 0.6 }}
+                >
+                  <MapTooltip>
+                    <span className="text-xs">
+                      <strong>{EVENT_LABELS[p.lead.event] ?? p.lead.event}</strong>
+                      <br />
+                      {p.lead.locationFull}
+                      <br />
+                      {displayDate(p.lead.date)} {p.lead.time}
+                      {p.lead.accuracy ? ` · ±${p.lead.accuracy}` : ""}
+                    </span>
+                  </MapTooltip>
+                </CircleMarker>
+              ))}
+            </MapContainer>
+          </div>
+          {mapPoints.length === 0 && (
+            <p className="mt-3 text-sm text-muted-foreground">
+              No GPS-tagged leads in this range — these visitors were located by IP only.
+            </p>
+          )}
+        </Card>
+
         <Card className="overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-muted/50 text-left">
                 <tr>
-                  {["Date", "Time", "Event", "Name", "Email", "District", "Location", "Page"].map((h) => (
+                  {["Date", "Time", "Event", "Name", "Email", "District", "Location", "Source", "Page"].map((h) => (
                     <th key={h} className="whitespace-nowrap px-4 py-3 font-medium">{h}</th>
                   ))}
                 </tr>
@@ -381,11 +482,12 @@ const LeadsAdminPage = () => {
                     <td className="px-4 py-2">{l.email}</td>
                     <td className="px-4 py-2">{l.district || "—"}</td>
                     <td className="px-4 py-2">{l.locationFull}</td>
+                    <td className="px-4 py-2"><SourceBadge lead={l} /></td>
                     <td className="px-4 py-2">{l.page}</td>
                   </tr>
                 ))}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
+                  <tr><td colSpan={9} className="px-4 py-8 text-center text-muted-foreground">No leads in this range.</td></tr>
                 )}
               </tbody>
             </table>
