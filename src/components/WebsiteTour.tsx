@@ -41,7 +41,7 @@ const WebsiteTour = () => {
       body: "A quick 30-second tour of what you'll find here — feel free to skip anytime.",
     },
     {
-      title: "Explore AI SEO, GEO & LLM Optimization Services",
+      title: "Explore AI SEO, GEO & LLM Optimization Expertise",
       body: "Discover how I help brands win in AI-driven search, generative engines, and large language models.",
     },
     {
@@ -56,7 +56,7 @@ const WebsiteTour = () => {
     },
     {
       title: "Chat with the AI Assistant",
-      body: "Tap the chat bubble (bottom-right) to ask anything about my work, services, or how to collaborate.",
+      body: "Tap the chat bubble (bottom-right) to ask anything about my work, expertise, or how to collaborate.",
     },
     {
       title: "Book a Consultation or Hire Me",
