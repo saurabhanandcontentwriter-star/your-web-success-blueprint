@@ -432,7 +432,7 @@ const AIChatWidget = () => {
             {/* Quick actions */}
             <div className="mt-2 flex flex-wrap gap-1.5">
               {[
-                { label: "Services", icon: Briefcase, href: "/services" },
+                { label: "Skills", icon: Briefcase, href: "/skills" },
                 { label: "Portfolio", icon: FolderOpen, href: "/portfolio" },
                 { label: "Resume", icon: Download, href: "/Saurabh_Anand_Resume.pdf" },
                 { label: "Contact", icon: Mail, action: "chat" },

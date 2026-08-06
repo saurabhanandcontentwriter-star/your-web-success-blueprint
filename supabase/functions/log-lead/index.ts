@@ -150,10 +150,12 @@ Deno.serve(async (req) => {
     if (rateLimited(ip)) return json({ error: "Too many requests. Please try again shortly." }, 429);
 
     let loc = await lookupLocation(ip);
+    let locationSource = loc.city || loc.country ? "IP lookup (approximate)" : "Unknown";
     if (d.lat != null && d.lon != null) {
       const precise = await reverseGeocode(d.lat, d.lon);
       if (precise && (precise.city || precise.district || precise.region || precise.country)) {
         loc = { ...precise, district: precise.district || loc.district };
+        locationSource = `GPS (precise${d.accuracy != null ? `, ±${Math.round(d.accuracy)} m` : ""})`;
       }
     }
     const locationFull =
@@ -193,10 +195,11 @@ Deno.serve(async (req) => {
       d.accuracy != null ? `${Math.round(d.accuracy)} m` : "",
       locationFull,
       loc.district,
+      locationSource,
     ];
 
     const res = await fetch(
-      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:R:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+      `${GATEWAY}/spreadsheets/${SHEET_ID}/values/Leads!A:S:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
       {
         method: "POST",
         headers: {
@@ -229,6 +232,8 @@ Deno.serve(async (req) => {
         `State: ${loc.region || "Unknown"}`,
         `Country: ${loc.country || "Unknown"}`,
         `Location: ${locationFull}`,
+        `Location source: ${locationSource}`,
+        d.lat != null && d.lon != null ? `Map: https://www.google.com/maps?q=${d.lat},${d.lon}` : "",
         d.lat != null && d.lon != null
           ? `Precise: ${d.lat}, ${d.lon}${d.accuracy != null ? ` (±${Math.round(d.accuracy)} m)` : ""}`
           : "",

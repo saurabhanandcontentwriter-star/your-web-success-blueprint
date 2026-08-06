@@ -21,8 +21,6 @@ import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
 import CrawlerCheckPage from "./pages/CrawlerCheckPage";
 import NewsletterPage from "./pages/NewsletterPage";
-import ServicesPage from "./pages/ServicesPage";
-import ServicePage from "./pages/ServicePage";
 import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
@@ -69,8 +67,9 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/crawler-check" element={<CrawlerCheckPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/:slug" element={<ServicePage />} />
+            {/* Services pages removed — redirect to home */}
+            <Route path="/services" element={<Navigate to="/" replace />} />
+            <Route path="/services/:slug" element={<Navigate to="/" replace />} />
             <Route path="/admin/leads" element={<LeadsAdminPage />} />
 
 
