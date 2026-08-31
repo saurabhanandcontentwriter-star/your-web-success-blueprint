@@ -6,34 +6,21 @@ const TARGET = new Date("2026-09-05T00:00:00").getTime();
 
 const useCountdown = () => {
   const [t, setT] = useState(() => Math.max(0, TARGET - Date.now()));
-
   useEffect(() => {
-    const i = setInterval(
-      () => setT(Math.max(0, TARGET - Date.now())),
-      1000
-    );
+    const i = setInterval(() => setT(Math.max(0, TARGET - Date.now())), 1000);
     return () => clearInterval(i);
   }, []);
-
   const d = Math.floor(t / 86400000);
   const h = Math.floor((t % 86400000) / 3600000);
   const m = Math.floor((t % 3600000) / 60000);
   const s = Math.floor((t % 60000) / 1000);
-
   return { d, h, m, s };
 };
 
-const GDGS = [
-  "GDG Ranchi",
-  "GDG Delhi",
-  "GDG Noida",
-  "GDG Gurugram",
-  "GDG Patna"
-];
+const GDGS = ["GDG Ranchi", "GDG Delhi", "GDG Noida", "GDG Gurugram", "GDG Patna"];
 
 const DevFestSection = () => {
   const { d, h, m, s } = useCountdown();
-
   const boxes = [
     { label: "Days", v: d },
     { label: "Hours", v: h },
@@ -59,23 +46,12 @@ const DevFestSection = () => {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
-              Google{" "}
-              <span className="gradient-text">
-                DevFest Ranchi 2026
-              </span>
+              Google <span className="gradient-text">DevFest Ranchi 2026</span>
             </h2>
 
             <p className="text-muted-foreground max-w-2xl mb-2">
-              Expected{" "}
-              <strong className="text-foreground">
-                5 September 2026
-              </strong>
-              {" "}at{" "}
-              <strong className="text-foreground">
-                BIT Mesra Auditorium
-              </strong>
-              . Official date coming soon — join early to get speaker slots,
-              sponsorships, and community access.
+              Expected <strong className="text-foreground">5 September 2026</strong> at{" "}
+              <strong className="text-foreground">BIT Mesra Auditorium</strong>. Official date coming soon — join early to get speaker slots, sponsorships, and community access.
             </p>
 
             <motion.div
@@ -128,7 +104,6 @@ const DevFestSection = () => {
               <p className="text-xs text-muted-foreground mb-3 uppercase tracking-widest">
                 Community Highlights
               </p>
-
               <div className="flex flex-wrap gap-2">
                 {GDGS.map((g) => (
                   <span key={g} className="badge-glass">
