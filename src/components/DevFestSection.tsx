@@ -263,3 +263,5 @@ const DevFestSection = () => {
     </section>
   );
 };
+
+export default DevFestSection;
