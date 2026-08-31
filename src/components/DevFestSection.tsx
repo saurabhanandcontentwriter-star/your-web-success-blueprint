@@ -1,45 +1,26 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import {
-  Calendar,
-  Mic,
-  Users,
-  ArrowRight,
-  MapPin,
-} from "lucide-react";
+import { Calendar, Mic, Users, ArrowRight } from "lucide-react";
 
-const TARGET = new Date("2026-09-05T10:00:00+05:30").getTime();
+const TARGET = new Date("2026-09-05T00:00:00").getTime();
 
 const useCountdown = () => {
-  const [timeLeft, setTimeLeft] = useState(() =>
-    Math.max(0, TARGET - Date.now())
-  );
+  const [t, setT] = useState(() => Math.max(0, TARGET - Date.now()));
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(Math.max(0, TARGET - Date.now()));
-    }, 1000);
-
-    return () => clearInterval(interval);
+    const i = setInterval(
+      () => setT(Math.max(0, TARGET - Date.now())),
+      1000
+    );
+    return () => clearInterval(i);
   }, []);
 
-  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor(
-    (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
-  );
-  const seconds = Math.floor(
-    (timeLeft % (1000 * 60)) / 1000
-  );
+  const d = Math.floor(t / 86400000);
+  const h = Math.floor((t % 86400000) / 3600000);
+  const m = Math.floor((t % 3600000) / 60000);
+  const s = Math.floor((t % 60000) / 1000);
 
-  return {
-    days,
-    hours,
-    minutes,
-    seconds,
-  };
+  return { d, h, m, s };
 };
 
 const GDGS = [
@@ -47,216 +28,115 @@ const GDGS = [
   "GDG Delhi",
   "GDG Noida",
   "GDG Gurugram",
-  "GDG Patna",
+  "GDG Patna"
 ];
 
 const DevFestSection = () => {
-  const { days, hours, minutes, seconds } = useCountdown();
+  const { d, h, m, s } = useCountdown();
 
-  const countdownBoxes = [
-    {
-      label: "Days",
-      value: days,
-    },
-    {
-      label: "Hours",
-      value: hours,
-    },
-    {
-      label: "Minutes",
-      value: minutes,
-    },
-    {
-      label: "Seconds",
-      value: seconds,
-    },
+  const boxes = [
+    { label: "Days", v: d },
+    { label: "Hours", v: h },
+    { label: "Minutes", v: m },
+    { label: "Seconds", v: s },
   ];
 
   return (
     <section id="devfest" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="glass-card relative overflow-hidden border border-primary/30 p-8 md:p-12">
-
-          {/* Background Glow */}
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-
-          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+        <div className="glass-card p-8 md:p-12 border-primary/30 relative overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl" />
 
           <div className="relative">
-
-            {/* Event Status */}
-            <div className="mb-4 flex flex-wrap items-center gap-3">
-              <span className="badge-glass flex items-center gap-2 border-primary/40">
-                <Calendar size={14} className="text-primary" />
-                Upcoming Event
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="badge-glass border-primary/40">
+                <Calendar size={14} className="text-primary" /> Upcoming Event
               </span>
-
               <span className="badge-glass border-accent/40 text-accent">
                 5 September 2026
               </span>
             </div>
 
-            {/* Title */}
-            <h2 className="mb-3 text-3xl font-display font-bold md:text-5xl">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
               Google{" "}
               <span className="gradient-text">
                 DevFest Ranchi 2026
               </span>
             </h2>
 
-            {/* Description */}
-            <p className="mb-6 max-w-2xl text-muted-foreground">
-              Join developers, students, tech enthusiasts, speakers,
-              and community leaders for DevFest Ranchi 2026 — a day
-              focused on technology, learning, networking, innovation,
-              and community.
+            <p className="text-muted-foreground max-w-2xl mb-2">
+              Expected{" "}
+              <strong className="text-foreground">
+                5 September 2026
+              </strong>
+              {" "}at{" "}
+              <strong className="text-foreground">
+                BIT Mesra Auditorium
+              </strong>
+              . Official date coming soon — join early to get speaker slots,
+              sponsorships, and community access.
             </p>
 
-            {/* Date & Location */}
-            <div className="flex flex-wrap gap-4">
-
-              {/* Date */}
-              <div className="glass-card flex items-center gap-3 border border-primary/20 p-4">
-                <Calendar
-                  size={22}
-                  className="shrink-0 text-primary"
-                />
-
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Date
-                  </p>
-
-                  <p className="font-semibold">
-                    5 September 2026
-                  </p>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="glass-card flex items-center gap-3 border border-accent/20 p-4">
-                <MapPin
-                  size={22}
-                  className="shrink-0 text-accent"
-                />
-
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Venue
-                  </p>
-
-                  <p className="font-semibold">
-                    BIT Mesra Auditorium
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Countdown */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mt-8 grid max-w-xl grid-cols-4 gap-3 md:gap-4"
+              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-8"
             >
-              {countdownBoxes.map((box) => (
+              {boxes.map((b) => (
                 <div
-                  key={box.label}
-                  className="glass-card border border-primary/20 p-4 text-center"
+                  key={b.label}
+                  className="glass-card p-4 text-center border-primary/20"
                 >
-                  <p className="tabular-nums text-2xl font-display font-bold gradient-text md:text-4xl">
-                    {String(box.value).padStart(2, "0")}
+                  <p className="text-2xl md:text-4xl font-display font-bold gradient-text tabular-nums">
+                    {String(b.v).padStart(2, "0")}
                   </p>
-
-                  <p className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {box.label}
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">
+                    {b.label}
                   </p>
                 </div>
               ))}
             </motion.div>
 
-            {/* Buttons */}
-            <div className="mt-8 flex flex-wrap gap-3">
-
-              {/* Register */}
+            <div className="flex flex-wrap gap-3 mt-8">
               <a
                 href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Register Interest
-                <ArrowRight size={15} />
+                Register Interest <ArrowRight size={15} />
               </a>
 
-              {/* Speaker */}
               <a
                 href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Speaker%20Application"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-3 text-sm font-medium transition-colors hover:bg-primary/10"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-sm font-medium hover:bg-primary/10 transition-colors"
               >
-                <Mic size={15} />
-                Become a Speaker
+                <Mic size={15} /> Become a Speaker
               </a>
 
-              {/* GDG */}
               <a
                 href="https://gdg.community.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium transition-colors hover:bg-secondary"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
               >
-                <Users size={15} />
-                Join GDG Ranchi
+                <Users size={15} /> Join GDG Ranchi
               </a>
-
             </div>
 
-            {/* Venue Information */}
-            <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-5">
-              <div className="flex items-start gap-3">
-
-                <MapPin
-                  size={22}
-                  className="mt-1 shrink-0 text-primary"
-                />
-
-                <div>
-                  <p className="mb-1 text-xs uppercase tracking-widest text-muted-foreground">
-                    Event Venue
-                  </p>
-
-                  <h3 className="text-lg font-semibold">
-                    BIT Mesra Auditorium
-                  </h3>
-
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Birla Institute of Technology, Mesra, Ranchi,
-                    Jharkhand, India
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Community Highlights */}
-            <div className="mt-10 border-t border-border/40 pt-6">
-
-              <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">
+            <div className="mt-10 pt-6 border-t border-border/40">
+              <p className="text-xs text-muted-foreground mb-3 uppercase tracking-widest">
                 Community Highlights
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {GDGS.map((gdg) => (
-                  <span
-                    key={gdg}
-                    className="badge-glass"
-                  >
-                    {gdg}
+                {GDGS.map((g) => (
+                  <span key={g} className="badge-glass">
+                    {g}
                   </span>
                 ))}
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
