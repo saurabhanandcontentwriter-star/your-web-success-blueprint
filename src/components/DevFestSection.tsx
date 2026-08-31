@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Calendar, Mic, Users, ArrowRight } from "lucide-react";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
-
 const useCountdown = () => {
   const [t, setT] = useState(() => Math.max(0, TARGET - Date.now()));
 
