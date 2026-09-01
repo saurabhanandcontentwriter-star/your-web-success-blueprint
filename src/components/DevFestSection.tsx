@@ -62,25 +62,39 @@ const DevFestSection = () => {
             <div className="flex flex-wrap items-center gap-3 mb-4">
 
               <span className="badge-glass border-primary/40">
-                <Calendar size={14} className="text-primary" /> Upcoming Event
+                <Calendar size={14} className="text-primary" /> 📅 Upcoming Event
               </span>
 
               <span className="badge-glass border-accent/40 text-accent">
-                5 September 2026
+                🗓️ 5 September 2026
               </span>
 
               <span className="badge-glass border-border/60">
-                <MapPin size={14} className="text-accent" /> BIT Mesra Auditorium, Ranchi
+                <MapPin size={14} className="text-accent" /> 📍 BIT Mesra Auditorium, Ranchi
               </span>
 
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
-              Google{" "}
-              <span className="gradient-text">
-                DevFest Ranchi 2026
-              </span>
-            </h2>
+            <div className="flex items-center gap-3 mb-3">
+              <svg
+                className="w-10 h-10 md:w-12 md:h-12 shrink-0"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Google Developers logo"
+              >
+                <circle cx="12" cy="12" r="6" fill="#4285F4" />
+                <circle cx="36" cy="12" r="6" fill="#EA4335" />
+                <circle cx="12" cy="36" r="6" fill="#FBBC05" />
+                <circle cx="36" cy="36" r="6" fill="#34A853" />
+              </svg>
+              <h2 className="text-3xl md:text-5xl font-display font-bold">
+                Google{" "}
+                <span className="gradient-text">
+                  DevFest Ranchi 2026
+                </span>
+              </h2>
+            </div>
 
             <p className="text-muted-foreground max-w-2xl mb-2">
               Join us on{" "}
