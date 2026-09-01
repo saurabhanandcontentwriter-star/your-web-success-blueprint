@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight } from "lucide-react";
+import { Calendar, Mic, Users, ArrowRight, MapPin } from "lucide-react";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
 const useCountdown = () => {
@@ -29,6 +29,13 @@ const GDGS = [
   "GDG Noida",
   "GDG Gurugram",
   "GDG Patna"
+];
+
+const FOCUS_AREAS = [
+  "Google Technologies",
+  "AI & Gemini",
+  "Cloud",
+  "Developer Ecosystem",
 ];
 
 const DevFestSection = () => {
