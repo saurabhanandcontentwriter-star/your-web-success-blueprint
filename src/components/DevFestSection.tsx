@@ -70,7 +70,7 @@ const DevFestSection = () => {
               </span>
 
               <span className="badge-glass border-border/60">
-                <MapPin size={14} className="text-accent" /> BIT Mesra, Ranchi
+                <MapPin size={14} className="text-accent" /> BIT Mesra Auditorium, Ranchi
               </span>
 
             </div>
@@ -89,7 +89,7 @@ const DevFestSection = () => {
               </strong>{" "}
               at{" "}
               <strong className="text-foreground">
-                BIT Mesra, Ranchi
+                BIT Mesra Auditorium, Ranchi
               </strong>{" "}
               for a full day of Google technologies, AI, Cloud, and the
               developer ecosystem — talks, workshops, networking, and community
