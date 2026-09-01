@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight } from "lucide-react";
+import { Calendar, Mic, Users, ArrowRight, MapPin } from "lucide-react";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
 const useCountdown = () => {
@@ -29,6 +29,13 @@ const GDGS = [
   "GDG Noida",
   "GDG Gurugram",
   "GDG Patna"
+];
+
+const FOCUS_AREAS = [
+  "Google Technologies",
+  "AI & Gemini",
+  "Cloud",
+  "Developer Ecosystem",
 ];
 
 const DevFestSection = () => {
@@ -62,6 +69,10 @@ const DevFestSection = () => {
                 5 September 2026
               </span>
 
+              <span className="badge-glass border-border/60">
+                <MapPin size={14} className="text-accent" /> BIT Mesra, Ranchi
+              </span>
+
             </div>
 
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-3">
@@ -72,17 +83,28 @@ const DevFestSection = () => {
             </h2>
 
             <p className="text-muted-foreground max-w-2xl mb-2">
-              Expected{" "}
+              Join us on{" "}
               <strong className="text-foreground">
                 5 September 2026
               </strong>{" "}
               at{" "}
               <strong className="text-foreground">
-                BIT Mesra Auditorium
-              </strong>
-              . Official date coming soon — join early to get speaker slots,
-              sponsorships, and community access.
+                BIT Mesra, Ranchi
+              </strong>{" "}
+              for a full day of Google technologies, AI, Cloud, and the
+              developer ecosystem — talks, workshops, networking, and community
+              magic.
             </p>
+
+            <div className="flex flex-wrap gap-2 mb-2">
+
+              {FOCUS_AREAS.map((f) => (
+                <span key={f} className="badge-glass">
+                  {f}
+                </span>
+              ))}
+
+            </div>
 
             <motion.div
               initial={{ opacity: 0 }}
