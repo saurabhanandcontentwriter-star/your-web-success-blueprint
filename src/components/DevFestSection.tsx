@@ -125,6 +125,25 @@ const DevFestSection = () => {
 
             </div>
 
+            <motion.figure
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-8 rounded-2xl overflow-hidden border border-primary/20 relative"
+            >
+              <img
+                src={bitMesraImg}
+                alt="BIT Mesra Ranchi campus building — venue for Google DevFest Ranchi 2026"
+                loading="lazy"
+                width={1536}
+                height={1024}
+                className="w-full h-56 md:h-80 object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent px-4 py-3 text-xs md:text-sm text-foreground">
+                📍 BIT Mesra Auditorium, Ranchi — Google DevFest 2026 · Community 2.0
+              </figcaption>
+            </motion.figure>
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
