@@ -74,6 +74,10 @@ const DevFestSection = () => {
                 <MapPin size={14} className="text-accent" /> 📍 BIT Mesra Auditorium, Ranchi
               </span>
 
+              <span className="badge-glass border-accent/40">
+                <Sparkles size={14} className="text-primary" /> 🚀 Community 2.0
+              </span>
+
             </div>
 
             <div className="flex items-center gap-3 mb-3">
