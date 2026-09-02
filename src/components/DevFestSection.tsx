@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight, MapPin } from "lucide-react";
+import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
 const useCountdown = () => {
@@ -73,6 +74,10 @@ const DevFestSection = () => {
                 <MapPin size={14} className="text-accent" /> 📍 BIT Mesra Auditorium, Ranchi
               </span>
 
+              <span className="badge-glass border-accent/40">
+                <Sparkles size={14} className="text-primary" /> 🚀 Community 2.0
+              </span>
+
             </div>
 
             <div className="flex items-center gap-3 mb-3">
@@ -119,6 +124,25 @@ const DevFestSection = () => {
               ))}
 
             </div>
+
+            <motion.figure
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-8 rounded-2xl overflow-hidden border border-primary/20 relative"
+            >
+              <img
+                src={bitMesraImg}
+                alt="BIT Mesra Ranchi campus building — venue for Google DevFest Ranchi 2026"
+                loading="lazy"
+                width={1536}
+                height={1024}
+                className="w-full h-56 md:h-80 object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent px-4 py-3 text-xs md:text-sm text-foreground">
+                📍 BIT Mesra Auditorium, Ranchi — Google DevFest 2026 · Community 2.0
+              </figcaption>
+            </motion.figure>
 
             <motion.div
               initial={{ opacity: 0 }}
