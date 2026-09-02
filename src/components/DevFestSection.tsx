@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight, MapPin } from "lucide-react";
+import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
 const useCountdown = () => {
