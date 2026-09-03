@@ -10,9 +10,9 @@ import { logLead } from "@/lib/leadLog";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
-  { label: "Experience", path: "/experience" },
+  { label: "Projects", path: "/portfolio" },
   { label: "Skills", path: "/skills" },
-  { label: "Portfolio", path: "/portfolio" },
+  { label: "Experience", path: "/experience" },
   { label: "Gallery", path: "/gallery" },
   { label: "Education", path: "/education" },
   { label: "Now", path: "/now" },

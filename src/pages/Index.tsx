@@ -4,6 +4,7 @@ import CredibilityStrip from "@/components/CredibilityStrip";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import ExperienceSection from "@/components/ExperienceSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import SelectedWork from "@/components/SelectedWork";
 import DataAnalyticsSection from "@/components/DataAnalyticsSection";
 import AIPortfolioCategories from "@/components/AIPortfolioCategories";
 import VibeCodingSection from "@/components/VibeCodingSection";
@@ -111,6 +112,7 @@ const Index = () => {
     <CredibilityStrip />
     <ToolsMarquee />
     <AIPortfolioCategories />
+    <SelectedWork />
     <ExperienceSection />
     <PortfolioSection />
     <DataAnalyticsSection />
