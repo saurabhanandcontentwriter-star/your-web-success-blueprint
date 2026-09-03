@@ -66,16 +66,20 @@ const HeroSection = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1]">
-            <span className="gradient-text">Data Analyst</span>
-            <span className="text-muted-foreground font-light"> • </span>
-            <span>SEO &amp; Digital Marketing</span>
-            <span className="text-muted-foreground font-light"> • </span>
-            <span className="gradient-text">AI Growth</span>
+          <p className="text-[11px] md:text-xs uppercase tracking-[0.35em] text-muted-foreground">Saurabh Anand</p>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.05] tracking-tight">
+            <span className="gradient-text">SEO</span>
+            <span className="text-muted-foreground font-light"> × </span>
+            <span>AI</span>
+            <span className="text-muted-foreground font-light"> × </span>
+            <span className="gradient-text">DATA</span>
+            <span className="text-muted-foreground font-light"> × </span>
+            <span>WEB</span>
           </h1>
 
           <p className="text-lg md:text-xl font-display text-foreground/90">
-            Turning Data Into Insights and Driving Growth Through Analytics, SEO, and AI.
+            SEO Executive | AI &amp; Data Enthusiast | Digital Growth Professional
           </p>
 
           <div className="h-8 text-lg md:text-xl font-display text-foreground/90">
@@ -85,15 +89,15 @@ const HeroSection = () => {
           </div>
 
           <p className="text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed">
-            Data Analyst and Digital Marketing professional turning raw data into business insights using Excel, SQL, Python, Power BI, Tableau, GA4 and AI — while scaling brands through SEO, content strategy and performance marketing.
+            Building search-driven digital experiences with SEO, AI, analytics and modern web technologies.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <Link to="/portfolio" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground font-medium text-sm hover:opacity-90 transition-all hover:shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.5)]">
-              View Portfolio <ArrowRight size={16} />
-            </Link>
+            <a href="#selected-work" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground font-medium text-sm hover:opacity-90 transition-all hover:shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.5)]">
+              View My Work <ArrowRight size={16} />
+            </a>
             <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity">
-              Hire Me
+              Let&apos;s Connect
             </Link>
             <a href="#vibe-coding" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-foreground font-medium text-sm hover:bg-primary/10 transition-colors">
               <Sparkles size={15} /> Explore AI Projects
@@ -105,6 +109,8 @@ const HeroSection = () => {
               Download Resume <Download size={15} />
             </a>
           </div>
+
+          <p className="pt-2 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">SEO • AI • DATA • WEB</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative flex justify-center">

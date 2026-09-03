@@ -27,16 +27,18 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const STORAGE_KEY = "sa_chat_history_v1";
 
 const SUGGESTED = [
-  "What does Saurabh do?",
-  "Tell me about his AI SEO experience",
-  "How can I hire him?",
-  "What is GEO / LLM optimization?",
+  "Who is Saurabh?",
+  "Show projects",
+  "SEO skills",
+  "AI & Data skills",
+  "CampusSphere AI",
+  "Contact",
 ];
 
 const WELCOME: Msg = {
   role: "assistant",
   content:
-    "Hi! 👋 I'm Saurabh's AI assistant. Ask me about his AI SEO, GEO, LLM optimization, vibe coding, automation work — or how to hire him.",
+    "Hi! I'm Saurabh's portfolio assistant. Ask me anything about his skills, projects or experience.",
 };
 
 // ---- Speech Recognition (typed loosely; browser-vendored) ----
@@ -276,7 +278,7 @@ const AIChatWidget = () => {
                 {/* Premium 3D AI avatar */}
                 <AIAvatar state={avatarState} size={36} />
                 <div className="min-w-0">
-                  <p className="text-sm font-display font-semibold truncate">Saurabh's AI Assistant</p>
+                  <p className="text-sm font-display font-semibold truncate">Saurabh AI</p>
                   <p className="text-[10px] text-muted-foreground truncate">
                     {loading ? "thinking…" : isSpeaking ? "speaking…" : listening ? "listening…" : "Voice + AI • Online"}
                   </p>
@@ -410,7 +412,7 @@ const AIChatWidget = () => {
             <div className="flex items-start gap-2.5">
               <AIAvatar state="idle" size={32} />
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-display font-semibold text-foreground">Saurabh&apos;s AI Assistant</p>
+                <p className="text-xs font-display font-semibold text-foreground">Saurabh AI</p>
                 <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-3 leading-relaxed">
                   {WELCOME.content}
                 </p>
