@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
+import campussphereImg from "@/assets/work-campussphere.jpg";
+import crazyseoImg from "@/assets/work-crazyseo.jpg";
+import adminCrmImg from "@/assets/work-admin-crm.jpg";
 
 interface Work {
   no: string;
@@ -10,6 +13,8 @@ interface Work {
   tech: string[];
   url?: string;
   cta: string;
+  image: string;
+  imageAlt: string;
 }
 
 const works: Work[] = [
