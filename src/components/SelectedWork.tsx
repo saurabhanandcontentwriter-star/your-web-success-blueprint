@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
+import campussphereImg from "@/assets/work-campussphere.jpg";
+import crazyseoImg from "@/assets/work-crazyseo.jpg";
+import adminCrmImg from "@/assets/work-admin-crm.jpg";
 
 interface Work {
   no: string;
@@ -10,6 +13,8 @@ interface Work {
   tech: string[];
   url?: string;
   cta: string;
+  image: string;
+  imageAlt: string;
 }
 
 const works: Work[] = [
@@ -23,6 +28,8 @@ const works: Work[] = [
     tech: ["AI", "EdTech", "Web Platform", "Automation", "Analytics"],
     url: "https://campus-ai-psi-eosin.vercel.app/",
     cta: "View Live Project",
+    image: campussphereImg,
+    imageAlt: "CampusSphere AI platform dashboard preview",
   },
   {
     no: "02",
@@ -34,6 +41,8 @@ const works: Work[] = [
     tech: ["Technical SEO", "Content", "Analytics", "Digital Growth"],
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
+    image: crazyseoImg,
+    imageAlt: "Crazy SEO Team website preview",
   },
   {
     no: "03",
@@ -44,6 +53,8 @@ const works: Work[] = [
       "A modern dashboard and CRM concept focused on administration, lead management, analytics, data visualization and workflow management.",
     tech: ["CRM", "Dashboards", "Data Visualization", "Workflows"],
     cta: "Private / Demo Project",
+    image: adminCrmImg,
+    imageAlt: "Admin Dashboard and CRM analytics interface preview",
   },
 ];
 
