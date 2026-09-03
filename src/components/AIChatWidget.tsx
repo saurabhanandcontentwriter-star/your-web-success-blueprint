@@ -280,7 +280,7 @@ const AIChatWidget = () => {
                 <div className="min-w-0">
                   <p className="text-sm font-display font-semibold truncate">Saurabh AI</p>
                   <p className="text-[10px] text-muted-foreground truncate">
-                    {loading ? "thinking…" : isSpeaking ? "speaking…" : listening ? "listening…" : "Voice + AI • Online"}
+                    {loading ? "thinking…" : isSpeaking ? "speaking…" : listening ? "listening…" : "Portfolio Assistant"}
                   </p>
                 </div>
               </div>
