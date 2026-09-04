@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
+// project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import crazyseoImg from "@/assets/work-crazyseo.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
@@ -58,47 +59,6 @@ const works: Work[] = [
   },
 ];
 
-/** Illustrative dashboard preview — all figures are demonstration data. */
-const DashboardPreview = () => (
-  <div className="w-full h-full p-4 sm:p-6 flex flex-col gap-3 bg-gradient-to-br from-secondary/40 to-background">
-    <div className="flex items-center justify-between">
-      <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Demo data</p>
-      <div className="flex gap-1">
-        {["", "", ""].map((_, i) => (
-          <span key={i} className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
-        ))}
-      </div>
-    </div>
-    <div className="grid grid-cols-3 gap-2">
-      {[
-        { l: "Leads", v: "1,248" },
-        { l: "Conversion", v: "4.6%" },
-        { l: "Pipeline", v: "₹8.2L" },
-      ].map((k) => (
-        <div key={k.l} className="glass-card p-3">
-          <p className="text-[10px] text-muted-foreground">{k.l}</p>
-          <p className="text-sm font-display font-semibold">{k.v}</p>
-        </div>
-      ))}
-    </div>
-    <div className="glass-card p-3 flex-1 flex items-end gap-1.5" aria-hidden="true">
-      {[35, 55, 42, 70, 60, 85, 74, 92, 66, 80].map((h, i) => (
-        <span
-          key={i}
-          className="flex-1 rounded-t bg-gradient-to-t from-primary/40 to-accent/70"
-          style={{ height: `${h}%` }}
-        />
-      ))}
-    </div>
-    <div className="grid grid-cols-2 gap-2">
-      {["Lead pipeline", "User management", "CRM activity", "Recent activity"].map((t) => (
-        <div key={t} className="glass-card px-3 py-2 text-[11px] text-muted-foreground">
-          {t}
-        </div>
-      ))}
-    </div>
-  </div>
-);
 
 const SelectedWork = () => (
   <section id="selected-work" className="py-24 scroll-mt-24" aria-labelledby="selected-work-title">
@@ -123,15 +83,14 @@ const SelectedWork = () => (
           >
             <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <div className="relative min-h-[220px] lg:min-h-[320px] overflow-hidden">
-                {w.no === "03" ? (
-                  <DashboardPreview />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/15 via-background to-accent/15 transition-transform duration-700 group-hover:scale-[1.04]">
-                    <span className="font-display font-bold text-4xl md:text-6xl tracking-tight gradient-text text-center px-6">
-                      {w.kicker}
-                    </span>
-                  </div>
-                )}
+                <img
+                  src={w.image}
+                  alt={w.imageAlt}
+                  width={1280}
+                  height={800}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
               </div>
 
               <div className="p-6 md:p-10 flex flex-col justify-center gap-4">
