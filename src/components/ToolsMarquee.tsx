@@ -4,7 +4,41 @@ import {
   Bot,
   Workflow,
   BarChart3,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
+
+/** Running flash strip: brand logo + "AI × GROWTH" ticker. */
+const FlashStrip = () => {
+  const items = Array.from({ length: 8 });
+  return (
+    <div
+      className="relative overflow-hidden border-y border-border/40 bg-secondary/30 py-3 mb-12"
+      aria-hidden="true"
+    >
+      <div className="marquee-track flex w-max items-center gap-10 whitespace-nowrap">
+        {[...items, ...items].map((_, i) => (
+          <span key={i} className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt=""
+              width={28}
+              height={28}
+              loading="lazy"
+              className="w-7 h-7 rounded-full border border-primary/40 object-cover"
+            />
+            <span className="font-display font-bold text-sm md:text-base tracking-[0.25em] uppercase gradient-text">
+              AI × Growth
+            </span>
+            <Sparkles size={14} className="text-primary" />
+            <TrendingUp size={14} className="text-accent" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const categories = [
   {
