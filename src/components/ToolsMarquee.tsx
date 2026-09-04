@@ -99,6 +99,7 @@ const categories = [
 
 const ToolsMarquee = () => (
   <section className="py-16 border-y border-border/40">
+    <FlashStrip />
     <div className="container mx-auto px-6">
       <p className="section-label text-center mb-2">Stack</p>
       <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-12">
