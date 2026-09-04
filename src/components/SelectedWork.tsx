@@ -83,15 +83,14 @@ const SelectedWork = () => (
           >
             <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <div className="relative min-h-[220px] lg:min-h-[320px] overflow-hidden">
-                {w.no === "03" ? (
-                  <DashboardPreview />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/15 via-background to-accent/15 transition-transform duration-700 group-hover:scale-[1.04]">
-                    <span className="font-display font-bold text-4xl md:text-6xl tracking-tight gradient-text text-center px-6">
-                      {w.kicker}
-                    </span>
-                  </div>
-                )}
+                <img
+                  src={w.image}
+                  alt={w.imageAlt}
+                  width={1280}
+                  height={800}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
               </div>
 
               <div className="p-6 md:p-10 flex flex-col justify-center gap-4">
