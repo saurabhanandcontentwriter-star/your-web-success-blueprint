@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
 // project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
-import crazyseoImg from "@/assets/work-crazyseo.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
+import crazyseoSite from "@/assets/crazyseo-site.png.asset.json";
+import crazyseoLogo from "@/assets/crazyseo-logo.png.asset.json";
 
 interface Work {
   no: string;
