@@ -49,10 +49,10 @@ const DevFestSection = () => {
   const { d, h, m, s, phase } = useCountdown();
 
   const boxes = [
-    { label: "Days", v: d },
-    { label: "Hours", v: h },
-    { label: "Minutes", v: m },
-    { label: "Seconds", v: s },
+    { label: "Days", v: 0 },
+    { label: "Hours", v: 0 },
+    { label: "Minutes", v: 0 },
+    { label: "Seconds", v: 0 },
   ];
 
   const statusBadge =
