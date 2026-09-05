@@ -73,6 +73,11 @@ const BentoSection = () => (
         className="mb-12 max-w-2xl"
       >
         <p className="section-label mb-3">The Intersection</p>
+        <img
+          src={logo}
+          alt="Saurabh Anand logo"
+          className="mb-5 h-14 w-14 rounded-2xl border border-border/50 object-cover shadow-[0_0_30px_hsl(var(--primary)/0.35)]"
+        />
         <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.05]">
           SEO <span className="text-muted-foreground">×</span> AI{" "}
           <span className="text-muted-foreground">×</span> DATA{" "}
