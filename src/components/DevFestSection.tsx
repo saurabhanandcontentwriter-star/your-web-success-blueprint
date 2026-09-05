@@ -83,7 +83,7 @@ const DevFestSection = () => {
             <div className="flex flex-wrap items-center gap-3 mb-4">
 
               <span className="badge-glass border-primary/40">
-                <Calendar size={14} className="text-primary" /> 📅 Upcoming Event
+                <Calendar size={14} className="text-primary" /> {statusBadge}
               </span>
 
               <span className="badge-glass border-accent/40 text-accent">
