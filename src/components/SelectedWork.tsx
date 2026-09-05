@@ -43,8 +43,9 @@ const works: Work[] = [
     tech: ["Technical SEO", "Content", "Analytics", "Digital Growth"],
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
-    image: crazyseoImg,
-    imageAlt: "Crazy SEO Team website preview",
+    image: crazyseoSite.url,
+    imageAlt: "Crazy SEO Team website preview — Rank Higher. Grow Faster.",
+    logo: crazyseoLogo.url,
   },
   {
     no: "03",
