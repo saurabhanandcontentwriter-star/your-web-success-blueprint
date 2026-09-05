@@ -121,18 +121,44 @@ const DevFestSection = () => {
               </h2>
             </div>
 
-            <p className="text-muted-foreground max-w-2xl mb-2">
-              Join us on{" "}
-              <strong className="text-foreground">
-                5 September 2026
-              </strong>{" "}
-              at{" "}
-              <strong className="text-foreground">
-                BIT Mesra Auditorium, Ranchi
-              </strong>{" "}
-              for a full day of Google technologies, AI, Cloud, and the
-              developer ecosystem — talks, workshops, networking, and community
-              magic.
+            <p className="text-muted-foreground max-w-2xl mb-4">
+              {phase === "past" ? (
+                <>
+                  Google DevFest Ranchi 2026 took place on{" "}
+                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>
+                  . Thank you to everyone who joined the sessions on Google
+                  technologies, AI and Gemini, Cloud and the wider developer
+                  ecosystem.
+                </>
+              ) : phase === "live" ? (
+                <>
+                  DevFest Ranchi 2026 is happening{" "}
+                  <strong className="text-foreground">today</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>{" "}
+                  — a full day of Google technologies, AI, Cloud, talks,
+                  workshops and community networking.
+                </>
+              ) : (
+                <>
+                  Join us on{" "}
+                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>{" "}
+                  for a full day of Google technologies, AI, Cloud, and the
+                  developer ecosystem — talks, workshops, networking, and
+                  community magic.
+                </>
+              )}
+            </p>
+
+            <p className="text-sm text-muted-foreground max-w-2xl mb-2">
+              <strong className="text-foreground">About Google DevFest:</strong>{" "}
+              DevFest is the largest annual community-led developer conference
+              series, organised worldwide by Google Developer Groups (GDG).
+              Every edition brings developers, students, designers and founders
+              together for hands-on sessions on Android, Web, Cloud, Firebase,
+              Flutter and AI with Gemini — led by GDG organisers, Google
+              Developer Experts and local tech leaders.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-2">
