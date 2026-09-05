@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
 // project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
-import crazyseoImg from "@/assets/work-crazyseo.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
+import crazyseoSite from "@/assets/crazyseo-site.png.asset.json";
+import crazyseoLogo from "@/assets/crazyseo-logo.png.asset.json";
 
 interface Work {
   no: string;
@@ -16,6 +17,7 @@ interface Work {
   cta: string;
   image: string;
   imageAlt: string;
+  logo?: string;
 }
 
 const works: Work[] = [
@@ -42,8 +44,9 @@ const works: Work[] = [
     tech: ["Technical SEO", "Content", "Analytics", "Digital Growth"],
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
-    image: crazyseoImg,
-    imageAlt: "Crazy SEO Team website preview",
+    image: crazyseoSite.url,
+    imageAlt: "Crazy SEO Team website preview — Rank Higher. Grow Faster.",
+    logo: crazyseoLogo.url,
   },
   {
     no: "03",
@@ -91,6 +94,16 @@ const SelectedWork = () => (
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
+                {w.logo && (
+                  <img
+                    src={w.logo}
+                    alt={`${w.name} logo`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    className="absolute bottom-4 left-4 w-14 h-14 rounded-full border border-border/60 bg-background/80 backdrop-blur-sm object-cover shadow-lg"
+                  />
+                )}
               </div>
 
               <div className="p-6 md:p-10 flex flex-col justify-center gap-4">
