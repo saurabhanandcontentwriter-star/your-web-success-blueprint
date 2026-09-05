@@ -9,6 +9,7 @@ import {
   Gauge,
   Layers,
 } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
 /**
  * SaaS-style bento grid: modular capability tiles that summarise the
