@@ -4,24 +4,30 @@ import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react
 import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
+const EVENT_END = TARGET + 86400000; // auto-switches 24 hours after the event starts
+
+type Phase = "upcoming" | "live" | "past";
+
+const getPhase = (now: number): Phase =>
+  now < TARGET ? "upcoming" : now < EVENT_END ? "live" : "past";
+
 const useCountdown = () => {
-  const [t, setT] = useState(() => Math.max(0, TARGET - Date.now()));
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    const i = setInterval(
-      () => setT(Math.max(0, TARGET - Date.now())),
-      1000
-    );
-
+    const i = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(i);
   }, []);
+
+  const phase = getPhase(now);
+  const t = Math.max(0, (phase === "live" ? EVENT_END : TARGET) - now);
 
   const d = Math.floor(t / 86400000);
   const h = Math.floor((t % 86400000) / 3600000);
   const m = Math.floor((t % 3600000) / 60000);
   const s = Math.floor((t % 60000) / 1000);
 
-  return { d, h, m, s };
+  return { d, h, m, s, phase };
 };
 
 const GDGS = [
@@ -40,7 +46,7 @@ const FOCUS_AREAS = [
 ];
 
 const DevFestSection = () => {
-  const { d, h, m, s } = useCountdown();
+  const { d, h, m, s, phase } = useCountdown();
 
   const boxes = [
     { label: "Days", v: d },
@@ -48,6 +54,20 @@ const DevFestSection = () => {
     { label: "Minutes", v: m },
     { label: "Seconds", v: s },
   ];
+
+  const statusBadge =
+    phase === "upcoming"
+      ? "📅 Upcoming Event"
+      : phase === "live"
+      ? "🔴 Happening Today"
+      : "✅ Event Completed";
+
+  const countdownLabel =
+    phase === "upcoming"
+      ? "Countdown to DevFest Ranchi 2026"
+      : phase === "live"
+      ? "Live now — time left today"
+      : null;
 
   return (
     <section id="devfest" className="py-24">
@@ -63,7 +83,7 @@ const DevFestSection = () => {
             <div className="flex flex-wrap items-center gap-3 mb-4">
 
               <span className="badge-glass border-primary/40">
-                <Calendar size={14} className="text-primary" /> 📅 Upcoming Event
+                <Calendar size={14} className="text-primary" /> {statusBadge}
               </span>
 
               <span className="badge-glass border-accent/40 text-accent">
@@ -101,18 +121,44 @@ const DevFestSection = () => {
               </h2>
             </div>
 
-            <p className="text-muted-foreground max-w-2xl mb-2">
-              Join us on{" "}
-              <strong className="text-foreground">
-                5 September 2026
-              </strong>{" "}
-              at{" "}
-              <strong className="text-foreground">
-                BIT Mesra Auditorium, Ranchi
-              </strong>{" "}
-              for a full day of Google technologies, AI, Cloud, and the
-              developer ecosystem — talks, workshops, networking, and community
-              magic.
+            <p className="text-muted-foreground max-w-2xl mb-4">
+              {phase === "past" ? (
+                <>
+                  Google DevFest Ranchi 2026 took place on{" "}
+                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>
+                  . Thank you to everyone who joined the sessions on Google
+                  technologies, AI and Gemini, Cloud and the wider developer
+                  ecosystem.
+                </>
+              ) : phase === "live" ? (
+                <>
+                  DevFest Ranchi 2026 is happening{" "}
+                  <strong className="text-foreground">today</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>{" "}
+                  — a full day of Google technologies, AI, Cloud, talks,
+                  workshops and community networking.
+                </>
+              ) : (
+                <>
+                  Join us on{" "}
+                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>{" "}
+                  for a full day of Google technologies, AI, Cloud, and the
+                  developer ecosystem — talks, workshops, networking, and
+                  community magic.
+                </>
+              )}
+            </p>
+
+            <p className="text-sm text-muted-foreground max-w-2xl mb-2">
+              <strong className="text-foreground">About Google DevFest:</strong>{" "}
+              DevFest is the largest annual community-led developer conference
+              series, organised worldwide by Google Developer Groups (GDG).
+              Every edition brings developers, students, designers and founders
+              together for hands-on sessions on Android, Web, Cloud, Firebase,
+              Flutter and AI with Gemini — led by GDG organisers, Google
+              Developer Experts and local tech leaders.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-2">
@@ -144,11 +190,17 @@ const DevFestSection = () => {
               </figcaption>
             </motion.figure>
 
+            {countdownLabel && (
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-8 mb-3">
+                {countdownLabel}
+              </p>
+            )}
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-8"
+              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-3"
             >
 
               {boxes.map((b) => (
@@ -170,20 +222,30 @@ const DevFestSection = () => {
 
             </motion.div>
 
+            {phase === "past" && (
+              <p className="mt-4 text-sm text-muted-foreground">
+                Stay tuned for highlights and photos from DevFest Ranchi 2026.
+              </p>
+            )}
+
             <div className="flex flex-wrap gap-3 mt-8">
 
               <a
-                href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
+                href={
+                  phase === "past"
+                    ? "mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Event%20Highlights"
+                    : "mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
+                }
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Register Interest <ArrowRight size={15} />
+                {phase === "past" ? "Get Event Highlights" : phase === "live" ? "Join Now" : "Register Interest"} <ArrowRight size={15} />
               </a>
 
               <a
                 href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Speaker%20Application"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-sm font-medium hover:bg-primary/10 transition-colors"
               >
-                <Mic size={15} /> Become a Speaker
+                <Mic size={15} /> {phase === "past" ? "Share Feedback" : "Become a Speaker"}
               </a>
 
               <a
