@@ -231,17 +231,21 @@ const DevFestSection = () => {
             <div className="flex flex-wrap gap-3 mt-8">
 
               <a
-                href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
+                href={
+                  phase === "past"
+                    ? "mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Event%20Highlights"
+                    : "mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
+                }
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Register Interest <ArrowRight size={15} />
+                {phase === "past" ? "Get Event Highlights" : phase === "live" ? "Join Now" : "Register Interest"} <ArrowRight size={15} />
               </a>
 
               <a
                 href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Speaker%20Application"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-sm font-medium hover:bg-primary/10 transition-colors"
               >
-                <Mic size={15} /> Become a Speaker
+                <Mic size={15} /> {phase === "past" ? "Share Feedback" : "Become a Speaker"}
               </a>
 
               <a
