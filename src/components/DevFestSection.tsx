@@ -46,7 +46,7 @@ const FOCUS_AREAS = [
 ];
 
 const DevFestSection = () => {
-  const { d, h, m, s } = useCountdown();
+  const { d, h, m, s, phase } = useCountdown();
 
   const boxes = [
     { label: "Days", v: d },
@@ -54,6 +54,20 @@ const DevFestSection = () => {
     { label: "Minutes", v: m },
     { label: "Seconds", v: s },
   ];
+
+  const statusBadge =
+    phase === "upcoming"
+      ? "📅 Upcoming Event"
+      : phase === "live"
+      ? "🔴 Happening Today"
+      : "✅ Event Completed";
+
+  const countdownLabel =
+    phase === "upcoming"
+      ? "Countdown to DevFest Ranchi 2026"
+      : phase === "live"
+      ? "Live now — time left today"
+      : null;
 
   return (
     <section id="devfest" className="py-24">
