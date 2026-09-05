@@ -4,24 +4,30 @@ import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react
 import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
+const EVENT_END = TARGET + 86400000; // auto-switches 24 hours after the event starts
+
+type Phase = "upcoming" | "live" | "past";
+
+const getPhase = (now: number): Phase =>
+  now < TARGET ? "upcoming" : now < EVENT_END ? "live" : "past";
+
 const useCountdown = () => {
-  const [t, setT] = useState(() => Math.max(0, TARGET - Date.now()));
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    const i = setInterval(
-      () => setT(Math.max(0, TARGET - Date.now())),
-      1000
-    );
-
+    const i = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(i);
   }, []);
+
+  const phase = getPhase(now);
+  const t = Math.max(0, (phase === "live" ? EVENT_END : TARGET) - now);
 
   const d = Math.floor(t / 86400000);
   const h = Math.floor((t % 86400000) / 3600000);
   const m = Math.floor((t % 3600000) / 60000);
   const s = Math.floor((t % 60000) / 1000);
 
-  return { d, h, m, s };
+  return { d, h, m, s, phase };
 };
 
 const GDGS = [
