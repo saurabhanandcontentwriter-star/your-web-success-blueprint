@@ -17,6 +17,7 @@ interface Work {
   cta: string;
   image: string;
   imageAlt: string;
+  logo?: string;
 }
 
 const works: Work[] = [
@@ -93,6 +94,16 @@ const SelectedWork = () => (
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
+                {w.logo && (
+                  <img
+                    src={w.logo}
+                    alt={`${w.name} logo`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    className="absolute bottom-4 left-4 w-14 h-14 rounded-full border border-border/60 bg-background/80 backdrop-blur-sm object-cover shadow-lg"
+                  />
+                )}
               </div>
 
               <div className="p-6 md:p-10 flex flex-col justify-center gap-4">
