@@ -190,11 +190,17 @@ const DevFestSection = () => {
               </figcaption>
             </motion.figure>
 
+            {countdownLabel && (
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-8 mb-3">
+                {countdownLabel}
+              </p>
+            )}
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-8"
+              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-3"
             >
 
               {boxes.map((b) => (
@@ -215,6 +221,12 @@ const DevFestSection = () => {
               ))}
 
             </motion.div>
+
+            {phase === "past" && (
+              <p className="mt-4 text-sm text-muted-foreground">
+                Stay tuned for highlights and photos from DevFest Ranchi 2026.
+              </p>
+            )}
 
             <div className="flex flex-wrap gap-3 mt-8">
 
