@@ -68,7 +68,7 @@ const DevFestSection = () => {
               </span>
 
               <span className="badge-glass border-accent/40 text-accent">
-                🗓️ 5 September 2026
+                🗓️ 31st October 2026
               </span>
 
               <span className="badge-glass border-border/60">
