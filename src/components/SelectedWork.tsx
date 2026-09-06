@@ -16,8 +16,10 @@ interface Work {
   url?: string;
   cta: string;
   image: string;
+  fallbackImage?: string;
   imageAlt: string;
   logo?: string;
+  logoFallback?: string;
 }
 
 const works: Work[] = [
@@ -45,8 +47,10 @@ const works: Work[] = [
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
     image: crazyseoSite,
+    fallbackImage: workCrazyseoImg,
     imageAlt: "Crazy SEO Team website preview — Rank Higher. Grow Faster.",
     logo: crazyseoLogo,
+    logoFallback: workCrazyseoImg,
   },
   {
     no: "03",
@@ -93,6 +97,10 @@ const SelectedWork = () => (
                   height={800}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  onError={(event) => {
+                    if (!w.fallbackImage || event.currentTarget.src.endsWith(w.fallbackImage)) return;
+                    event.currentTarget.src = w.fallbackImage;
+                  }}
                 />
                 {w.logo && (
                   <img
@@ -102,6 +110,10 @@ const SelectedWork = () => (
                     height={56}
                     loading="lazy"
                     className="absolute bottom-4 left-4 w-14 h-14 rounded-full border border-border/60 bg-background/80 backdrop-blur-sm object-cover shadow-lg"
+                    onError={(event) => {
+                      if (!w.logoFallback || event.currentTarget.src.endsWith(w.logoFallback)) return;
+                      event.currentTarget.src = w.logoFallback;
+                    }}
                   />
                 )}
               </div>
