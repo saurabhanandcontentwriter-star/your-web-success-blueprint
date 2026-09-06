@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles, X, Info } from "lucide-react";
 import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
@@ -11,24 +11,7 @@ type Phase = "upcoming" | "live" | "past";
 const getPhase = (now: number): Phase =>
   now < TARGET ? "upcoming" : now < EVENT_END ? "live" : "past";
 
-const useCountdown = () => {
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const i = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(i);
-  }, []);
-
-  const phase = getPhase(now);
-  const t = Math.max(0, (phase === "live" ? EVENT_END : TARGET) - now);
-
-  const d = Math.floor(t / 86400000);
-  const h = Math.floor((t % 86400000) / 3600000);
-  const m = Math.floor((t % 3600000) / 60000);
-  const s = Math.floor((t % 60000) / 1000);
-
-  return { d, h, m, s, phase };
-};
+const currentPhase = getPhase(Date.now());
 
 const GDGS = [
   "GDG Ranchi",
@@ -45,15 +28,20 @@ const FOCUS_AREAS = [
   "Developer Ecosystem",
 ];
 
-const DevFestSection = () => {
-  const { d, h, m, s, phase } = useCountdown();
+const ABOUT_DEVFEST = {
+  title: "About Google DevFest Ranchi 2026",
+  body: `DevFest is the largest annual community-led developer conference series organised worldwide by Google Developer Groups (GDG). DevFest Ranchi 2026 brings developers, students, designers, founders and tech enthusiasts together for a full day of learning, networking and hands-on inspiration.
 
-  const boxes = [
-    { label: "Days", v: 0 },
-    { label: "Hours", v: 0 },
-    { label: "Minutes", v: 0 },
-    { label: "Seconds", v: 0 },
-  ];
+In 2026 the event lands at BIT Mesra Auditorium, Ranchi on 5 September 2026 with the theme “Community 2.0” — a celebration of the next chapter of GDG communities in Jharkhand and beyond.
+
+Expect deep-dive sessions on Android, Web, Cloud, Firebase, Flutter and AI with Gemini; live demos; speaker stories; networking breaks; and community-led workshops led by GDG organisers, Google Developer Experts and local tech leaders.
+
+Whether you are building your first app, scaling a startup, or exploring AI and agentic workflows, DevFest Ranchi is the place to learn, share and grow with the Google developer ecosystem.`
+};
+
+const DevFestSection = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const phase = currentPhase;
 
   const statusBadge =
     phase === "upcoming"
@@ -61,13 +49,6 @@ const DevFestSection = () => {
       : phase === "live"
       ? "🔴 Happening Today"
       : "✅ Event Completed";
-
-  const countdownLabel =
-    phase === "upcoming"
-      ? "Countdown to DevFest Ranchi 2026"
-      : phase === "live"
-      ? "Live now — time left today"
-      : null;
 
   return (
     <section id="devfest" className="py-24">
@@ -190,37 +171,16 @@ const DevFestSection = () => {
               </figcaption>
             </motion.figure>
 
-            {countdownLabel && (
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-8 mb-3">
-                {countdownLabel}
-              </p>
-            )}
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-4 gap-3 md:gap-4 max-w-xl mt-3"
+              onClick={() => setShowPopup(true)}
+              className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 text-sm font-medium hover:bg-primary/10 transition-colors cursor-pointer"
+              aria-label="Open About DevFest popup"
             >
-
-              {boxes.map((b) => (
-                <div
-                  key={b.label}
-                  className="glass-card p-4 text-center border-primary/20"
-                >
-
-                  <p className="text-2xl md:text-4xl font-display font-bold gradient-text tabular-nums">
-                    {String(b.v).padStart(2, "0")}
-                  </p>
-
-                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">
-                    {b.label}
-                  </p>
-
-                </div>
-              ))}
-
-            </motion.div>
+              <Info size={16} className="text-primary" /> About DevFest
+            </motion.button>
 
             {phase === "past" && (
               <p className="mt-4 text-sm text-muted-foreground">
@@ -280,6 +240,85 @@ const DevFestSection = () => {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+            onClick={() => setShowPopup(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="devfest-popup-title"
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              onClick={(e) => e.stopPropagation()}
+              className="glass-card w-full max-w-2xl max-h-[85vh] overflow-y-auto border-primary/30 p-6 md:p-10 relative"
+            >
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-secondary transition-colors"
+                aria-label="Close About DevFest popup"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="flex items-center gap-3 mb-4">
+                <svg
+                  className="w-8 h-8 md:w-10 md:h-10 shrink-0"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Google Developers logo"
+                >
+                  <circle cx="12" cy="12" r="6" fill="#4285F4" />
+                  <circle cx="36" cy="12" r="6" fill="#EA4335" />
+                  <circle cx="12" cy="36" r="6" fill="#FBBC05" />
+                  <circle cx="36" cy="36" r="6" fill="#34A853" />
+                </svg>
+                <h3 id="devfest-popup-title" className="text-2xl md:text-3xl font-display font-bold">
+                  {ABOUT_DEVFEST.title}
+                </h3>
+              </div>
+
+              <div className="space-y-4 text-muted-foreground leading-relaxed whitespace-pre-line">
+                {ABOUT_DEVFEST.body.split("\n\n").map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {FOCUS_AREAS.map((f) => (
+                  <span key={f} className="badge-glass">
+                    {f}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="mailto:saurabhanandseo@gmail.com?subject=DevFest%20Ranchi%202026%20-%20Registration%20Interest"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  Register Interest <ArrowRight size={15} />
+                </a>
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
