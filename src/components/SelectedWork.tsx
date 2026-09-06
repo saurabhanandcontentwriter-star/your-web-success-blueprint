@@ -3,8 +3,8 @@ import { ArrowUpRight, Lock } from "lucide-react";
 // project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
-import crazyseoSite from "@/assets/crazyseo-site.png.asset.json";
-import crazyseoLogo from "@/assets/crazyseo-logo.png.asset.json";
+import crazyseoSite from "@/assets/crazyseo-site.png";
+import crazyseoLogo from "@/assets/crazyseo-logo.jpg";
 
 interface Work {
   no: string;
