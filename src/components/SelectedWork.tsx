@@ -3,8 +3,8 @@ import { ArrowUpRight, Lock } from "lucide-react";
 // project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
-import crazyseoSite from "@/assets/crazyseo-site.png.asset.json";
-import crazyseoLogo from "@/assets/crazyseo-logo.png.asset.json";
+import crazyseoSite from "@/assets/crazyseo-site.png";
+import crazyseoLogo from "@/assets/crazyseo-logo.jpg";
 
 interface Work {
   no: string;
@@ -44,9 +44,9 @@ const works: Work[] = [
     tech: ["Technical SEO", "Content", "Analytics", "Digital Growth"],
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
-    image: crazyseoSite.url,
+    image: crazyseoSite,
     imageAlt: "Crazy SEO Team website preview — Rank Higher. Grow Faster.",
-    logo: crazyseoLogo.url,
+    logo: crazyseoLogo,
   },
   {
     no: "03",
