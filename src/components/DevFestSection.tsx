@@ -106,7 +106,7 @@ const DevFestSection = () => {
               {phase === "past" ? (
                 <>
                   Google DevFest Ranchi 2026 took place on{" "}
-                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">31st October 2026</strong> at{" "}
                   <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>
                   . Thank you to everyone who joined the sessions on Google
                   technologies, AI and Gemini, Cloud and the wider developer
