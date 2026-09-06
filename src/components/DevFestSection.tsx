@@ -30,10 +30,14 @@ const FOCUS_AREAS = [
 
 const ABOUT_DEVFEST = {
   title: "About Google DevFest Ranchi 2026",
-  body: `DevFest is the largest annual community-led developer conference series organised worldwide by Google Developer Groups (GDG). DevFest Ranchi 2026 brings developers, students, designers, founders and tech enthusiasts together for a full day of learning, networking and hands-on inspiration.
+  body: `Google DevFest Ranchi 2026 is coming soon to BIT Mesra Auditorium, Ranchi on 31st October 2026, bringing developers, students, designers, founders and tech enthusiasts together for a full day of learning, networking and innovation.
 
-Google DevFest Ranchi 2026 is coming soon on 31st October 2026 at BIT Mesra Auditorium, Ranchi. Join developers, students, designers, and technology enthusiasts for engaging sessions on Google technologies, AI & Gemini, Cloud, and the wider developer ecosystem. Get ready to learn, connect, and explore the latest innovations together.
+DevFest is the largest annual community-led developer conference series organised worldwide by Google Developer Groups (GDG). The 2026 edition of DevFest Ranchi follows the theme “Community 2.0” — celebrating the next chapter of GDG communities in Jharkhand and beyond.
 
+Attendees can look forward to deep-dive sessions on Android, Web, Cloud, Firebase, Flutter and AI with Gemini; live demos; expert talks; networking opportunities; and community-led workshops featuring GDG organisers, Google Developer Experts and local technology leaders.
+
+Whether you are building your first app, scaling a startup, or exploring AI and agentic workflows, DevFest Ranchi 2026 is an opportunity to learn, connect, share ideas and grow with the Google developer ecosystem. Get ready for an exciting community-driven technology experience.`
+};
 const DevFestSection = () => {
   const [showPopup, setShowPopup] = useState(false);
   const phase = currentPhase;
