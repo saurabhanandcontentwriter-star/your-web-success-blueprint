@@ -122,7 +122,7 @@ const DevFestSection = () => {
               ) : (
                 <>
                   Join us on{" "}
-                  <strong className="text-foreground">5 September 2026</strong> at{" "}
+                  <strong className="text-foreground">31st October 2026</strong> at{" "}
                   <strong className="text-foreground">BIT Mesra Auditorium, Ranchi</strong>{" "}
                   for a full day of Google technologies, AI, Cloud, and the
                   developer ecosystem — talks, workshops, networking, and
