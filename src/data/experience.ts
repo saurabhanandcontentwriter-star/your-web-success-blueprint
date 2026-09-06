@@ -13,7 +13,7 @@ export interface Job {
 export const jobs: Job[] = [
   {
     slug: "tripzygo-seo-executive",
-    period: "Mar 2024 – Present",
+    period: "Mar 2024 – Aug 2026",
     title: "SEO Executive",
     company: "TripzyGo",
     favicon: "https://www.google.com/s2/favicons?domain=tripzygo.in&sz=64",
