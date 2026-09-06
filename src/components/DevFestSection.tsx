@@ -48,7 +48,7 @@ const DevFestSection = () => {
       ? "📅 Upcoming Event"
       : phase === "live"
       ? "🔴 Happening Today"
-      : "✅ Event Completed";
+      : "✅ 🚀 Coming Soon";
 
   return (
     <section id="devfest" className="py-24">
