@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Calendar, Mic, Users, ArrowRight, MapPin, Sparkles, X, Info } from "lucide-react";
 import bitMesraImg from "@/assets/devfest-bit-mesra.jpg";
 
 const TARGET = new Date("2026-09-05T00:00:00").getTime();
@@ -11,24 +11,7 @@ type Phase = "upcoming" | "live" | "past";
 const getPhase = (now: number): Phase =>
   now < TARGET ? "upcoming" : now < EVENT_END ? "live" : "past";
 
-const useCountdown = () => {
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const i = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(i);
-  }, []);
-
-  const phase = getPhase(now);
-  const t = Math.max(0, (phase === "live" ? EVENT_END : TARGET) - now);
-
-  const d = Math.floor(t / 86400000);
-  const h = Math.floor((t % 86400000) / 3600000);
-  const m = Math.floor((t % 3600000) / 60000);
-  const s = Math.floor((t % 60000) / 1000);
-
-  return { d, h, m, s, phase };
-};
+const currentPhase = getPhase(Date.now());
 
 const GDGS = [
   "GDG Ranchi",
