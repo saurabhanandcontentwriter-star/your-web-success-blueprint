@@ -3,6 +3,7 @@ import { ArrowUpRight, Lock } from "lucide-react";
 // project images imported below
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
+import workCrazyseoImg from "@/assets/work-crazyseo.jpg";
 import crazyseoSite from "@/assets/crazyseo-site.png";
 import crazyseoLogo from "@/assets/crazyseo-logo.jpg";
 
