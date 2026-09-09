@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, type MouseEvent } from "react";
 import heroImg from "@/assets/hero-portrait.png";
 import "@/styles/home-hero.css";
+import "@/styles/hero-modern.css";
 
 const ROLES = [
   "Data Analyst",
