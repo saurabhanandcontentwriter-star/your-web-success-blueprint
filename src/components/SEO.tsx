@@ -4,47 +4,43 @@ interface SEOProps {
   title: string;
   description: string;
   path?: string;
-  /** If true, use the title as-is (no " | Saurabh Anand" suffix). */
   isHome?: boolean;
-  /** Optional comma-separated keywords. */
   keywords?: string;
-  /** Optional JSON-LD structured data object. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
-  /** Override OG image (absolute or root-relative path). */
   image?: string;
-  /** Keep the page out of search results. */
   noindex?: boolean;
 }
-
 
 const BASE_URL = "https://saurabhanandseo.com";
 const DEFAULT_IMAGE = "/og-thumbnail.jpg";
 
-const SEO = ({
-  title,
-  description,
-  path = "",
-  isHome = false,
-  keywords,
-  jsonLd,
-  image = DEFAULT_IMAGE,
-  noindex = false,
-}: SEOProps) => {
+const SEO = ({ title, description, path = "", isHome = false, keywords, jsonLd, image = DEFAULT_IMAGE, noindex = false }: SEOProps) => {
   const url = `${BASE_URL}${path}`;
   const fullTitle = isHome ? title : `${title} | Saurabh Anand`;
   const imageUrl = image.startsWith("http") ? image : `${BASE_URL}${image}`;
+  const defaultLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: fullTitle,
+    description,
+    url,
+    isPartOf: { "@type": "WebSite", name: "Saurabh Anand", url: BASE_URL },
+    about: { "@type": "Person", name: "Saurabh Anand", url: `${BASE_URL}/about` },
+  };
+  const ldItems = Array.isArray(jsonLd) ? [defaultLd, ...jsonLd] : jsonLd ? [defaultLd, jsonLd] : [defaultLd];
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
-      {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content="Saurabh Anand" />
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
+      <link rel="alternate" type="text/plain" href={`${BASE_URL}/llms.txt`} title="LLM-readable site information" />
 
-
-      {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={fullTitle} />
@@ -53,15 +49,12 @@ const SEO = ({
       <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content="Saurabh Anand Portfolio" />
 
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
 
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
+      <script type="application/ld+json">{JSON.stringify(ldItems)}</script>
     </Helmet>
   );
 };
