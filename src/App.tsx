@@ -28,12 +28,12 @@ import AuroraBackground from "./components/AuroraBackground";
 import AIChatWidget from "./components/AIChatWidget";
 import WebsiteTour from "./components/WebsiteTour";
 import StickyHireMe from "./components/StickyHireMe";
-
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import NewsletterPopup from "./components/NewsletterPopup";
 import { ThemeProvider } from "./components/ThemeProvider";
 import LeadsAdminPage from "./pages/LeadsAdminPage";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
+import "@/styles/site-3d.css";
 
 const queryClient = new QueryClient();
 
@@ -52,34 +52,31 @@ const App = () => (
           <BrowserRouter>
             <AuroraBackground />
             <VisitorTracker />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/experience" element={<ExperiencePage />} />
-              <Route path="/experience/:slug" element={<ExperienceRolePage />} />
-              <Route path="/skills" element={<SkillsPage />} />
-              <Route path="/now" element={<NowPage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
-              <Route path="/gallery" element={<GalleryPage />} />
-              <Route path="/gallery/:slug" element={<GalleryEventPage />} />
-              <Route path="/education" element={<EducationPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/crawler-check" element={<CrawlerCheckPage />} />
-              <Route path="/newsletter" element={<NewsletterPage />} />
-              <Route path="/devfest-ranchi" element={<DevFestRanchiPage />} />
-              {/* Services pages removed — redirect to home */}
-              <Route path="/services" element={<Navigate to="/" replace />} />
-              <Route path="/services/:slug" element={<Navigate to="/" replace />} />
-              <Route path="/admin/leads" element={<LeadsAdminPage />} />
-
-              {/* Common typo redirects */}
-              <Route path="/experince" element={<Navigate to="/experience" replace />} />
-              <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
-
-              {/* 404 fallback */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <div className="site-3d-shell">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/experience" element={<ExperiencePage />} />
+                <Route path="/experience/:slug" element={<ExperienceRolePage />} />
+                <Route path="/skills" element={<SkillsPage />} />
+                <Route path="/now" element={<NowPage />} />
+                <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
+                <Route path="/gallery" element={<GalleryPage />} />
+                <Route path="/gallery/:slug" element={<GalleryEventPage />} />
+                <Route path="/education" element={<EducationPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/crawler-check" element={<CrawlerCheckPage />} />
+                <Route path="/newsletter" element={<NewsletterPage />} />
+                <Route path="/devfest-ranchi" element={<DevFestRanchiPage />} />
+                <Route path="/services" element={<Navigate to="/" replace />} />
+                <Route path="/services/:slug" element={<Navigate to="/" replace />} />
+                <Route path="/admin/leads" element={<LeadsAdminPage />} />
+                <Route path="/experince" element={<Navigate to="/experience" replace />} />
+                <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
             <MobileFab />
             <StickyHireMe />
             <AIChatWidget />
