@@ -16,6 +16,7 @@ const navLinks = [
   { label: "Gallery", path: "/gallery" },
   { label: "Education", path: "/education" },
   { label: "Now", path: "/now" },
+  { label: "DevFest", path: "/devfest-ranchi" },
 ];
 
 const Navbar = () => {
@@ -53,8 +54,12 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              {l.label}
+            <button
+              key={l.label}
+              onClick={() => handleNav(l)}
+              className={`text-sm transition-colors ${location.pathname === l.path ? "font-semibold text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {l.label === "DevFest" ? "🎉 DevFest" : l.label}
             </button>
           ))}
           <ContactDialog
@@ -81,8 +86,12 @@ const Navbar = () => {
       {open && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="md:hidden glass-card mx-4 mb-4 rounded-xl p-4 flex flex-col gap-3">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">
-              {l.label}
+            <button
+              key={l.label}
+              onClick={() => handleNav(l)}
+              className={`text-sm py-2 text-left transition-colors ${location.pathname === l.path ? "font-semibold text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {l.label === "DevFest" ? "🎉 DevFest Ranchi" : l.label}
             </button>
           ))}
           <ContactDialog
