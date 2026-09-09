@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, BrainCircuit, Code2, Layers3, MousePointer2, Search, Sparkles, Zap } from "lucide-react";
@@ -18,7 +18,7 @@ const PortfolioSection = () => {
 
   const filtered = activeTag === "All" ? projects : projects.filter((p) => p.tags.includes(activeTag));
 
-  const handlePointerMove = (event: React.MouseEvent<HTMLElement>) => {
+  const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setPointer({
       x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
@@ -32,7 +32,6 @@ const PortfolioSection = () => {
       <div className="portfolio-orb portfolio-orb-one" />
       <div className="portfolio-orb portfolio-orb-two" />
 
-      {/* 3D HERO */}
       <div className="container relative z-10 mx-auto px-6">
         <div className="grid min-h-[620px] items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
           <motion.div
@@ -90,22 +89,11 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* 3D SKILL CLOUD */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-5xl"
-        >
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mx-auto mb-20 max-w-5xl">
           <div className="mb-5 text-center text-xs font-semibold uppercase tracking-[.25em] text-muted-foreground">Core stack</div>
           <div className="portfolio-skill-cloud">
             {skills.map((skill, index) => (
-              <motion.div
-                key={skill}
-                animate={{ y: [0, index % 2 ? -8 : 8, 0], rotateZ: [0, index % 2 ? 1 : -1, 0] }}
-                transition={{ duration: 4 + index * .35, repeat: Infinity, ease: "easeInOut" }}
-                className="portfolio-skill-3d"
-              >
+              <motion.div key={skill} animate={{ y: [0, index % 2 ? -8 : 8, 0], rotateZ: [0, index % 2 ? 1 : -1, 0] }} transition={{ duration: 4 + index * .35, repeat: Infinity, ease: "easeInOut" }} className="portfolio-skill-3d">
                 <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary))]" />
                 {skill}
               </motion.div>
@@ -139,13 +127,13 @@ const PortfolioSection = () => {
               <motion.div key={p.title} layout initial={{ opacity: 0, y: 50, rotateX: 12 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} exit={{ opacity: 0, scale: .94, y: 20 }} transition={{ delay: i * .08, duration: .55, type: "spring", stiffness: 90 }} className="portfolio-card-3d group">
                 <Link to={`/portfolio/${p.slug}`} aria-label={`Open ${p.title} case study`} className="block h-full">
                   <div className="portfolio-card-glow" />
-                  <div className="relative h-60 overflow-hidden rounded-t-[1.35rem]">
-                    <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
+                  <div className="relative h-64 overflow-hidden rounded-t-[1.35rem] border border-white/10 bg-slate-950/80">
+                    <img src={p.image} alt={`${p.title} — ${p.company} portfolio project`} className="h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" loading={i < 3 ? "eager" : "lazy"} decoding="async" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                     <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-xl"><span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" /> Case Study</div>
                     <div className="absolute bottom-4 right-4 rounded-xl border border-white/20 bg-black/35 px-3 py-2 text-sm font-bold text-white backdrop-blur-xl">{p.stat}</div>
                   </div>
-                  <div className="relative flex h-[260px] flex-col rounded-b-[1.35rem] border-x border-b border-white/10 bg-card/75 p-6 backdrop-blur-2xl">
+                  <div className="relative flex min-h-[260px] flex-col rounded-b-[1.35rem] border-x border-b border-white/10 bg-card/75 p-6 backdrop-blur-2xl">
                     <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary/80">{p.company}</p>
                     <div className="flex items-start justify-between gap-4"><h3 className="text-xl font-display font-bold leading-tight">{p.title}</h3><span className="shrink-0 rounded-full border border-border/60 bg-background/40 p-2 text-muted-foreground transition group-hover:border-primary/40 group-hover:text-primary"><ArrowUpRight className="h-4 w-4" /></span></div>
                     <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">{p.description}</p>
