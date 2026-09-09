@@ -1,0 +1,15 @@
+/* Site-wide 3D visual system — existing assets only */
+.site-3d-shell{position:relative;isolation:isolate;perspective:1800px;transform-style:preserve-3d}
+.site-3d-shell section{transform-style:preserve-3d}
+.site-3d-shell .glass-card,.site-3d-shell article,.site-3d-shell [class*="card"]{transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;backface-visibility:hidden}
+.site-3d-shell .glass-card:hover,.site-3d-shell article:hover{transform:translateY(-7px) rotateX(1.2deg) rotateY(-1.2deg) translateZ(12px);box-shadow:0 28px 65px hsl(0 0% 0%/.25),0 0 35px hsl(var(--primary)/.12),inset 0 1px 0 hsl(0 0% 100%/.16)}
+.site-3d-shell .glass-card:before,.site-3d-shell article:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,hsl(0 0% 100%/.12),transparent 34%,transparent 68%,hsl(var(--primary)/.06));opacity:.7;z-index:0}
+.site-3d-shell img:not(nav img){transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .45s ease;transform:translateZ(22px);filter:saturate(1.05) contrast(1.04) drop-shadow(0 22px 30px hsl(0 0% 0%/.28))}
+.site-3d-shell .site-3d-image{position:relative;transform-style:preserve-3d;border-radius:1.5rem;overflow:hidden;border:1px solid hsl(0 0% 100%/.18);background:linear-gradient(145deg,hsl(var(--card)/.8),hsl(var(--card)/.35));box-shadow:0 28px 60px hsl(0 0% 0%/.35),0 0 32px hsl(var(--primary)/.12),inset 0 1px 0 hsl(0 0% 100%/.2);backdrop-filter:blur(16px)}
+.site-3d-shell .site-3d-image:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 25%,hsl(0 0% 100%/.15) 48%,transparent 62%);transform:translateX(-120%);transition:transform .7s ease}
+.site-3d-shell .site-3d-image:hover:after{transform:translateX(120%)}
+.site-3d-shell .site-3d-image:hover img{transform:translateZ(42px) scale(1.035) rotateY(-1deg);filter:saturate(1.12) contrast(1.06) drop-shadow(0 30px 35px hsl(0 0% 0%/.36))}
+.site-3d-shell .site-3d-float{animation:site-3d-float 6s ease-in-out infinite}
+@keyframes site-3d-float{0%,100%{transform:translateY(0) rotateX(0deg)}50%{transform:translateY(-8px) rotateX(1deg)}}
+@media(max-width:640px){.site-3d-shell .glass-card:hover,.site-3d-shell article:hover{transform:translateY(-4px) translateZ(5px)}.site-3d-shell .site-3d-image{border-radius:1.15rem}.site-3d-shell img:not(nav img){transform:translateZ(10px)}}
+@media(prefers-reduced-motion:reduce){.site-3d-shell *,.site-3d-shell *:before,.site-3d-shell *:after{animation:none!important;transition:none!important}}
