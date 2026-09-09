@@ -77,6 +77,12 @@ const HeroSection = () => {
             <div className="home-hero-stage absolute inset-0">
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
               <div className="home-hero-portrait-wrap"><img src={heroImg} alt="Saurabh Anand — Data Analyst, SEO and Digital Growth Professional" className="home-hero-portrait" /><div className="home-hero-portrait-shine" /></div>
+
+              <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" className="home-hero-gdg-badge" aria-label="Google Developer Groups community">
+                <img src="https://developers.google.com/static/program/images/gdp/community-1-gdg.svg" alt="Google Developer Groups" className="home-hero-gdg-logo" />
+                <span><strong>Google Developer Groups</strong><small>Community</small></span>
+              </a>
+
               <div className="home-hero-engine"><div className="home-hero-engine-icon"><BrainCircuit size={20} /></div><div><strong>GROWTH ENGINE</strong><span>AI · DATA · SEARCH · WEB</span></div></div>
               <div className="home-hero-chip chip-top-left"><Sparkles size={15} /> SEO</div><div className="home-hero-chip chip-top-right"><Bot size={15} /> AI</div><div className="home-hero-chip chip-bottom-right"><BrainCircuit size={15} /> DATA</div><div className="home-hero-chip chip-bottom-left"><Code2 size={15} /> CODE</div>
               <div className="home-hero-pointer"><MousePointer2 size={13} /> Move your cursor</div>
