@@ -21,6 +21,7 @@ import GalleryPage from "./pages/GalleryPage";
 import EducationPage from "./pages/EducationPage";
 import CrawlerCheckPage from "./pages/CrawlerCheckPage";
 import NewsletterPage from "./pages/NewsletterPage";
+import DevFestRanchiPage from "./pages/DevFestRanchiPage";
 import CookieConsent from "./components/CookieConsent";
 import MobileFab from "./components/MobileFab";
 import AuroraBackground from "./components/AuroraBackground";
@@ -45,52 +46,49 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AuroraBackground />
-          <VisitorTracker />
-          <Routes>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AuroraBackground />
+            <VisitorTracker />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/experience" element={<ExperiencePage />} />
+              <Route path="/experience/:slug" element={<ExperienceRolePage />} />
+              <Route path="/skills" element={<SkillsPage />} />
+              <Route path="/now" element={<NowPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/gallery/:slug" element={<GalleryEventPage />} />
+              <Route path="/education" element={<EducationPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/crawler-check" element={<CrawlerCheckPage />} />
+              <Route path="/newsletter" element={<NewsletterPage />} />
+              <Route path="/devfest-ranchi" element={<DevFestRanchiPage />} />
+              {/* Services pages removed — redirect to home */}
+              <Route path="/services" element={<Navigate to="/" replace />} />
+              <Route path="/services/:slug" element={<Navigate to="/" replace />} />
+              <Route path="/admin/leads" element={<LeadsAdminPage />} />
 
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/experience" element={<ExperiencePage />} />
-            <Route path="/experience/:slug" element={<ExperienceRolePage />} />
-            <Route path="/skills" element={<SkillsPage />} />
-            <Route path="/now" element={<NowPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/gallery/:slug" element={<GalleryEventPage />} />
-            <Route path="/education" element={<EducationPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/crawler-check" element={<CrawlerCheckPage />} />
-            <Route path="/newsletter" element={<NewsletterPage />} />
-            {/* Services pages removed — redirect to home */}
-            <Route path="/services" element={<Navigate to="/" replace />} />
-            <Route path="/services/:slug" element={<Navigate to="/" replace />} />
-            <Route path="/admin/leads" element={<LeadsAdminPage />} />
+              {/* Common typo redirects */}
+              <Route path="/experince" element={<Navigate to="/experience" replace />} />
+              <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
 
-
-
-            {/* Common typo redirects */}
-            <Route path="/experince" element={<Navigate to="/experience" replace />} />
-            <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
-
-            {/* 404 fallback */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <MobileFab />
-          <StickyHireMe />
-          
-          <AIChatWidget />
-          <WebsiteTour />
-          <ExitIntentPopup />
-          <NewsletterPopup />
-          <CookieConsent />
-        </BrowserRouter>
-      </TooltipProvider>
+              {/* 404 fallback */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <MobileFab />
+            <StickyHireMe />
+            <AIChatWidget />
+            <WebsiteTour />
+            <ExitIntentPopup />
+            <NewsletterPopup />
+            <CookieConsent />
+          </BrowserRouter>
+        </TooltipProvider>
       </ThemeProvider>
     </HelmetProvider>
   </QueryClientProvider>
