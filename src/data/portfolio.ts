@@ -21,7 +21,7 @@ export const projects: Project[] = [
     stat: "+120% Traffic",
     description: "A complete technical and content SEO overhaul for a travel booking platform.",
     tags: ["Technical SEO", "Content Strategy", "E-commerce"],
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=700&fit=crop",
+    image: "/portfolio/tripzygo-seo.svg",
     url: "https://www.tripzygo.in/",
     overview:
       "TripzyGo is a fast-growing travel booking platform offering curated holiday packages. The site needed a top-to-bottom SEO refresh to compete in a saturated travel niche.",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     stat: "+85% Leads",
     description: "Building a content engine that drives qualified leads with topic cluster strategy.",
     tags: ["Link Building", "Topic Clusters", "SaaS"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=700&fit=crop",
+    image: "/portfolio/guest-blogging-saas.svg",
     url: "https://guestbloggingtech.com/",
     overview:
       "A SaaS-focused outreach platform that needed authority content and a steady backlink pipeline to drive qualified demo requests.",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     stat: "+200% Visibility",
     description: "Optimized Google Business Profiles and localized content for 50+ locations.",
     tags: ["Local SEO", "GBP Optimization", "Scalable SEO"],
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=700&fit=crop",
+    image: "/portfolio/local-seo-gbp.svg",
     url: "https://crazyseoteam.in/",
     overview:
       "A multi-location retailer needed consistent local visibility across 50+ Google Business Profiles and city-specific landing pages.",
