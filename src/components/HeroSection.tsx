@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Bot, BrainCircuit, Code2, Download, Linkedin, MousePointer2, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState, type MouseEvent } from "react";
-import heroImg from "@/assets/hero-portrait.png";
 import "@/styles/home-hero.css";
 import "@/styles/hero-modern.css";
 
@@ -77,7 +76,7 @@ const HeroSection = () => {
           <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 0, scale: .88, rotateY: 8 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: .15 }} style={{ transform: `perspective(1200px) rotateX(${pointer.y * -3}deg) rotateY(${pointer.x * 5}deg)` }}>
             <div className="home-hero-stage absolute inset-0">
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
-              <div className="home-hero-portrait-wrap"><img src={heroImg} alt="Saurabh Anand — Data Analyst, SEO and Digital Growth Professional" className="home-hero-portrait" /><div className="home-hero-portrait-shine" /></div>
+              <div className="home-hero-portrait-wrap"><img src="/hero-replacement.svg" alt="Saurabh Anand — Data Analyst, SEO and Digital Growth Professional" className="home-hero-portrait" /><div className="home-hero-portrait-shine" /></div>
 
               <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" className="home-hero-gdg-badge" aria-label="Google Developer Groups community">
                 <img src="https://developers.google.com/static/program/images/gdp/community-1-gdg.svg" alt="Google Developer Groups" className="home-hero-gdg-logo" />
