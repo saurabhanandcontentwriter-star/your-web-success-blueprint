@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 import { logLead } from "@/lib/leadLog";
 
@@ -15,8 +14,8 @@ const StickyHireMe = () => {
       transition={{ delay: 1.2, type: "spring", stiffness: 220, damping: 22 }}
       className="hidden md:block fixed right-5 bottom-24 z-[50]"
     >
-      <Link
-        to="/contact"
+      <a
+        href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry"
         onClick={() => logLead({ event: "hire_click" })}
         className="group relative inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.6)] ring-1 ring-primary/40 hover:shadow-[0_15px_40px_-5px_hsl(var(--primary)/0.7)] transition-shadow"
         aria-label="Hire Saurabh Anand"
@@ -24,7 +23,7 @@ const StickyHireMe = () => {
         <span className="absolute inset-0 rounded-full bg-primary/30 blur-xl opacity-50 group-hover:opacity-80 transition-opacity -z-10" />
         <Sparkles size={16} />
         Hire Me
-      </Link>
+      </a>
     </motion.div>
   );
 };
