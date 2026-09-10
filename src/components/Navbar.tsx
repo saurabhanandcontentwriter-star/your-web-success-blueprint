@@ -70,7 +70,7 @@ const Navbar = () => {
             }
           />
           <ThemeToggle />
-          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Hire Me
           </a>
         </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
               </button>
             }
           />
-          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandseo@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">
+          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">
             Hire Me
           </a>
         </motion.div>
