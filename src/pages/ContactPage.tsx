@@ -15,7 +15,7 @@ const ContactPage = () => {
     mainEntity: {
       "@type": "Person",
       name: "Saurabh Anand",
-      email: "mailto:saurabhanandseo@gmail.com",
+      email: "saurabhanandshahi@gmail.com",
       sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     },
   };
