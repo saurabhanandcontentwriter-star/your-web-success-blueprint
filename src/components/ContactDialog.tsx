@@ -14,7 +14,7 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Contact from ${form.name}`);
     const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.name} (${form.email})`);
-    window.location.href = `mailto:saurabhanandseo@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:saurabhanandshahi@gmail.com?subject=${subject}&body=${body}`;
     setForm({ name: "", email: "", message: "" });
     setOpen(false);
   };
@@ -28,7 +28,7 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
         </DialogHeader>
         <div className="space-y-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> New Delhi, India</div>
-          <a href="mailto:saurabhanandseo@gmail.com" className="flex items-center gap-2 hover:text-foreground"><Mail size={16} className="text-primary" /> saurabhanandseo@gmail.com</a>
+          <a href="mailto:saurabhanandshahi@gmail.com" className="flex items-center gap-2 hover:text-foreground"><Mail size={16} className="text-primary" /> saurabhanandshahi@gmail.com</a>
           <a href="https://www.linkedin.com/in/saurabhanandseo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground"><Linkedin size={16} className="text-primary" /> LinkedIn</a>
         </div>
         <form onSubmit={handleSubmit} className="space-y-3 pt-2">
