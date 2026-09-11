@@ -95,6 +95,24 @@ const HeroSection = () => {
           <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 1, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .15 }}>
             <div className="home-hero-stage absolute inset-0" style={{ transform: `perspective(1400px) rotateX(${rotation.x + pointer.y * -2}deg) rotateY(${rotation.y + pointer.x * 4}deg)` }} onPointerDown={startDrag} onPointerMove={dragMove} onPointerUp={endDrag} onPointerCancel={endDrag}>
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
+
+              <div className="home-hero-orbit-logo orbit-google" aria-label="Google Developer Groups">
+                <img src="https://developers.google.com/static/program/images/gdp/community-1-gdg.svg" alt="Google Developer Groups" />
+                <span>Google Developer</span>
+              </div>
+              <div className="home-hero-orbit-logo orbit-linkedin" aria-label="LinkedIn Creator">
+                <Linkedin size={25} />
+                <span>LinkedIn Creator</span>
+              </div>
+              <div className="home-hero-orbit-logo orbit-seo" aria-label="SEO">
+                <Sparkles size={25} />
+                <span>SEO</span>
+              </div>
+              <div className="home-hero-orbit-logo orbit-ai" aria-label="AI Automation">
+                <Bot size={25} />
+                <span>AI Automation</span>
+              </div>
+
               <div className="home-hero-portrait-wrap"><img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand - SEO, AI Growth and Google Developer Groups" className="home-hero-portrait" loading="eager" fetchPriority="high" draggable="false" /><div className="home-hero-portrait-shine" /></div>
 
               <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" className="home-hero-gdg-badge" aria-label="Google Developer Groups community">
