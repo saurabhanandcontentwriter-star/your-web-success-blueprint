@@ -73,7 +73,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-3 max-w-xl pt-3">{[["SEO", "Search systems"], ["AI", "Automation"], ["DATA", "Decision intelligence"]].map(([title, sub]) => <div key={title} className="home-hero-mini-card"><span>{title}</span><small>{sub}</small></div>)}</div>
           </motion.div>
 
-          <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: .88, scale: .88, rotateY: 8 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: .15 }} style={{ transform: `perspective(1200px) rotateX(${pointer.y * -3}deg) rotateY(${pointer.x * 5}deg)` }}>
+          <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 1, scale: .88, rotateY: 8 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: .15 }} style={{ transform: `perspective(1200px) rotateX(${pointer.y * -3}deg) rotateY(${pointer.x * 5}deg)` }}>
             <div className="home-hero-stage absolute inset-0">
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
               <div className="home-hero-portrait-wrap"><img src="/hero-replacement.svg" alt="Saurabh Anand - SEO, AI Growth and Google Developer Groups" className="home-hero-portrait" loading="eager" fetchPriority="high" /><div className="home-hero-portrait-shine" /></div>
