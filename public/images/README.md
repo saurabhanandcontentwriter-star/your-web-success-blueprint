@@ -1,0 +1,1 @@
+Hero image asset is managed as a binary WebP file in this directory.
