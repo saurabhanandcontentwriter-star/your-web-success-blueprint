@@ -36,6 +36,7 @@ import LeadsAdminPage from "./pages/LeadsAdminPage";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
 import "@/styles/site-3d.css";
 import "@/styles/floating-logo-rails.css";
+import "@/styles/hero-hd.css";
 
 const queryClient = new QueryClient();
 
