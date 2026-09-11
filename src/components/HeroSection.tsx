@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Bot, BrainCircuit, Code2, Download, Linkedin, MousePointer2, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import "@/styles/home-hero.css";
 import "@/styles/hero-modern.css";
 
@@ -36,11 +36,27 @@ const useTyped = () => {
 const HeroSection = () => {
   const typed = useTyped();
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const dragStart = useRef<{ x: number; y: number; rx: number; ry: number } | null>(null);
+
   const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setPointer({ x: ((event.clientX - rect.left) / rect.width - 0.5) * 2, y: ((event.clientY - rect.top) / rect.height - 0.5) * 2 });
   };
   const handlePointerLeave = () => setPointer({ x: 0, y: 0 });
+
+  const startDrag = (event: MouseEvent<HTMLDivElement>) => {
+    dragStart.current = { x: event.clientX, y: event.clientY, rx: rotation.x, ry: rotation.y };
+    event.currentTarget.setPointerCapture?.(event.nativeEvent as unknown as number);
+  };
+  const dragMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (!dragStart.current) return;
+    setRotation({
+      x: Math.max(-18, Math.min(18, dragStart.current.rx - (event.clientY - dragStart.current.y) * 0.22)),
+      y: dragStart.current.ry + (event.clientX - dragStart.current.x) * 0.35,
+    });
+  };
+  const endDrag = () => { dragStart.current = null; };
 
   return (
     <section className="home-hero-3d relative min-h-[100svh] flex items-center overflow-hidden pt-24 pb-16" onMouseMove={handlePointerMove} onMouseLeave={handlePointerLeave}>
@@ -73,10 +89,10 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-3 max-w-xl pt-3">{[["SEO", "Search systems"], ["AI", "Automation"], ["DATA", "Decision intelligence"]].map(([title, sub]) => <div key={title} className="home-hero-mini-card"><span>{title}</span><small>{sub}</small></div>)}</div>
           </motion.div>
 
-          <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 1, scale: .88, rotateY: 8 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: .15 }} style={{ transform: `perspective(1200px) rotateX(${pointer.y * -3}deg) rotateY(${pointer.x * 5}deg)` }}>
-            <div className="home-hero-stage absolute inset-0">
+          <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 1, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .15 }}>
+            <div className="home-hero-stage absolute inset-0" style={{ transform: `perspective(1400px) rotateX(${rotation.x + pointer.y * -2}deg) rotateY(${rotation.y + pointer.x * 4}deg)` }} onMouseDown={startDrag} onMouseMove={dragMove} onMouseUp={endDrag} onMouseLeave={endDrag}>
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
-              <div className="home-hero-portrait-wrap"><img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand - SEO, AI Growth and Google Developer Groups" className="home-hero-portrait" loading="eager" fetchPriority="high" /><div className="home-hero-portrait-shine" /></div>
+              <div className="home-hero-portrait-wrap"><img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand - SEO, AI Growth and Google Developer Groups" className="home-hero-portrait" loading="eager" fetchPriority="high" draggable="false" /><div className="home-hero-portrait-shine" /></div>
 
               <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" className="home-hero-gdg-badge" aria-label="Google Developer Groups community">
                 <img src="https://developers.google.com/static/program/images/gdp/community-1-gdg.svg" alt="Google Developer Groups" className="home-hero-gdg-logo" />
@@ -85,7 +101,7 @@ const HeroSection = () => {
 
               <div className="home-hero-engine"><div className="home-hero-engine-icon"><BrainCircuit size={20} /></div><div><strong>GROWTH ENGINE</strong><span>AI · DATA · SEARCH · WEB</span></div></div>
               <div className="home-hero-chip chip-top-left"><Sparkles size={15} /> SEO</div><div className="home-hero-chip chip-top-right"><Bot size={15} /> AI</div><div className="home-hero-chip chip-bottom-right"><BrainCircuit size={15} /> DATA</div><div className="home-hero-chip chip-bottom-left"><Code2 size={15} /> CODE</div>
-              <div className="home-hero-pointer"><MousePointer2 size={13} /> Move your cursor</div>
+              <div className="home-hero-pointer"><MousePointer2 size={13} /> Drag to rotate 360°</div>
             </div>
           </motion.div>
         </div>
