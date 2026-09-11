@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Bot, BrainCircuit, Code2, Download, Linkedin, MousePointer2, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import "@/styles/home-hero.css";
 import "@/styles/hero-modern.css";
 
@@ -39,27 +39,30 @@ const HeroSection = () => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const dragStart = useRef<{ x: number; y: number; rx: number; ry: number } | null>(null);
 
-  const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setPointer({ x: ((event.clientX - rect.left) / rect.width - 0.5) * 2, y: ((event.clientY - rect.top) / rect.height - 0.5) * 2 });
   };
   const handlePointerLeave = () => setPointer({ x: 0, y: 0 });
 
-  const startDrag = (event: MouseEvent<HTMLDivElement>) => {
+  const startDrag = (event: PointerEvent<HTMLDivElement>) => {
     dragStart.current = { x: event.clientX, y: event.clientY, rx: rotation.x, ry: rotation.y };
-    event.currentTarget.setPointerCapture?.(event.nativeEvent as unknown as number);
+    event.currentTarget.setPointerCapture(event.pointerId);
   };
-  const dragMove = (event: MouseEvent<HTMLDivElement>) => {
+  const dragMove = (event: PointerEvent<HTMLDivElement>) => {
     if (!dragStart.current) return;
     setRotation({
-      x: Math.max(-18, Math.min(18, dragStart.current.rx - (event.clientY - dragStart.current.y) * 0.22)),
-      y: dragStart.current.ry + (event.clientX - dragStart.current.x) * 0.35,
+      x: Math.max(-70, Math.min(70, dragStart.current.rx - (event.clientY - dragStart.current.y) * 0.22)),
+      y: dragStart.current.ry + (event.clientX - dragStart.current.x) * 0.75,
     });
   };
-  const endDrag = () => { dragStart.current = null; };
+  const endDrag = (event?: PointerEvent<HTMLDivElement>) => {
+    if (event && event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    dragStart.current = null;
+  };
 
   return (
-    <section className="home-hero-3d relative min-h-[100svh] flex items-center overflow-hidden pt-24 pb-16" onMouseMove={handlePointerMove} onMouseLeave={handlePointerLeave}>
+    <section className="home-hero-3d relative min-h-[100svh] flex items-center overflow-hidden pt-24 pb-16" onPointerMove={handlePointerMove} onPointerLeave={handlePointerLeave}>
       <div className="home-hero-grid absolute inset-0 pointer-events-none" />
       <div className="home-hero-noise absolute inset-0 pointer-events-none" />
       <div className="home-hero-orb home-hero-orb-one" /><div className="home-hero-orb home-hero-orb-two" /><div className="home-hero-orb home-hero-orb-three" />
@@ -90,7 +93,7 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.div className="home-hero-visual relative mx-auto w-full max-w-[620px] aspect-square" initial={{ opacity: 1, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .15 }}>
-            <div className="home-hero-stage absolute inset-0" style={{ transform: `perspective(1400px) rotateX(${rotation.x + pointer.y * -2}deg) rotateY(${rotation.y + pointer.x * 4}deg)` }} onMouseDown={startDrag} onMouseMove={dragMove} onMouseUp={endDrag} onMouseLeave={endDrag}>
+            <div className="home-hero-stage absolute inset-0" style={{ transform: `perspective(1400px) rotateX(${rotation.x + pointer.y * -2}deg) rotateY(${rotation.y + pointer.x * 4}deg)` }} onPointerDown={startDrag} onPointerMove={dragMove} onPointerUp={endDrag} onPointerCancel={endDrag}>
               <div className="home-hero-ring ring-one" /><div className="home-hero-ring ring-two" /><div className="home-hero-ring ring-three" /><div className="home-hero-core-glow" />
               <div className="home-hero-portrait-wrap"><img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand - SEO, AI Growth and Google Developer Groups" className="home-hero-portrait" loading="eager" fetchPriority="high" draggable="false" /><div className="home-hero-portrait-shine" /></div>
 
