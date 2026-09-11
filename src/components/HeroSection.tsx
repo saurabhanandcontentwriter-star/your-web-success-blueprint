@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, BrainCircuit, Download, Linkedin, Search, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, BrainCircuit, Download, Linkedin, Search, Sparkles, Code2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState, type PointerEvent } from "react";
 import "@/styles/home-hero.css";
