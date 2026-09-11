@@ -30,10 +30,12 @@ import WebsiteTour from "./components/WebsiteTour";
 import StickyHireMe from "./components/StickyHireMe";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import NewsletterPopup from "./components/NewsletterPopup";
+import FloatingLogoRails from "./components/FloatingLogoRails";
 import { ThemeProvider } from "./components/ThemeProvider";
 import LeadsAdminPage from "./pages/LeadsAdminPage";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
 import "@/styles/site-3d.css";
+import "@/styles/floating-logo-rails.css";
 
 const queryClient = new QueryClient();
 
@@ -52,7 +54,7 @@ const App = () => (
           <BrowserRouter>
             <AuroraBackground />
             <VisitorTracker />
-            <div className="site-3d-shell">
+            <div id="top" className="site-3d-shell">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<AboutPage />} />
@@ -77,6 +79,7 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
+            <FloatingLogoRails />
             <MobileFab />
             <StickyHireMe />
             <AIChatWidget />
