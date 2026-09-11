@@ -5,19 +5,26 @@
 .home-hero-portrait-wrap:after{content:"";position:absolute;left:10%;right:10%;bottom:0;height:9%;border-radius:50%;background:radial-gradient(ellipse,hsl(var(--primary)/.7) 0%,hsl(var(--accent)/.24) 38%,transparent 72%);filter:blur(15px);z-index:-1;transform:translateZ(-25px);}
 .home-hero-portrait{position:absolute!important;left:50%!important;top:50%!important;width:135%!important;height:auto!important;max-width:none!important;object-fit:contain!important;object-position:center!important;display:block;mix-blend-mode:normal!important;background:transparent!important;border-radius:0!important;transform:translate(-50%,-50%) translateZ(35px)!important;filter:contrast(1.1) brightness(1.035) saturate(1.08) drop-shadow(0 24px 28px hsl(0 0% 0%/.32)) drop-shadow(0 0 24px hsl(var(--primary)/.12))!important;image-rendering:-webkit-optimize-contrast;backface-visibility:visible;transform-style:preserve-3d;}
 .home-hero-portrait-shine{inset:-25%!important;mix-blend-mode:screen;opacity:.42;transform:translateX(-55%) rotate(10deg) translateZ(55px);}
+
+/* Four isolated logo lanes: each logo stays in its own corner with enough clearance from the others and portrait. */
 .home-hero-orbit-logo{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:104px;height:82px;padding:9px;border:1px solid hsl(0 0% 100%/.34);border-radius:20px;background:linear-gradient(145deg,hsl(0 0% 100%/.24),hsl(var(--card)/.5));box-shadow:0 22px 48px hsl(0 0% 0%/.42),0 0 28px hsl(var(--primary)/.18),inset 0 1px 0 hsl(0 0% 100%/.45),inset 0 -10px 18px hsl(0 0% 0%/.14);backdrop-filter:blur(18px) saturate(1.5);transform-style:preserve-3d;z-index:30;pointer-events:none;animation:hero-logo-float 4.8s ease-in-out infinite;}
 .home-hero-orbit-logo img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 5px 10px hsl(0 0% 0%/.3));}
 .home-hero-orbit-logo svg{filter:drop-shadow(0 5px 10px hsl(0 0% 0%/.35));}
 .home-hero-orbit-logo span{font-size:9px;font-weight:700;line-height:1.05;text-align:center;letter-spacing:.04em;color:hsl(var(--foreground));white-space:nowrap;}
-/* Four corner positions prevent LinkedIn/SEO from sharing the same visual lane. */
-.orbit-google{left:1%;top:4%;transform:translateZ(250px) rotateY(-12deg) rotateX(4deg);}
-.orbit-linkedin{right:1%;top:4%;transform:translateZ(300px) rotateY(12deg) rotateX(-3deg);animation-delay:-1.2s;}
-.orbit-seo{left:1%;bottom:4%;transform:translateZ(270px) rotateY(-10deg) rotateX(-4deg);animation-delay:-2.3s;}
-.orbit-ai{right:1%;bottom:4%;transform:translateZ(320px) rotateY(10deg) rotateX(5deg);animation-delay:-3.4s;}
-@keyframes hero-logo-float{0%,100%{margin-top:0}50%{margin-top:-7px}}
+.orbit-google{left:0;top:3%;transform:translateZ(250px) rotateY(-12deg) rotateX(4deg);}
+.orbit-linkedin{right:0;top:28%;transform:translateZ(300px) rotateY(12deg) rotateX(-3deg);animation-delay:-1.2s;}
+.orbit-seo{left:0;bottom:20%;transform:translateZ(270px) rotateY(-10deg) rotateX(-4deg);animation-delay:-2.3s;}
+.orbit-ai{right:0;bottom:1%;transform:translateZ(320px) rotateY(10deg) rotateX(5deg);animation-delay:-3.4s;}
+
+/* Keep the LinkedIn and SEO cards in separate vertical lanes even while they float. */
+.orbit-linkedin{margin-top:0;}
+.orbit-seo{margin-top:0;}
+@keyframes hero-logo-float{0%,100%{margin-top:0}50%{margin-top:-5px}}
 .home-hero-gdg-badge{display:none!important;}
 .home-hero-gdg-logo{display:none!important;}
+
 .home-hero-engine{border-radius:1.2rem!important;background:linear-gradient(135deg,hsl(0 0% 100%/.18),hsl(var(--card)/.45))!important;border:1px solid hsl(0 0% 100%/.27)!important;box-shadow:0 28px 60px hsl(0 0% 0%/.46),0 0 30px hsl(var(--primary)/.15),inset 0 1px 0 hsl(0 0% 100%/.34)!important;backdrop-filter:blur(24px) saturate(1.4)!important;}
-@media(max-width:1023px){.home-hero-portrait-wrap{width:68%!important;height:92%!important;}.home-hero-portrait{width:130%!important;}.home-hero-orbit-logo{width:94px;height:74px;}.orbit-google{left:0;top:3%;}.orbit-linkedin{right:0;top:3%;}.orbit-seo{left:0;bottom:3%;}.orbit-ai{right:0;bottom:3%;}}
-@media(max-width:640px){.home-hero-portrait-wrap{width:76%!important;height:82%!important;top:49%!important;transform:translate(-50%,-50%) translateZ(55px)!important;}.home-hero-portrait{width:125%!important;}.home-hero-orbit-logo{width:78px;height:64px;padding:7px;border-radius:16px;gap:3px;}.home-hero-orbit-logo img{width:27px;height:27px;}.home-hero-orbit-logo svg{width:20px;height:20px;}.home-hero-orbit-logo span{font-size:7px;}.orbit-google{left:-1%;top:3%;}.orbit-linkedin{right:-1%;top:3%;}.orbit-seo{left:-1%;bottom:3%;}.orbit-ai{right:-1%;bottom:3%;}}
+
+@media(max-width:1023px){.home-hero-portrait-wrap{width:68%!important;height:92%!important;}.home-hero-portrait{width:130%!important;}.home-hero-orbit-logo{width:94px;height:74px;}.orbit-google{left:-1%;top:3%;}.orbit-linkedin{right:-1%;top:29%;}.orbit-seo{left:-1%;bottom:20%;}.orbit-ai{right:-1%;bottom:1%;}}
+@media(max-width:640px){.home-hero-portrait-wrap{width:76%!important;height:82%!important;top:49%!important;transform:translate(-50%,-50%) translateZ(55px)!important;}.home-hero-portrait{width:125%!important;}.home-hero-orbit-logo{width:76px;height:62px;padding:7px;border-radius:16px;gap:3px;}.home-hero-orbit-logo img{width:27px;height:27px;}.home-hero-orbit-logo svg{width:20px;height:20px;}.home-hero-orbit-logo span{font-size:7px;}.orbit-google{left:-3%;top:5%;}.orbit-linkedin{right:-3%;top:30%;}.orbit-seo{left:-3%;bottom:21%;}.orbit-ai{right:-3%;bottom:2%;}}
 @media(prefers-reduced-motion:reduce){.home-hero-portrait-shine,.home-hero-orbit-logo{animation:none;}}
