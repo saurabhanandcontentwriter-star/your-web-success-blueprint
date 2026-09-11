@@ -1,6 +1,10 @@
-import { Bot, Search, Linkedin } from "lucide-react";
+import { Bot, Search, Linkedin, type LucideIcon } from "lucide-react";
 
-const leftLogos = [
+type LogoItem =
+  | { label: string; src: string; icon?: never }
+  | { label: string; icon: LucideIcon; src?: never };
+
+const leftLogos: LogoItem[] = [
   {
     label: "Google Developer Groups Ranchi",
     src: "https://developers.google.com/static/program/images/gdp/community-1-gdg.svg",
@@ -11,7 +15,7 @@ const leftLogos = [
   },
 ];
 
-const rightLogos = [
+const rightLogos: LogoItem[] = [
   {
     label: "SEO",
     icon: Search,
@@ -22,7 +26,7 @@ const rightLogos = [
   },
 ];
 
-const LogoButton = ({ item }: { item: (typeof leftLogos)[number] }) => {
+const LogoButton = ({ item }: { item: LogoItem }) => {
   const Icon = "icon" in item ? item.icon : null;
 
   return (
