@@ -1,1 +1,0 @@
-New hero image target: public/images/saurabh-anand-hero.png
