@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, type PointerEvent, type ReactNode } from "react";
 import "@/styles/home-hero.css";
 import "@/styles/hero-modern.css";
+import "@/styles/hero-platform.css";
 
 const ROLES = ["Data Analyst", "SEO & Digital Marketing Professional", "Power BI & Tableau Developer", "SQL & Python Analyst", "GA4 & Looker Studio Expert", "AI SEO Strategist", "Automation Architect"];
 const useTyped = () => { const [i,setI]=useState(0),[text,setText]=useState(""),[del,setDel]=useState(false); useEffect(()=>{const full=ROLES[i%ROLES.length],t=setTimeout(()=>{if(!del){if(text.length<full.length)setText(full.slice(0,text.length+1));else setDel(true)}else if(text.length>0)setText(full.slice(0,text.length-1));else{setDel(false);setI(p=>p+1)}},del?35:text.length===full.length?1500:65);return()=>clearTimeout(t)},[text,del,i]);return text };
