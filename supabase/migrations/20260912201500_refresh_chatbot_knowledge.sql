@@ -1,0 +1,15 @@
+-- Refresh chatbot knowledge so the live database stays aligned with the current portfolio.
+-- The chat function reads site_knowledge server-side and uses these rows as page-specific source of truth.
+
+insert into public.site_knowledge (slug, title, url, content, keywords) values
+('chatbot-site-awareness', 'Chatbot — Complete Website Awareness', 'site-wide', 'Saurabh AI should understand the complete public portfolio structure and route visitors to the relevant page. Public routes: /, /about, /experience, /experience/:slug, /skills, /now, /portfolio, /portfolio/:slug, /gallery, /gallery/:slug, /education, /contact, /crawler-check, /newsletter and /devfest-ranchi. /services and /services/:slug redirect to the homepage. /experince and /experince/:slug redirect to /experience. /admin/leads is an internal dashboard and should not be presented as a public marketing page. The chatbot can answer questions about profile, experience, skills, portfolio projects, education, gallery, contact, newsletter, crawler check, navigation and DevFest Ranchi 2026.', 'all pages website routes navigation chatbot site knowledge'),
+('chatbot-contact-current', 'Chatbot — Current Contact Details', 'site-wide', 'The canonical public email for Saurabh Anand is saurabhanandshahi@gmail.com. The canonical public LinkedIn is https://www.linkedin.com/in/saurabhanandseo/. The portfolio contact page is /contact. Never invent, alter or substitute another email address when answering contact questions.', 'current email mail contact saurabhanandshahi@gmail.com LinkedIn hire contact'),
+('chatbot-devfest-current', 'Chatbot — DevFest Ranchi 2026', '/devfest-ranchi', 'Google DevFest Ranchi 2026 is presented on the portfolio as Community 2.0 by GDG Ranchi. Current listed event details: 31 October 2026, 9:00 AM IST, BIT Mesra Auditorium, Ranchi. Topics include AI & Gemini, Cloud & Firebase, Web & App Development, and Community & Networking. The page includes countdown, speakers, schedule, partners, venue, FAQs and registration. Do not invent speakers, sponsors, final agenda, prices or registration confirmation. If asked for current event details, use the portfolio knowledge and distinguish it from broader official Google DevFest season information.', 'DevFest Ranchi 2026 GDG Ranchi Community 2.0 October 31 2026 BIT Mesra AI Gemini Cloud Firebase Web App'),
+('chatbot-page-help', 'Chatbot — Page Navigation Help', 'site-wide', 'When a visitor asks where to find information, answer with the relevant portfolio page. Profile: /about. Career: /experience. Skills: /skills. Current focus: /now. Projects: /portfolio. Education: /education. Events/media: /gallery. Contact/hiring: /contact. Newsletter: /newsletter. Technical crawler utility: /crawler-check. DevFest Ranchi 2026: /devfest-ranchi.', 'where page find navigation about experience skills portfolio education contact DevFest newsletter')
+on conflict (slug) do update set
+  title = excluded.title,
+  url = excluded.url,
+  content = excluded.content,
+  keywords = excluded.keywords,
+  active = true,
+  updated_at = now();
