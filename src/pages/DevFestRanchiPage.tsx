@@ -70,11 +70,15 @@ const DevFestRanchiPage = () => {
         <div className="devfest-orb devfest-orb-red" />
         <div className="devfest-orb devfest-orb-yellow" />
         <div className="devfest-orb devfest-orb-green" />
+        <div className="devfest-hero-glow" />
         <div className="devfest-sweep" />
         <div className="devfest-flash" />
         <div className="devfest-scanline" />
-        <div className="devfest-hero-glow" />
       </div>
+
+      <div className="fixed inset-0 -z-20 bg-gradient-to-b from-background via-background to-primary/5" />
+      <div className="fixed -z-20 top-20 left-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
+      <div className="fixed -z-20 top-80 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
 
       <Navbar />
 
