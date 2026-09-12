@@ -7,6 +7,12 @@ import aboutPhoto from "@/assets/about-photo.jpg";
 import spaceBg from "@/assets/space-bg.jpg";
 import "@/styles/education-landing.css";
 
+const educationVisuals = {
+  degree: "/education-degree.svg",
+  books: "/education-books.svg",
+  certification: "/education-certificate.svg",
+};
+
 const EducationPage = () => (
   <div className="education-landing relative min-h-screen">
     <SEO title="Education, Certifications & Digital Marketing Skills | Saurabh Anand" description="Explore Saurabh Anand's BCA education, diploma, certifications and continuous learning journey across SEO, digital marketing, data analytics, AI automation and technology." path="/education" />
@@ -42,11 +48,7 @@ const EducationPage = () => (
         </div>
         <div className="education-grid">
           <motion.article className="education-card" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <div className="education-card-image education-visual-degree" role="img" aria-label="University graduation degree and academic education">
-              <GraduationCap size={58} strokeWidth={1.5} />
-              <div className="education-visual-title">GRADUATION DEGREE</div>
-              <div className="education-visual-subtitle">Bachelor of Computer Applications</div>
-            </div>
+            <img src={educationVisuals.degree} alt="Graduation degree, academic cap and Bachelor of Computer Applications" loading="lazy" className="education-card-image" />
             <div className="education-card-icon mb-5"><GraduationCap size={24} /></div>
             <h3 className="font-display font-bold text-xl mb-2">Bachelor of Computer Applications</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">Allama Iqbal College, Bihar Sharif, Nalanda — Graduated 2024</p>
@@ -54,11 +56,7 @@ const EducationPage = () => (
           </motion.article>
 
           <motion.article className="education-card" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}>
-            <div className="education-card-image education-visual-books" role="img" aria-label="Books and study materials representing education and learning">
-              <BookOpen size={58} strokeWidth={1.5} />
-              <div className="education-visual-title">BOOKS & LEARNING</div>
-              <div className="education-visual-subtitle">Technical & Academic Foundation</div>
-            </div>
+            <img src={educationVisuals.books} alt="Academic books and study materials for technical education" loading="lazy" className="education-card-image" />
             <div className="education-card-icon mb-5"><BookOpen size={24} /></div>
             <h3 className="font-display font-bold text-xl mb-2">Diploma</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">DPG Polytechnic College — 2021</p>
@@ -66,11 +64,7 @@ const EducationPage = () => (
           </motion.article>
 
           <motion.article className="education-card" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .2 }}>
-            <div className="education-card-image education-visual-certificate" role="img" aria-label="Professional certification and continuous learning">
-              <Award size={58} strokeWidth={1.5} />
-              <div className="education-visual-title">CERTIFICATION</div>
-              <div className="education-visual-subtitle">Professional Growth & Skills</div>
-            </div>
+            <img src={educationVisuals.certification} alt="Professional education certificate and continuous learning" loading="lazy" className="education-card-image" />
             <div className="education-card-icon mb-5"><Award size={24} /></div>
             <h3 className="font-display font-bold text-xl mb-2">Certifications & Continuous Learning</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
