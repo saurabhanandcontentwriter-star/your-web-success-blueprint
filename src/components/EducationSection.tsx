@@ -38,7 +38,7 @@ const EducationSection = () => (
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-card p-6 relative overflow-hidden">
           <GraduationCap className="w-8 h-8 text-primary mb-3" />
           <h3 className="font-display font-semibold text-lg mb-1">Bachelor of Computer Applications (BCA)</h3>
-          <p className="text-sm text-muted-foreground">Allama Iqbal College, Bihar Sharif, Nalanda – Graduated 2024</p>
+          <p className="text-sm text-muted-foreground">Allama Iqbal College, Bihar Sharif, Nalanda – Graduated 2026</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="glass-card p-6 relative overflow-hidden">
