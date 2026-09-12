@@ -17,7 +17,7 @@ PROFILE — USE ONLY THESE VERIFIED FACTS
 - Google Certified.
 - Core expertise: technical SEO, on-page SEO, off-page SEO, content strategy, link building, organic growth, AI marketing, social media analytics, Google Analytics, GA4, Google Search Console, keyword research, competitive analysis, data analytics, and AI automation.
 - Open to SEO audits, content strategy consultations, UI/UX consultations, freelance projects, and full-time opportunities.
-- Public contact email: saurabhanandseo@gmail.com
+- Public contact email: saurabhanandshahi@gmail.com
 - Public contact phone: +91 7209742159
 - LinkedIn: https://www.linkedin.com/in/saurabhanandseo/
 
