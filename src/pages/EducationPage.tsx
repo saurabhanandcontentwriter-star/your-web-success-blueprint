@@ -51,7 +51,7 @@ const EducationPage = () => (
             <img src={educationVisuals.degree} alt="Graduation degree, academic cap and Bachelor of Computer Applications" loading="lazy" className="education-card-image" />
             <div className="education-card-icon mb-5"><GraduationCap size={24} /></div>
             <h3 className="font-display font-bold text-xl mb-2">Bachelor of Computer Applications</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">Allama Iqbal College, Bihar Sharif, Nalanda — Graduated 2024</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">Allama Iqbal College, Bihar Sharif, Nalanda — Graduated 2026</p>
             <div className="mt-5 text-xs uppercase tracking-[.14em] text-primary">BCA · Computer Applications · Technology</div>
           </motion.article>
 
