@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, ChevronDown, Clock, MapPin, Mic, Sparkles, Users,
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import "@/styles/devfest-ranchi.css";
 
 const REGISTRATION_URL = "https://gdg.community.dev/gdg-ranchi/";
 const YOUTUBE_URL = "https://youtu.be/uSoAJe0rxHg?si=xcLRrpPzHjxnQFhP";
@@ -60,16 +61,24 @@ const DevFestRanchiPage = () => {
   }, [now]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="devfest-ranchi-page relative min-h-screen overflow-hidden">
       <SEO title="Google DevFest Ranchi 2026 | Community 2.0" description="Google DevFest Ranchi 2026 — Community 2.0. Join developers, students, founders and technology enthusiasts on 31st October 2026 at BIT Mesra Auditorium, Ranchi." path="/devfest-ranchi" keywords="Google DevFest Ranchi 2026, GDG Ranchi, DevFest Ranchi, BIT Mesra, Community 2.0, AI Gemini, Google Developer Groups" image="/og-thumbnail.jpg" />
 
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background via-background to-primary/5" />
-      <div className="fixed -z-10 top-20 left-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
-      <div className="fixed -z-10 top-80 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+      <div className="devfest-bg" aria-hidden="true">
+        <div className="devfest-grid" />
+        <div className="devfest-orb devfest-orb-blue" />
+        <div className="devfest-orb devfest-orb-red" />
+        <div className="devfest-orb devfest-orb-yellow" />
+        <div className="devfest-orb devfest-orb-green" />
+        <div className="devfest-sweep" />
+        <div className="devfest-flash" />
+        <div className="devfest-scanline" />
+        <div className="devfest-hero-glow" />
+      </div>
 
       <Navbar />
 
-      <main className="pt-24">
+      <main className="relative z-10 pt-24">
         <section className="relative container mx-auto px-6 pt-10 pb-20 md:pt-20 md:pb-28">
           <div className="mx-auto max-w-6xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary"><Sparkles size={14} /> Community 2.0 • GDG Ranchi</div>
