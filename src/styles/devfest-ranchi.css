@@ -1,0 +1,44 @@
+.devfest-ranchi-page{isolation:isolate;background:radial-gradient(circle at 50% 0%,rgba(66,133,244,.08),transparent 34%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)));}
+
+.devfest-ranchi-page .devfest-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+
+.devfest-ranchi-page .devfest-grid{position:absolute;inset:-20%;opacity:.18;background-image:linear-gradient(rgba(66,133,244,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(234,67,53,.1) 1px,transparent 1px);background-size:56px 56px;transform:perspective(700px) rotateX(58deg) translateY(-10%);transform-origin:center top;animation:devfestGridMove 18s linear infinite;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);}
+
+.devfest-ranchi-page .devfest-orb{position:absolute;width:30rem;height:30rem;border-radius:9999px;filter:blur(70px);opacity:.18;mix-blend-mode:screen;will-change:transform,opacity;}
+.devfest-ranchi-page .devfest-orb-blue{top:4%;left:-10%;background:#4285F4;animation:devfestFloatBlue 12s ease-in-out infinite;}
+.devfest-ranchi-page .devfest-orb-red{top:16%;right:-12%;background:#EA4335;animation:devfestFloatRed 14s ease-in-out infinite;}
+.devfest-ranchi-page .devfest-orb-yellow{top:45%;left:18%;background:#FBBC04;animation:devfestFloatYellow 16s ease-in-out infinite;}
+.devfest-ranchi-page .devfest-orb-green{top:62%;right:12%;background:#34A853;animation:devfestFloatGreen 18s ease-in-out infinite;}
+
+.devfest-ranchi-page .devfest-sweep{position:absolute;top:-35%;left:-25%;width:150%;height:55%;background:linear-gradient(90deg,transparent 0%,rgba(66,133,244,.02) 30%,rgba(255,255,255,.16) 50%,rgba(234,67,53,.02) 70%,transparent 100%);filter:blur(18px);transform:rotate(-8deg);animation:devfestSweep 9s ease-in-out infinite;}
+
+.devfest-ranchi-page .devfest-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 18%,rgba(255,255,255,.28),transparent 22%),linear-gradient(120deg,rgba(66,133,244,.08),transparent 35%,rgba(234,67,53,.07) 65%,transparent 85%);opacity:.08;animation:devfestFlash 5.5s ease-in-out infinite;}
+
+.devfest-ranchi-page .devfest-scanline{position:absolute;left:0;right:0;top:-15%;height:24%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.08),transparent);filter:blur(8px);animation:devfestScan 7s ease-in-out infinite;}
+
+.devfest-ranchi-page .devfest-hero-glow{position:absolute;inset:8% 5% auto;height:38rem;border-radius:50%;background:radial-gradient(circle,rgba(66,133,244,.12),rgba(251,188,4,.06) 34%,rgba(52,168,83,.05) 55%,transparent 72%);filter:blur(10px);animation:devfestHeroPulse 4.5s ease-in-out infinite;pointer-events:none;}
+
+@keyframes devfestFlash{0%,100%{opacity:.05}45%{opacity:.1}50%{opacity:.25}53%{opacity:.07}56%{opacity:.18}62%{opacity:.05}}
+@keyframes devfestHeroPulse{0%,100%{transform:scale(.94);opacity:.65}50%{transform:scale(1.05);opacity:1}}
+@keyframes devfestSweep{0%{transform:translate3d(-20%,-20%,0) rotate(-8deg);opacity:0}15%{opacity:1}55%{opacity:.7}100%{transform:translate3d(30%,70%,0) rotate(-8deg);opacity:0}}
+@keyframes devfestScan{0%{transform:translateY(-20%);opacity:0}18%{opacity:.8}65%{opacity:.3}100%{transform:translateY(520%);opacity:0}}
+@keyframes devfestGridMove{0%{background-position:0 0,0 0}100%{background-position:0 56px,56px 0}}
+@keyframes devfestFloatBlue{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(16vw,8vh,0) scale(1.12)}}
+@keyframes devfestFloatRed{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-14vw,10vh,0) scale(.9)}}
+@keyframes devfestFloatYellow{0%,100%{transform:translate3d(0,0,0) scale(.9)}50%{transform:translate3d(12vw,-8vh,0) scale(1.08)}}
+@keyframes devfestFloatGreen{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-10vw,-10vh,0) scale(1.1)}}
+
+@media (max-width:768px){
+  .devfest-ranchi-page .devfest-orb{width:18rem;height:18rem;filter:blur(55px);opacity:.14;}
+  .devfest-ranchi-page .devfest-grid{background-size:42px 42px;opacity:.12;}
+  .devfest-ranchi-page .devfest-hero-glow{inset:5% -10% auto;height:28rem;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .devfest-ranchi-page .devfest-grid,
+  .devfest-ranchi-page .devfest-orb,
+  .devfest-ranchi-page .devfest-sweep,
+  .devfest-ranchi-page .devfest-flash,
+  .devfest-ranchi-page .devfest-scanline,
+  .devfest-ranchi-page .devfest-hero-glow{animation:none!important;}
+}
