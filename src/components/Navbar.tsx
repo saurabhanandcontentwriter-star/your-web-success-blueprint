@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
 import ContactDialog from "@/components/ContactDialog";
-import FestivalCelebration from "@/components/FestivalCelebration";
 import ThemeToggle from "@/components/ThemeToggle";
 import { logLead } from "@/lib/leadLog";
 import "@/styles/navbar-responsive.css";
@@ -49,7 +48,6 @@ const Navbar = () => {
         <button onClick={() => { setOpen(false); navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="site-navbar-brand" aria-label="Go to Saurabh Anand home">
           <span className="site-navbar-brand-content">
             <img src={logo} alt="Saurabh Anand logo" className="site-navbar-logo" />
-            <FestivalCelebration fallback={null} />
           </span>
         </button>
 
