@@ -24,6 +24,7 @@ const CrawlerCheckPage = lazy(() => import("./pages/CrawlerCheckPage"));
 const NewsletterPage = lazy(() => import("./pages/NewsletterPage"));
 const DevFestRanchiPage = lazy(() => import("./pages/DevFestRanchiPage"));
 const LeadsAdminPage = lazy(() => import("./pages/LeadsAdminPage"));
+const GoogleAnalyticsPage = lazy(() => import("./pages/GoogleAnalyticsPage"));
 
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const MobileFab = lazy(() => import("./components/MobileFab"));
@@ -129,6 +130,7 @@ const App = () => (
                   <Route path="/services" element={<Navigate to="/" replace />} />
                   <Route path="/services/:slug" element={<Navigate to="/" replace />} />
                   <Route path="/admin/leads" element={<LeadsAdminPage />} />
+                  <Route path="/admin/analytics" element={<GoogleAnalyticsPage />} />
                   <Route path="/experince" element={<Navigate to="/experience" replace />} />
                   <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
                   <Route path="*" element={<NotFound />} />
