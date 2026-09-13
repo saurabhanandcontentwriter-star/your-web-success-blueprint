@@ -9,9 +9,8 @@ type Festival = {
   greeting: string;
 };
 
-// Major Indian festivals. Add more entries here as required; the engine handles the timing automatically.
 const FESTIVALS: Festival[] = [
-  { name: "Ganesh Chaturthi", emoji: "🐘", date: "2026-09-14T00:00:00+05:30", greeting: "Happy Ganesh Chaturthi" },
+  { name: "Ganesh Chaturthi", emoji: "ganesha", date: "2026-09-14T00:00:00+05:30", greeting: "Happy Ganesh Chaturthi" },
   { name: "Navratri", emoji: "🪔", date: "2026-10-11T00:00:00+05:30", greeting: "Happy Navratri" },
   { name: "Dussehra", emoji: "🏹", date: "2026-10-20T00:00:00+05:30", greeting: "Happy Dussehra" },
   { name: "Diwali", emoji: "🪔", date: "2026-11-08T00:00:00+05:30", greeting: "Happy Diwali" },
@@ -28,6 +27,22 @@ const getNextFestival = (now: number) => {
   const eligible = FESTIVALS.filter((festival) => new Date(festival.date).getTime() + 24 * 60 * 60 * 1000 >= now);
   return eligible[0] ?? null;
 };
+
+function GaneshaMark() {
+  return (
+    <span className="festival-ganesha" aria-hidden="true">
+      <svg viewBox="0 0 64 64" role="presentation">
+        <path d="M20 22C10 17 7 28 16 33C8 40 14 49 23 43C24 53 40 53 41 43C50 49 56 40 48 33C57 28 54 17 44 22C41 13 23 13 20 22Z" />
+        <path d="M31 24C26 30 27 39 32 43C37 39 38 30 33 24" />
+        <path d="M32 41C27 48 23 47 21 44M32 41C37 48 41 47 43 44" />
+        <path d="M28 20L32 14L36 20" />
+        <circle cx="26" cy="28" r="2.2" />
+        <circle cx="38" cy="28" r="2.2" />
+        <path d="M30 34H34" />
+      </svg>
+    </span>
+  );
+}
 
 export default function FestivalCelebration() {
   const location = useLocation();
@@ -54,22 +69,43 @@ export default function FestivalCelebration() {
   const hours = Math.floor((remaining % 86400000) / 3600000);
   const minutes = Math.floor((remaining % 3600000) / 60000);
   const seconds = Math.floor((remaining % 60000) / 1000);
-  const currentDate = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", weekday: "short", day: "2-digit", month: "short", year: "numeric" }).format(now);
-  const currentTime = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }).format(now);
+  const currentDate = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(now);
+  const currentTime = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  }).format(now);
 
   return (
     <aside className="festival-celebration" aria-live="polite">
       <div className="festival-glow" />
-      <div className="festival-sparkles" aria-hidden="true">✦ ✧ ✦ ✧ ✦</div>
+      <div className="festival-sparkles" aria-hidden="true">✦ ✧ ✦</div>
       <div className="festival-main">
-        <span className="festival-icon" aria-hidden="true">{festival.emoji}</span>
-        <div>
+        {festival.emoji === "ganesha" ? <GaneshaMark /> : <span className="festival-icon" aria-hidden="true">{festival.emoji}</span>}
+        <div className="festival-copy">
           <div className="festival-greeting">{isToday ? `${festival.greeting} 🎉` : `${festival.greeting} is coming ✨`}</div>
           <div className="festival-meta">{festival.name} • India (IST)</div>
         </div>
       </div>
       <div className="festival-clock" aria-label="Festival countdown">
-        {isToday ? <strong>Celebrating Today 🎊</strong> : <><span><b>{days}</b>d</span><span><b>{pad(hours)}</b>h</span><span><b>{pad(minutes)}</b>m</span><span><b>{pad(seconds)}</b>s</span></>}
+        {isToday ? (
+          <strong>Celebrating Today 🎊</strong>
+        ) : (
+          <>
+            <span><b>{days}</b>d</span>
+            <span><b>{pad(hours)}</b>h</span>
+            <span><b>{pad(minutes)}</b>m</span>
+            <span><b>{pad(seconds)}</b>s</span>
+          </>
+        )}
       </div>
       <div className="festival-now">Today: {currentDate} • {currentTime}</div>
     </aside>
