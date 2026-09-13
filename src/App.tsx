@@ -34,7 +34,6 @@ const StickyHireMe = lazy(() => import("./components/StickyHireMe"));
 const ExitIntentPopup = lazy(() => import("./components/ExitIntentPopup"));
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const FloatingLogoRails = lazy(() => import("./components/FloatingLogoRails"));
-const FestivalCelebration = lazy(() => import("./components/FestivalCelebration"));
 const LiveDateTime = lazy(() => import("./components/LiveDateTime"));
 import { ThemeProvider } from "./components/ThemeProvider";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
@@ -132,7 +131,6 @@ const App = () => (
                   <Route path="/experince/:slug" element={<Navigate to="/experience" replace />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-                <FestivalCelebration />
               </div>
               <FloatingLogoRails />
               <MobileFab />
