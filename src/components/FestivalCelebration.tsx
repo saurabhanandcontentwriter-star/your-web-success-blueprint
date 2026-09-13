@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "@/styles/festival-celebration.css";
 
@@ -58,9 +58,8 @@ export default function FestivalCelebration({ fallback }: { fallback: ReactNode 
     return () => window.clearInterval(timer);
   }, []);
 
-  if (location.pathname !== "/") return <>{fallback}</>;
-  const festival = useMemo(() => getNextFestival(now), [now]);
-  if (!festival) return <>{fallback}</>;
+  const festival = getNextFestival(now);
+  if (location.pathname !== "/" || !festival) return <>{fallback}</>;
 
   const festivalTime = new Date(festival.date).getTime();
   const startTime = festivalTime - 7 * 24 * 60 * 60 * 1000;
