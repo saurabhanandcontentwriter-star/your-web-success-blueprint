@@ -21,6 +21,10 @@ const BodySchema = z.object({
   message: z.string().trim().max(2000).optional().default(""),
   page: z.string().trim().max(300).optional().default(""),
   referrer: z.string().trim().max(300).optional().default(""),
+  element: z.string().trim().max(300).optional().default(""),
+  elementHref: z.string().trim().max(500).optional().default(""),
+  visitorId: z.string().trim().max(120).optional().default(""),
+  sessionId: z.string().trim().max(120).optional().default(""),
   lat: z.number().min(-90).max(90).optional(),
   lon: z.number().min(-180).max(180).optional(),
   accuracy: z.number().nonnegative().max(1_000_000).optional(),
@@ -30,7 +34,7 @@ const BodySchema = z.object({
 
 const hits = new Map<string, number[]>();
 const WINDOW = 60_000;
-const MAX_PER_MIN = 6;
+const MAX_PER_MIN = 20;
 
 function rateLimited(ip: string) {
   const now = Date.now();
@@ -136,7 +140,7 @@ Deno.serve(async (req) => {
         locationSource = `GPS (precise${d.accuracy != null ? `, ±${Math.round(d.accuracy)} m` : ""})`;
       }
     }
-    const locationFull = [loc.city, loc.district && loc.district !== loc.city ? `${loc.district} District` : "", loc.region, loc.country].filter(Boolean).join(", ") || "Unknown";
+    const locationFull = [loc.country, loc.region, loc.city, loc.district && loc.district !== loc.city ? loc.district : ""].filter(Boolean).join(" → ") || "Unknown";
     const now = new Date();
     const ist = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, hourCycle: "h23",
@@ -145,8 +149,31 @@ Deno.serve(async (req) => {
     const date = `${ist.day}/${ist.month}/${ist.year}`;
     const time = `${hh}:${ist.minute}:${ist.second}`;
 
-    // Persist resume downloads in Supabase as a protected notification record.
-    // This is in addition to the existing Google Sheets activity log.
+    if (["page_view", "cta_click", "hire_click"].includes(d.event) && admin && d.visitorId && d.sessionId) {
+      const { error } = await admin.from("visitor_activity").insert({
+        visitor_id: d.visitorId,
+        session_id: d.sessionId,
+        event: d.event,
+        page: d.page,
+        element: d.element || d.name,
+        element_href: d.elementHref || d.message,
+        duration_seconds: d.elapsed < 9999 ? Math.round(d.elapsed / 1000) : null,
+        referrer: d.referrer,
+        user_agent: ua,
+        ip_address: ip,
+        city: loc.city,
+        district: loc.district,
+        region: loc.region,
+        country: loc.country,
+        location: locationFull,
+        location_source: locationSource,
+        latitude: d.lat ?? null,
+        longitude: d.lon ?? null,
+        accuracy_meters: d.accuracy ?? null,
+      });
+      if (error) console.error("Visitor activity DB insert failed:", error);
+    }
+
     if (d.event === "resume_download" && admin) {
       const { error } = await admin.from("resume_download_notifications").insert({
         page: d.page,
@@ -187,7 +214,7 @@ Deno.serve(async (req) => {
       await notify(`${label} — ${locationFull} — saurabhanandseo.com`, [
         `Event: ${label}`, `Date (DD/MM/YYYY): ${date}`, `Time (24h IST): ${time}`,
         d.name ? `Name: ${d.name}` : "", d.email ? `Email: ${d.email}` : "", d.message ? `Message: ${d.message}` : "",
-        `City: ${loc.city || "Unknown"}`, `District: ${loc.district || "Unknown"}`, `State: ${loc.region || "Unknown"}`, `Country: ${loc.country || "Unknown"}`,
+        `Country: ${loc.country || "Unknown"}`, `State: ${loc.region || "Unknown"}`, `City: ${loc.city || "Unknown"}`, `District: ${loc.district || "Unknown"}`,
         `Location: ${locationFull}`, `Location source: ${locationSource}`,
         d.lat != null && d.lon != null ? `Map: https://www.google.com/maps?q=${d.lat},${d.lon}` : "",
         d.lat != null && d.lon != null ? `Precise: ${d.lat}, ${d.lon}${d.accuracy != null ? ` (±${Math.round(d.accuracy)} m)` : ""}` : "",
