@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import SEO from "@/components/SEO";
 import { useHomeBgSettings } from "@/components/useHomeBgSettings";
+import "@/styles/growth-engine-3d.css";
 
 const BentoSection = lazy(() => import("@/components/BentoSection"));
 const ToolsMarquee = lazy(() => import("@/components/ToolsMarquee"));
