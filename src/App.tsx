@@ -106,8 +106,10 @@ const App = () => (
             <Suspense fallback={<LoadingFallback />}>
               <AuroraBackground />
               <VisitorTracker />
-              <LiveDateTime />
-              <FestivalCelebration />
+              <div className="site-top-status" aria-label="Site status bar">
+                <FestivalCelebration fallback={null} />
+                <LiveDateTime />
+              </div>
               <div id="top" className="site-3d-shell">
                 <Routes>
                   <Route path="/" element={<Index />} />
