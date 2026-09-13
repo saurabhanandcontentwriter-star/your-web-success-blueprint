@@ -34,7 +34,6 @@ const StickyHireMe = lazy(() => import("./components/StickyHireMe"));
 const ExitIntentPopup = lazy(() => import("./components/ExitIntentPopup"));
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const FloatingLogoRails = lazy(() => import("./components/FloatingLogoRails"));
-const LiveDateTime = lazy(() => import("./components/LiveDateTime"));
 const FestivalCelebration = lazy(() => import("./components/FestivalCelebration"));
 import { ThemeProvider } from "./components/ThemeProvider";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
@@ -106,10 +105,7 @@ const App = () => (
             <Suspense fallback={<LoadingFallback />}>
               <AuroraBackground />
               <VisitorTracker />
-              <div className="site-top-status" aria-label="Site status bar">
-                <FestivalCelebration fallback={null} />
-                <LiveDateTime />
-              </div>
+              <FestivalCelebration fallback={null} />
               <div id="top" className="site-3d-shell">
                 <Routes>
                   <Route path="/" element={<Index />} />
