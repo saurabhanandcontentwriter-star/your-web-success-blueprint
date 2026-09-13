@@ -1,45 +1,76 @@
 .festival-celebration {
   position: fixed;
-  top: 76px;
+  top: 78px;
   left: 14px;
   right: auto;
   z-index: 96;
-  width: min(220px, calc(100vw - 24px));
+  width: 40px;
+  height: 40px;
   box-sizing: border-box;
-  overflow: hidden;
-  padding: 8px 9px 7px;
-  border: 1px solid rgba(255, 196, 92, .3);
-  border-radius: 13px;
-  background: linear-gradient(135deg, rgba(20, 12, 42, .94), rgba(91, 34, 14, .92));
-  box-shadow: 0 10px 28px rgba(0,0,0,.28), 0 0 20px rgba(255,174,0,.12);
-  backdrop-filter: blur(14px) saturate(125%);
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 1px solid rgba(255, 196, 92, .28);
+  border-radius: 12px;
+  background: rgba(20, 12, 42, .78);
+  box-shadow: 0 8px 20px rgba(0,0,0,.24), 0 0 18px rgba(255,174,0,.12);
+  backdrop-filter: blur(12px) saturate(125%);
   animation: festivalFloatCorner 3.8s ease-in-out infinite;
 }
 
-.festival-glow { position: absolute; left: -35px; top: -40px; width: 90px; height: 75px; border-radius: 50%; background: rgba(255,192,64,.18); filter: blur(22px); pointer-events: none; }
-.festival-sparkles { position: absolute; left: 8px; top: 5px; font-size: 7px; letter-spacing: 5px; opacity: .65; animation: festivalTwinkle 1.8s ease-in-out infinite; }
-.festival-main, .festival-clock, .festival-now { position: relative; }
-.festival-main { display: flex; align-items: center; gap: 7px; min-width: 0; padding-left: 4px; }
-.festival-copy { min-width: 0; }
-.festival-mark { flex: 0 0 31px; width: 31px; height: 31px; display: grid; place-items: center; border-radius: 9px; background: radial-gradient(circle at 50% 35%, rgba(255,202,92,.34), rgba(255,133,48,.1) 58%, transparent 70%); filter: drop-shadow(0 4px 9px rgba(255,170,55,.28)); animation: festivalMarkPulse 2.4s ease-in-out infinite; }
-.festival-mark svg { width: 28px; height: 28px; fill: none; stroke: #ffd27a; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-.festival-mark--diwali svg, .festival-mark--christmas svg, .festival-mark--holi svg { stroke: #ffe8a8; }
+.festival-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: radial-gradient(circle, rgba(255,202,92,.25), transparent 70%);
+  filter: drop-shadow(0 4px 8px rgba(255,170,55,.28));
+  animation: festivalMarkPulse 2.4s ease-in-out infinite;
+}
+
+.festival-mark svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: #ffd27a;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .festival-mark--navratri svg { stroke: #ff9b67; }
 .festival-mark--dussehra svg { stroke: #ffcf6e; }
-.festival-greeting { max-width: 160px; font-weight: 850; font-size: 12px; line-height: 1.12; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.festival-meta, .festival-now { margin-top: 2px; font-size: 8px; opacity: .7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.festival-clock { display: flex; justify-content: flex-start; align-items: center; gap: 3px; margin-top: 6px; }
-.festival-clock span { min-width: 27px; padding: 3px 2px; text-align: center; border-radius: 6px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.09); font-size: 7px; }
-.festival-clock b { display: block; font-size: 11px; line-height: 1; }
-.festival-now { text-align: left; font-size: 7px; }
-@keyframes festivalFloatCorner { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-@keyframes festivalTwinkle { 0%, 100% { opacity: .3; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.05); } }
-@keyframes festivalMarkPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.festival-mark--diwali svg,
+.festival-mark--christmas svg,
+.festival-mark--holi svg { stroke: #ffe8a8; }
+
+@keyframes festivalFloatCorner {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes festivalMarkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 @media (max-width: 640px) {
-  .festival-celebration { top: 68px; left: 8px; right: auto; width: min(205px, calc(100vw - 16px)); padding: 7px 8px 6px; border-radius: 12px; }
-  .festival-mark { flex-basis: 28px; width: 28px; height: 28px; }
-  .festival-mark svg { width: 25px; height: 25px; }
-  .festival-greeting { max-width: 145px; font-size: 11px; }
-  .festival-clock { justify-content: flex-start; }
-  .festival-now { text-align: left; }
+  .festival-celebration {
+    top: 68px;
+    left: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .festival-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .festival-mark svg {
+    width: 28px;
+    height: 28px;
+  }
 }
