@@ -12,24 +12,33 @@ function GaneshaMark() {
   );
 }
 
+const formatters = {
+  time: new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
+  date: new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", weekday: "long", day: "2-digit", month: "short", year: "numeric" }),
+};
+
 export default function FestivalCelebration({ fallback = null }: { fallback?: ReactNode }) {
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
-    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(timer);
   }, []);
 
+  const current = now.getTime();
   const startTime = GANESH_CHATURTHI - 7 * 24 * 60 * 60 * 1000;
   const endTime = GANESH_CHATURTHI + 24 * 60 * 60 * 1000;
-  if (now < startTime || now > endTime) return <>{fallback}</>;
+  if (current < startTime || current > endTime) return <>{fallback}</>;
 
   return (
-    <div className="festival-celebration festival-celebration-global" aria-label="Happy Ganesh Chaturthi" title="Happy Ganesh Chaturthi">
-      <span className="festival-mark" aria-hidden="true">
-        <GaneshaMark />
-      </span>
-      <span className="festival-greeting">Happy Ganesh Chaturthi</span>
-    </div>
+    <header className="festival-celebration festival-celebration-global" aria-label="Festival and current date and time">
+      <div className="festival-celebration__inner">
+        <span className="festival-mark" aria-hidden="true"><GaneshaMark /></span>
+        <span className="festival-greeting">Happy Ganesh Chaturthi</span>
+        <span className="festival-divider" aria-hidden="true" />
+        <span className="festival-live-time">{formatters.time.format(now)}</span>
+        <span className="festival-live-date">{formatters.date.format(now)} • IST</span>
+      </div>
+    </header>
   );
 }
