@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "@/styles/festival-celebration.css";
 
@@ -49,7 +49,7 @@ function FestivalMark({ icon }: { icon: FestivalKey }) {
   }
 }
 
-export default function FestivalCelebration() {
+export default function FestivalCelebration({ fallback }: { fallback: ReactNode }) {
   const location = useLocation();
   const [now, setNow] = useState(() => Date.now());
 
@@ -58,20 +58,20 @@ export default function FestivalCelebration() {
     return () => window.clearInterval(timer);
   }, []);
 
-  if (location.pathname !== "/") return null;
+  if (location.pathname !== "/") return <>{fallback}</>;
   const festival = useMemo(() => getNextFestival(now), [now]);
-  if (!festival) return null;
+  if (!festival) return <>{fallback}</>;
 
   const festivalTime = new Date(festival.date).getTime();
   const startTime = festivalTime - 7 * 24 * 60 * 60 * 1000;
   const endTime = festivalTime + 24 * 60 * 60 * 1000;
-  if (now < startTime || now > endTime) return null;
+  if (now < startTime || now > endTime) return <>{fallback}</>;
 
   return (
-    <aside className="festival-celebration" aria-label={`${festival.name} celebration`}>
+    <span className="festival-celebration" aria-label={`${festival.name} celebration`} title={festival.name}>
       <span className={`festival-mark festival-mark--${festival.icon}`} aria-hidden="true">
         <FestivalMark icon={festival.icon} />
       </span>
-    </aside>
+    </span>
   );
 }
