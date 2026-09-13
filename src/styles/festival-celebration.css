@@ -1,0 +1,61 @@
+.festival-celebration {
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  z-index: 80;
+  width: min(92vw, 760px);
+  transform: translateX(-50%);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 22px;
+  background: linear-gradient(110deg, rgba(18, 10, 38, .94), rgba(83, 31, 12, .9));
+  box-shadow: 0 18px 55px rgba(0,0,0,.32), 0 0 42px rgba(255, 174, 0, .16);
+  backdrop-filter: blur(18px) saturate(135%);
+  animation: festivalFloat 3.8s ease-in-out infinite;
+}
+
+.festival-glow {
+  position: absolute;
+  inset: -80px auto auto 8%;
+  width: 180px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 192, 64, .2);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.festival-sparkles {
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  font-size: 12px;
+  letter-spacing: 12px;
+  opacity: .7;
+  animation: festivalTwinkle 1.8s ease-in-out infinite;
+}
+
+.festival-main, .festival-clock, .festival-now { position: relative; }
+.festival-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.festival-icon { font-size: 34px; filter: drop-shadow(0 5px 12px rgba(255, 180, 40, .35)); }
+.festival-greeting { font-weight: 900; font-size: clamp(15px, 2vw, 21px); line-height: 1.15; }
+.festival-meta, .festival-now { margin-top: 3px; font-size: 11px; opacity: .76; }
+.festival-clock { display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 42px; }
+.festival-clock span { min-width: 42px; padding: 6px 4px; text-align: center; border-radius: 11px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); font-size: 10px; }
+.festival-clock b { display: block; font-size: 17px; line-height: 1; }
+.festival-now { grid-column: 1 / -1; text-align: center; }
+
+@keyframes festivalFloat { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-3px); } }
+@keyframes festivalTwinkle { 0%,100% { opacity: .35; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
+
+@media (max-width: 640px) {
+  .festival-celebration { top: 68px; grid-template-columns: 1fr; gap: 5px; padding: 10px 13px; border-radius: 18px; }
+  .festival-clock { justify-content: flex-start; }
+  .festival-now { text-align: left; }
+  .festival-icon { font-size: 28px; }
+}
