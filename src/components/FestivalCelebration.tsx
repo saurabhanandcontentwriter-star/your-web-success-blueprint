@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import "@/styles/festival-celebration.css";
 
 const GANESH_CHATURTHI = new Date("2026-09-14T00:00:00+05:30").getTime();
@@ -13,8 +12,7 @@ function GaneshaMark() {
   );
 }
 
-export default function FestivalCelebration({ fallback }: { fallback: ReactNode }) {
-  const location = useLocation();
+export default function FestivalCelebration({ fallback = null }: { fallback?: ReactNode }) {
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
@@ -22,18 +20,16 @@ export default function FestivalCelebration({ fallback }: { fallback: ReactNode 
     return () => window.clearInterval(timer);
   }, []);
 
-  if (location.pathname !== "/") return <>{fallback}</>;
-
   const startTime = GANESH_CHATURTHI - 7 * 24 * 60 * 60 * 1000;
   const endTime = GANESH_CHATURTHI + 24 * 60 * 60 * 1000;
   if (now < startTime || now > endTime) return <>{fallback}</>;
 
   return (
-    <span className="festival-celebration" aria-label="Happy Ganesh Chaturthi" title="Happy Ganesh Chaturthi">
+    <div className="festival-celebration festival-celebration-global" aria-label="Happy Ganesh Chaturthi" title="Happy Ganesh Chaturthi">
       <span className="festival-mark" aria-hidden="true">
         <GaneshaMark />
       </span>
       <span className="festival-greeting">Happy Ganesh Chaturthi</span>
-    </span>
+    </div>
   );
 }
