@@ -35,6 +35,7 @@ const ExitIntentPopup = lazy(() => import("./components/ExitIntentPopup"));
 const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const FloatingLogoRails = lazy(() => import("./components/FloatingLogoRails"));
 const LiveDateTime = lazy(() => import("./components/LiveDateTime"));
+const FestivalCelebration = lazy(() => import("./components/FestivalCelebration"));
 import { ThemeProvider } from "./components/ThemeProvider";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
 import { trackVisitor } from "./lib/visitorAnalytics";
@@ -106,6 +107,7 @@ const App = () => (
               <AuroraBackground />
               <VisitorTracker />
               <LiveDateTime />
+              <FestivalCelebration />
               <div id="top" className="site-3d-shell">
                 <Routes>
                   <Route path="/" element={<Index />} />
