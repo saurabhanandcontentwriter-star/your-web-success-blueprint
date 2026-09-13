@@ -9,9 +9,12 @@ const formatters = {
     second: "2-digit",
     hour12: true,
   }),
+  day: new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    weekday: "long",
+  }),
   date: new Intl.DateTimeFormat("en-IN", {
     timeZone: "Asia/Kolkata",
-    weekday: "short",
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -27,8 +30,9 @@ export default function LiveDateTime() {
   }, []);
 
   return (
-    <aside className="live-date-time" aria-label="Current India date and time">
+    <aside className="live-date-time" aria-label="Current India day, date and time">
       <div className="live-date-time__time">{formatters.time.format(now)}</div>
+      <div className="live-date-time__day">{formatters.day.format(now)}</div>
       <div className="live-date-time__date">{formatters.date.format(now)} • IST</div>
     </aside>
   );
