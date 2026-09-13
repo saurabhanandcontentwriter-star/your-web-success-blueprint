@@ -33,11 +33,12 @@ export async function trackVisitor(event: "page_view" | "cta_click" | "hire_clic
   href?: string;
   durationSeconds?: number;
 } = {}) {
+  const duration = data.durationSeconds != null ? Math.max(0, Math.round(data.durationSeconds)) : null;
   return logLead({
     event,
     name: data.element ?? "",
-    message: data.href ?? "",
-    elapsed: Math.max(0, Math.round(data.durationSeconds ?? 0) * 1000),
+    message: duration != null ? `Time spent: ${duration}s` : (data.href ?? ""),
+    elapsed: duration != null ? duration * 1000 : 9999,
     visitorId: getVisitorId(),
     sessionId: getSessionId(),
   });
