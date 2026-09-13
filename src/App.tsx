@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { Toaster as Sonner } from "sonner";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -61,7 +61,11 @@ const VisitorTracker = () => {
       if (!el) return;
       const href = el instanceof HTMLAnchorElement ? el.href : "";
       const label = (
-        el.getAttribute("data-track") || el.getAttribute("aria-label") || el.textContent || el.getAttribute("title") || el.tagName
+        el.getAttribute("data-track") ||
+        el.getAttribute("aria-label") ||
+        el.textContent ||
+        el.getAttribute("title") ||
+        el.tagName
       ).replace(/\s+/g, " ").trim().slice(0, 300);
       const isHire = /hire\s*me|hire|book\s*a\s*call/i.test(label);
       void trackVisitor(isHire ? "hire_click" : "cta_click", { element: label, href });
