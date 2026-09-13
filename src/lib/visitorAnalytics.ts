@@ -28,6 +28,17 @@ export function getSessionId() {
   return typeof window === "undefined" ? "server" : getOrCreate(SESSION_KEY, "session", sessionStorage);
 }
 
+export function formatTimeSpent(totalSeconds: number) {
+  const seconds = Math.max(0, Math.round(totalSeconds));
+  if (seconds < 60) return `${seconds} sec`;
+  const minutes = Math.floor(seconds / 60);
+  const remaining = seconds % 60;
+  if (minutes < 60) return remaining ? `${minutes} min ${remaining} sec` : `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return remainingMinutes ? `${hours} hr ${remainingMinutes} min` : `${hours} hr`;
+}
+
 export async function trackVisitor(event: "page_view" | "cta_click" | "hire_click", data: {
   element?: string;
   href?: string;
@@ -35,9 +46,10 @@ export async function trackVisitor(event: "page_view" | "cta_click" | "hire_clic
 } = {}) {
   const duration = data.durationSeconds != null ? Math.max(0, Math.round(data.durationSeconds)) : null;
   const visitorId = getVisitorId();
+  const sessionId = getSessionId();
   const message = duration != null
-    ? `Visitor: ${visitorId} | Time spent: ${duration}s`
-    : `Visitor: ${visitorId}${data.href ? ` | URL: ${data.href}` : ""}`;
+    ? `Visitor: ${visitorId} | Session: ${sessionId} | Time spent: ${formatTimeSpent(duration)}`
+    : `Visitor: ${visitorId} | Session: ${sessionId}${data.href ? ` | URL: ${data.href}` : ""}`;
 
   return logLead({
     event,
@@ -45,6 +57,6 @@ export async function trackVisitor(event: "page_view" | "cta_click" | "hire_clic
     message,
     elapsed: duration != null ? duration * 1000 : 9999,
     visitorId,
-    sessionId: getSessionId(),
+    sessionId,
   });
 }
