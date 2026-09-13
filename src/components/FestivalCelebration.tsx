@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "@/styles/festival-celebration.css";
 
 type Festival = {
@@ -29,12 +30,15 @@ const getNextFestival = (now: number) => {
 };
 
 export default function FestivalCelebration() {
+  const location = useLocation();
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(timer);
   }, []);
+
+  if (location.pathname !== "/") return null;
 
   const festival = useMemo(() => getNextFestival(now), [now]);
   if (!festival) return null;
@@ -50,20 +54,8 @@ export default function FestivalCelebration() {
   const hours = Math.floor((remaining % 86400000) / 3600000);
   const minutes = Math.floor((remaining % 3600000) / 60000);
   const seconds = Math.floor((remaining % 60000) / 1000);
-  const currentDate = new Intl.DateTimeFormat("en-IN", {
-    timeZone: "Asia/Kolkata",
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  }).format(now);
-  const currentTime = new Intl.DateTimeFormat("en-IN", {
-    timeZone: "Asia/Kolkata",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  }).format(now);
+  const currentDate = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", weekday: "short", day: "2-digit", month: "short", year: "numeric" }).format(now);
+  const currentTime = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }).format(now);
 
   return (
     <aside className="festival-celebration" aria-live="polite">
@@ -77,16 +69,7 @@ export default function FestivalCelebration() {
         </div>
       </div>
       <div className="festival-clock" aria-label="Festival countdown">
-        {isToday ? (
-          <strong>Celebrating Today 🎊</strong>
-        ) : (
-          <>
-            <span><b>{days}</b>d</span>
-            <span><b>{pad(hours)}</b>h</span>
-            <span><b>{pad(minutes)}</b>m</span>
-            <span><b>{pad(seconds)}</b>s</span>
-          </>
-        )}
+        {isToday ? <strong>Celebrating Today 🎊</strong> : <><span><b>{days}</b>d</span><span><b>{pad(hours)}</b>h</span><span><b>{pad(minutes)}</b>m</span><span><b>{pad(seconds)}</b>s</span></>}
       </div>
       <div className="festival-now">Today: {currentDate} • {currentTime}</div>
     </aside>
