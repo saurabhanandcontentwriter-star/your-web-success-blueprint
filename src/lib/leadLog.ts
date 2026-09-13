@@ -12,11 +12,15 @@ export interface LeadPayload {
   name?: string;
   email?: string;
   message?: string;
+  page?: string;
+  referrer?: string;
   hp?: string;
   elapsed?: number;
   lat?: number;
   lon?: number;
   accuracy?: number;
+  visitorId?: string;
+  sessionId?: string;
 }
 
 const GEO_KEY = "sa_geo_coords_v1";
@@ -39,7 +43,7 @@ export function storeCoords(coords: { lat: number; lon: number; accuracy: number
   }
 }
 
-/** Sends an activity/lead record to the Google Sheet. Never throws. */
+/** Sends a lead/activity record to the logging Edge Function. Never throws. */
 export async function logLead(payload: LeadPayload): Promise<{ ok: boolean; error?: string }> {
   try {
     const coords = getStoredCoords();
@@ -52,9 +56,10 @@ export async function logLead(payload: LeadPayload): Promise<{ ok: boolean; erro
       body: JSON.stringify({
         ...(coords ?? {}),
         ...payload,
-        page: typeof window !== "undefined" ? window.location.pathname : "",
-        referrer: typeof document !== "undefined" ? document.referrer : "",
+        page: payload.page ?? (typeof window !== "undefined" ? window.location.pathname : ""),
+        referrer: payload.referrer ?? (typeof document !== "undefined" ? document.referrer : ""),
       }),
+      keepalive: true,
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
