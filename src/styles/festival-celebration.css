@@ -1,13 +1,13 @@
 .festival-celebration {
   position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 90;
-  width: min(360px, calc(100vw - 32px));
+  top: 78px;
+  right: 18px;
+  z-index: 96;
+  width: min(360px, calc(100vw - 28px));
   overflow: hidden;
-  padding: 13px 14px 11px;
-  border: 1px solid rgba(255, 196, 92, .32);
-  border-radius: 20px;
+  padding: 12px 13px 10px;
+  border: 1px solid rgba(255, 196, 92, .34);
+  border-radius: 18px;
   background: linear-gradient(135deg, rgba(20, 12, 42, .96), rgba(91, 34, 14, .94));
   box-shadow: 0 18px 50px rgba(0,0,0,.34), 0 0 35px rgba(255, 174, 0, .18);
   backdrop-filter: blur(18px) saturate(135%);
@@ -16,8 +16,8 @@
 
 .festival-glow {
   position: absolute;
-  left: -45px;
-  bottom: -55px;
+  right: -45px;
+  top: -55px;
   width: 150px;
   height: 120px;
   border-radius: 50%;
@@ -50,7 +50,7 @@
 
 .festival-copy { min-width: 0; }
 
-.festival-ganesha {
+.festival-mark {
   flex: 0 0 48px;
   width: 48px;
   height: 48px;
@@ -59,10 +59,10 @@
   border-radius: 15px;
   background: radial-gradient(circle at 50% 35%, rgba(255, 202, 92, .38), rgba(255, 133, 48, .12) 58%, transparent 70%);
   filter: drop-shadow(0 6px 14px rgba(255, 170, 55, .35));
-  animation: ganeshaPulse 2.4s ease-in-out infinite;
+  animation: festivalMarkPulse 2.4s ease-in-out infinite;
 }
 
-.festival-ganesha svg {
+.festival-mark svg {
   width: 42px;
   height: 42px;
   fill: none;
@@ -72,11 +72,12 @@
   stroke-linejoin: round;
 }
 
-.festival-icon {
-  flex: 0 0 auto;
-  font-size: 34px;
-  filter: drop-shadow(0 5px 12px rgba(255, 180, 40, .35));
-}
+.festival-mark--diwali svg,
+.festival-mark--christmas svg,
+.festival-mark--holi svg { stroke: #ffe8a8; }
+
+.festival-mark--navratri svg { stroke: #ff9b67; }
+.festival-mark--dussehra svg { stroke: #ffcf6e; }
 
 .festival-greeting {
   max-width: 245px;
@@ -131,27 +132,27 @@
   50% { opacity: 1; transform: scale(1.08); }
 }
 
-@keyframes ganeshaPulse {
+@keyframes festivalMarkPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.06); }
 }
 
 @media (max-width: 640px) {
   .festival-celebration {
-    right: 14px;
-    bottom: 14px;
-    width: min(350px, calc(100vw - 28px));
-    padding: 11px 12px 10px;
-    border-radius: 18px;
+    top: 70px;
+    right: 10px;
+    width: min(350px, calc(100vw - 20px));
+    padding: 10px 11px 9px;
+    border-radius: 17px;
   }
 
-  .festival-ganesha {
+  .festival-mark {
     flex-basis: 42px;
     width: 42px;
     height: 42px;
   }
 
-  .festival-ganesha svg { width: 37px; height: 37px; }
+  .festival-mark svg { width: 37px; height: 37px; }
   .festival-greeting { max-width: 220px; font-size: 15px; }
   .festival-clock { justify-content: flex-start; }
   .festival-now { text-align: left; }
