@@ -1,25 +1,28 @@
 .festival-celebration {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 42px;
-  border-radius: 12px;
-  background: radial-gradient(circle, rgba(255, 202, 92, 0.16), transparent 72%);
-  filter: drop-shadow(0 4px 10px rgba(255, 170, 55, 0.22));
-  animation: festivalMarkPulse 2.4s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  margin-left: 8px;
+  color: #ffd27a;
+  white-space: nowrap;
+  animation: festivalGreetingPulse 2.8s ease-in-out infinite;
 }
 
 .festival-mark {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   display: grid;
   place-items: center;
+  flex: 0 0 34px;
+  border-radius: 9px;
+  background: radial-gradient(circle, rgba(255, 202, 92, 0.16), transparent 72%);
+  filter: drop-shadow(0 4px 10px rgba(255, 170, 55, 0.22));
 }
 
 .festival-mark svg {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   fill: none;
   stroke: #ffd27a;
   stroke-width: 2.6;
@@ -27,32 +30,38 @@
   stroke-linejoin: round;
 }
 
-.festival-mark--navratri svg { stroke: #ff9b67; }
-.festival-mark--dussehra svg { stroke: #ffcf6e; }
-.festival-mark--diwali svg,
-.festival-mark--christmas svg,
-.festival-mark--holi svg { stroke: #ffe8a8; }
+.festival-greeting {
+  font-size: 12px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  max-width: 150px;
+}
 
-@keyframes festivalMarkPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+@keyframes festivalGreetingPulse {
+  0%, 100% { opacity: 0.88; }
+  50% { opacity: 1; }
 }
 
 @media (max-width: 640px) {
   .festival-celebration {
-    width: 38px;
-    height: 38px;
-    flex-basis: 38px;
-    border-radius: 10px;
+    gap: 5px;
+    margin-left: 5px;
   }
 
   .festival-mark {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
   .festival-mark svg {
-    width: 34px;
-    height: 34px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .festival-greeting {
+    font-size: 10px;
+    max-width: 105px;
   }
 }
