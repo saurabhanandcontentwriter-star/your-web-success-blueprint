@@ -1,6 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -36,6 +36,7 @@ const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const FloatingLogoRails = lazy(() => import("./components/FloatingLogoRails"));
 import { ThemeProvider } from "./components/ThemeProvider";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
+import { trackVisitor } from "./lib/visitorAnalytics";
 import "@/styles/site-3d.css";
 import "@/styles/floating-logo-rails.css";
 import "@/styles/hero-reset.css";
@@ -44,6 +45,54 @@ const queryClient = new QueryClient();
 
 const VisitorTracker = () => {
   useVisitorLocation();
+  const location = useLocation();
+  const startedAt = useRef(Date.now());
+  const sentRef = useRef(false);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+    sentRef.current = false;
+    void trackVisitor("page_view");
+
+    const handleClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const el = target?.closest("a,button,[data-track]") as HTMLElement | null;
+      if (!el) return;
+
+      const href = el instanceof HTMLAnchorElement ? el.href : "";
+      const label = (
+        el.getAttribute("data-track") ||
+        el.getAttribute("aria-label") ||
+        el.textContent ||
+        el.getAttribute("title") ||
+        el.tagName
+      ).replace(/\s+/g, " ").trim().slice(0, 300);
+
+      const isHire = /hire\s*me|hire|book\s*a\s*call/i.test(label);
+      void trackVisitor(isHire ? "hire_click" : "cta_click", { element: label, href });
+    };
+
+    document.addEventListener("click", handleClick, true);
+
+    const sendDuration = () => {
+      if (sentRef.current) return;
+      sentRef.current = true;
+      const seconds = Math.max(1, Math.round((Date.now() - startedAt.current) / 1000));
+      void trackVisitor("page_view", { element: "time_spent", durationSeconds: seconds });
+    };
+
+    window.addEventListener("pagehide", sendDuration);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") sendDuration();
+    });
+
+    return () => {
+      document.removeEventListener("click", handleClick, true);
+      window.removeEventListener("pagehide", sendDuration);
+      sendDuration();
+    };
+  }, [location.pathname, location.search]);
+
   return null;
 };
 
