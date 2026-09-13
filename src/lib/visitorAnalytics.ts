@@ -34,12 +34,17 @@ export async function trackVisitor(event: "page_view" | "cta_click" | "hire_clic
   durationSeconds?: number;
 } = {}) {
   const duration = data.durationSeconds != null ? Math.max(0, Math.round(data.durationSeconds)) : null;
+  const visitorId = getVisitorId();
+  const message = duration != null
+    ? `Visitor: ${visitorId} | Time spent: ${duration}s`
+    : `Visitor: ${visitorId}${data.href ? ` | URL: ${data.href}` : ""}`;
+
   return logLead({
     event,
     name: data.element ?? "",
-    message: duration != null ? `Time spent: ${duration}s` : (data.href ?? ""),
+    message,
     elapsed: duration != null ? duration * 1000 : 9999,
-    visitorId: getVisitorId(),
+    visitorId,
     sessionId: getSessionId(),
   });
 }
