@@ -1,67 +1,11 @@
-.festival-celebration {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-width: 0;
-  margin-left: 8px;
-  color: #ffd27a;
-  white-space: nowrap;
-  animation: festivalGreetingPulse 2.8s ease-in-out infinite;
-}
-
-.festival-mark {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 34px;
-  border-radius: 9px;
-  background: radial-gradient(circle, rgba(255, 202, 92, 0.16), transparent 72%);
-  filter: drop-shadow(0 4px 10px rgba(255, 170, 55, 0.22));
-}
-
-.festival-mark svg {
-  width: 32px;
-  height: 32px;
-  fill: none;
-  stroke: #ffd27a;
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.festival-greeting {
-  font-size: 12px;
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  max-width: 150px;
-}
-
-@keyframes festivalGreetingPulse {
-  0%, 100% { opacity: 0.88; }
-  50% { opacity: 1; }
-}
-
-@media (max-width: 640px) {
-  .festival-celebration {
-    gap: 5px;
-    margin-left: 5px;
-  }
-
-  .festival-mark {
-    width: 30px;
-    height: 30px;
-    flex-basis: 30px;
-  }
-
-  .festival-mark svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .festival-greeting {
-    font-size: 10px;
-    max-width: 105px;
-  }
-}
+.festival-celebration{position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;justify-content:center;min-height:52px;padding:7px 12px;box-sizing:border-box;background:rgba(12,10,24,.94);border-bottom:1px solid rgba(255,255,255,.12);color:#ffd27a;white-space:nowrap;backdrop-filter:blur(14px) saturate(135%);-webkit-backdrop-filter:blur(14px) saturate(135%);animation:festivalGreetingPulse 2.8s ease-in-out infinite}
+.festival-celebration__inner{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;overflow:hidden}
+.festival-mark{width:32px;height:32px;display:grid;place-items:center;flex:0 0 32px;border-radius:9px;background:radial-gradient(circle,rgba(255,202,92,.16),transparent 72%);filter:drop-shadow(0 4px 10px rgba(255,170,55,.22))}
+.festival-mark svg{width:30px;height:30px;fill:none;stroke:#ffd27a;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.festival-greeting{font-size:12px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.festival-divider{width:1px;height:22px;background:rgba(255,255,255,.2);margin:0 3px}
+.festival-live-time{font-size:12px;font-weight:900;font-variant-numeric:tabular-nums}
+.festival-live-date{font-size:10px;font-weight:700;opacity:.78}
+@keyframes festivalGreetingPulse{0%,100%{opacity:.9}50%{opacity:1}}
+@media(max-width:640px){.festival-celebration{min-height:48px;padding:6px 8px}.festival-celebration__inner{gap:5px}.festival-mark{width:28px;height:28px;flex-basis:28px}.festival-mark svg{width:26px;height:26px}.festival-greeting{font-size:10px}.festival-divider{height:18px;margin:0 1px}.festival-live-time{font-size:10px}.festival-live-date{font-size:8px}.festival-celebration__inner{overflow-x:auto;scrollbar-width:none}.festival-celebration__inner::-webkit-scrollbar{display:none}}
+@media(max-width:420px){.festival-greeting{font-size:9px}.festival-live-date{display:none}.festival-live-time{font-size:9px}.festival-mark{width:25px;height:25px;flex-basis:25px}.festival-mark svg{width:23px;height:23px}}
