@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import "@/styles/festival-celebration.css";
 
 const GANESH_CHATURTHI = new Date("2026-09-14T00:00:00+05:30").getTime();
+const GANESH_FESTIVAL_END = new Date("2026-09-25T23:59:59+05:30").getTime();
 
 function GaneshaMark() {
   return (
@@ -26,9 +27,7 @@ export default function FestivalCelebration({ fallback = null }: { fallback?: Re
   }, []);
 
   const current = now.getTime();
-  const startTime = GANESH_CHATURTHI - 7 * 24 * 60 * 60 * 1000;
-  const endTime = GANESH_CHATURTHI + 24 * 60 * 60 * 1000;
-  if (current < startTime || current > endTime) return <>{fallback}</>;
+  if (current < GANESH_CHATURTHI || current > GANESH_FESTIVAL_END) return <>{fallback}</>;
 
   return (
     <header className="festival-celebration festival-celebration-global" aria-label="Festival and current date and time">
