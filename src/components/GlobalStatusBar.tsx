@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "@/styles/global-status-bar.css";
 
-const GANESH_START = new Date("2026-09-07T00:00:00+05:30").getTime();
-const GANESH_END = new Date("2026-09-16T00:00:00+05:30").getTime();
+const GANESH_START = new Date("2026-09-14T00:00:00+05:30").getTime();
+const GANESH_END = new Date("2026-09-25T23:59:59+05:30").getTime();
 
 const timeFormatter = new Intl.DateTimeFormat("en-IN", {
   timeZone: "Asia/Kolkata",
@@ -38,7 +38,7 @@ export default function GlobalStatusBar() {
   }, []);
 
   const current = now.getTime();
-  const showFestival = current >= GANESH_START && current < GANESH_END;
+  const showFestival = current >= GANESH_START && current <= GANESH_END;
 
   return (
     <header className="global-status-bar" aria-label="Festival and current India date and time">
