@@ -12,19 +12,8 @@ import devfestCommunity3 from "@/assets/gallery/devfest-community-3.webp";
 import devfestCommunity4 from "@/assets/gallery/devfest-community-4.webp";
 import devfestCommunity5 from "@/assets/gallery/devfest-community-5.webp";
 
-export interface EventPhoto {
-  src: string;
-  alt: string;
-}
-
-export interface GalleryEvent {
-  slug: string;
-  title: string;
-  subtitle: string;
-  date: string;
-  about: string;
-  photos: EventPhoto[];
-}
+export interface EventPhoto { src: string; alt: string; }
+export interface GalleryEvent { slug: string; title: string; subtitle: string; date: string; about: string; photos: EventPhoto[]; }
 
 export const events: GalleryEvent[] = [
   {
@@ -32,8 +21,7 @@ export const events: GalleryEvent[] = [
     title: "AI Impact Summit India 2026",
     subtitle: "Central Government Initiative · Bharat Mandapam, New Delhi",
     date: "February 2026",
-    about:
-      "Attended the AI Impact Summit India 2026 at Bharat Mandapam, a flagship initiative bringing together global AI leaders, policy makers and industry to shape responsible AI adoption.",
+    about: "Attended the AI Impact Summit India 2026 at Bharat Mandapam, a flagship initiative bringing together global AI leaders, policy makers and industry to shape responsible AI adoption.",
     photos: [
       { src: aiSummitInvite, alt: "AI Impact Summit 2026 - Official Delegate Invitation" },
       { src: aiSummitFlags, alt: "AI Impact Summit 2026 - With International Flags" },
@@ -46,8 +34,7 @@ export const events: GalleryEvent[] = [
     title: "Google DevFest Ranchi 2025",
     subtitle: "Google Developer Groups · Ranchi · Community Moments",
     date: "2025",
-    about:
-      "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks, stage sessions, networking and community celebration.",
+    about: "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks, stage sessions, networking and community celebration.",
     photos: [
       { src: devfestVenue, alt: "Google DevFest Ranchi 2025 - Main Stage" },
       { src: devfestStage, alt: "Google DevFest Ranchi 2025 - Sponsor Wall" },
