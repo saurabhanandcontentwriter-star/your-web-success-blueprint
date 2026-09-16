@@ -28,6 +28,5 @@
 .devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(3){background-image:url("../assets/gallery/devfest-community-3.webp");}
 .devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(4){background-image:url("../assets/gallery/devfest-community-4.webp");}
 .devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3::after{content:"";display:block;aspect-ratio:16/9;border-radius:.75rem;border:1px solid hsl(var(--primary)/.2);background:url("../assets/gallery/devfest-community-5.webp") center/cover no-repeat;}
-
 @media (max-width:768px){.devfest-ranchi-page .devfest-orb{width:18rem;height:18rem;filter:blur(55px);opacity:.14;}.devfest-ranchi-page .devfest-grid{background-size:42px 42px;opacity:.12;}.devfest-ranchi-page .devfest-hero-glow{inset:5% -10% auto;height:28rem;}}
 @media (prefers-reduced-motion:reduce){.devfest-ranchi-page .devfest-grid,.devfest-ranchi-page .devfest-orb,.devfest-ranchi-page .devfest-sweep,.devfest-ranchi-page .devfest-flash,.devfest-ranchi-page .devfest-scanline,.devfest-ranchi-page .devfest-hero-glow{animation:none!important;}}
