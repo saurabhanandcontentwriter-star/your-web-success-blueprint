@@ -6,6 +6,11 @@ import devfestStage from "@/assets/gallery/devfest-stage.jpg";
 import devfestVenue from "@/assets/gallery/devfest-venue.jpg";
 import devfestFriend from "@/assets/gallery/devfest-friend.jpg";
 import devfestSpeaker from "@/assets/gallery/devfest-speaker.jpg";
+import devfestCommunity1 from "@/assets/gallery/devfest-community-1.webp";
+import devfestCommunity2 from "@/assets/gallery/devfest-community-2.webp";
+import devfestCommunity3 from "@/assets/gallery/devfest-community-3.webp";
+import devfestCommunity4 from "@/assets/gallery/devfest-community-4.webp";
+import devfestCommunity5 from "@/assets/gallery/devfest-community-5.webp";
 
 export interface EventPhoto {
   src: string;
@@ -39,15 +44,20 @@ export const events: GalleryEvent[] = [
   {
     slug: "google-devfest-ranchi-2025",
     title: "Google DevFest Ranchi 2025",
-    subtitle: "Google Developer Groups · Ranchi",
+    subtitle: "Google Developer Groups · Ranchi · Community Moments",
     date: "2025",
     about:
-      "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks from Google Developer Experts and industry speakers.",
+      "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks, stage sessions, networking and community celebration.",
     photos: [
-      { src: devfestVenue, alt: "Google DevFest 2025 - Main Stage" },
-      { src: devfestStage, alt: "Google DevFest 2025 - Sponsor Wall" },
-      { src: devfestFriend, alt: "Google DevFest 2025 - Networking" },
-      { src: devfestSpeaker, alt: "Google DevFest 2025 - With Speaker" },
+      { src: devfestVenue, alt: "Google DevFest Ranchi 2025 - Main Stage" },
+      { src: devfestStage, alt: "Google DevFest Ranchi 2025 - Sponsor Wall" },
+      { src: devfestFriend, alt: "Google DevFest Ranchi 2025 - Networking" },
+      { src: devfestSpeaker, alt: "Google DevFest Ranchi 2025 - Speaker Moment" },
+      { src: devfestCommunity1, alt: "DevFest Ranchi 2025 - Web Walo Ki Baithak stage moment" },
+      { src: devfestCommunity2, alt: "DevFest Ranchi 2025 - Community speaker session" },
+      { src: devfestCommunity3, alt: "DevFest Ranchi 2025 - Live music and community celebration" },
+      { src: devfestCommunity4, alt: "DevFest Ranchi 2025 - Developer speaker on stage" },
+      { src: devfestCommunity5, alt: "DevFest Ranchi 2025 - Venue entrance and community event setup" },
     ],
   },
 ];
