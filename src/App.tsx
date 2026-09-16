@@ -36,7 +36,6 @@ const NewsletterPopup = lazy(() => import("./components/NewsletterPopup"));
 const FloatingLogoRails = lazy(() => import("./components/FloatingLogoRails"));
 const GlobalStatusBar = lazy(() => import("./components/GlobalStatusBar"));
 import { ThemeProvider } from "./components/ThemeProvider";
-import FestivalCelebration from "./components/FestivalCelebration";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
 import { trackVisitor } from "./lib/visitorAnalytics";
 import "@/styles/site-3d.css";
@@ -107,7 +106,6 @@ const App = () => (
               <AuroraBackground />
               <VisitorTracker />
               <GlobalStatusBar />
-              <FestivalCelebration fallback={null} />
               <div id="top" className="site-3d-shell">
                 <Routes>
                   <Route path="/" element={<Index />} />
