@@ -28,6 +28,15 @@
 @keyframes devfestFloatYellow{0%,100%{transform:translate3d(0,0,0) scale(.9)}50%{transform:translate3d(12vw,-8vh,0) scale(1.08)}}
 @keyframes devfestFloatGreen{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-10vw,-10vh,0) scale(1.1)}}
 
+/* Community gallery photos */
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div{position:relative;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat;}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div > svg{opacity:0;}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(1){background-image:url("../assets/gallery/devfest-community-1.webp");}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(2){background-image:url("../assets/gallery/devfest-community-2.webp");}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(3){background-image:url("../assets/gallery/devfest-community-3.webp");}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3 > div:nth-child(4){background-image:url("../assets/gallery/devfest-community-4.webp");}
+.devfest-ranchi-page .glass-card .grid.grid-cols-2.gap-3::after{content:"";display:block;aspect-ratio:16/9;border-radius:.75rem;border:1px solid hsl(var(--primary)/.2);background:url("../assets/gallery/devfest-community-5.webp") center/cover no-repeat;}
+
 @media (max-width:768px){
   .devfest-ranchi-page .devfest-orb{width:18rem;height:18rem;filter:blur(55px);opacity:.14;}
   .devfest-ranchi-page .devfest-grid{background-size:42px 42px;opacity:.12;}
