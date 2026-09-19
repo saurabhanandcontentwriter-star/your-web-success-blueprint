@@ -29,17 +29,17 @@ const skillGroups = [
       "Google Search Console",
       "SEO Analytics",
       "A/B Testing",
-      "Keyword Research",
+      "Keyword Research",\n      "Prompt Engineering",\n      "AI Content Workflows",\n      "Generative AI for SEO",
     ],
   },
   {
-    title: "SEO & Digital Marketing",
+    title: "SEO, AI Search & Prompt Engineering",
     skills: [
       "Technical SEO",
       "On-Page & Off-Page SEO",
       "Content Strategy",
       "Link Building",
-      "Google Ads",
+      "Google Ads",\n      "GEO & LLM Optimization",\n      "AEO & AI Search Optimization",\n      "Prompt Engineering",\n      "AI Content Strategy",\n      "AI Workflow Design",
     ],
   },
 ];
@@ -55,7 +55,7 @@ const SkillsSection = () => (
     <div className="container mx-auto px-6">
       <p className="section-label mb-2">Expertise</p>
       <h2 className="text-3xl md:text-4xl font-display font-bold mb-12">
-        Data Analytics, BI &amp; SEO Skills
+        Data Analytics, BI, SEO &amp; AI Skills
       </h2>
 
       <div className="grid md:grid-cols-3 gap-6 mb-16">
