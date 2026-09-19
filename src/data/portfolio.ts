@@ -13,7 +13,8 @@ export interface Project {
   results: string[];
 }
 
-export const projects: Project[] = [\n  {
+export const projects: Project[] = [
+  {
     slug: "crazy-seo-team-ideas",
     title: "Crazy SEO Team Ideas & Prompt Engineering",
     company: "Crazy SEO Team",
