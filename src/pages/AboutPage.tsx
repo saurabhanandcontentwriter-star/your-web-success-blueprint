@@ -27,11 +27,11 @@ const AboutPage = () => {
     "@type": "Person",
     name: "Saurabh Anand",
     url: "https://saurabh-anand-seo.com/about",
-    jobTitle: "AI SEO Consultant, Vibe Coder & AI Automation Expert",
-    description: "AI SEO Consultant, LinkedIn Top Voice 2024, Google Developer Community Contributor, Vibe Coder, GEO Specialist, and AI Automation Expert.",
+    jobTitle: "AI SEO Consultant, Prompt Engineer, Vibe Coder & AI Automation Expert",
+    description: "AI SEO Consultant and Prompt Engineer focused on SEO, GEO, AI search, content systems, automation and practical AI-assisted growth workflows.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "Allama Iqbal College, Bihar Sharif, Nalanda" },
     sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
-    knowsAbout: ["AI SEO", "Technical SEO", "GEO", "LLM Optimization", "AI Automation", "Vibe Coding", "SaaS SEO", "Agentic AI"],
+    knowsAbout: ["AI SEO", "Technical SEO", "GEO", "LLM Optimization", "AI Automation", "Vibe Coding", "SaaS SEO", "Agentic AI", "Prompt Engineering", "AI Content Workflows", "AI SEO Automation"],
   };
 
   return (
@@ -41,7 +41,7 @@ const AboutPage = () => {
         description="Saurabh Anand — AI SEO Consultant, GEO & LLMO expert, Vibe Coder and AI Automation strategist. LinkedIn Top Voice 2024 helping brands win in Google, ChatGPT, Gemini & Perplexity."
         path="/about"
         isHome
-        keywords="About Saurabh Anand, AI SEO Consultant India, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant"
+        keywords="About Saurabh Anand, AI SEO Consultant India, Prompt Engineering Expert, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant"
         image="/og-thumbnail.jpg"
         jsonLd={[personJsonLd, faqJsonLd]}
       />
@@ -57,7 +57,7 @@ const AboutPage = () => {
               I build growth systems.
               <br /><span>Not just campaigns.</span>
             </h1>
-            <p className="about-lead mt-7">I’m Saurabh Anand — a data-driven SEO and digital marketing professional working at the intersection of organic growth, analytics, AI automation and modern search.</p>
+            <p className="about-lead mt-7">I’m Saurabh Anand — a data-driven SEO and digital marketing professional working at the intersection of organic growth, analytics, prompt engineering, AI automation and modern search.</p>
             <div className="about-actions mt-8">
               <a href="#about-story" className="home-hero-primary">Explore my story <ArrowRight size={16} /></a>
               <Link to="/contact" className="home-hero-secondary">Let’s work together</Link>
