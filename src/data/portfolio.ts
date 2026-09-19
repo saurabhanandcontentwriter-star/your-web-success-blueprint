@@ -13,7 +13,32 @@ export interface Project {
   results: string[];
 }
 
-export const projects: Project[] = [
+export const projects: Project[] = [\n  {
+    slug: "crazy-seo-team-ideas",
+    title: "Crazy SEO Team Ideas & Prompt Engineering",
+    company: "Crazy SEO Team",
+    stat: "AI + SEO",
+    description: "An AI-first ideas and prompt engineering project focused on turning SEO strategy, content research and growth workflows into reusable systems.",
+    tags: ["Prompt Engineering", "AI SEO", "GEO", "Automation"],
+    image: "/portfolio/crazy-seo-team-ideas.svg",
+    url: "https://www.crazyseoteam.in/ideas",
+    overview:
+      "Crazy SEO Team Ideas is a practical project for exploring ideas, prompts and AI-assisted growth workflows across SEO, content and digital marketing.",
+    challenge:
+      "Modern search and content teams need repeatable ways to turn business questions, search intent and campaign goals into high-quality AI-assisted outputs without losing strategic control.",
+    approach: [
+      "Designed structured prompts around SEO research, content ideation and marketing workflows.",
+      "Connected prompt engineering with search intent, content strategy and AI SEO use cases.",
+      "Explored reusable idea systems that can support faster research, drafting and optimization.",
+      "Applied an execution-first mindset so AI outputs can move into measurable SEO and growth workflows.",
+    ],
+    results: [
+      "Built a dedicated Ideas experience for AI-assisted SEO and marketing workflows",
+      "Positioned Prompt Engineering alongside SEO, GEO and automation skills",
+      "Created reusable thinking patterns for content and search strategy",
+    ],
+  },
+
   {
     slug: "tripzygo-ecommerce-seo",
     title: "E-commerce SEO Overhaul",
