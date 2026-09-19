@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, BrainCircuit, Code2, Layers3, MousePointer2, Search, Sparkles, Zap } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
-const skills = ["SEO Strategy", "AI Automation", "Data Analytics", "Vibe Coding", "Content Systems", "Growth Marketing"];
+const skills = ["SEO Strategy", "Prompt Engineering", "AI SEO", "GEO & LLMO", "AI Automation", "Data Analytics", "Vibe Coding", "Content Systems", "Growth Marketing"];
 
 const PortfolioSection = () => {
   const [activeTag, setActiveTag] = useState<string>("All");
