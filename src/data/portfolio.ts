@@ -14,6 +14,30 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+
+  {
+    slug: "anvya",
+    title: "Anvya — A Creative Digital Experience",
+    company: "Created by Saurabh Anand",
+    stat: "CREATIVE × TECHNOLOGY",
+    description: "A creative digital project by Saurabh Anand, bringing together web thinking, SEO, AI, technology and a strong focus on digital experience.",
+    tags: ["Creative Technology", "SEO", "AI", "Web Development", "Digital Experience"],
+    image: "/portfolio/anvya.svg",
+    url: "https://www.crazyseoteam.in/anvya",
+    overview: "Anvya is a creative digital project shaped by Saurabh Anand's approach to building for the modern web — where visual thinking, technology, discoverability and user experience come together.",
+    challenge: "The idea was to create a digital experience that feels intentional and contemporary rather than relying on a generic website formula.",
+    approach: [
+      "Combined creative thinking with modern web and digital-product principles.",
+      "Kept SEO and discoverability in mind alongside the visual experience.",
+      "Focused on clarity, interaction and a memorable digital presence.",
+      "Explored how AI, technology and creativity can work together in a modern web project.",
+    ],
+    results: [
+      "Created a dedicated Anvya digital experience",
+      "Expressed Saurabh Anand's creative and technology-focused approach",
+      "Connected creativity, SEO, AI and web thinking in one project story",
+    ],
+  },
   {
     slug: "crazy-seo-team-ideas",
     title: "Crazy SEO Team Ideas & Prompt Engineering",
