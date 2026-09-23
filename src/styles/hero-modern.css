@@ -32,3 +32,35 @@
 @media(max-width:1023px){.home-hero-portrait-wrap{width:50%!important;height:82%!important;}.home-hero-portrait{transform:translateZ(40px) scale(1.12)!important;}.hero-reference-logo{width:72px;height:72px}.hero-reference-logo svg{width:29px;height:29px}.hero-reference-logo strong{font-size:2.4rem}.hero-reference-logo span{font-size:.48rem}.hero-logo-google{left:4%;}.hero-logo-linkedin{right:4%;}.hero-logo-gdg{left:1%;}.hero-logo-ai{right:1%;}.hero-logo-seo{left:5%;}.hero-logo-github{right:5%;}.home-hero-engine{left:58%!important;bottom:3%!important;transform:translateX(-50%) translateY(-4px) translateZ(150px)!important;}.hero-learning-stage{width:78%;height:78px;bottom:5%;gap:.8rem;padding:.8rem 1rem;}.hero-learning-stage span{letter-spacing:.1em;}.hero-learning-stage i{width:4px;height:4px;}}
 @media(max-width:640px){.home-hero-3d{min-height:auto;padding-top:7.5rem}.home-hero-visual{margin-top:1rem;max-width:470px}.home-hero-portrait-wrap{width:54%!important;height:76%!important;top:49%!important;transform:translate(-50%,-50%) translateZ(55px)!important;}.home-hero-portrait{width:100%!important;height:100%!important;transform:translateZ(40px) scale(1.06)!important;}.hero-reference-logos{display:none}.home-hero-engine{left:50%!important;bottom:2%!important;min-width:180px;padding:.55rem .7rem;transform:translateX(-50%) translateY(-4px) translateZ(100px)!important;}.home-hero-name-3d{bottom:7%;font-size:.82rem;letter-spacing:.12em;}.hero-learning-stage{width:88%;height:62px;bottom:4%;gap:.45rem;padding:.6rem .55rem;transform:translateX(-50%) translateZ(80px) rotateX(68deg);}.hero-learning-stage span{font-size:.46rem;letter-spacing:.05em;}.hero-learning-stage i{width:3px;height:3px;}}
 @media(prefers-reduced-motion:reduce){.home-hero-portrait-shine{animation:none}.hero-reference-logo{animation:none;transition:none}.hero-reference-logo:before,.hero-reference-logo:after{animation:none}.hero-reference-logo:hover{transform:translateZ(110px)}}
+
+/* Final hero visual cleanup: keep the portrait central and give every professional logo its own clear orbit. */
+.home-hero-portrait-wrap{width:40%!important;height:82%!important;top:49%!important;transform:translate(-50%,-50%) translateZ(145px)!important;z-index:6!important;}
+.home-hero-portrait{transform:translateZ(30px) scale(1.04)!important;}
+.hero-reference-logos{inset:-2%!important;z-index:20!important;}
+.hero-reference-logo{width:76px;height:76px;z-index:21;transform:translateZ(220px);}
+.hero-reference-logo span{font-size:.5rem;max-width:68px;line-height:1.05;}
+.hero-reference-logo svg{width:30px;height:30px;}
+.hero-reference-logo strong{font-size:2.55rem;}
+.hero-logo-google{left:2%;top:13%;}
+.hero-logo-linkedin{right:2%;top:13%;}
+.hero-logo-gdg{left:-1%;top:44%;}
+.hero-logo-ai{right:-1%;top:44%;}
+.hero-logo-seo{left:4%;top:76%;}
+.hero-logo-github{right:4%;top:76%;}
+.home-hero-name-3d{bottom:7%!important;z-index:31!important;}
+.home-hero-engine{left:58%!important;bottom:1%!important;z-index:32!important;}
+@media(max-width:1023px){
+  .home-hero-portrait-wrap{width:43%!important;height:76%!important;transform:translate(-50%,-50%) translateZ(120px)!important;}
+  .home-hero-portrait{transform:translateZ(25px) scale(1.02)!important;}
+  .hero-reference-logo{width:68px;height:68px;}
+  .hero-reference-logo svg{width:27px;height:27px;}
+  .hero-reference-logo strong{font-size:2.2rem;}
+  .hero-logo-google{left:1%;top:12%;}.hero-logo-linkedin{right:1%;top:12%;}
+  .hero-logo-gdg{left:-1%;top:44%;}.hero-logo-ai{right:-1%;top:44%;}
+  .hero-logo-seo{left:2%;top:77%;}.hero-logo-github{right:2%;top:77%;}
+}
+@media(max-width:640px){
+  .hero-reference-logos{display:none;}
+  .home-hero-portrait-wrap{width:52%!important;height:72%!important;top:48%!important;transform:translate(-50%,-50%) translateZ(55px)!important;}
+  .home-hero-portrait{transform:translateZ(20px) scale(1.02)!important;}
+}
