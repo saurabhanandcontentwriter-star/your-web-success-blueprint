@@ -2,10 +2,6 @@ import aiSummitFlags from "@/assets/gallery/ai-summit-flags.png";
 import aiSummitFountain from "@/assets/gallery/ai-summit-fountain.jpg";
 import aiSummitBanner from "@/assets/gallery/ai-summit-banner.jpg";
 import aiSummitInvite from "@/assets/gallery/ai-summit-invite.jpg";
-import devfestStage from "@/assets/gallery/devfest-stage.jpg";
-import devfestVenue from "@/assets/gallery/devfest-venue.jpg";
-import devfestFriend from "@/assets/gallery/devfest-friend.jpg";
-import devfestSpeaker from "@/assets/gallery/devfest-speaker.jpg";
 import devfestCommunity1 from "@/assets/gallery/devfest-community-1.webp";
 import devfestCommunity2 from "@/assets/gallery/devfest-community-2.webp";
 import devfestCommunity3 from "@/assets/gallery/devfest-community-3.webp";
@@ -36,10 +32,6 @@ export const events: GalleryEvent[] = [
     date: "2025",
     about: "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks, stage sessions, networking and community celebration.",
     photos: [
-      { src: devfestVenue, alt: "Google DevFest Ranchi 2025 - Main Stage" },
-      { src: devfestStage, alt: "Google DevFest Ranchi 2025 - Sponsor Wall" },
-      { src: devfestFriend, alt: "Google DevFest Ranchi 2025 - Networking" },
-      { src: devfestSpeaker, alt: "Google DevFest Ranchi 2025 - Speaker Moment" },
       { src: devfestCommunity1, alt: "DevFest Ranchi 2025 - Web Walo Ki Baithak stage moment" },
       { src: devfestCommunity2, alt: "DevFest Ranchi 2025 - Community speaker session" },
       { src: devfestCommunity3, alt: "DevFest Ranchi 2025 - Live music and community celebration" },
