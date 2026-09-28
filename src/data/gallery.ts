@@ -36,11 +36,10 @@ export const events: GalleryEvent[] = [
     date: "2025",
     about: "Joined Google DevFest Ranchi 2025, a community-driven event by GDG covering AI, web, cloud and mobile, with talks, stage sessions, networking and community celebration.",
     photos: [
-      { src: devfestCommunity1, alt: "DevFest Ranchi 2025 - Web Walo Ki Baithak stage moment" },
-      { src: devfestCommunity2, alt: "DevFest Ranchi 2025 - Community speaker session" },
-      { src: devfestCommunity3, alt: "DevFest Ranchi 2025 - Live music and community celebration" },
-      { src: devfestCommunity4, alt: "DevFest Ranchi 2025 - Developer speaker on stage" },
-      { src: devfestCommunity5, alt: "DevFest Ranchi 2025 - Venue entrance and community event setup" },
+      { src: devfestVenue, alt: "Google DevFest Ranchi 2025 - Main Stage" },
+      { src: devfestStage, alt: "Google DevFest Ranchi 2025 - Sponsor Wall" },
+      { src: devfestFriend, alt: "Google DevFest Ranchi 2025 - Networking" },
+      { src: devfestSpeaker, alt: "Google DevFest Ranchi 2025 - Speaker Moment" },
     ],
   },
 ];
