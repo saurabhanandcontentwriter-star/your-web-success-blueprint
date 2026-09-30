@@ -36,6 +36,7 @@ const DeferredHomeContent = ({ isAdmin }: { isAdmin: boolean }) => (
     <SelectedWork />
     <ExperienceSection />
     <PortfolioSection />
+    <ExperienceProjectCarousel />
     <DataAnalyticsSection />
     <VibeCodingSection />
     <AgenticAISection />
