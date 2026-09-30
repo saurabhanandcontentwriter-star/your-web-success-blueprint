@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Education and graduation illustration</title>
+<desc id="desc">A modern glass-style illustration of a graduation cap, degree certificate and open book.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101a36"/><stop offset="1" stop-color="#080d1d"/></linearGradient>
+  <linearGradient id="cap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#7b4dff"/></linearGradient>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#b9c9e8"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+<circle cx="180" cy="140" r="120" fill="#3f72ff" opacity=".12"/>
+<circle cx="1010" cy="650" r="180" fill="#8a5cff" opacity=".10"/>
+<g opacity=".18" stroke="#9ab5ff" fill="none">
+  <path d="M90 650h1020M150 180h900M220 100v600M980 100v600"/>
+</g>
+<g transform="translate(330 150)">
+  <path d="M270 40 70 145l200 105 200-105z" fill="url(#cap)" stroke="#9bb5ff" stroke-width="8"/>
+  <path d="M145 185v92c72 55 178 55 250 0v-92" fill="#182650" stroke="#789bff" stroke-width="7"/>
+  <path d="M470 140v160" stroke="#dbe6ff" stroke-width="8"/>
+  <circle cx="470" cy="312" r="18" fill="#ffd86b"/>
+  <path d="M470 330c-12 70-10 90 18 116" fill="none" stroke="#ffd86b" stroke-width="7"/>
+</g>
+<g transform="translate(170 500)">
+  <path d="M0 35 190 0l150 38-190 42z" fill="url(#paper)" stroke="#9bb5ff" stroke-width="5"/>
+  <path d="M150 80 340 38v115l-190 40z" fill="#dbe6ff" stroke="#8ca8df" stroke-width="5"/>
+  <path d="M150 80 0 35v118l150 40z" fill="#eef4ff" stroke="#8ca8df" stroke-width="5"/>
+  <path d="M32 75h90M32 98h75M190 73h105M190 97h80" stroke="#6e8dcc" stroke-width="7" stroke-linecap="round"/>
+</g>
+<g transform="translate(700 475)">
+  <rect x="0" y="0" width="280" height="190" rx="18" fill="url(#paper)" stroke="#91a9d9" stroke-width="6"/>
+  <rect x="24" y="24" width="232" height="142" rx="10" fill="#eef4ff"/>
+  <path d="M52 68h175M52 100h135M52 132h90" stroke="#7187b4" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="215" cy="130" r="20" fill="#5b8cff" opacity=".8"/>
+  <path d="M215 118v24M203 130h24" stroke="white" stroke-width="4"/>
+</g>
+<text x="600" y="735" text-anchor="middle" fill="#dbe6ff" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="8">EDUCATION · LEARNING · GROWTH</text>
+</svg>
