@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import aboutPhoto from "@/assets/about-photo.jpg";
 
 const items = [
-  { key:"experience", label:"Experience", target:"#experience", eyebrow:"PROFESSIONAL EXPERIENCE", title:"SEO & Digital Marketing", text:"Hands-on experience across technical SEO, content strategy, AI SEO, analytics, digital marketing and growth workflows.", points:["Technical & On-Page SEO","Content & Keyword Strategy","SEO Audits & Core Web Vitals","AI SEO / GEO & Automation"], meta:"SEO · Digital Marketing · AI" },
-  { key:"projects", label:"Projects", target:"#featured-work", eyebrow:"SELECTED PROJECTS", title:"Real Projects, Practical Execution", text:"A portfolio of digital projects combining SEO, analytics, AI, web development and growth strategy.", points:["CampusSphere AI","Crazy SEO Team Ideas","E-commerce SEO Overhaul","Analytics & Dashboard Work"], meta:"Projects · Case Studies · Execution" },
-  { key:"education", label:"Education", target:"#education", eyebrow:"EDUCATION", title:"BCA / Degree Voc", text:"Academic foundation in computer applications, technology and practical digital skills.", points:["Allama Iqbal College, Bihar Sharif","BCA / Degree Voc","Session 2023–2026","Practical technology & project work"], meta:"Education · Technology · Projects" },
-  { key:"skills", label:"Skills", target:"#skills", eyebrow:"SKILLS & TOOLKIT", title:"Modern Digital & Data Stack", text:"A cross-functional skill set connecting SEO, data analytics, AI and digital product execution.", points:["SEO · Technical SEO · GEO","SQL · Python · Excel","Power BI · Tableau · GA4","AI · Automation · Web Development"], meta:"SEO · Data · AI · Web" },
+  { key:"experience", label:"Experience", target:"#experience", image:"/portfolio/tripzygo-seo.svg", eyebrow:"PROFESSIONAL EXPERIENCE", title:"SEO & Digital Marketing", text:"Hands-on experience across technical SEO, content strategy, AI SEO, analytics, digital marketing and growth workflows.", points:["Technical & On-Page SEO","Content & Keyword Strategy","SEO Audits & Core Web Vitals","AI SEO / GEO & Automation"], meta:"SEO · Digital Marketing · AI" },
+  { key:"projects", label:"Projects", target:"#featured-work", image:"/portfolio/crazy-seo-team-ideas.svg", eyebrow:"SELECTED PROJECTS", title:"Real Projects, Practical Execution", text:"A portfolio of digital projects combining SEO, analytics, AI, web development and growth strategy.", points:["CampusSphere AI","Crazy SEO Team Ideas","E-commerce SEO Overhaul","Analytics & Dashboard Work"], meta:"Projects · Case Studies · Execution" },
+  { key:"education", label:"Education", target:"#education", image:aboutPhoto, eyebrow:"EDUCATION", title:"BCA / Degree Voc", text:"Academic foundation in computer applications, technology and practical digital skills.", points:["Allama Iqbal College, Bihar Sharif","BCA / Degree Voc","Session 2023–2026","Practical technology & project work"], meta:"Education · Technology · Projects" },
+  { key:"skills", label:"Skills", target:"#skills", image:"/portfolio/local-seo-gbp.svg", eyebrow:"SKILLS & TOOLKIT", title:"Modern Digital & Data Stack", text:"A cross-functional skill set connecting SEO, data analytics, AI and digital product execution.", points:["SEO · Technical SEO · GEO","SQL · Python · Excel","Power BI · Tableau · GA4","AI · Automation · Web Development"], meta:"SEO · Data · AI · Web" },
 ];
 
 const ExperienceProjectCarousel = () => {
@@ -32,18 +33,16 @@ const ExperienceProjectCarousel = () => {
         </div>
 
         <div className="ep-tabs mx-auto mb-10 flex max-w-4xl justify-center gap-2 overflow-x-auto p-2">
-          {items.map((x,i)=>(
-            <a key={x.key} href={x.target} onClick={()=>setActive(i)} className={`ep-tab ${active===i?"ep-tab-active":""}`}>
-              {x.label}
-            </a>
-          ))}
+          {items.map((x,i)=><a key={x.key} href={x.target} onClick={()=>setActive(i)} className={`ep-tab ${active===i?"ep-tab-active":""}`}>{x.label}</a>)}
         </div>
 
         <div className="mx-auto max-w-6xl">
           <motion.div key={item.key} initial={{opacity:0,x:45,rotateY:-10}} animate={{opacity:1,x:0,rotateY:0}} transition={{duration:.45}} className="ep-card">
             <div className="ep-stage">
-              <div className="ep-orbit ep-orbit-one"/><div className="ep-orbit ep-orbit-two"/>
-              <div className="ep-depth-card ep-depth-back"/><div className="ep-depth-card ep-depth-mid"/>
+              <div className="ep-image-wrap">
+                <img src={item.image} alt={item.label} className="ep-image" />
+                <div className="ep-image-overlay" />
+              </div>
               <div className="ep-floating ep-floating-top">{item.label.toUpperCase()}</div>
               <div className="ep-floating ep-floating-bottom">{item.meta}</div>
               <div className="ep-number">0{active+1}</div>
