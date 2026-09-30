@@ -11,7 +11,7 @@ const ToolsMarquee = lazy(() => import("@/components/ToolsMarquee"));
 const AIPortfolioCategories = lazy(() => import("@/components/AIPortfolioCategories"));
 const SelectedWork = lazy(() => import("@/components/SelectedWork"));
 const ExperienceSection = lazy(() => import("@/components/ExperienceSection"));
-const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
+const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));\nconst PaidMediaSection = lazy(() => import("@/components/PaidMediaSection"));
 const DataAnalyticsSection = lazy(() => import("@/components/DataAnalyticsSection"));
 const VibeCodingSection = lazy(() => import("@/components/VibeCodingSection"));
 const AgenticAISection = lazy(() => import("@/components/AgenticAISection"));
