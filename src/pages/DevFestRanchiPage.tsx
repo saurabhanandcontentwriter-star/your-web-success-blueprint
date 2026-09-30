@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import "@/styles/devfest-ranchi.css";
 
-const REGISTRATION_URL = "https://gdg.community.dev/gdg-ranchi/";
+const REGISTRATION_URL = "https://devfest.gdgranchi.in/";
 const YOUTUBE_URL = "https://youtu.be/uSoAJe0rxHg?si=xcLRrpPzHjxnQFhP";
 const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/uSoAJe0rxHg";
 const EVENT_START = new Date("2026-10-31T09:00:00+05:30").getTime();
