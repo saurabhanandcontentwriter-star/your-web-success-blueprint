@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import RealImage3D from "@/components/RealImage3D";
-import analyticsVisual from "@/assets/gallery/ai-summit-flags.png";
 
 const GOOGLE_ANALYTICS_URL = "https://analytics.google.com/analytics/web/#/a244846657p531200069/reports/intelligenthome";
 const SEARCH_CONSOLE_URL = "https://search.google.com/search-console?resource_id=https%3A%2F%2Fsaurabhanandseo.com%2F";
@@ -13,7 +11,6 @@ const GoogleAnalyticsPage = () => (
   <div className="min-h-screen bg-background">
     <SEO title="Google Analytics & Search Console — Admin" description="Quick access to Google Analytics and Google Search Console for saurabhanandseo.com." noindex />
     <Navbar />
-      <div className="container mx-auto px-6 max-w-5xl pt-6"><RealImage3D src={analyticsVisual} alt="Data & performance" eyebrow="Analytics · Real dashboard" title="Data & performance" className="h-[240px] md:h-[320px]" /></div>
     <main className="container mx-auto px-4 py-24">
       <div className="mx-auto max-w-4xl space-y-8">
         <div>
