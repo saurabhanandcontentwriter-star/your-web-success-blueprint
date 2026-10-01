@@ -1,16 +1,21 @@
 import { motion } from "framer-motion";
-import campussphereImg from "@/assets/work-campussphere.jpg";
-import adminCrmImg from "@/assets/work-admin-crm.jpg";
-import crazyseoImg from "@/assets/work-crazyseo.jpg";
-import crazyseoSite from "@/assets/crazyseo-site.png";
+
+const analyticsImages: Record<string, string> = {
+  "Power BI": "https://image.thum.io/get/width/1000/crop/620/noanimate/https://learn.microsoft.com/en-us/power-bi/explore-reports/end-user-dashboard-open",
+  Python: "https://image.thum.io/get/width/1000/crop/620/noanimate/https://infinite-worlds.enterprise.anvil.works/learn/examples/dashboard",
+  Tableau: "https://image.thum.io/get/width/1000/crop/620/noanimate/https://www.tableau.com/data-insights/dashboard-showcase",
+  GA4: "https://image.thum.io/get/width/1000/crop/620/noanimate/https://support.google.com/analytics/answer/9925281?hl=en",
+  "Looker Studio": "https://image.thum.io/get/width/1000/crop/620/noanimate/https://nadiamohamed.me/insights/looker-studio-seo-dashboard/",
+  Travel: "https://image.thum.io/get/width/1000/crop/620/noanimate/https://www.wolkcle.com/features/analytics",
+};
 
 const projects = [
-  { image: campussphereImg, title: "Sales Dashboard using Power BI", desc: "Interactive Power BI dashboard tracking revenue, region performance, product mix and YoY growth with drill-through KPIs.", tags: ["Power BI", "DAX", "KPI Reporting"] },
-  { image: adminCrmImg, title: "Customer Churn Analysis with Python", desc: "End-to-end churn analysis using Pandas, NumPy and Matplotlib — EDA, feature engineering and retention insights.", tags: ["Python", "Pandas", "EDA"] },
-  { image: crazyseoSite, title: "E-commerce KPI Dashboard", desc: "Unified dashboard for conversion rate, AOV, CAC, LTV and funnel drop-offs across paid and organic channels.", tags: ["Tableau", "SQL", "GA4"] },
-  { image: crazyseoImg, title: "Website Traffic Analysis using GA4 & SQL", desc: "GA4 + BigQuery SQL analysis surfacing landing-page performance, engagement quality and SEO revenue attribution.", tags: ["GA4", "BigQuery", "SQL"] },
-  { image: adminCrmImg, title: "Competitor Analysis Dashboard", desc: "Automated competitor tracking combining SEO share of voice, keyword gaps and content velocity signals.", tags: ["Looker Studio", "SEO Analytics"] },
-  { image: campussphereImg, title: "Travel Industry Data Insights", desc: "Deep-dive analytics on booking behaviour, destination demand and seasonality — connected to real Tripzygo experience.", tags: ["Python", "Power BI", "Travel"] },
+  { image: analyticsImages["Power BI"], title: "Sales Dashboard using Power BI", desc: "Interactive Power BI dashboard tracking revenue, region performance, product mix and YoY growth with drill-through KPIs.", tags: ["Power BI", "DAX", "KPI Reporting"] },
+  { image: analyticsImages.Python, title: "Customer Churn Analysis with Python", desc: "End-to-end churn analysis using Pandas, NumPy and Matplotlib — EDA, feature engineering and retention insights.", tags: ["Python", "Pandas", "EDA"] },
+  { image: analyticsImages.Tableau, title: "E-commerce KPI Dashboard", desc: "Unified dashboard for conversion rate, AOV, CAC, LTV and funnel drop-offs across paid and organic channels.", tags: ["Tableau", "SQL", "GA4"] },
+  { image: analyticsImages.GA4, title: "Website Traffic Analysis using GA4 & SQL", desc: "GA4 + BigQuery SQL analysis surfacing landing-page performance, engagement quality and SEO revenue attribution.", tags: ["GA4", "BigQuery", "SQL"] },
+  { image: analyticsImages["Looker Studio"], title: "Competitor Analysis Dashboard", desc: "Automated competitor tracking combining SEO share of voice, keyword gaps and content velocity signals.", tags: ["Looker Studio", "SEO Analytics"] },
+  { image: analyticsImages.Travel, title: "Travel Industry Data Insights", desc: "Deep-dive analytics on booking behaviour, destination demand and seasonality — connected to real Tripzygo experience.", tags: ["Python", "Power BI", "Travel"] },
 ];
 
 const DataAnalyticsSection = () => (
