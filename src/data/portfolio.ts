@@ -22,7 +22,7 @@ export const projects: Project[] = [
     stat: "CREATIVE × TECHNOLOGY",
     description: "A creative digital project by Saurabh Anand, bringing together web thinking, SEO, AI, technology and a strong focus on digital experience.",
     tags: ["Creative Technology", "SEO", "AI", "Web Development", "Digital Experience"],
-    image: "/portfolio/anvya.svg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.crazyseoteam.in/anvya",
     url: "https://www.crazyseoteam.in/anvya",
     overview: "Anvya is a creative digital project shaped by Saurabh Anand's approach to building for the modern web — where visual thinking, technology, discoverability and user experience come together.",
     challenge: "The idea was to create a digital experience that feels intentional and contemporary rather than relying on a generic website formula.",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     stat: "AI + SEO",
     description: "An AI-first ideas and prompt engineering project focused on turning SEO strategy, content research and growth workflows into reusable systems.",
     tags: ["Prompt Engineering", "AI SEO", "GEO", "Automation"],
-    image: "/portfolio/crazy-seo-team-ideas.svg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.crazyseoteam.in/ideas",
     url: "https://www.crazyseoteam.in/ideas",
     overview:
       "Crazy SEO Team Ideas is a practical project for exploring ideas, prompts and AI-assisted growth workflows across SEO, content and digital marketing.",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     stat: "+120% Traffic",
     description: "A complete technical and content SEO overhaul for a travel booking platform.",
     tags: ["Technical SEO", "Content Strategy", "E-commerce"],
-    image: "/portfolio/tripzygo-seo.svg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.tripzygo.in/",
     url: "https://www.tripzygo.in/",
     overview:
       "TripzyGo is a fast-growing travel booking platform offering curated holiday packages. The site needed a top-to-bottom SEO refresh to compete in a saturated travel niche.",
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     stat: "+85% Leads",
     description: "Building a content engine that drives qualified leads with topic cluster strategy.",
     tags: ["Link Building", "Topic Clusters", "SaaS"],
-    image: "/portfolio/guest-blogging-saas.svg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://guestbloggingtech.com/",
     url: "https://guestbloggingtech.com/",
     overview:
       "A SaaS-focused outreach platform that needed authority content and a steady backlink pipeline to drive qualified demo requests.",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     stat: "+200% Visibility",
     description: "Optimized Google Business Profiles and localized content for 50+ locations.",
     tags: ["Local SEO", "GBP Optimization", "Scalable SEO"],
-    image: "/portfolio/local-seo-gbp.svg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://crazyseoteam.in/",
     url: "https://crazyseoteam.in/",
     overview:
       "A multi-location retailer needed consistent local visibility across 50+ Google Business Profiles and city-specific landing pages.",
