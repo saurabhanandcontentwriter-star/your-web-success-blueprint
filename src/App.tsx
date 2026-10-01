@@ -39,6 +39,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { useVisitorLocation } from "./hooks/useVisitorLocation";
 import { trackVisitor } from "./lib/visitorAnalytics";
 import "@/styles/site-3d.css";
+import "@/styles/real-image-3d.css";
 import "@/styles/floating-logo-rails.css";
 import "@/styles/hero-reset.css";
 
