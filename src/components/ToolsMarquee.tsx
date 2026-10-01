@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";\nimport React from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import type { CSSProperties } from "react";
 import { Search, Bot, Workflow, BarChart3, ArrowUpRight } from "lucide-react";
 import workCrazySeo from "@/assets/work-crazyseo.jpg";
 import workAdminCrm from "@/assets/work-admin-crm.jpg";
 import crazyseoSite from "@/assets/crazyseo-site.png";
 import workCampussphere from "@/assets/work-campussphere.jpg";
-import portfolioBg from "@/assets/portfolio-bg.jpg";
 
 const categories = [
   {
