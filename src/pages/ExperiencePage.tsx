@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import experienceVisual from "@/assets/work-admin-crm.jpg";
+import experienceVisual from "@/assets/hero-portrait.png";
 import ExperienceSection from "@/components/ExperienceSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
