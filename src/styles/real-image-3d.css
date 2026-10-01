@@ -1,5 +1,5 @@
 .real-image-3d{perspective:1400px;transform-style:preserve-3d;will-change:transform}
-.real-image-3d-media{display:block;width:100%;height:100%;min-height:220px;object-fit:cover;transform:translateZ(22px) scale(1.01);filter:saturate(1.06) contrast(1.04);transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .45s ease}
+.real-image-3d-media{display:block;width:100%;height:100%;min-height:220px;object-fit:contain;object-position:center;background:hsl(var(--card)/.72);transform:translateZ(22px) scale(1.01);filter:saturate(1.06) contrast(1.04);transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .45s ease}
 .real-image-3d:hover .real-image-3d-media{transform:translateZ(38px) scale(1.045);filter:saturate(1.14) contrast(1.06)}
 .real-image-3d-shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 25%,hsl(0 0% 100%/.16) 48%,transparent 67%);transform:translateX(-125%);transition:transform .75s ease}
 .real-image-3d:hover .real-image-3d-shine{transform:translateX(125%)}
