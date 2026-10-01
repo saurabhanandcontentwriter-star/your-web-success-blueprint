@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, BrainCircuit, Sparkles, Target, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import aboutPhoto from "@/assets/about-photo.jpg";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -48,6 +50,7 @@ const AboutPage = () => {
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/85 to-background" />
       <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={aboutPhoto} alt="SEO × AI × DATA × WEB" eyebrow="About · Real profile" title="SEO × AI × DATA × WEB" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
       <main>
         <section className="about-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
