@@ -23,7 +23,8 @@ function parseRobots(txt: string): { rules: Rule[]; sitemaps: string[] } {
   const rules: Rule[] = [];
   const sitemaps: string[] = [];
   let current: Rule | null = null;
-  for (const raw of txt.split(/\r?\n/)) {
+  for (const raw of txt.split(/\r?
+/)) {
     const line = raw.replace(/#.*$/, "").trim();
     if (!line) continue;
     const [k, ...rest] = line.split(":");
@@ -74,7 +75,8 @@ const CrawlerCheckPage = () => {
         description="Technical SEO dashboard: robots.txt parser, user-agent simulation, sitemap & canonical validation for AI and search crawlers."
         path="/crawler-check"
       />
-      <div className="container mx-auto px-6 max-w-5xl">\n        <RealImage3D src={crawlerVisual} alt="Technical SEO project interface" eyebrow="Technical SEO · Real project" title="Crawler, indexing & search systems" className="h-[230px] md:h-[300px] mb-8" />
+      <div className="container mx-auto px-6 max-w-5xl">
+        <RealImage3D src={crawlerVisual} alt="Technical SEO project interface" eyebrow="Technical SEO · Real project" title="Crawler, indexing & search systems" className="h-[230px] md:h-[300px] mb-8" />
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
           <ArrowLeft size={16} /> Back to Home
         </Link>
