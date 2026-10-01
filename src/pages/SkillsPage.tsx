@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, BarChart3, BrainCircuit, CheckCircle2, Code2, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import skillsVisual from "@/assets/work-crazyseo.jpg";
 import SkillsSection from "@/components/SkillsSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -24,6 +26,7 @@ const SkillsPage = () => {
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/85 to-background" />
       <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={skillsVisual} alt="SEO · Data · AI" eyebrow="Skills · Real work" title="SEO · Data · AI" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
       <main>
         <section className="skills-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
