@@ -15,8 +15,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import RealImage3D from "@/components/RealImage3D";
-import experienceVisual from "@/assets/hero-portrait.png";
 import ExperienceSection from "@/components/ExperienceSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -46,7 +44,6 @@ const ExperiencePage = () => {
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-20" style={{ backgroundImage: `url(${spaceBg})` }} />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/30 via-background/88 to-background" />
       <Navbar />
-      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={experienceVisual} alt="Systems · SEO · Analytics" eyebrow="Experience · Real work" title="Systems · SEO · Analytics" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
       <main>
         <section className="experience-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
