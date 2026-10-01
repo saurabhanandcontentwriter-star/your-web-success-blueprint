@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import analyticsVisual from "@/assets/work-campussphere.jpg";
+import analyticsVisual from "@/assets/gallery/ai-summit-flags.png";
 
 const GOOGLE_ANALYTICS_URL = "https://analytics.google.com/analytics/web/#/a244846657p531200069/reports/intelligenthome";
 const SEARCH_CONSOLE_URL = "https://search.google.com/search-console?resource_id=https%3A%2F%2Fsaurabhanandseo.com%2F";
