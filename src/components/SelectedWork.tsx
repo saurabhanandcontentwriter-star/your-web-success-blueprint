@@ -18,8 +18,6 @@ interface Work {
   image: string;
   fallbackImage?: string;
   imageAlt: string;
-  logo?: string;
-  logoFallback?: string;
 }
 
 const works: Work[] = [
