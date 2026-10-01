@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
+import campussphereImg from "@/assets/work-campussphere.jpg";
+import adminCrmImg from "@/assets/work-admin-crm.jpg";
+import crazyseoImg from "@/assets/work-crazyseo.jpg";
+import crazyseoSite from "@/assets/crazyseo-site.png";
 
 const projects = [
-  { image: "/portfolio/guest-blogging-saas.svg", title: "Sales Dashboard using Power BI", desc: "Interactive Power BI dashboard tracking revenue, region performance, product mix and YoY growth with drill-through KPIs.", tags: ["Power BI", "DAX", "KPI Reporting"] },
-  { image: "/portfolio/local-seo-gbp.svg", title: "Customer Churn Analysis with Python", desc: "End-to-end churn analysis using Pandas, NumPy and Matplotlib — EDA, feature engineering and retention insights.", tags: ["Python", "Pandas", "EDA"] },
-  { image: "/portfolio/crazy-seo-team-ideas.svg", title: "E-commerce KPI Dashboard", desc: "Unified dashboard for conversion rate, AOV, CAC, LTV and funnel drop-offs across paid and organic channels.", tags: ["Tableau", "SQL", "GA4"] },
-  { image: "/portfolio/tripzygo-seo.svg", title: "Website Traffic Analysis using GA4 & SQL", desc: "GA4 + BigQuery SQL analysis surfacing landing-page performance, engagement quality and SEO revenue attribution.", tags: ["GA4", "BigQuery", "SQL"] },
-  { image: "/portfolio/anvya.svg", title: "Competitor Analysis Dashboard", desc: "Automated competitor tracking combining SEO share of voice, keyword gaps and content velocity signals.", tags: ["Looker Studio", "SEO Analytics"] },
-  { image: "/portfolio/education.svg", title: "Travel Industry Data Insights", desc: "Deep-dive analytics on booking behaviour, destination demand and seasonality — connected to real Tripzygo experience.", tags: ["Python", "Power BI", "Travel"] },
+  { image: campussphereImg, title: "Sales Dashboard using Power BI", desc: "Interactive Power BI dashboard tracking revenue, region performance, product mix and YoY growth with drill-through KPIs.", tags: ["Power BI", "DAX", "KPI Reporting"] },
+  { image: adminCrmImg, title: "Customer Churn Analysis with Python", desc: "End-to-end churn analysis using Pandas, NumPy and Matplotlib — EDA, feature engineering and retention insights.", tags: ["Python", "Pandas", "EDA"] },
+  { image: crazyseoSite, title: "E-commerce KPI Dashboard", desc: "Unified dashboard for conversion rate, AOV, CAC, LTV and funnel drop-offs across paid and organic channels.", tags: ["Tableau", "SQL", "GA4"] },
+  { image: crazyseoImg, title: "Website Traffic Analysis using GA4 & SQL", desc: "GA4 + BigQuery SQL analysis surfacing landing-page performance, engagement quality and SEO revenue attribution.", tags: ["GA4", "BigQuery", "SQL"] },
+  { image: adminCrmImg, title: "Competitor Analysis Dashboard", desc: "Automated competitor tracking combining SEO share of voice, keyword gaps and content velocity signals.", tags: ["Looker Studio", "SEO Analytics"] },
+  { image: campussphereImg, title: "Travel Industry Data Insights", desc: "Deep-dive analytics on booking behaviour, destination demand and seasonality — connected to real Tripzygo experience.", tags: ["Python", "Power BI", "Travel"] },
 ];
 
 const DataAnalyticsSection = () => (
