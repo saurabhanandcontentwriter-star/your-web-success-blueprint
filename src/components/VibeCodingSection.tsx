@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Terminal, Sparkles, Workflow, Zap, Download } from "lucide-react";
+import crazyseoSite from "@/assets/crazyseo-site.png";
 
 const lines = [
   { p: "$ ", t: "prompt 'rank #1 for ai seo agency in india'" },
@@ -20,7 +21,7 @@ const VibeCodingSection = () => (
         I ship SEO tools, dashboards, and AI workflows by pair-programming with LLMs — turning ideas into deployed software in hours, not weeks.
       </p>
 
-      <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div className="grid lg:grid-cols-2 gap-8 items-stretch"><motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 overflow-hidden rounded-2xl border border-border/50 bg-card/50"><img src={crazyseoSite} alt="Live digital product interface built with modern web development" className="w-full h-[280px] md:h-[360px] object-cover" loading="lazy" /></motion.div>
         {/* Terminal mock */}
         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-card overflow-hidden border-primary/30">
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/40">
