@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, Camera, Images, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import RealImage3D from "@/components/RealImage3D";
-import galleryVisual from "@/assets/gallery/ai-summit-banner.jpg";
 import GallerySection from "@/components/GallerySection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -29,7 +27,6 @@ const GalleryPage = () => {
       />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/45 via-background/85 to-background" />
       <Navbar />
-      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={galleryVisual} alt="AI community & technology" eyebrow="Gallery · Real event" title="AI community & technology" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
       <main>
         <section className="gallery-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
