@@ -50,19 +50,6 @@ const ToolsMarquee = () => (
         AI & SEO Tech Stack
       </h2>
 
-      <div className="tools-stack-hero mb-8 overflow-hidden rounded-2xl border border-border/50">
-        <img
-          src={crazyseoSite}
-          alt="Crazy SEO Team real website project"
-          className="w-full h-[220px] md:h-[300px] object-cover"
-          loading="lazy"
-        />
-        <div className="tools-stack-hero-overlay">
-          <span>REAL PROJECTS</span>
-          <strong>Tools I use in production</strong>
-        </div>
-      </div>
-
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {categories.map((cat, i) => (
           <ToolCard key={cat.title} cat={cat} index={i} />
