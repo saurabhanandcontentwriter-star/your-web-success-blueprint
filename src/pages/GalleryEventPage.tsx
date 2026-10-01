@@ -3,6 +3,8 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import eventVisual from "@/assets/gallery/devfest-stage.jpg";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
 import { getEvent } from "@/data/gallery";
@@ -28,6 +30,7 @@ const GalleryEventPage = () => {
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={eventVisual} alt="Developer community" eyebrow="Event · Real photo" title="Developer community" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
       <article className="pt-24 pb-24">
         <div className="container mx-auto px-6 max-w-5xl">
           <Link to="/gallery" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
