@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Award, BookOpen, GraduationCap, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import educationVisual from "@/assets/work-campussphere.jpg";
 import SEO from "@/components/SEO";
 import aboutPhoto from "@/assets/about-photo.jpg";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -19,6 +21,7 @@ const EducationPage = () => (
     <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} aria-label="Technology and education background" />
     <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/50 via-background/85 to-background" />
     <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={educationVisual} alt="CampusSphere AI · Data & technology" eyebrow="Education · Real project" title="CampusSphere AI · Data & technology" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
     <main className="container mx-auto px-5 md:px-6 pt-24">
       <section className="education-hero">
