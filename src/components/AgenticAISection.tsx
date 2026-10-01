@@ -23,7 +23,7 @@ const AgenticAISection = () => (
         Multi-agent architectures, MCP servers, and prompt chains that run SEO operations 24/7 — so growth compounds while you sleep.
       </p>
 
-      <div className="grid lg:grid-cols-5 gap-8 items-center"><div className="lg:col-span-2 glass-card overflow-hidden border-primary/20"><img src={adminCrmImg} alt="AI-enabled dashboard and workflow interface" className="w-full h-[360px] object-cover" loading="lazy" /></div>
+      <div className="grid lg:grid-cols-7 gap-8 items-center"><div className="lg:col-span-2 glass-card overflow-hidden border-primary/20"><img src={adminCrmImg} alt="AI-enabled dashboard and workflow interface" className="w-full h-[360px] object-cover" loading="lazy" /></div>
         {/* Network graph */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="lg:col-span-3 glass-card p-6 relative h-[360px] overflow-hidden border-primary/30">
           <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
