@@ -23,8 +23,7 @@ function parseRobots(txt: string): { rules: Rule[]; sitemaps: string[] } {
   const rules: Rule[] = [];
   const sitemaps: string[] = [];
   let current: Rule | null = null;
-  for (const raw of txt.split(/\r?
-/)) {
+  for (const raw of txt.split(/\r?\n/) {
     const line = raw.replace(/#.*$/, "").trim();
     if (!line) continue;
     const [k, ...rest] = line.split(":");
