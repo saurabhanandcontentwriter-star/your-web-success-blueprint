@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle2, XCircle, ArrowLeft, Globe, FileCheck2 } from "lucide-react";
 import SEO from "@/components/SEO";
-import RealImage3D from "@/components/RealImage3D";
-import crawlerVisual from "@/assets/crazyseo-site.png";
 
 type Rule = { ua: string; allow: string[]; disallow: string[] };
 
@@ -75,7 +73,6 @@ const CrawlerCheckPage = () => {
         path="/crawler-check"
       />
       <div className="container mx-auto px-6 max-w-5xl">
-        <RealImage3D src={crawlerVisual} alt="Technical SEO project interface" eyebrow="Technical SEO · Real project" title="Crawler, indexing & search systems" className="h-[230px] md:h-[300px] mb-8" />
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
           <ArrowLeft size={16} /> Back to Home
         </Link>
