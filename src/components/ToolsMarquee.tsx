@@ -106,12 +106,14 @@ const ToolCard = ({ cat, index }: { cat: ToolCategory; index: number }) => {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {cat.tools.map((tool) => (
+        {cat.tools.map((tool, toolIndex) => (
           <span
             key={tool}
-            className="px-2.5 py-1 rounded-md bg-secondary/60 text-xs text-muted-foreground border border-border/30 hover:text-foreground hover:border-primary/30 transition-colors"
+            className="tools-stack-keyword"
+            style={{ "--keyword-index": toolIndex } as CSSProperties}
           >
-            {tool}
+            <img src={cat.image} alt="" aria-hidden="true" loading="lazy" />
+            <span>{tool}</span>
           </span>
         ))}
       </div>
