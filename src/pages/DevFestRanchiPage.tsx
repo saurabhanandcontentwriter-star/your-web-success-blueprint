@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Calendar, ChevronDown, Clock, MapPin, Mic, Sparkles, Users, ExternalLink, Globe, Play, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import RealImage3D from "@/components/RealImage3D";
-import devfestVisual from "@/assets/devfest-bit-mesra.jpg";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import "@/styles/devfest-ranchi.css";
@@ -83,7 +81,6 @@ const DevFestRanchiPage = () => {
       <div className="fixed -z-20 top-80 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
 
       <Navbar />
-      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={devfestVisual} alt="Community 2.0 · BIT Mesra" eyebrow="DevFest Ranchi · Real event" title="Community 2.0 · BIT Mesra" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
       <main className="relative z-10 pt-24">
         <section className="relative container mx-auto px-6 pt-10 pb-20 md:pt-20 md:pb-28">
