@@ -4,7 +4,6 @@ import { ArrowUpRight, Lock } from "lucide-react";
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import adminCrmImg from "@/assets/work-admin-crm.jpg";
 import workCrazyseoImg from "@/assets/work-crazyseo.jpg";
-import crazyseoSite from "@/assets/crazyseo-site.png";
 
 interface Work {
   no: string;
@@ -44,9 +43,8 @@ const works: Work[] = [
     tech: ["Technical SEO", "Content", "Analytics", "Digital Growth"],
     url: "https://www.crazyseoteam.in/",
     cta: "Visit Website",
-    image: crazyseoSite,
-    fallbackImage: workCrazyseoImg,
-    imageAlt: "Crazy SEO Team website preview — Rank Higher. Grow Faster.",
+    image: workCrazyseoImg,
+    imageAlt: "Crazy SEO Team SEO project preview",
   },
   {
     no: "03",
@@ -84,24 +82,25 @@ const SelectedWork = () => (
             transition={{ duration: 0.6, delay: i * 0.05 }}
             className="group relative glass-card-hover overflow-hidden rounded-2xl border border-border/60"
           >
-            <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
-              <div className="relative min-h-[220px] lg:min-h-[320px] overflow-hidden">
-                <img
-                  src={w.image}
-                  alt={w.imageAlt}
-                  width={1280}
-                  height={800}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  onError={(event) => {
-                    if (!w.fallbackImage || event.currentTarget.src.endsWith(w.fallbackImage)) return;
-                    event.currentTarget.src = w.fallbackImage;
-                  }}
-                />
-                
-              </div>
+            <div className={`grid ${i === 1 ? "" : "lg:grid-cols-2"} ${i % 2 === 1 && i !== 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+              {i !== 1 && (
+                <div className="relative min-h-[220px] lg:min-h-[320px] overflow-hidden">
+                  <img
+                    src={w.image}
+                    alt={w.imageAlt}
+                    width={1280}
+                    height={800}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    onError={(event) => {
+                      if (!w.fallbackImage || event.currentTarget.src.endsWith(w.fallbackImage)) return;
+                      event.currentTarget.src = w.fallbackImage;
+                    }}
+                  />
+                </div>
+              )}
 
-              <div className="p-6 md:p-10 flex flex-col justify-center gap-4">
+              <div className={`p-6 md:p-10 flex flex-col justify-center gap-4 ${i === 1 ? "lg:p-14" : ""}`}>
                 <div className="flex items-baseline gap-4">
                   <span className="font-display font-bold text-4xl md:text-6xl text-foreground/10 group-hover:text-primary/30 transition-colors">
                     {w.no}
