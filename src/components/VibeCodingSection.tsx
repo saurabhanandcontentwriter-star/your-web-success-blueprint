@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { Terminal, Sparkles, Workflow, Zap, Download } from "lucide-react";
 import crazyseoSite from "@/assets/crazyseo-site.png";
 
+const keywordImages: Record<string, string> = {
+  "AI SEO Dashboards": "https://image.thum.io/get/width/900/crop/560/noanimate/https://lookerstudio.google.com/",
+  "GPT Workflows": "https://image.thum.io/get/width/900/crop/560/noanimate/https://platform.openai.com/playground",
+  "SEO Agents": "https://image.thum.io/get/width/900/crop/560/noanimate/https://www.screamingfrog.co.uk/seo-spider/",
+  "Productivity Tools": "https://image.thum.io/get/width/900/crop/560/noanimate/https://www.notion.com/product",
+};
+
 const lines = [
   { p: "$ ", t: "prompt 'rank #1 for ai seo agency in india'" },
   { p: "→ ", t: "spawning agents: keyword, content, technical, link" },
@@ -68,8 +75,13 @@ const VibeCodingSection = () => (
               transition={{ delay: i * 0.08 }}
               className="glass-card p-5 hover:border-accent/40 hover:shadow-[0_10px_30px_-10px_hsl(var(--accent)/0.4)] transition-all"
             >
-              <c.icon size={22} className="text-accent mb-3" />
-              <h3 className="font-display font-semibold mb-1">{c.title}</h3>
+              <div className="mb-4 overflow-hidden rounded-xl border border-border/40 bg-background/50">
+                <img src={keywordImages[c.title]} alt={c.title + " real interface"} className="w-full h-32 object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <c.icon size={18} className="text-accent" />
+                <h3 className="font-display font-semibold">{c.title}</h3>
+              </div>
               <p className="text-xs text-muted-foreground leading-relaxed">{c.desc}</p>
             </motion.div>
           ))}
