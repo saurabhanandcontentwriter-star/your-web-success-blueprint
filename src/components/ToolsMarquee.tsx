@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Search, Bot, Workflow, BarChart3 } from "lucide-react";
+import portfolioBg from "@/assets/portfolio-bg.jpg";
 
 const categories = [
   {
@@ -66,7 +67,7 @@ const ToolsMarquee = () => (
         AI & SEO Tech Stack
       </h2>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mb-8 overflow-hidden rounded-2xl border border-border/50 bg-card/50"><img src={portfolioBg} alt="Saurabh Anand digital portfolio interface" className="w-full h-[220px] md:h-[300px] object-cover" loading="lazy" /></div><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.title}
