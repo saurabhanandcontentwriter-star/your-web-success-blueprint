@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, XCircle, ArrowLeft, Globe, FileCheck2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import RealImage3D from "@/components/RealImage3D";
-import crawlerVisual from "@/assets/work-crazyseo.jpg";
+import crawlerVisual from "@/assets/crazyseo-site.png";
 
 type Rule = { ua: string; allow: string[]; disallow: string[] };
 
