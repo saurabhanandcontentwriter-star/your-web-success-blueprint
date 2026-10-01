@@ -1,5 +1,10 @@
-import { motion } from "framer-motion";
-import { Search, Bot, Workflow, BarChart3 } from "lucide-react";
+import { motion } from "framer-motion";\nimport React from "react";
+import type { CSSProperties } from "react";
+import { Search, Bot, Workflow, BarChart3, ArrowUpRight } from "lucide-react";
+import workCrazySeo from "@/assets/work-crazyseo.jpg";
+import workAdminCrm from "@/assets/work-admin-crm.jpg";
+import crazyseoSite from "@/assets/crazyseo-site.png";
+import workCampussphere from "@/assets/work-campussphere.jpg";
 import portfolioBg from "@/assets/portfolio-bg.jpg";
 
 const categories = [
@@ -7,97 +12,124 @@ const categories = [
     title: "SEO Platforms",
     icon: <Search size={16} className="text-primary" />,
     color: "border-primary/30",
-    tools: [
-      "Ahrefs",
-      "Semrush",
-      "Screaming Frog",
-      "Sitebulb",
-      "Botify",
-      "BrightEdge",
-      "Conductor",
-    ],
+    image: workCrazySeo,
+    imageAlt: "SEO project dashboard and website work",
+    tools: ["Ahrefs", "Semrush", "Screaming Frog", "Sitebulb", "Botify", "BrightEdge", "Conductor"],
   },
   {
     title: "AI & GEO Tools",
     icon: <Bot size={16} className="text-accent" />,
     color: "border-accent/30",
-    tools: [
-      "ChatGPT",
-      "Claude",
-      "Perplexity",
-      "Gemini",
-      "Grok",
-      "Manus",
-      "Cursor",
-      "Windsurf",
-    ],
+    image: workAdminCrm,
+    imageAlt: "AI powered CRM and automation project interface",
+    tools: ["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok", "Manus", "Cursor", "Windsurf"],
   },
   {
     title: "Automation",
     icon: <Workflow size={16} className="text-emerald-400" />,
     color: "border-emerald-400/30",
-    tools: [
-      "n8n",
-      "Make",
-      "Zapier",
-      "Airtable",
-      "Notion AI",
-    ],
+    image: crazyseoSite,
+    imageAlt: "Crazy SEO Team website automation and digital workflow",
+    tools: ["n8n", "Make", "Zapier", "Airtable", "Notion AI"],
   },
   {
     title: "Analytics",
     icon: <BarChart3 size={16} className="text-amber-400" />,
     color: "border-amber-400/30",
-    tools: [
-      "GA4",
-      "BigQuery",
-      "Looker Studio",
-      "Hotjar",
-      "Mixpanel",
-      "Heap",
-    ],
+    image: workCampussphere,
+    imageAlt: "CampusSphere AI analytics and data project",
+    tools: ["GA4", "BigQuery", "Looker Studio", "Hotjar", "Mixpanel", "Heap"],
   },
 ];
 
 const ToolsMarquee = () => (
-  <section className="py-16 border-y border-border/40">
+  <section className="tools-stack-section py-16 border-y border-border/40">
     <div className="container mx-auto px-6">
       <p className="section-label text-center mb-2">Stack</p>
       <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-12">
         AI & SEO Tech Stack
       </h2>
 
-      <div className="mb-8 overflow-hidden rounded-2xl border border-border/50 bg-card/50"><img src={portfolioBg} alt="Saurabh Anand digital portfolio interface" className="w-full h-[220px] md:h-[300px] object-cover" loading="lazy" /></div><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="tools-stack-hero mb-8 overflow-hidden rounded-2xl border border-border/50">
+        <img
+          src={crazyseoSite}
+          alt="Crazy SEO Team real website project"
+          className="w-full h-[220px] md:h-[300px] object-cover"
+          loading="lazy"
+        />
+        <div className="tools-stack-hero-overlay">
+          <span>REAL PROJECTS</span>
+          <strong>Tools I use in production</strong>
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {categories.map((cat, i) => (
-          <motion.div
-            key={cat.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className={`glass-card p-5 ${cat.color}`}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              {cat.icon}
-              <h3 className="font-display font-semibold text-sm">
-                {cat.title}
-              </h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {cat.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="px-2.5 py-1 rounded-md bg-secondary/60 text-xs text-muted-foreground border border-border/30 hover:text-foreground hover:border-primary/30 transition-colors"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+          <ToolCard key={cat.title} cat={cat} index={i} />
         ))}
       </div>
     </div>
   </section>
 );
+
+type ToolCategory = (typeof categories)[number];
+
+const ToolCard = ({ cat, index }: { cat: ToolCategory; index: number }) => {
+  const [mouse, setMouse] = React.useState({ x: 50, y: 50 });
+
+  const rotateX = (50 - mouse.y) * 0.08;
+  const rotateY = (mouse.x - 50) * 0.08;
+
+  const cardStyle = {
+    "--cursor-x": `${mouse.x}%`,
+    "--cursor-y": `${mouse.y}%`,
+    transform: `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`,
+  } as CSSProperties;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08 }}
+      className={`tools-stack-card glass-card p-4 ${cat.color}`}
+      style={cardStyle}
+      onMouseMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        setMouse({
+          x: ((event.clientX - rect.left) / rect.width) * 100,
+          y: ((event.clientY - rect.top) / rect.height) * 100,
+        });
+      }}
+      onMouseLeave={() => setMouse({ x: 50, y: 50 })}
+    >
+      <div className="tools-stack-card-image mb-4">
+        <img src={cat.image} alt={cat.imageAlt} loading="lazy" />
+        <div className="tools-stack-card-shine" />
+        <div className="tools-stack-card-cursor" />
+        <span className="tools-stack-card-number">0{index + 1}</span>
+        <span className="tools-stack-card-link" aria-hidden="true">
+          <ArrowUpRight size={14} />
+        </span>
+      </div>
+
+      <div className="flex items-center gap-2 mb-4">
+        {cat.icon}
+        <h3 className="font-display font-semibold text-sm">{cat.title}</h3>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {cat.tools.map((tool) => (
+          <span
+            key={tool}
+            className="px-2.5 py-1 rounded-md bg-secondary/60 text-xs text-muted-foreground border border-border/30 hover:text-foreground hover:border-primary/30 transition-colors"
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 export default ToolsMarquee;
