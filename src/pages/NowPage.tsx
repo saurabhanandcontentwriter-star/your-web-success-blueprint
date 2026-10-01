@@ -3,7 +3,7 @@ import { ArrowDown, ArrowRight, BrainCircuit, Compass, Sparkles, Zap } from "luc
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import nowVisual from "@/assets/portfolio-bg.jpg";
+import nowVisual from "@/assets/work-admin-crm.jpg";
 import NowSection from "@/components/NowSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
