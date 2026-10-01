@@ -7,6 +7,35 @@ import workAdminCrm from "@/assets/work-admin-crm.jpg";
 import crazyseoSite from "@/assets/crazyseo-site.png";
 import workCampussphere from "@/assets/work-campussphere.jpg";
 
+const keywordScreenshots: Record<string, string> = {
+  Ahrefs: "https://image.thum.io/get/width/520/crop/700/noanimate/https://ahrefs.com/dashboard",
+  Semrush: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.semrush.com/",
+  "Screaming Frog": "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.screamingfrog.co.uk/seo-spider/",
+  Sitebulb: "https://image.thum.io/get/width/520/crop/700/noanimate/https://sitebulb.com/",
+  Botify: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.botify.com/",
+  BrightEdge: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.brightedge.com/",
+  Conductor: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.conductor.com/",
+  ChatGPT: "https://image.thum.io/get/width/520/crop/700/noanimate/https://chatgpt.com/",
+  Claude: "https://image.thum.io/get/width/520/crop/700/noanimate/https://claude.ai/",
+  Perplexity: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.perplexity.ai/",
+  Gemini: "https://image.thum.io/get/width/520/crop/700/noanimate/https://gemini.google.com/",
+  Grok: "https://image.thum.io/get/width/520/crop/700/noanimate/https://grok.com/",
+  Manus: "https://image.thum.io/get/width/520/crop/700/noanimate/https://manus.im/",
+  Cursor: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.cursor.com/",
+  Windsurf: "https://image.thum.io/get/width/520/crop/700/noanimate/https://windsurf.com/",
+  n8n: "https://image.thum.io/get/width/520/crop/700/noanimate/https://n8n.io/",
+  Make: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.make.com/",
+  Zapier: "https://image.thum.io/get/width/520/crop/700/noanimate/https://zapier.com/",
+  Airtable: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.airtable.com/",
+  "Notion AI": "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.notion.com/product/ai",
+  GA4: "https://image.thum.io/get/width/520/crop/700/noanimate/https://analytics.google.com/",
+  BigQuery: "https://image.thum.io/get/width/520/crop/700/noanimate/https://cloud.google.com/bigquery",
+  "Looker Studio": "https://image.thum.io/get/width/520/crop/700/noanimate/https://lookerstudio.google.com/",
+  Hotjar: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.hotjar.com/",
+  Mixpanel: "https://image.thum.io/get/width/520/crop/700/noanimate/https://mixpanel.com/",
+  Heap: "https://image.thum.io/get/width/520/crop/700/noanimate/https://www.heap.io/",
+};
+
 const categories = [
   {
     title: "SEO Platforms",
@@ -112,7 +141,7 @@ const ToolCard = ({ cat, index }: { cat: ToolCategory; index: number }) => {
             className="tools-stack-keyword"
             style={{ "--keyword-index": toolIndex } as CSSProperties}
           >
-            <img src={cat.image} alt="" aria-hidden="true" loading="lazy" />
+            <img src={keywordScreenshots[tool]} alt={`${tool} interface`} loading="lazy" />
             <span>{tool}</span>
           </span>
         ))}
