@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import contactVisual from "@/assets/work-admin-crm.jpg";
 import ContactSection from "@/components/ContactSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -32,6 +34,7 @@ const ContactPage = () => {
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={contactVisual} alt="AI CRM & automation" eyebrow="Contact · Real project" title="AI CRM & automation" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
       <div className="pt-24">
         <ContactSection />
       </div>
