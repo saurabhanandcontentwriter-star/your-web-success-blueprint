@@ -2,7 +2,6 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import projectVisual from "@/assets/crazyseo-site.png";
 import SEO from "@/components/SEO";
 import PageBackground from "@/components/PageBackground";
 import { getProject } from "@/data/portfolio";
@@ -32,7 +31,7 @@ const PortfolioProjectPage = () => {
       />
       <PageBackground variant="portfolio" />
       <Navbar />
-      <div className="container mx-auto px-6 max-w-5xl pt-6"><RealImage3D src={projectVisual} alt="Live project interface" eyebrow="Case Study · Real product" title="Live project interface" className="h-[240px] md:h-[320px]" /></div>
+      <div className="container mx-auto px-6 max-w-5xl pt-6"><RealImage3D src={project.image} alt={`${project.title} — ${project.company}`} eyebrow="Case Study · Real project" title={project.title} className="h-[240px] md:h-[320px]" /></div>
       <article className="pt-24 pb-24">
         <div className="container mx-auto px-6 max-w-4xl">
           <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
