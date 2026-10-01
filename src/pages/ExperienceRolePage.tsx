@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import roleVisual from "@/assets/ai-avatar.jpg";
+import roleVisual from "@/assets/work-crazyseo.jpg";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
 import { getJob } from "@/data/experience";
