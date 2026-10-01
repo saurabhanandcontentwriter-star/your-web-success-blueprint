@@ -44,12 +44,43 @@ import "@/styles/floating-logo-rails.css";
 import "@/styles/hero-reset.css";
 
 const queryClient = new QueryClient();
+const routePreloaders: Record<string, () => Promise<unknown>> = {
+  "/about": () => import("./pages/AboutPage"),
+  "/experience": () => import("./pages/ExperiencePage"),
+  "/skills": () => import("./pages/SkillsPage"),
+  "/now": () => import("./pages/NowPage"),
+  "/portfolio": () => import("./pages/PortfolioPage"),
+  "/gallery": () => import("./pages/GalleryPage"),
+  "/education": () => import("./pages/EducationPage"),
+  "/contact": () => import("./pages/ContactPage"),
+  "/crawler-check": () => import("./pages/CrawlerCheckPage"),
+  "/newsletter": () => import("./pages/NewsletterPage"),
+  "/devfest-ranchi": () => import("./pages/DevFestRanchiPage"),
+};
+
+const preloadRoute = (href: string) => {
+  const path = new URL(href, window.location.origin).pathname;
+  const loader = routePreloaders[path];
+  if (loader) void loader();
+};
+
 
 const VisitorTracker = () => {
   useVisitorLocation();
   const location = useLocation();
   const startedAt = useRef(Date.now());
   const sentRef = useRef(false);
+
+  useEffect(() => {
+    const handleRouteHover = (event: PointerEvent) => {
+      const target = event.target as HTMLElement | null;
+      const link = target?.closest("a[href]") as HTMLAnchorElement | null;
+      if (!link || link.target === "_blank") return;
+      preloadRoute(link.href);
+    };
+    document.addEventListener("pointerover", handleRouteHover, { passive: true });
+    return () => document.removeEventListener("pointerover", handleRouteHover);
+  }, []);
 
   useEffect(() => {
     startedAt.current = Date.now();
