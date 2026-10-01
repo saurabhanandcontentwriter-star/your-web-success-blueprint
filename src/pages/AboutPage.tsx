@@ -8,7 +8,6 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
-import aboutPhoto from "@/assets/about-photo.jpg";
 import "@/styles/about-landing.css";
 
 const AboutPage = () => {
