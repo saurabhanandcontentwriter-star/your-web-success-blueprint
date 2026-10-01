@@ -3,7 +3,7 @@ import { ArrowDown, ArrowRight, BarChart3, BrainCircuit, CheckCircle2, Code2, Sp
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import RealImage3D from "@/components/RealImage3D";
-import skillsVisual from "@/assets/saurabh-seo.jpg";
+import skillsVisual from "@/assets/work-campussphere.jpg";
 import SkillsSection from "@/components/SkillsSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
