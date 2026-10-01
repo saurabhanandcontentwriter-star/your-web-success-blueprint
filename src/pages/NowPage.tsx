@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, BrainCircuit, Compass, Sparkles, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import RealImage3D from "@/components/RealImage3D";
+import nowVisual from "@/assets/crazyseo-site.png";
 import NowSection from "@/components/NowSection";
 import SEO from "@/components/SEO";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -17,6 +19,7 @@ const NowPage = () => (
     <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} />
     <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/85 to-background" />
     <Navbar />
+      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={nowVisual} alt="SEO × AI × Web" eyebrow="Now · Real build" title="SEO × AI × Web" className="max-w-5xl mx-auto h-[260px] md:h-[340px]" /></div>
 
     <main>
       <section className="now-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
