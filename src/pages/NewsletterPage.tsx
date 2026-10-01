@@ -1,6 +1,4 @@
 import Navbar from "@/components/Navbar";
-import RealImage3D from "@/components/RealImage3D";
-import newsletterVisual from "@/assets/gallery/ai-summit-invite.jpg";
 import SEO from "@/components/SEO";
 import NewsletterPopup from "@/components/NewsletterPopup";
 import spaceBg from "@/assets/space-bg.jpg";
@@ -15,7 +13,6 @@ const NewsletterPage = () => (
     <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
     <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
     <Navbar />
-      <div className="container mx-auto px-5 md:px-6 pt-6"><RealImage3D src={newsletterVisual} alt="AI & technology insights" eyebrow="Newsletter · Real community" title="AI & technology insights" className="max-w-4xl mx-auto h-[220px] md:h-[300px]" /></div>
     <main className="pt-28 pb-20">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-10">
