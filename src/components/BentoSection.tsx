@@ -1,173 +1,78 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import {
-  Search,
-  Bot,
-  BarChart3,
-  Code2,
-  ArrowUpRight,
-  Gauge,
-  Layers,
-} from "lucide-react";
-import logo from "@/assets/logo.jpeg";
-
-/**
- * SaaS-style bento grid: modular capability tiles that summarise the
- * SEO x AI x DATA x WEB identity in one scannable block.
- */
+import { useEffect, useState } from "react";
 
 const pillars = [
-  {
-    key: "SEO",
-    label: "Search Visibility",
-    icon: Search,
-    tone: "text-primary",
-    ring: "hover:border-primary/50",
-    points: ["Technical SEO", "On-page & Content", "Search Console", "Schema"],
-  },
-  {
-    key: "AI",
-    label: "Intelligent Workflows",
-    icon: Bot,
-    tone: "text-accent",
-    ring: "hover:border-accent/50",
-    points: ["AI Search / GEO", "Prompt Engineering", "Automation", "AI-assisted SEO"],
-  },
-  {
-    key: "DATA",
-    label: "Insights & Analytics",
-    icon: BarChart3,
-    tone: "text-emerald-400",
-    ring: "hover:border-emerald-400/50",
-    points: ["SQL & Python", "Power BI / Tableau", "GA4 & Looker", "Dashboards"],
-  },
-  {
-    key: "WEB",
-    label: "Modern Development",
-    icon: Code2,
-    tone: "text-amber-400",
-    ring: "hover:border-amber-400/50",
-    points: ["HTML / CSS / JS", "React", "Tailwind CSS", "Vibe coding"],
-  },
+  { key:"SEO", label:"Search Visibility", image:"/portfolio/tripzygo-seo.svg", points:["Technical SEO","On-page & Content","Search Console","Schema"], description:"Technical and content systems built around search intent, crawlability and measurable organic growth." },
+  { key:"AI", label:"Intelligent Workflows", image:"/portfolio/crazy-seo-team-ideas.svg", points:["AI Search / GEO","Prompt Engineering","Automation","AI-assisted SEO"], description:"AI-powered workflows that connect prompt engineering, search visibility and scalable execution." },
+  { key:"DATA", label:"Insights & Analytics", image:"/portfolio/guest-blogging-saas.svg", points:["SQL & Python","Power BI / Tableau","GA4 & Looker","Dashboards"], description:"Analytics systems that turn search, marketing and product data into clear business decisions." },
+  { key:"WEB", label:"Modern Development", image:"/portfolio/anvya.svg", points:["HTML / CSS / JS","React","Tailwind CSS","Vibe coding"], description:"Modern web experiences combining performance, interaction, discoverability and product thinking." },
 ];
 
-const fade = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
+const BentoSection = () => {
+  const [active, setActive] = useState(0);
+  const next = () => setActive((v) => (v + 1) % pillars.length);
+  const prev = () => setActive((v) => (v - 1 + pillars.length) % pillars.length);
 
-const BentoSection = () => (
-  <section id="capabilities" className="relative py-24">
-    <div className="pointer-events-none absolute inset-0 bento-grid-bg opacity-[0.18]" aria-hidden="true" />
+  useEffect(() => {
+    const timer = window.setInterval(next, 4500);
+    return () => window.clearInterval(timer);
+  }, []);
 
-    <div className="container relative mx-auto px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5 }}
-        className="mb-12 max-w-2xl"
-      >
-        <p className="section-label mb-3">The Intersection</p>
-        <img
-          src={logo}
-          alt="Saurabh Anand logo"
-          className="mb-5 h-14 w-14 rounded-2xl border border-border/50 object-cover shadow-[0_0_30px_hsl(var(--primary)/0.35)]"
-        />
-        <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.05]">
-          SEO <span className="text-muted-foreground">×</span> AI{" "}
-          <span className="text-muted-foreground">×</span> DATA{" "}
-          <span className="text-muted-foreground">×</span>{" "}
-          <span className="gradient-text">WEB</span>
-        </h2>
-        <p className="mt-4 text-muted-foreground md:text-lg">
-          Four disciplines, one workflow — search-driven digital experiences built with
-          analytics, automation and modern web engineering.
-        </p>
-      </motion.div>
+  const item = pillars[active];
 
-      <div className="grid gap-4 md:grid-cols-4 md:grid-rows-2">
-        {pillars.map((p, i) => (
-          <motion.article
-            key={p.key}
-            custom={i}
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-            className={`bento-tile ${p.ring} ${i === 0 ? "md:col-span-2 md:row-span-1" : ""}`}
-          >
-            <p.icon size={20} className={`${p.tone} mb-4`} aria-hidden="true" />
-            <h3 className="font-display text-2xl font-bold tracking-tight">{p.key}</h3>
-            <p className="text-sm text-muted-foreground">{p.label}</p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {p.points.map((t) => (
-                <li
-                  key={t}
-                  className="rounded-full border border-border/60 bg-secondary/50 px-2.5 py-1 text-xs text-secondary-foreground"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.article>
-        ))}
-
-        {/* Wide CTA tile */}
-        <motion.div
-          custom={4}
-          variants={fade}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="bento-tile md:col-span-2 flex flex-col justify-between"
-        >
-          <div>
-            <Layers size={20} className="text-primary mb-4" aria-hidden="true" />
-            <h3 className="font-display text-xl font-bold">Selected work</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              CampusSphere AI, Crazy SEO Team and an admin dashboard & CRM concept —
-              built end to end.
-            </p>
-          </div>
-          <a
-            href="#selected-work"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
-          >
-            View projects <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+  return (
+    <section id="capabilities" className="relative overflow-hidden py-24">
+      <div className="pointer-events-none absolute inset-0 bento-grid-bg opacity-[0.18]" aria-hidden="true" />
+      <div className="container relative mx-auto px-6">
+        <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:.5 }} className="mb-12 max-w-3xl">
+          <p className="section-label mb-3">The Intersection</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.05]">
+            SEO <span className="text-muted-foreground">×</span> AI <span className="text-muted-foreground">×</span> DATA <span className="text-muted-foreground">×</span> <span className="gradient-text">WEB</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground md:text-lg">Four disciplines, one workflow — search-driven digital experiences built with analytics, automation and modern web engineering.</p>
         </motion.div>
 
-        <motion.div
-          custom={5}
-          variants={fade}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="bento-tile md:col-span-2 flex flex-col justify-between"
-        >
-          <div>
-            <Gauge size={20} className="text-accent mb-4" aria-hidden="true" />
-            <h3 className="font-display text-xl font-bold">Ready for AI search</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Content and structured data tuned for Google AI Overviews, ChatGPT,
-              Gemini, Claude and Perplexity.
-            </p>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 flex justify-center gap-2 overflow-x-auto pb-2">
+            {pillars.map((p, i) => (
+              <button key={p.key} onClick={() => setActive(i)} className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[.16em] transition-all ${active===i ? "border-primary/50 bg-primary/15 text-primary shadow-[0_0_25px_hsl(var(--primary)/.15)]" : "border-border/60 bg-card/45 text-muted-foreground hover:border-primary/30"}`}>
+                {p.key}
+              </button>
+            ))}
           </div>
-          <Link
-            to="/about"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all"
-          >
-            More about me <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        </motion.div>
+
+          <motion.div key={item.key} initial={{ opacity:0, x:50, rotateY:-8 }} animate={{ opacity:1, x:0, rotateY:0 }} transition={{ duration:.45 }} className="overflow-hidden rounded-[2rem] border border-border/50 bg-card/55 shadow-[0_30px_90px_hsl(0_0%_0%/.25)] backdrop-blur-xl">
+            <div className="grid min-h-[460px] lg:grid-cols-[1.05fr_.95fr]">
+              <div className="relative min-h-[300px] overflow-hidden bg-background/50 p-5 md:p-7">
+                <div className="relative h-full min-h-[300px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/70">
+                  <img src={item.image} alt={`${item.key} — ${item.label}`} className="h-full w-full object-contain p-3 md:p-5 transition-transform duration-700 hover:scale-[1.025]" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/35 via-transparent to-primary/10 pointer-events-none" />
+                  <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/35 px-4 py-2 text-xs font-bold tracking-[.2em] text-white backdrop-blur-xl">{item.key}</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center p-7 md:p-10">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[.2em] text-primary">{item.label}</p>
+                <h3 className="font-display text-3xl font-bold md:text-5xl">{item.key}</h3>
+                <p className="mt-4 max-w-xl leading-7 text-muted-foreground">{item.description}</p>
+                <div className="mt-7 grid grid-cols-2 gap-3">
+                  {item.points.map((point) => <div key={point} className="rounded-xl border border-border/50 bg-background/35 px-3 py-3 text-sm text-muted-foreground">{point}</div>)}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="mt-6 flex items-center justify-center gap-5">
+            <button onClick={prev} className="h-10 w-10 rounded-full border border-border/60 bg-card/50 text-lg text-muted-foreground transition hover:border-primary/40 hover:text-foreground" aria-label="Previous discipline">‹</button>
+            <div className="flex gap-2">
+              {pillars.map((p, i) => <button key={p.key} onClick={() => setActive(i)} aria-label={p.key} className={`h-2 rounded-full transition-all ${active===i ? "w-9 bg-primary" : "w-2 bg-border"}`} />)}
+            </div>
+            <button onClick={next} className="h-10 w-10 rounded-full border border-border/60 bg-card/50 text-lg text-muted-foreground transition hover:border-primary/40 hover:text-foreground" aria-label="Next discipline">›</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default BentoSection;
