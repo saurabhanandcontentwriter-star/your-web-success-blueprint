@@ -44,21 +44,21 @@ const HeroSection = () => (
         <img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
       </div>
       <div className="sa-tools-orbit" aria-label="Technology tools orbit">
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"0deg","--sa-radius":"240px"} as CSSProperties}>G</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"24deg","--sa-radius":"240px"} as CSSProperties}>GD</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"48deg","--sa-radius":"240px"} as CSSProperties}>GH</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"72deg","--sa-radius":"240px"} as CSSProperties}>S</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"96deg","--sa-radius":"240px"} as CSSProperties}>aH</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"120deg","--sa-radius":"240px"} as CSSProperties}>GA</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"144deg","--sa-radius":"240px"} as CSSProperties}>SC</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"168deg","--sa-radius":"240px"} as CSSProperties}>✦</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"192deg","--sa-radius":"240px"} as CSSProperties}>🔥</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"216deg","--sa-radius":"240px"} as CSSProperties}>F</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"240deg","--sa-radius":"240px"} as CSSProperties}>W</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"264deg","--sa-radius":"240px"} as CSSProperties}>&lt;/&gt;</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"288deg","--sa-radius":"240px"} as CSSProperties}>S</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"312deg","--sa-radius":"240px"} as CSSProperties}>⚛</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"336deg","--sa-radius":"240px"} as CSSProperties}>▶</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"0deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">G</span><span className="sa-tool-name">Google</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"24deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">GD</span><span className="sa-tool-name">Google Developer</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"48deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">GH</span><span className="sa-tool-name">GitHub</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"72deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">S</span><span className="sa-tool-name">Semrush</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"96deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">aH</span><span className="sa-tool-name">Ahrefs</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"120deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">GA</span><span className="sa-tool-name">Analytics</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"144deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">SC</span><span className="sa-tool-name">Search Console</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"168deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">✦</span><span className="sa-tool-name">Gemini</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"192deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">🔥</span><span className="sa-tool-name">Firebase</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"216deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">F</span><span className="sa-tool-name">Figma</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"240deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">W</span><span className="sa-tool-name">WordPress</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"264deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">&lt;/&gt;</span><span className="sa-tool-name">VS Code</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"288deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">S</span><span className="sa-tool-name">Shopify</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"312deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">⚛</span><span className="sa-tool-name">React</span></div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"336deg","--sa-radius":"240px" as CSSProperties}}><span className="sa-tool-icon">▶</span><span className="sa-tool-name">YouTube</span></div>
       </div>
       <div className="sa-card sa-card-performance"><small>SEO Performance</small><strong>+128%</strong><span>Organic Traffic ↗</span></div>
       <div className="sa-card sa-card-visibility"><small>Search Visibility</small><strong>↑ 42.8%</strong><span>Growing steadily</span></div>
