@@ -617,3 +617,76 @@
 @media(max-width:767px){
   .hero-reference-person{right:5%!important;top:4%!important;width:82%!important;height:72%!important}
 }
+
+
+/* =========================================================
+   EXACT SUPPLIED HERO ART — single source of truth
+   The uploaded reference image is the complete desktop composition.
+   ========================================================= */
+.reference-hero-image-only{
+  position:relative;
+  width:100%;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:#020817;
+  line-height:0;
+  isolation:isolate;
+}
+.reference-hero-art{
+  display:block;
+  width:100%;
+  height:auto;
+  min-width:100%;
+  max-width:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.reference-hero-hotspots{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+}
+.reference-hotspot{
+  position:absolute;
+  display:block;
+  pointer-events:auto;
+  background:transparent;
+  border:0;
+  cursor:pointer;
+}
+.hs-home{left:25%;top:2.2%;width:4.2%;height:6.2%}
+.hs-about{left:30.4%;top:2.2%;width:4.1%;height:6.2%}
+.hs-services{left:35.5%;top:2.2%;width:5.2%;height:6.2%}
+.hs-experience{left:41.6%;top:2.2%;width:6.1%;height:6.2%}
+.hs-gallery{left:48.6%;top:2.2%;width:4.3%;height:6.2%}
+.hs-education{left:54%;top:2.2%;width:6%;height:6.2%}
+.hs-devfest{left:61%;top:2.2%;width:5.8%;height:6.2%}
+.hs-contact{left:68.6%;top:2.2%;width:5.2%;height:6.2%}
+.hs-hire{right:4.7%;top:1.5%;width:9.5%;height:7.3%}
+.hs-hero-hire{left:3.8%;top:66.4%;width:10.8%;height:7.2%}
+.hs-work{left:15.7%;top:66.4%;width:12.5%;height:7.2%}
+.hs-site{left:3.8%;top:75.1%;width:20.5%;height:6.5%}
+.reference-hero-sr{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+}
+@media(max-width:767px){
+  .reference-hero-image-only{
+    min-height:560px;
+    height:560px;
+  }
+  .reference-hero-art{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+  }
+  .reference-hero-hotspots{display:none}
+}
