@@ -65,7 +65,7 @@ const HeroSection = () => (
             className="sa-tool sa-orbit-tool"
             key={name}
             style={{
-              "--sa-angle": \`${index * 24}deg\`,
+              "--sa-angle": index * 24 + "deg",
               "--sa-radius": "240px",
             } as CSSProperties}
             title={name}
