@@ -167,3 +167,37 @@
 @media(prefers-reduced-motion:reduce){
   .hero-promo-portrait,.hero-portrait-life,.hero-eye-blink,.hero-face-shine,.hero-laptop,.hero-floating-card,.hero-metric b,.hero-chart i{animation:none!important}
 }
+
+
+/* Final mobile-safe hero correction: portrait must read as a real photo, never as an empty card. */
+.hero-promo-portrait{
+  overflow:hidden!important;
+  isolation:isolate;
+}
+.hero-promo-portrait img.hero-portrait-life{
+  object-fit:cover!important;
+  object-position:50% 18%!important;
+  background:transparent!important;
+}
+.hero-eye-blink,.hero-face-shine{z-index:3}
+@media(max-width:640px){
+  .hero-promo-portrait{
+    width:46%!important;
+    height:48%!important;
+    right:2%!important;
+    top:5%!important;
+    border-radius:1.1rem!important;
+  }
+  .hero-promo-portrait img.hero-portrait-life{
+    object-fit:cover!important;
+    object-position:50% 16%!important;
+  }
+  .hero-laptop{
+    left:0!important;
+    top:31%!important;
+    width:94%!important;
+    z-index:18!important;
+  }
+  .hero-floating-card{display:none!important}
+  .hero-promo-copy{display:none!important}
+}
