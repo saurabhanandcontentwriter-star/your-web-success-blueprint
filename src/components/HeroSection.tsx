@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { ArrowRight, BarChart3, Bot, FileText, Search, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import "@/styles/hero-modern.css";
@@ -43,21 +44,21 @@ const HeroSection = () => (
         <img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
       </div>
       <div className="sa-tools-orbit" aria-label="Technology tools orbit">
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"0deg","--sa-radius":"240px"} as React.CSSProperties}>G</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"24deg","--sa-radius":"240px"} as React.CSSProperties}>GD</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"48deg","--sa-radius":"240px"} as React.CSSProperties}>GH</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"72deg","--sa-radius":"240px"} as React.CSSProperties}>S</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"96deg","--sa-radius":"240px"} as React.CSSProperties}>aH</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"120deg","--sa-radius":"240px"} as React.CSSProperties}>GA</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"144deg","--sa-radius":"240px"} as React.CSSProperties}>SC</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"168deg","--sa-radius":"240px"} as React.CSSProperties}>✦</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"192deg","--sa-radius":"240px"} as React.CSSProperties}>🔥</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"216deg","--sa-radius":"240px"} as React.CSSProperties}>F</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"240deg","--sa-radius":"240px"} as React.CSSProperties}>W</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"264deg","--sa-radius":"240px"} as React.CSSProperties}>&lt;/&gt;</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"288deg","--sa-radius":"240px"} as React.CSSProperties}>S</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"312deg","--sa-radius":"240px"} as React.CSSProperties}>⚛</div>
-        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"336deg","--sa-radius":"240px"} as React.CSSProperties}>▶</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"0deg","--sa-radius":"240px"} as CSSProperties}>G</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"24deg","--sa-radius":"240px"} as CSSProperties}>GD</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"48deg","--sa-radius":"240px"} as CSSProperties}>GH</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"72deg","--sa-radius":"240px"} as CSSProperties}>S</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"96deg","--sa-radius":"240px"} as CSSProperties}>aH</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"120deg","--sa-radius":"240px"} as CSSProperties}>GA</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"144deg","--sa-radius":"240px"} as CSSProperties}>SC</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"168deg","--sa-radius":"240px"} as CSSProperties}>✦</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"192deg","--sa-radius":"240px"} as CSSProperties}>🔥</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"216deg","--sa-radius":"240px"} as CSSProperties}>F</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"240deg","--sa-radius":"240px"} as CSSProperties}>W</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"264deg","--sa-radius":"240px"} as CSSProperties}>&lt;/&gt;</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"288deg","--sa-radius":"240px"} as CSSProperties}>S</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"312deg","--sa-radius":"240px"} as CSSProperties}>⚛</div>
+        <div className="sa-tool sa-orbit-tool" style={{"--sa-angle":"336deg","--sa-radius":"240px"} as CSSProperties}>▶</div>
       </div>
       <div className="sa-card sa-card-performance"><small>SEO Performance</small><strong>+128%</strong><span>Organic Traffic ↗</span></div>
       <div className="sa-card sa-card-visibility"><small>Search Visibility</small><strong>↑ 42.8%</strong><span>Growing steadily</span></div>
