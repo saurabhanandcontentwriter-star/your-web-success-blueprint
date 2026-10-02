@@ -3,6 +3,7 @@ import { ExternalLink, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import PageBackground from "@/components/PageBackground";
+import RealImage3D from "@/components/RealImage3D";
 import { getProject } from "@/data/portfolio";
 
 const PortfolioProjectPage = () => {

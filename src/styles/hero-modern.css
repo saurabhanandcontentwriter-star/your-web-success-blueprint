@@ -743,4 +743,7 @@
     object-position:top left!important;
   }
 }
-/* Trigger production redeploy for the supplied hero artwork. */
+/* Uploaded 2026 artwork: the functional navbar replaces its baked-in navigation. */
+.reference-hero-image-only{margin-top:112px!important;height:51.085vw!important;min-height:420px!important;overflow:hidden!important}
+.reference-hero-art{transform:translateY(-5.2vw)!important}
+@media(max-width:767px){.reference-hero-image-only{margin-top:106px!important;height:64vw!important;min-height:300px!important;overflow:hidden!important}.reference-hero-art{width:114vw!important;min-width:114vw!important;transform:translate(-31vw,-4.8vw)!important;object-fit:cover!important}}

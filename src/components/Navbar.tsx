@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
 import ContactDialog from "@/components/ContactDialog";
 import ThemeToggle from "@/components/ThemeToggle";
 import { logLead } from "@/lib/leadLog";
+import { Button } from "@/components/ui/button";
 import "@/styles/navbar-responsive.css";
 
 const navLinks = [
@@ -43,41 +44,41 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="site-navbar fixed top-0 left-0 right-0 z-50 glass-card border-t-0 rounded-none border-x-0">
+    <motion.nav initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="site-navbar fixed left-0 right-0 z-50">
       <div className="site-navbar-inner container mx-auto flex items-center justify-between px-6 py-4">
-        <button onClick={() => { setOpen(false); navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="site-navbar-brand" aria-label="Go to Saurabh Anand home">
+        <Button variant="ghost" onClick={() => { setOpen(false); navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="site-navbar-brand" aria-label="Go to Saurabh Anand home">
           <span className="site-navbar-brand-content">
             <img src={logo} alt="Saurabh Anand logo" className="site-navbar-logo" />
           </span>
-        </button>
+        </Button>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className={`text-sm transition-colors ${location.pathname === l.path ? "font-semibold text-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+            <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`site-navbar-link ${location.pathname === l.path ? "site-navbar-link-active" : ""}`}>
               {l.label === "DevFest" ? "🎉 DevFest" : l.label}
-            </button>
+            </Button>
           ))}
-          <ContactDialog trigger={<button className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</button>} />
+          <ContactDialog trigger={<Button variant="ghost" className="site-navbar-link">Contact</Button>} />
           <ThemeToggle />
-          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry" className="px-5 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">Hire Me</a>
+          <Button asChild className="site-navbar-hire"><a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry">Hire Me <ArrowRight size={16} /></a></Button>
         </div>
 
         <div className="site-navbar-mobile md:hidden flex items-center gap-2">
           <ThemeToggle />
-          <button type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} className="text-foreground p-2" onClick={() => setOpen(!open)}>
+          <Button variant="ghost" size="icon" type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} className="text-foreground" onClick={() => setOpen(!open)}>
             {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </Button>
         </div>
       </div>
 
       {open && (
-        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="site-navbar-menu md:hidden glass-card mx-4 mb-4 rounded-xl p-4 flex flex-col gap-3">
+        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="site-navbar-menu md:hidden flex flex-col gap-2">
           {navLinks.map((l) => (
-            <button key={l.label} onClick={() => handleNav(l)} className={`text-sm py-2 text-left transition-colors ${location.pathname === l.path ? "font-semibold text-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+            <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`justify-start ${location.pathname === l.path ? "bg-primary/15 text-foreground" : "text-muted-foreground"}`}>
               {l.label === "DevFest" ? "🎉 DevFest Ranchi" : l.label}
-            </button>
+            </Button>
           ))}
-          <ContactDialog trigger={<button className="text-sm text-muted-foreground hover:text-foreground py-2 text-left">Contact</button>} />
+          <ContactDialog trigger={<Button variant="ghost" className="w-full justify-start text-muted-foreground">Contact</Button>} />
           <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">Hire Me</a>
         </motion.div>
       )}
