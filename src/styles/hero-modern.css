@@ -679,14 +679,16 @@
 }
 @media(max-width:767px){
   .reference-hero-image-only{
-    min-height:560px;
-    height:560px;
+    width:100%;
+    height:auto;
+    min-height:0;
   }
   .reference-hero-art{
     width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center top;
+    height:auto;
+    min-width:100%;
+    object-fit:contain;
+    object-position:top center;
   }
   .reference-hero-hotspots{display:none}
 }
