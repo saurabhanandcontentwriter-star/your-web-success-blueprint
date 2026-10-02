@@ -860,3 +860,70 @@
  .sa-tool{width:48px;height:48px}
  .sa-tool:nth-of-type(n+6){display:none}
 }
+
+
+/* 2026-10-02: compact navbar + fitted circular tool-logo system */
+.site-navbar-inner{gap:14px!important}
+.site-navbar-brand{min-width:250px!important}
+.site-navbar-brand-content{gap:6px!important}
+.site-navbar-logo-mark{width:38px!important;height:38px!important;flex-basis:38px!important;border-radius:11px!important;transform:none!important;font-size:.9rem!important;letter-spacing:-.1em!important}
+.site-navbar-wordmark{gap:3px!important}
+.site-navbar-wordmark strong,.site-navbar-wordmark em{font-size:.9rem!important}
+.site-navbar-link{padding:0 .42rem!important;font-size:.7rem!important;white-space:nowrap!important}
+.site-navbar-hire{height:38px!important;padding:0 1rem!important;font-size:.72rem!important}
+
+.sa-hero-visual{overflow:visible!important;min-width:0!important}
+.sa-portrait-frame{width:67%!important;height:88%!important;right:8%!important;bottom:1%!important}
+.sa-portrait-frame img{object-fit:contain!important;object-position:center bottom!important}
+.sa-orbit-one{width:82%!important;height:67%!important;right:2%!important;top:12%!important}
+.sa-orbit-two{width:72%!important;height:60%!important;right:7%!important;top:17%!important}
+.sa-tool{
+  width:62px!important;height:62px!important;min-width:62px!important;
+  border-radius:50%!important;aspect-ratio:1/1!important;
+  display:grid!important;place-items:center!important;
+  overflow:visible!important;position:absolute!important;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.98),rgba(218,236,250,.94) 48%,rgba(141,180,216,.92) 100%)!important;
+  border:2px solid rgba(217,243,255,.9)!important;
+  box-shadow:inset 4px 5px 10px rgba(255,255,255,.7),inset -5px -7px 12px rgba(28,65,105,.2),0 12px 26px rgba(0,0,0,.38),0 0 22px rgba(0,194,255,.22)!important;
+  line-height:1!important;
+}
+.sa-tool:before{inset:-5px!important;border-radius:50%!important}
+.sa-tool:after{inset:-9px!important;border-radius:50%!important}
+.sa-tool-google{right:50%!important;top:2%!important}
+.sa-tool-gdg{right:30%!important;top:1%!important}
+.sa-tool-github{right:6%!important;top:10%!important}
+.sa-tool-semrush{right:-1%!important;top:29%!important}
+.sa-tool-ahrefs{right:0!important;top:49%!important}
+.sa-tool-analytics{right:7%!important;top:68%!important}
+.sa-tool-console{right:22%!important;top:83%!important}
+.sa-tool-gemini{left:4%!important;top:28%!important}
+.sa-tool-firebase{left:-1%!important;top:48%!important}
+.sa-tool-figma{left:4%!important;top:68%!important}
+.sa-tool-wordpress{left:19%!important;top:82%!important}
+.sa-tool-vscode{left:37%!important;top:91%!important}
+.sa-tool-shopify{right:30%!important;top:91%!important}
+.sa-tool-react{right:45%!important;top:88%!important}
+.sa-tool-youtube{right:61%!important;top:77%!important}
+
+@media(max-width:1199px){
+  .site-navbar-inner{gap:8px!important}
+  .site-navbar-brand{min-width:225px!important}
+  .site-navbar-link{padding:0 .3rem!important;font-size:.66rem!important}
+  .site-navbar-hire{padding:0 .75rem!important}
+}
+@media(max-width:1023px){
+  .sa-hero-new{grid-template-columns:1fr!important;padding-top:92px!important}
+  .sa-hero-visual{min-height:600px!important;margin-top:0!important}
+  .sa-portrait-frame{width:64%!important;right:18%!important;height:90%!important}
+  .sa-tool{width:58px!important;height:58px!important;min-width:58px!important}
+  .sa-tool-google{right:49%!important}.sa-tool-gdg{right:29%!important}.sa-tool-github{right:5%!important}
+  .sa-tool-gemini{left:2%!important}.sa-tool-firebase{left:-2%!important}.sa-tool-figma{left:2%!important}
+}
+@media(max-width:767px){
+  .site-navbar-logo-mark{width:34px!important;height:34px!important;flex-basis:34px!important}
+  .site-navbar-wordmark strong,.site-navbar-wordmark em{font-size:.78rem!important}
+  .sa-hero-visual{min-height:500px!important}
+  .sa-portrait-frame{width:84%!important;right:8%!important;height:86%!important}
+  .sa-tool{width:46px!important;height:46px!important;min-width:46px!important}
+  .sa-tool:nth-of-type(n+8){display:none!important}
+}
