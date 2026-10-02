@@ -24,11 +24,20 @@ const useTyped = () => {
 
 const logoItems = [
   { cls: "hero-logo-google", mark: "G", label: "Google", tone: "google" },
-  { cls: "hero-logo-dev", mark: "GD", label: "Developer", tone: "dev" },
+  { cls: "hero-logo-gdeveloper", mark: "GD", label: "Google Developer", tone: "dev" },
   { cls: "hero-logo-github", label: "GitHub", tone: "github", icon: Github },
   { cls: "hero-logo-semrush", mark: "S", label: "Semrush", tone: "semrush" },
   { cls: "hero-logo-ahrefs", mark: "aH", label: "Ahrefs", tone: "ahrefs" },
-  { cls: "hero-logo-tools", label: "SEO Tools", tone: "tools", icon: Search },
+  { cls: "hero-logo-analytics", mark: "GA", label: "Analytics", tone: "analytics" },
+  { cls: "hero-logo-search", mark: "SC", label: "Search Console", tone: "search" },
+  { cls: "hero-logo-gemini", mark: "✦", label: "Gemini", tone: "gemini" },
+  { cls: "hero-logo-firebase", mark: "F", label: "Firebase", tone: "firebase" },
+  { cls: "hero-logo-figma", mark: "F", label: "Figma", tone: "figma" },
+  { cls: "hero-logo-wordpress", mark: "W", label: "WordPress", tone: "wordpress" },
+  { cls: "hero-logo-vscode", mark: "⌁", label: "VS Code", tone: "vscode" },
+  { cls: "hero-logo-shopify", mark: "S", label: "Shopify", tone: "shopify" },
+  { cls: "hero-logo-react", mark: "⚛", label: "React", tone: "react" },
+  { cls: "hero-logo-youtube", mark: "▶", label: "YouTube", tone: "youtube" },
 ];
 
 const HeroSection = () => {
