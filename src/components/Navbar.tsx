@@ -52,7 +52,7 @@ const Navbar = () => {
           </span>
         </Button>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-3">
           {navLinks.map((l) => (
             <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`site-navbar-link ${location.pathname === l.path ? "site-navbar-link-active" : ""}`}>
               {l.label === "DevFest" ? "🎉 DevFest" : l.label}
@@ -63,7 +63,7 @@ const Navbar = () => {
           <Button asChild className="site-navbar-hire"><a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry">Hire Me <ArrowRight size={16} /></a></Button>
         </div>
 
-        <div className="site-navbar-mobile md:hidden flex items-center gap-2">
+        <div className="site-navbar-mobile lg:hidden flex items-center gap-2">
           <ThemeToggle />
           <Button variant="ghost" size="icon" type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} className="text-foreground" onClick={() => setOpen(!open)}>
             {open ? <X size={24} /> : <Menu size={24} />}
@@ -72,7 +72,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="site-navbar-menu md:hidden flex flex-col gap-2">
+        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="site-navbar-menu lg:hidden flex flex-col gap-2">
           {navLinks.map((l) => (
             <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`justify-start ${location.pathname === l.path ? "bg-primary/15 text-foreground" : "text-muted-foreground"}`}>
               {l.label === "DevFest" ? "🎉 DevFest Ranchi" : l.label}
