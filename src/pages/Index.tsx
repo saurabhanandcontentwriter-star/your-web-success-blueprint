@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "react";
-import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import SEO from "@/components/SEO";
@@ -99,7 +98,6 @@ const Index = () => {
         keywords="Saurabh Anand, Data Analyst, SEO, Digital Marketing, Power BI, Tableau, SQL, Python, GA4, Looker Studio, Data Visualization, Dashboard Development, AI Analytics"
         jsonLd={[personJsonLd, websiteJsonLd, faqJsonLd]}
       />
-      <Navbar />
       <HeroSection />
       <CredibilityStrip />
       <DeferredHomeContent isAdmin={isAdmin} />
