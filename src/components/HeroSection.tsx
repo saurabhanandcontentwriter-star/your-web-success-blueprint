@@ -9,7 +9,6 @@ const HeroSection = () => (
     <div className="sa-hero-glow sa-hero-glow-b" aria-hidden="true" />
 
     <div className="sa-hero-copy">
-      <div className="sa-hero-kicker">SEO <i>•</i> AI <i>•</i> DATA <i>•</i> WEB</div>
       <h1>SAURABH ANAND <span>SEO</span></h1>
       <h2>SEO &amp; DIGITAL GROWTH SPECIALIST</h2>
       <p>Helping brands grow with AI-powered SEO, data-driven strategies and high-performance websites.</p>
