@@ -1145,3 +1145,12 @@
   .sa-card-performance{left:-5%!important}
   .sa-card-visibility{right:-7%!important}
 }
+
+/* 2026-10-02: build-safe hero logo sizing */
+.sa-tools-orbit .sa-tool-logo{
+  max-width:27px!important;
+  max-height:27px!important;
+  width:27px!important;
+  height:27px!important;
+  object-fit:contain!important;
+}
