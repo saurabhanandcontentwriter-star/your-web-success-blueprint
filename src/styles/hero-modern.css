@@ -277,3 +277,20 @@
 @media(prefers-reduced-motion:reduce){
   .hero-logo-capsule,.hero-logo-capsule:before,.hero-logo-capsule:after,.hero-dashboard-card,.hero-mini-bars i{animation:none!important;}
 }
+
+/* Full reference logo ring: all requested Google/developer/SEO/tool logos are circular 3D capsules. */
+.hero-brand-orbit{inset:-1%!important;}
+.hero-logo-capsule{width:64px;height:64px;border-radius:50%;font-size:.7rem;}
+.hero-logo-capsule span{font-size:.39rem;max-width:58px;}
+.hero-logo-capsule strong{font-size:1.45rem;}
+.hero-logo-gdeveloper strong{font-size:1rem;color:#fff}.hero-logo-analytics strong{color:#f9ab00}.hero-logo-search strong{color:#4285f4}.hero-logo-gemini strong{color:#9b7cff}.hero-logo-firebase strong{color:#ffca28}.hero-logo-figma strong{color:#f24e1e}.hero-logo-wordpress strong{color:#21759b}.hero-logo-vscode strong{color:#23a8f2}.hero-logo-shopify strong{color:#95bf47}.hero-logo-react strong{color:#61dafb}.hero-logo-youtube strong{color:#ff0000;}
+.hero-logo-gdeveloper{left:36%;top:2%}.hero-logo-google{left:7%;top:12%}.hero-logo-github{right:8%;top:9%}.hero-logo-semrush{right:0;top:29%}.hero-logo-ahrefs{right:3%;top:52%}.hero-logo-analytics{right:12%;top:72%}.hero-logo-search{right:34%;bottom:1%}.hero-logo-gemini{left:3%;top:31%}.hero-logo-firebase{left:0;top:52%}.hero-logo-figma{left:4%;top:72%}.hero-logo-wordpress{left:22%;bottom:2%}.hero-logo-vscode{left:47%;bottom:4%}.hero-logo-shopify{right:0;top:42%}.hero-logo-react{right:4%;top:63%}.hero-logo-youtube{right:17%;bottom:12%;}
+.hero-logo-capsule{box-shadow:inset 6px 6px 13px hsl(0 0% 100%/.15),inset -8px -10px 18px hsl(0 0% 0%/.48),0 18px 32px hsl(0 0% 0%/.38),0 0 24px hsl(var(--primary)/.25);}
+@media(max-width:1023px){
+ .hero-logo-capsule{width:55px;height:55px}.hero-logo-capsule span{font-size:.33rem}.hero-logo-capsule strong{font-size:1.2rem}
+}
+@media(max-width:640px){
+ .hero-brand-orbit{display:block!important;inset:-4%!important;}
+ .hero-logo-capsule{width:42px;height:42px;padding:.18rem}.hero-logo-capsule span{font-size:.27rem;max-width:38px}.hero-logo-capsule strong{font-size:.9rem}.hero-logo-capsule:before{inset:-4px}.hero-logo-capsule:after{inset:-7px}
+ .hero-logo-gdeveloper{left:37%;top:1%}.hero-logo-google{left:5%;top:10%}.hero-logo-github{right:5%;top:8%}.hero-logo-semrush{right:-1%;top:28%}.hero-logo-ahrefs{right:1%;top:52%}.hero-logo-analytics{right:8%;top:73%}.hero-logo-search{right:31%;bottom:1%}.hero-logo-gemini{left:1%;top:30%}.hero-logo-firebase{left:-1%;top:52%}.hero-logo-figma{left:3%;top:73%}.hero-logo-wordpress{left:19%;bottom:1%}.hero-logo-vscode{left:46%;bottom:2%}.hero-logo-shopify{right:-1%;top:41%}.hero-logo-react{right:2%;top:64%}.hero-logo-youtube{right:14%;bottom:11%}
+}
