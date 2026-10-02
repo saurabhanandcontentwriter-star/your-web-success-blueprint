@@ -44,9 +44,20 @@ const HeroSection = () => (
         <img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
       </div>
       <div className="sa-tool sa-tool-google">G</div>
+      <div className="sa-tool sa-tool-gdg">GD</div>
+      <div className="sa-tool sa-tool-github">GH</div>
+      <div className="sa-tool sa-tool-semrush">S</div>
+      <div className="sa-tool sa-tool-ahrefs">aH</div>
+      <div className="sa-tool sa-tool-analytics">GA</div>
+      <div className="sa-tool sa-tool-console">SC</div>
       <div className="sa-tool sa-tool-gemini">✦</div>
-      <div className="sa-tool sa-tool-github">⌘</div>
-      <div className="sa-tool sa-tool-search">⌕</div>
+      <div className="sa-tool sa-tool-firebase">🔥</div>
+      <div className="sa-tool sa-tool-figma">F</div>
+      <div className="sa-tool sa-tool-wordpress">W</div>
+      <div className="sa-tool sa-tool-vscode">&lt;/&gt;</div>
+      <div className="sa-tool sa-tool-shopify">S</div>
+      <div className="sa-tool sa-tool-react">⚛</div>
+      <div className="sa-tool sa-tool-youtube">▶</div>
       <div className="sa-card sa-card-performance"><small>SEO Performance</small><strong>+128%</strong><span>Organic Traffic ↗</span></div>
       <div className="sa-card sa-card-visibility"><small>Search Visibility</small><strong>↑ 42.8%</strong><span>Growing steadily</span></div>
     </div>
