@@ -1033,3 +1033,35 @@
   .sa-tools-orbit .sa-orbit-tool{--sa-radius:155px!important;margin:-23px!important;width:46px!important;height:46px!important;min-width:46px!important}
   .sa-tools-orbit .sa-orbit-tool:nth-child(n+11){display:none!important}
 }
+
+
+/* 2026-10-02: fit tool names inside each circular orbit badge */
+.sa-tools-orbit .sa-orbit-tool{
+  flex-direction:column!important;
+  gap:2px!important;
+  padding:6px 4px!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+}
+.sa-tools-orbit .sa-tool-icon{
+  position:relative!important;
+  z-index:2!important;
+  font-size:1.05rem!important;
+  line-height:1!important;
+  font-weight:900!important;
+}
+.sa-tools-orbit .sa-tool-name{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font:800 8px/1.05 Arial,sans-serif!important;
+  letter-spacing:-.15px!important;
+  color:#10213a!important;
+}
+.sa-tools-orbit .sa-tool:nth-child(2) .sa-tool-name{font-size:7px!important}
+.sa-tools-orbit .sa-tool:nth-child(7) .sa-tool-name{font-size:7px!important}
+@media(max-width:1023px){.sa-tools-orbit .sa-tool-name{font-size:7px!important}.sa-tools-orbit .sa-tool-icon{font-size:.92rem!important}}
+@media(max-width:767px){.sa-tools-orbit .sa-tool-name{font-size:6px!important}.sa-tools-orbit .sa-tool-icon{font-size:.78rem!important}.sa-tools-orbit .sa-orbit-tool{padding:4px 2px!important}}
