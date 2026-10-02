@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
 import ContactDialog from "@/components/ContactDialog";
 import ThemeToggle from "@/components/ThemeToggle";
 import { logLead } from "@/lib/leadLog";
@@ -48,7 +47,8 @@ const Navbar = () => {
       <div className="site-navbar-inner container mx-auto flex items-center justify-between px-6 py-4">
         <Button variant="ghost" onClick={() => { setOpen(false); navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="site-navbar-brand" aria-label="Go to Saurabh Anand home">
           <span className="site-navbar-brand-content">
-            <img src={logo} alt="Saurabh Anand logo" className="site-navbar-logo" />
+            <span className="site-navbar-logo-mark" aria-hidden="true">SA</span>
+            <span className="site-navbar-wordmark"><strong>SAURABH ANAND</strong> <em>SEO</em></span>
           </span>
         </Button>
 
