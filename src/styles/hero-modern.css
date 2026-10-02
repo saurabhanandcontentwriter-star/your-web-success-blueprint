@@ -692,3 +692,54 @@
   }
   .reference-hero-hotspots{display:none}
 }
+
+
+/* FINAL FULL-FRAME HERO: show the supplied 16:9 artwork completely, edge-to-edge. */
+.reference-hero-image-only{
+  position:relative!important;
+  display:block!important;
+  width:100vw!important;
+  max-width:none!important;
+  min-width:100vw!important;
+  height:auto!important;
+  min-height:0!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:0!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  line-height:0!important;
+  background:#020817!important;
+}
+.reference-hero-art{
+  display:block!important;
+  width:100vw!important;
+  max-width:none!important;
+  min-width:100vw!important;
+  height:auto!important;
+  max-height:none!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:fill!important;
+  object-position:top left!important;
+  transform:none!important;
+}
+@media(max-width:767px){
+  .reference-hero-image-only{
+    width:100vw!important;
+    min-width:100vw!important;
+    height:auto!important;
+    margin-left:calc(50% - 50vw)!important;
+    overflow:visible!important;
+  }
+  .reference-hero-art{
+    width:100vw!important;
+    min-width:100vw!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:fill!important;
+    object-position:top left!important;
+  }
+}
