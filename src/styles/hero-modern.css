@@ -575,3 +575,45 @@
 @media(prefers-reduced-motion:reduce){
   .hero-reference-person img,.hero-reference-logo{animation:none!important}
 }
+
+
+/* Fix the supplied portrait asset: remove the visible white photo rectangle
+   while keeping the real portrait, so it sits naturally in the reference scene. */
+.hero-reference-person{
+  right:11%!important;
+  top:2%!important;
+  width:62%!important;
+  height:82%!important;
+  z-index:34!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  filter:drop-shadow(0 30px 34px rgba(0,0,0,.48))!important;
+}
+.hero-reference-person img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  mix-blend-mode:multiply!important;
+  filter:contrast(1.08) saturate(1.06) brightness(1.02)!important;
+  animation:heroReferenceBreath 6s ease-in-out infinite!important;
+}
+.hero-reference-person:after{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;bottom:0;height:24%;
+  background:linear-gradient(to top,rgba(2,8,20,.72),transparent);
+  pointer-events:none;z-index:2;
+  mix-blend-mode:multiply;
+}
+@media(max-width:1100px){
+  .hero-reference-person{right:8%!important;width:66%!important;height:80%!important}
+}
+@media(max-width:767px){
+  .hero-reference-person{right:5%!important;top:4%!important;width:82%!important;height:72%!important}
+}
