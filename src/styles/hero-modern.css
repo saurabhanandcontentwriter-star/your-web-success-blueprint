@@ -981,3 +981,55 @@
 @media(max-width:767px){
   .sa-portrait-frame{width:70%!important;height:auto!important;aspect-ratio:1/1!important;right:15%!important;bottom:8%!important}
 }
+
+
+/* 2026-10-02: circular portrait + rotating technology orbit */
+.sa-portrait-frame{
+  width:54%!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  right:13%!important;
+  bottom:8%!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+}
+.sa-portrait-frame img{
+  width:100%!important;height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,#eaf8ff 0%,#c9ecff 55%,#86cfff 100%)!important;
+}
+.sa-tools-orbit{
+  position:absolute!important;
+  left:50%!important;top:50%!important;
+  width:1px!important;height:1px!important;
+  z-index:12!important;
+  pointer-events:none!important;
+  animation:saOrbitSpin 26s linear infinite!important;
+  transform-origin:center!important;
+}
+.sa-tools-orbit .sa-orbit-tool{
+  left:0!important;top:0!important;
+  right:auto!important;bottom:auto!important;
+  margin:-31px!important;
+  transform:rotate(var(--sa-angle)) translateX(var(--sa-radius)) rotate(calc(-1 * var(--sa-angle)))!important;
+  animation:none!important;
+  pointer-events:auto!important;
+}
+.sa-tools-orbit .sa-orbit-tool:before{animation:saLogoRing 2.8s linear infinite!important}
+.sa-tools-orbit .sa-orbit-tool:after{animation:saLogoRingReverse 4.2s linear infinite!important}
+@keyframes saOrbitSpin{to{transform:rotate(360deg)}}
+@keyframes saLogoRing{to{transform:rotate(360deg)}}
+@keyframes saLogoRingReverse{to{transform:rotate(-360deg) rotateX(65deg)}}
+@media(max-width:1023px){
+  .sa-portrait-frame{width:60%!important;height:auto!important;aspect-ratio:1/1!important;right:20%!important;bottom:7%!important}
+  .sa-tools-orbit{animation-duration:24s!important}
+  .sa-tools-orbit .sa-orbit-tool{--sa-radius:205px!important;margin:-29px!important}
+}
+@media(max-width:767px){
+  .sa-portrait-frame{width:72%!important;height:auto!important;aspect-ratio:1/1!important;right:14%!important;bottom:8%!important}
+  .sa-tools-orbit{animation-duration:22s!important}
+  .sa-tools-orbit .sa-orbit-tool{--sa-radius:155px!important;margin:-23px!important;width:46px!important;height:46px!important;min-width:46px!important}
+  .sa-tools-orbit .sa-orbit-tool:nth-child(n+11){display:none!important}
+}
