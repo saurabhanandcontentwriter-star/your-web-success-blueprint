@@ -3,6 +3,24 @@ import { ArrowRight, BarChart3, Bot, FileText, Search, TrendingUp } from "lucide
 import { Link } from "react-router-dom";
 import "@/styles/hero-modern.css";
 
+const tools = [
+  ["Google","https://cdn.simpleicons.org/google/4285F4"],
+  ["Google Developer","https://cdn.simpleicons.org/googledevelopers/4285F4"],
+  ["GitHub","https://cdn.simpleicons.org/github/111827"],
+  ["Semrush","https://cdn.simpleicons.org/semrush/FF642D"],
+  ["Ahrefs","https://cdn.simpleicons.org/ahrefs/FF8A00"],
+  ["Google Analytics","https://cdn.simpleicons.org/googleanalytics/E37400"],
+  ["Search Console","https://cdn.simpleicons.org/googlesearchconsole/4285F4"],
+  ["Gemini","https://cdn.simpleicons.org/googlegemini/8E75FF"],
+  ["Firebase","https://cdn.simpleicons.org/firebase/FFCA28"],
+  ["Figma","https://cdn.simpleicons.org/figma/F24E1E"],
+  ["WordPress","https://cdn.simpleicons.org/wordpress/21759B"],
+  ["VS Code","https://cdn.simpleicons.org/visualstudiocode/007ACC"],
+  ["Shopify","https://cdn.simpleicons.org/shopify/7AB55C"],
+  ["React","https://cdn.simpleicons.org/react/61DAFB"],
+  ["YouTube","https://cdn.simpleicons.org/youtube/FF0000"],
+] as const;
+
 const HeroSection = () => (
   <section className="sa-hero-new" aria-label="Saurabh Anand SEO and digital growth">
     <div className="sa-hero-grid" aria-hidden="true" />
@@ -43,40 +61,30 @@ const HeroSection = () => (
       <div className="sa-portrait-frame">
         <img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
       </div>
+
       <div className="sa-tools-orbit" aria-label="Technology tools orbit">
-        {[
-          ["Google","https://cdn.simpleicons.org/google/4285F4"],
-          ["Google Developer","https://cdn.simpleicons.org/googledevelopers/4285F4"],
-          ["GitHub","https://cdn.simpleicons.org/github/111827"],
-          ["Semrush","https://cdn.simpleicons.org/semrush/FF642D"],
-          ["Ahrefs","https://cdn.simpleicons.org/ahrefs/FF8A00"],
-          ["Google Analytics","https://cdn.simpleicons.org/googleanalytics/E37400"],
-          ["Search Console","https://cdn.simpleicons.org/googlesearchconsole/4285F4"],
-          ["Gemini","https://cdn.simpleicons.org/googlegemini/8E75FF"],
-          ["Firebase","https://cdn.simpleicons.org/firebase/FFCA28"],
-          ["Figma","https://cdn.simpleicons.org/figma/F24E1E"],
-          ["WordPress","https://cdn.simpleicons.org/wordpress/21759B"],
-          ["VS Code","https://cdn.simpleicons.org/visualstudiocode/007ACC"],
-          ["Shopify","https://cdn.simpleicons.org/shopify/7AB55C"],
-          ["React","https://cdn.simpleicons.org/react/61DAFB"],
-          ["YouTube","https://cdn.simpleicons.org/youtube/FF0000"],
-        ].map(([name, src], index) => (
+        {tools.map(([name, src], index) => (
           <div
             className="sa-tool sa-orbit-tool"
             key={name}
             style={{
-              "--sa-angle": index * 24 + "deg",
+              "--sa-angle": `${index * 24}deg`,
               "--sa-radius": "240px",
             } as CSSProperties}
             title={name}
           >
-            <img className="sa-tool-logo" src={src} alt="" aria-hidden="true" />
+            <img className="sa-tool-logo" src={src} alt={name} loading="lazy" decoding="async" />
             <span className="sa-tool-name">{name}</span>
           </div>
         ))}
       </div>
-      <div className="sa-card sa-card-performance"><small>SEO Performance</small><strong>+128%</strong><span>Organic Traffic ↗</span></div>
-      <div className="sa-card sa-card-visibility"><small>Search Visibility</small><strong>↑ 42.8%</strong><span>Growing steadily</span></div>
+
+      <div className="sa-card sa-card-performance">
+        <small>SEO Performance</small><strong>+128%</strong><span>Organic Traffic ↗</span>
+      </div>
+      <div className="sa-card sa-card-visibility">
+        <small>Search Visibility</small><strong>↑ 42.8%</strong><span>Growing steadily</span>
+      </div>
     </div>
   </section>
 );
