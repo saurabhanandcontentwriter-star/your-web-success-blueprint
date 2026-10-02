@@ -1113,3 +1113,35 @@
   .sa-tools-orbit .sa-tool-logo{width:18px!important;height:18px!important}
   .sa-tools-orbit .sa-tool-name{font-size:5px!important;max-width:40px!important}
 }
+
+
+/* 2026-10-02: align portrait + logo orbit to the same visual center */
+.sa-portrait-frame{
+  right:13%!important;
+  left:auto!important;
+}
+.sa-tools-orbit{
+  left:60%!important;
+  top:50%!important;
+}
+.sa-tools-orbit .sa-orbit-tool{
+  transform:rotate(var(--sa-angle)) translateX(var(--sa-radius)) rotate(calc(-1 * var(--sa-angle)))!important;
+}
+.sa-card-performance{
+  left:-1%!important;
+  top:34%!important;
+}
+.sa-card-visibility{
+  right:-2%!important;
+  top:59%!important;
+}
+@media(max-width:1023px){
+  .sa-tools-orbit{left:50%!important;top:50%!important}
+  .sa-portrait-frame{right:20%!important}
+}
+@media(max-width:767px){
+  .sa-tools-orbit{left:50%!important;top:50%!important}
+  .sa-portrait-frame{right:14%!important}
+  .sa-card-performance{left:-5%!important}
+  .sa-card-visibility{right:-7%!important}
+}
