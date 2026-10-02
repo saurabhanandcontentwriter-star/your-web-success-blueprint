@@ -64,3 +64,13 @@
   .home-hero-portrait-wrap{width:52%!important;height:72%!important;top:48%!important;transform:translate(-50%,-50%) translateZ(55px)!important;}
   .home-hero-portrait{transform:translateZ(20px) scale(1.02)!important;}
 }
+
+/* Video-first hero overlays: keep identity and Growth Engine above the video on every viewport. */
+.home-hero-video-frame{position:relative;z-index:1;transform:translateZ(0);isolation:isolate;}
+.home-hero-video-frame img,.home-hero-video-frame video{position:absolute;inset:0;width:100%;height:100%;}
+.home-hero-video-frame img{z-index:0;object-fit:cover;object-position:center;}
+.home-hero-video-frame video{z-index:2;display:block;object-fit:cover;object-position:center;}
+.home-hero-name-3d{position:absolute!important;left:50%!important;bottom:9%!important;z-index:40!important;transform:translateX(-50%) translateZ(80px)!important;visibility:visible!important;opacity:1!important;pointer-events:none!important;}
+.home-hero-engine{position:absolute!important;left:58%!important;bottom:3%!important;z-index:41!important;visibility:visible!important;opacity:1!important;transform:translateX(-50%) translateZ(90px)!important;}
+@media(max-width:1023px){.home-hero-name-3d{bottom:8%!important;transform:translateX(-50%) translateZ(60px)!important}.home-hero-engine{left:58%!important;bottom:2%!important;transform:translateX(-50%) translateZ(70px)!important}}
+@media(max-width:640px){.home-hero-name-3d{bottom:8%!important;font-size:.82rem!important;letter-spacing:.12em!important;transform:translateX(-50%) translateZ(40px)!important}.home-hero-engine{left:50%!important;bottom:2%!important;min-width:180px!important;transform:translateX(-50%) translateZ(45px)!important}}
