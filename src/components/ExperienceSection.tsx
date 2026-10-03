@@ -93,11 +93,22 @@ const ExperienceSection = () => (
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Building. Growing.</span>
               </h3>
               <p className="mt-4 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
-                SEO, digital marketing, web development, analytics and AI — turning ideas into measurable digital impact.
+                SEO, digital marketing, web development, analytics and AI — bringing strategy, execution and measurement together to create practical digital growth.
               </p>
             </div>
 
-            <div className="mt-auto grid grid-cols-2 gap-3 pt-7">
+            <div className="mt-6 rounded-2xl border border-blue-100/80 bg-white/60 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-300">Core focus</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {["Organic Growth", "Content Strategy", "Analytics", "AI Automation"].map((item) => (
+                  <span key={item} className="rounded-full bg-blue-600/10 px-3 py-1.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-400/10 dark:text-blue-200">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-auto grid grid-cols-2 gap-3 pt-6">
               <div className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-blue-100 dark:bg-slate-800/70 dark:ring-slate-700">
                 <div className="text-2xl font-black text-blue-700 dark:text-blue-300">4+</div>
                 <div className="mt-1 text-xs font-medium text-slate-600 dark:text-slate-300">Years of Experience</div>
