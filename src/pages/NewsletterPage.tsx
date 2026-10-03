@@ -13,7 +13,7 @@ const NewsletterPage = () => (
     <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: `url(${spaceBg})` }} />
     <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/80 to-background" />
     <Navbar />
-    <main className="pt-28 pb-20">
+    <main className="pt-24 pb-16">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-10">
           <p className="section-label mb-2">Newsletter</p>
