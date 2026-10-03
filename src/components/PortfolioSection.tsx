@@ -1,151 +1,145 @@
-import { useMemo, useState, type MouseEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowDown, ArrowUpRight, BarChart3, BrainCircuit, Code2, FolderOpen, Lightbulb, Rocket, Search, Sparkles, TrendingUp, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowUpRight, BrainCircuit, Code2, Layers3, MousePointer2, Search, Sparkles, Zap } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
-const skills = ["SEO Strategy", "Prompt Engineering", "AI SEO", "GEO & LLMO", "AI Automation", "Data Analytics", "Vibe Coding", "Content Systems", "Growth Marketing"];
+const categories = [
+  { label: "All", match: null },
+  { label: "Web Development", match: "Web Development" },
+  { label: "SEO & Marketing", match: "SEO" },
+  { label: "AI & Automation", match: "AI" },
+  { label: "Data & Analytics", match: "Analytics" },
+];
 
 const PortfolioSection = () => {
-  const [activeTag, setActiveTag] = useState<string>("All");
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    projects.forEach((p) => p.tags.forEach((t) => set.add(t)));
-    return ["All", ...Array.from(set)];
-  }, []);
-
-  const filtered = activeTag === "All" ? projects : projects.filter((p) => p.tags.includes(activeTag));
-
-  const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPointer({
-      x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
-      y: ((event.clientY - rect.top) / rect.height - 0.5) * 2,
-    });
-  };
+  const filtered = useMemo(() => {
+    const category = categories.find((item) => item.label === activeCategory);
+    if (!category?.match) return projects;
+    return projects.filter((project) => project.tags.some((tag) => tag.toLowerCase().includes(category.match!.toLowerCase())));
+  }, [activeCategory]);
 
   return (
-    <section id="portfolio" onMouseMove={handlePointerMove} onMouseLeave={() => setPointer({ x: 0, y: 0 })} className="portfolio-3d-shell relative overflow-hidden py-12 md:py-20">
-      <div className="portfolio-grid absolute inset-0 pointer-events-none" />
-      <div className="portfolio-orb portfolio-orb-one" />
-      <div className="portfolio-orb portfolio-orb-two" />
+    <section id="portfolio" className="portfolio-modern-section relative overflow-hidden">
+      <div className="portfolio-modern-bg" aria-hidden="true" />
+      <div className="portfolio-modern-dots portfolio-modern-dots-top" aria-hidden="true" />
+      <div className="portfolio-modern-dots portfolio-modern-dots-bottom" aria-hidden="true" />
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="grid min-h-[620px] items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+      <div className="container relative z-10 mx-auto px-4 md:px-6">
+        <div className="portfolio-modern-layout">
           <motion.div
-            style={{ x: pointer.x * -8, y: pointer.y * -5 }}
-            transition={{ type: "spring", stiffness: 80, damping: 20 }}
-            className="relative z-20 max-w-3xl"
+            className="portfolio-modern-person"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: .2 }}
+            transition={{ duration: .75 }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary backdrop-blur-xl">
-              <Sparkles className="h-3.5 w-3.5" />
-              Saurabh Anand · Digital Portfolio
+            <div className="portfolio-modern-orbit" aria-hidden="true" />
+            <div className="portfolio-modern-glow" aria-hidden="true" />
+
+            <div className="portfolio-modern-signature" aria-hidden="true">
+              <span>Turning Ideas</span>
+              <span>Into Real</span>
+              <span>Projects</span>
+              <i>↘</i>
             </div>
-            <h1 className="text-5xl font-display font-bold leading-[.98] tracking-tight sm:text-6xl md:text-8xl">
-              I build <span className="gradient-text">growth systems</span> that move.
-            </h1>
-            <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-xl">
-              SEO strategy, AI automation, data analytics and creative technology — brought together in one interactive portfolio.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#featured-work" className="portfolio-hero-button">
-                Explore my work <ArrowDown className="h-4 w-4" />
-              </a>
-              <div className="portfolio-pill"><MousePointer2 className="h-4 w-4 text-primary" /> Move your cursor</div>
+
+            <div className="portfolio-modern-photo">
+              <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO, AI, digital marketing and web projects" width={800} height={900} loading="eager" decoding="async" />
             </div>
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
-              {[{ n: "SEO", i: Search }, { n: "AI", i: BrainCircuit }, { n: "Code", i: Code2 }].map(({ n, i: Icon }) => (
-                <div key={n} className="portfolio-mini-card">
-                  <Icon className="mb-3 h-5 w-5 text-primary" />
-                  <span>{n}</span>
-                </div>
-              ))}
+
+            <div className="portfolio-person-chip portfolio-chip-real">
+              <span><BarChart3 size={21} /></span>
+              <b>Real Projects<br />Real Impact</b>
             </div>
+
+            <div className="portfolio-person-chip portfolio-chip-build">
+              <span><Zap size={21} /></span>
+              <b>Build<br />Develop<br />Optimize<br />Scale</b>
+            </div>
+
+            <div className="portfolio-person-chip portfolio-chip-ideas">
+              <span><Lightbulb size={23} /></span>
+              <b>Ideas<br />To<br />Solutions</b>
+            </div>
+
+            <div className="portfolio-code-mark" aria-hidden="true"><Code2 size={29} /></div>
+            <div className="portfolio-doodle portfolio-doodle-top" aria-hidden="true">╱╱</div>
+            <div className="portfolio-doodle portfolio-doodle-bottom" aria-hidden="true">╱╲</div>
           </motion.div>
 
-          <div className="relative mx-auto h-[480px] w-full max-w-[520px]" style={{ perspective: "1200px" }}>
-            <motion.div
-              animate={{ rotateY: pointer.x * 10, rotateX: pointer.y * -8, x: pointer.x * 12, y: pointer.y * 8 }}
-              transition={{ type: "spring", stiffness: 70, damping: 18 }}
-              className="portfolio-3d-stage"
-            >
-              <div className="portfolio-3d-ring ring-a" />
-              <div className="portfolio-3d-ring ring-b" />
-              <div className="portfolio-3d-ring ring-c" />
-              <div className="portfolio-core portfolio-photo-core">
-                <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO, AI, Data and Web portfolio" className="portfolio-core-photo" />
-                <div className="portfolio-photo-overlay" />
-                <div className="portfolio-core-inner">
-                  <span>SEO · AI · DATA · WEB</span>
-                </div>
-              </div>
-              <div className="portfolio-float-chip chip-seo"><Search /> SEO</div>
-              <div className="portfolio-float-chip chip-ai"><BrainCircuit /> AI</div>
-              <div className="portfolio-float-chip chip-data"><Zap /> DATA</div>
-              <div className="portfolio-float-chip chip-code"><Code2 /> CODE</div>
+          <div className="portfolio-modern-content">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .65 }}>
+              <div className="portfolio-modern-kicker"><FolderOpen size={18} /> MY PROJECTS</div>
+              <h1 className="portfolio-modern-title">Featured<br /><span>Projects</span></h1>
+              <p className="portfolio-modern-intro">
+                Here are some of the key projects I have worked on. Each project reflects my passion
+                for SEO, digital marketing, web development, and AI-driven solutions.
+              </p>
             </motion.div>
+
+            <div className="portfolio-modern-filters" role="tablist" aria-label="Filter projects">
+              {categories.map((category) => {
+                const active = activeCategory === category.label;
+                return (
+                  <button
+                    key={category.label}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setActiveCategory(category.label)}
+                    className={active ? "portfolio-modern-filter portfolio-modern-filter-active" : "portfolio-modern-filter"}
+                  >
+                    {category.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="portfolio-modern-grid">
+              <AnimatePresence mode="popLayout">
+                {filtered.map((project, index) => (
+                  <motion.article
+                    key={project.slug}
+                    layout
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: .96 }}
+                    transition={{ duration: .45, delay: index * .06 }}
+                    className="portfolio-modern-card"
+                  >
+                    <Link to={`/portfolio/${project.slug}`} className="portfolio-modern-card-link" aria-label={`Open ${project.title} case study`}>
+                      <div className="portfolio-modern-card-image">
+                        <img src={project.image} alt={`${project.title} — ${project.company} project`} loading={index < 3 ? "eager" : "lazy"} decoding="async" />
+                        <span className="portfolio-modern-open"><ArrowUpRight size={21} /></span>
+                      </div>
+                      <div className="portfolio-modern-card-body">
+                        <h2>{project.title}</h2>
+                        <p>{project.description}</p>
+                        <div className="portfolio-modern-tags">
+                          {project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {filtered.length === 0 && (
+              <p className="py-10 text-center text-sm text-slate-500">No projects match this category yet.</p>
+            )}
+
+            <div className="portfolio-modern-metrics">
+              <div><span><Code2 size={23} /></span><strong>10+</strong><small>Projects Completed</small></div>
+              <div><span><BrainCircuit size={23} /></span><strong>20K+</strong><small>Lives/Users Impacted</small></div>
+              <div><span><Rocket size={23} /></span><strong>4+</strong><small>Years Experience</small></div>
+              <div><span><Sparkles size={23} /></span><strong>Continuous</strong><small>Learning &amp; Building</small></div>
+            </div>
           </div>
         </div>
-
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mx-auto mb-20 max-w-5xl">
-          <div className="mb-5 text-center text-xs font-semibold uppercase tracking-[.25em] text-muted-foreground">Core stack</div>
-          <div className="portfolio-skill-cloud">
-            {skills.map((skill, index) => (
-              <motion.div key={skill} animate={{ y: [0, index % 2 ? -8 : 8, 0], rotateZ: [0, index % 2 ? 1 : -1, 0] }} transition={{ duration: 4 + index * .35, repeat: Infinity, ease: "easeInOut" }} className="portfolio-skill-3d">
-                <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary))]" />
-                {skill}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <div id="featured-work" className="mx-auto mb-12 max-w-4xl text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary backdrop-blur-xl">
-            <Layers3 className="h-3.5 w-3.5" /> Selected Work
-          </div>
-          <h2 className="text-4xl font-display font-bold sm:text-5xl md:text-6xl">Projects in another dimension.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Real projects, measurable outcomes and the strategy behind the growth.</p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <div className="portfolio-pill"><Layers3 className="h-4 w-4 text-primary" /> {projects.length} Featured Projects</div>
-            <div className="portfolio-pill"><Zap className="h-4 w-4 text-primary" /> Performance Driven</div>
-            <div className="portfolio-pill"><Sparkles className="h-4 w-4 text-primary" /> AI + SEO</div>
-          </div>
-        </div>
-
-        <div className="mb-12 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter projects by tag">
-          {allTags.map((tag) => {
-            const isActive = activeTag === tag;
-            return <button key={tag} role="tab" aria-selected={isActive} onClick={() => setActiveTag(tag)} className={`portfolio-filter ${isActive ? "portfolio-filter-active" : ""}`}>{tag}</button>;
-          })}
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3" style={{ perspective: "1600px" }}>
-          <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => (
-              <motion.div key={p.title} layout initial={{ opacity: 0, y: 50, rotateX: 12 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} exit={{ opacity: 0, scale: .94, y: 20 }} transition={{ delay: i * .08, duration: .55, type: "spring", stiffness: 90 }} className="portfolio-card-3d group">
-                <Link to={`/portfolio/${p.slug}`} aria-label={`Open ${p.title} case study`} className="block h-full">
-                  <div className="portfolio-card-glow" />
-                  <div className="relative h-64 overflow-hidden rounded-t-[1.35rem] border border-white/10 bg-slate-950/80">
-                    <img src={p.image} alt={`${p.title} — ${p.company} portfolio project`} className="h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" loading={i < 3 ? "eager" : "lazy"} decoding="async" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-xl"><span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" /> Case Study</div>
-                    <div className="absolute bottom-4 right-4 rounded-xl border border-white/20 bg-black/35 px-3 py-2 text-sm font-bold text-white backdrop-blur-xl">{p.stat}</div>
-                  </div>
-                  <div className="relative flex min-h-[260px] flex-col rounded-b-[1.35rem] border-x border-b border-white/10 bg-card/75 p-6 backdrop-blur-2xl">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary/80">{p.company}</p>
-                    <div className="flex items-start justify-between gap-4"><h3 className="text-xl font-display font-bold leading-tight">{p.title}</h3><span className="shrink-0 rounded-full border border-border/60 bg-background/40 p-2 text-muted-foreground transition group-hover:border-primary/40 group-hover:text-primary"><ArrowUpRight className="h-4 w-4" /></span></div>
-                    <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">{p.description}</p>
-                    <div className="mt-auto flex flex-wrap gap-2 pt-5">{p.tags.map((t) => <span key={t} className="rounded-lg border border-border/50 bg-secondary/60 px-2.5 py-1 text-[10px] font-medium text-secondary-foreground backdrop-blur-sm">{t}</span>)}</div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {filtered.length === 0 && <p className="mt-8 text-center text-sm text-muted-foreground">No projects match this tag yet.</p>}
       </div>
     </section>
   );
