@@ -33,7 +33,7 @@ const load = (): Prefs | null => {
 const save = (p: Prefs) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
-  } catch {}
+  } catch { /* Ignore unavailable local storage. */ }
 };
 
 const CookieConsent = () => {
