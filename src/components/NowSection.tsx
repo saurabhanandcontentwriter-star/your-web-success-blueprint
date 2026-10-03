@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Palette } from "lucide-react";
-import aboutPhoto from "@/assets/about-photo.jpg";
 
 const focusItems = [
   {
@@ -46,7 +45,7 @@ const NowSection = () => (
             viewport={{ once: true }}
             className="glass-card p-4 flex items-center gap-4 max-w-sm"
           >
-            <img src={aboutPhoto} alt="Saurabh Anand" className="w-12 h-12 rounded-lg object-cover object-top" />
+            <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand" className="w-12 h-12 rounded-lg object-cover object-top" />
             <div>
               <p className="font-display font-semibold text-sm">Saurabh Anand</p>
               <p className="text-xs text-muted-foreground">SEO Analyst & Content Strategist</p>
