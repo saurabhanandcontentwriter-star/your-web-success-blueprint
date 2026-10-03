@@ -1,0 +1,13 @@
+{
+  "name": "Saurabh Anand — SEO, AI & Data",
+  "short_name": "Saurabh Anand",
+  "description": "Saurabh Anand — SEO, AI search, digital marketing and data analytics portfolio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0a14",
+  "theme_color": "#0b0a14",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "any", "type": "image/png" }
+  ]
+}
