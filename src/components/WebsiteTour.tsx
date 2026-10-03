@@ -30,7 +30,7 @@ const WebsiteTour = () => {
   const finish = () => {
     try {
       localStorage.setItem(STORAGE_KEY, "1");
-    } catch {}
+    } catch { /* Ignore unavailable local storage. */ }
     setOpen(false);
     setStep(0);
   };
