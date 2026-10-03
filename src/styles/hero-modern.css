@@ -1154,3 +1154,62 @@
   height:27px!important;
   object-fit:contain!important;
 }
+
+/* 2026-10-03: perfectly center and fit the circular hero portrait with the technology orbit. */
+.sa-hero-visual{position:relative!important;overflow:visible!important;}
+.sa-portrait-frame{
+  left:60%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:50%!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  transform:translate(-50%,-50%)!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.sa-portrait-frame img{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:50%!important;
+  display:block!important;
+  transform:none!important;
+}
+.sa-tools-orbit{
+  left:60%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:1px!important;
+  height:1px!important;
+  transform:none!important;
+}
+.sa-tools-orbit .sa-orbit-tool{
+  transform:rotate(var(--sa-angle)) translateX(var(--sa-radius)) rotate(calc(-1 * var(--sa-angle)))!important;
+}
+@media(max-width:1023px){
+  .sa-portrait-frame{
+    left:50%!important;
+    top:50%!important;
+    width:58%!important;
+    transform:translate(-50%,-50%)!important;
+  }
+  .sa-tools-orbit{left:50%!important;top:50%!important;}
+}
+@media(max-width:767px){
+  .sa-portrait-frame{
+    left:50%!important;
+    top:50%!important;
+    width:68%!important;
+    transform:translate(-50%,-50%)!important;
+  }
+  .sa-tools-orbit{left:50%!important;top:50%!important;}
+}
