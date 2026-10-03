@@ -54,7 +54,20 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           {navLinks.map((l) => (
-            <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`site-navbar-link ${location.pathname === l.path ? "site-navbar-link-active" : ""}`}>
+            <Button
+              variant="ghost"
+              key={l.label}
+              onPointerEnter={() => {
+                const w = window as typeof window & { __preloadRoute?: (path: string) => void };
+                w.__preloadRoute?.(l.path);
+              }}
+              onFocus={() => {
+                const w = window as typeof window & { __preloadRoute?: (path: string) => void };
+                w.__preloadRoute?.(l.path);
+              }}
+              onClick={() => handleNav(l)}
+              className={`site-navbar-link ${location.pathname === l.path ? "site-navbar-link-active" : ""}`}
+            >
               {l.label === "DevFest" ? "🎉 DevFest" : l.label}
             </Button>
           ))}
@@ -74,7 +87,16 @@ const Navbar = () => {
       {open && (
         <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="site-navbar-menu lg:hidden flex flex-col gap-2">
           {navLinks.map((l) => (
-            <Button variant="ghost" key={l.label} onClick={() => handleNav(l)} className={`justify-start ${location.pathname === l.path ? "bg-primary/15 text-foreground" : "text-muted-foreground"}`}>
+            <Button
+              variant="ghost"
+              key={l.label}
+              onPointerDown={() => {
+                const w = window as typeof window & { __preloadRoute?: (path: string) => void };
+                w.__preloadRoute?.(l.path);
+              }}
+              onClick={() => handleNav(l)}
+              className={`justify-start ${location.pathname === l.path ? "bg-primary/15 text-foreground" : "text-muted-foreground"}`}
+            >
               {l.label === "DevFest" ? "🎉 DevFest Ranchi" : l.label}
             </Button>
           ))}
