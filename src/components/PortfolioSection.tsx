@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, BarChart3, BrainCircuit, Code2, FolderOpen, Lightbulb, Rocket, Search, Sparkles, TrendingUp, Zap } from "lucide-react";
+import { ArrowDown, ArrowUpRight, BarChart3, BrainCircuit, Code2, FolderOpen, Lightbulb, Rocket, Sparkles, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/portfolio";
 
