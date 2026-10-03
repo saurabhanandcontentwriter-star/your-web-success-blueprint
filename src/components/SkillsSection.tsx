@@ -205,6 +205,7 @@ const SkillsSection = () => (
             </p>
             <p className="mt-3 max-w-md text-xs leading-5 text-slate-500 dark:text-slate-400">
               From technical audits and content systems to dashboards, websites and AI workflows, I focus on skills that move projects from idea to execution.
+            </p>
           </div>
 
           <div className="mt-7 rounded-2xl border border-blue-100/80 bg-white/60 p-4 dark:border-slate-700 dark:bg-slate-800/50">
