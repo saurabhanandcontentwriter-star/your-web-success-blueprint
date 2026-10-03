@@ -3,7 +3,6 @@ import { ArrowRight, Award, BookOpen, GraduationCap, Sparkles } from "lucide-rea
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
-import aboutPhoto from "@/assets/about-photo.jpg";
 import spaceBg from "@/assets/space-bg.jpg";
 import "@/styles/education-landing.css";
 
@@ -35,7 +34,7 @@ const EducationPage = () => (
         </motion.div>
 
         <motion.div className="education-photo-frame" initial={{ opacity: 0, scale: .9, rotateY: -14 }} animate={{ opacity: 1, scale: 1, rotateY: -8 }} transition={{ duration: .9, delay: .15 }}>
-          <img src={aboutPhoto} alt="Saurabh Anand - SEO, Data Analytics and AI Automation professional" className="education-photo" />
+          <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand - SEO, Data Analytics and AI Automation professional" className="education-photo" />
           <div className="education-float one"><GraduationCap size={15} className="inline mr-2 text-primary" /> BCA · Computer Applications</div>
           <div className="education-float two"><Award size={15} className="inline mr-2 text-accent" /> Certifications · SEO · Digital Marketing</div>
         </motion.div>
