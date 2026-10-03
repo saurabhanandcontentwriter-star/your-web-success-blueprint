@@ -19,14 +19,14 @@ const ExitIntentPopup = () => {
   const [form, setForm] = useState({ name: "", email: "", company: "", website: "" });
 
   useEffect(() => {
-    try { if (localStorage.getItem(STORAGE_KEY)) return; } catch {}
+    try { if (localStorage.getItem(STORAGE_KEY)) return; } catch { /* Ignore unavailable local storage. */ }
 
     let shown = false;
     const show = () => {
       if (shown) return;
       shown = true;
       setOpen(true);
-      try { localStorage.setItem(STORAGE_KEY, "1"); } catch {}
+      try { localStorage.setItem(STORAGE_KEY, "1"); } catch { /* Ignore unavailable local storage. */ }
     };
 
     const onMouseOut = (e: MouseEvent) => {
