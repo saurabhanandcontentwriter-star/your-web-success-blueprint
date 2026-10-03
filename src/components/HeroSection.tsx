@@ -8,14 +8,14 @@ const tools = [
   ["Google Developer","https://cdn.simpleicons.org/googledevelopers/4285F4"],
   ["GitHub","https://cdn.simpleicons.org/github/111827"],
   ["Semrush","https://cdn.simpleicons.org/semrush/FF642D"],
-  ["Ahrefs","https://cdn.simpleicons.org/ahrefs/FF8A00"],
+  ["Ahrefs","/logos/ahrefs.svg"],
   ["Google Analytics","https://cdn.simpleicons.org/googleanalytics/E37400"],
   ["Search Console","https://cdn.simpleicons.org/googlesearchconsole/4285F4"],
   ["Gemini","https://cdn.simpleicons.org/googlegemini/8E75FF"],
   ["Firebase","https://cdn.simpleicons.org/firebase/FFCA28"],
   ["Figma","https://cdn.simpleicons.org/figma/F24E1E"],
   ["WordPress","https://cdn.simpleicons.org/wordpress/21759B"],
-  ["VS Code","https://cdn.simpleicons.org/visualstudiocode/007ACC"],
+  ["VS Code","/logos/visual-studio-code.svg"],
   ["Shopify","https://cdn.simpleicons.org/shopify/7AB55C"],
   ["React","https://cdn.simpleicons.org/react/61DAFB"],
   ["YouTube","https://cdn.simpleicons.org/youtube/FF0000"],
@@ -59,7 +59,7 @@ const HeroSection = () => (
       <div className="sa-orbit sa-orbit-two" aria-hidden="true" />
       <div className="sa-portrait-glow" aria-hidden="true" />
       <div className="sa-portrait-frame">
-        <img src="/images/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
+        <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO and digital growth specialist" />
       </div>
 
       <div className="sa-tools-orbit" aria-label="Technology tools orbit">
