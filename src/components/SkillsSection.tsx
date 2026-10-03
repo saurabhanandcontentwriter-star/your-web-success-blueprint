@@ -203,9 +203,22 @@ const SkillsSection = () => (
             <p className="mt-5 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
               A practical mix of SEO, digital marketing, web development, data analytics and AI that turns ideas into measurable, scalable digital solutions.
             </p>
+            <p className="mt-3 max-w-md text-xs leading-5 text-slate-500 dark:text-slate-400">
+              From technical audits and content systems to dashboards, websites and AI workflows, I focus on skills that move projects from idea to execution.
           </div>
 
-          <div className="mt-auto grid grid-cols-2 gap-3 pt-10">
+          <div className="mt-7 rounded-2xl border border-blue-100/80 bg-white/60 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-300">Core toolkit</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["SEO", "React", "SQL", "Power BI", "Python", "AI"].map((item) => (
+                <span key={item} className="rounded-full bg-blue-600/10 px-3 py-1.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-400/10 dark:text-blue-200">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-auto grid grid-cols-2 gap-3 pt-6">
             <div className="rounded-2xl border border-white/80 bg-white/75 p-4 backdrop-blur dark:border-slate-700 dark:bg-slate-800/70">
               <Lightbulb className="mb-3 text-amber-500" size={22} />
               <p className="text-sm font-bold text-slate-900 dark:text-white">Learn · Build · Grow</p>
