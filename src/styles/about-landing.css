@@ -11,7 +11,7 @@
 .about-landing > .fixed{display:none!important}
 
 .about-modern-hero{
-  min-height:calc(100vh - 76px);
+  min-height:calc(100vh - 96px);
   display:flex;
   align-items:center;
   position:relative;
@@ -19,7 +19,7 @@
 }
 .about-modern-card{
   width:100%;
-  min-height:760px;
+  min-height:700px;
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
@@ -41,8 +41,7 @@
   background:rgba(61,123,239,.08);
   pointer-events:none;
 }
-.about-modern-visual{
-  min-height:700px;
+.about-modern-visual{min-height:640px;
   position:relative;
   display:flex;
   align-items:center;
