@@ -41,7 +41,7 @@ const AboutPage = () => {
         path="/about"
         isHome
         keywords="About Saurabh Anand, AI SEO Consultant India, Prompt Engineering Expert, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant"
-        image="/about-modern.svg"
+        image="/og-thumbnail.jpg"
         jsonLd={[personJsonLd, faqJsonLd]}
       />
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} />
