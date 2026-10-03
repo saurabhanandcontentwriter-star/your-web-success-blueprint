@@ -173,7 +173,7 @@ const SkillsSection = () => (
         initial={{ opacity: 0, x: -25 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="relative min-h-[500px] overflow-hidden rounded-[30px] border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/70 to-indigo-50/80 p-7 shadow-[0_25px_80px_rgba(37,99,235,0.10)] dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/40 md:p-9"
+        className="relative h-fit min-h-[500px] self-start overflow-hidden rounded-[30px] border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/70 to-indigo-50/80 p-7 shadow-[0_25px_80px_rgba(37,99,235,0.10)] dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/40 md:p-9"
       >
         <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full border-[24px] border-blue-500/10" />
         <div className="absolute -bottom-20 -left-20 h-52 w-52 rounded-full border-[28px] border-violet-500/10" />
@@ -185,7 +185,7 @@ const SkillsSection = () => (
           </div>
 
           <div className="mt-10 flex items-center gap-4">
-<div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-blue-100 shadow-xl shadow-blue-500/20 dark:border-slate-700">
+            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-blue-100 shadow-xl shadow-blue-500/20 dark:border-slate-700">
               <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand" className="h-full w-full object-cover object-top" loading="eager" />
             </div>
             <div>
@@ -219,7 +219,7 @@ const SkillsSection = () => (
             </div>
           </div>
 
-          <div className="mt-auto grid grid-cols-2 gap-3 pt-6">
+          <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-2xl border border-white/80 bg-white/75 p-4 backdrop-blur dark:border-slate-700 dark:bg-slate-800/70">
               <Lightbulb className="mb-3 text-amber-500" size={22} />
               <p className="text-sm font-bold text-slate-900 dark:text-white">Learn · Build · Grow</p>
