@@ -32,7 +32,7 @@ const PortfolioProjectPage = () => {
       <PageBackground variant="portfolio" />
       <Navbar />
       <div className="container mx-auto px-6 max-w-5xl pt-6"><RealImage3D src={project.image} alt={`${project.title} — ${project.company}`} eyebrow="Case Study · Real project" title={project.title} className="h-[240px] md:h-[320px]" /></div>
-      <article className="pt-24 pb-24">
+      <article className="pt-24 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
           <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
             <ArrowLeft size={14} /> Back to portfolio
