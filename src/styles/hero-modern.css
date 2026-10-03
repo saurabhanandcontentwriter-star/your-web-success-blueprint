@@ -1213,3 +1213,64 @@
   }
   .sa-tools-orbit{left:50%!important;top:50%!important;}
 }
+
+
+/* Animated SEO hero typography — text remains crawlable and semantic. */
+.sa-hero-copy h1{
+  animation: sa-title-enter .9s cubic-bezier(.16,1,.3,1) both;
+  text-shadow: 0 0 28px rgba(66,133,244,.08);
+}
+.sa-hero-copy h1 span{
+  display:inline-block;
+  background-size:200% 100%;
+  animation: sa-seo-shimmer 3.8s ease-in-out infinite;
+}
+.sa-hero-copy h2{
+  position:relative;
+  animation: sa-subtitle-enter 1s cubic-bezier(.16,1,.3,1) .12s both;
+}
+.sa-hero-copy h2::after{
+  content:"";
+  display:block;
+  width:72px;
+  height:2px;
+  margin-top:12px;
+  border-radius:999px;
+  background:linear-gradient(90deg,currentColor,transparent);
+  transform-origin:left center;
+  animation: sa-line-grow .9s cubic-bezier(.16,1,.3,1) .45s both;
+}
+.sa-hero-copy > p{
+  animation: sa-copy-enter 1s cubic-bezier(.16,1,.3,1) .28s both;
+}
+@keyframes sa-title-enter{
+  from{opacity:0;transform:translateY(24px);filter:blur(8px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes sa-subtitle-enter{
+  from{opacity:0;transform:translateY(16px);letter-spacing:.16em}
+  to{opacity:1;transform:translateY(0);letter-spacing:normal}
+}
+@keyframes sa-copy-enter{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes sa-line-grow{
+  from{transform:scaleX(0);opacity:0}
+  to{transform:scaleX(1);opacity:.8}
+}
+@keyframes sa-seo-shimmer{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@media (prefers-reduced-motion:reduce){
+  .sa-hero-copy h1,
+  .sa-hero-copy h1 span,
+  .sa-hero-copy h2,
+  .sa-hero-copy h2::after,
+  .sa-hero-copy > p{
+    animation:none!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
