@@ -1344,9 +1344,31 @@
   letter-spacing:.02em!important;
   visibility:visible!important;
   opacity:1!important;
+  animation:sa-specialist-run 2.4s ease-in-out infinite!important;
+  will-change:transform,filter,text-shadow;
+}
+@keyframes sa-specialist-run{
+  0%,100%{
+    transform:translateX(0);
+    filter:brightness(1);
+    text-shadow:0 0 0 rgba(16,223,255,0);
+  }
+  50%{
+    transform:translateX(10px);
+    filter:brightness(1.35);
+    text-shadow:0 0 16px rgba(16,223,255,.85),0 0 30px rgba(46,139,255,.45);
+  }
 }
 @media(max-width:767px){
   .sa-hero-specialist-title{
     font-size:clamp(1rem,4.5vw,1.3rem)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .sa-hero-specialist-title{
+    animation:none!important;
+    transform:none!important;
+    filter:none!important;
+    text-shadow:none!important;
   }
 }
