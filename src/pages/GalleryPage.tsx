@@ -29,7 +29,7 @@ const GalleryPage = () => {
       <Navbar />
 
       <main>
-        <section className="gallery-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
+        <section className="gallery-hero container mx-auto px-5 md:px-6 pt-24 md:pt-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const GalleryPage = () => {
           <ArrowDown size={15} /> Scroll to explore
         </div>
 
-        <section id="gallery-collection" className="container mx-auto px-5 md:px-6 pb-24">
+        <section id="gallery-collection" className="container mx-auto px-5 md:px-6 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
