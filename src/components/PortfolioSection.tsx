@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, BarChart3, BrainCircuit, Code2, FolderOpen, Lightbulb, Rocket, Sparkles, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/portfolio";
+import "@/styles/portfolio-modern.css";
 
 const categories = [
   { label: "All", match: null },
