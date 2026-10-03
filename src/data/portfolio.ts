@@ -75,7 +75,7 @@ export const projects: Project[] = [
       "An academic project focused on transforming academic administration through unified digital services, automation, analytics and responsible AI.",
     tags: ["AI", "Automation", "Analytics", "Digital Administration", "Responsible AI"],
     image: "/og-thumbnail.jpg",
-    url: "https://saurabhanandseo.com/",
+    url: "https://campus-ai-psi-eosin.vercel.app/",
     overview:
       "CampusSphere AI is an academic project designed around unified digital services, administrative automation, analytics and responsible AI for academic environments.",
     challenge:
