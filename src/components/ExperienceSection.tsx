@@ -129,8 +129,16 @@ const ExperienceSection = () => (
 
                   <div className="group rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-[0_12px_35px_rgba(15,23,42,0.06)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(37,99,235,0.12)] dark:border-slate-700 dark:bg-slate-900/85 md:p-6">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/10 dark:text-blue-300">
-                        <Icon size={28} strokeWidth={2.2} />
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-2.5 shadow-sm ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700">
+                        <img
+                          src={job.favicon}
+                          alt={job.company + " logo"}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                          onError={(event) => {
+                            event.currentTarget.style.display = "none";
+                          }}
+                        />
                       </div>
 
                       <div className="min-w-0 flex-1">
