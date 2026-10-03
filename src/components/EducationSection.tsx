@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { GraduationCap, Award, ArrowRight, Sparkles } from "lucide-react";
-import aboutPhoto from "@/assets/about-photo.jpg";
 import spaceBg from "@/assets/space-bg.jpg";
 
 const EducationSection = () => (
@@ -15,7 +14,7 @@ const EducationSection = () => (
           viewport={{ once: true }}
         >
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
-            <img src={aboutPhoto} alt="Saurabh Anand" className="w-full h-full object-cover" />
+            <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand" className="w-full h-full object-cover" />
             <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/15 bg-black/35 backdrop-blur-xl px-4 py-3">
               <div className="flex items-center gap-2 text-xs font-semibold tracking-[.14em] uppercase">
                 <Sparkles size={14} className="text-primary" /> Learning & Growth
