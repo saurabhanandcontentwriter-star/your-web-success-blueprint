@@ -5,7 +5,7 @@ import "@/styles/hero-modern.css";
 
 const tools = [
   ["Google","https://cdn.simpleicons.org/google/4285F4"],
-  ["Google Developer","https://cdn.simpleicons.org/googledevelopers/4285F4"],
+  ["Google Developers","https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Developers_logo.svg"],
   ["GitHub","https://cdn.simpleicons.org/github/111827"],
   ["Semrush","https://cdn.simpleicons.org/semrush/FF642D"],
   ["Ahrefs","/logos/ahrefs.svg"],
