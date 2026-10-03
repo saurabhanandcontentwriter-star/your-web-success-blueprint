@@ -71,6 +71,7 @@ const CrawlerCheckPage = () => {
         title="Crawler Verification Dashboard | Saurabh Anand"
         description="Technical SEO dashboard: robots.txt parser, user-agent simulation, sitemap & canonical validation for AI and search crawlers."
         path="/crawler-check"
+        noindex
       />
       <div className="container mx-auto px-6 max-w-5xl">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
