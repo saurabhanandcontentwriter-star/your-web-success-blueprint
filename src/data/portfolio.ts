@@ -92,6 +92,58 @@ export const projects: Project[] = [
       "Included responsible AI as a core project principle",
     ],
   },
+  {
+    slug: "google-devfest-ranchi-2026",
+    title: "Google DevFest Ranchi 2026",
+    company: "GDG Ranchi",
+    stat: "COMMUNITY × AI",
+    description:
+      "Google DevFest Ranchi 2026 — Community 2.0, bringing developers and technology enthusiasts together for Google technologies, AI & Gemini, Cloud and developer ecosystem sessions.",
+    tags: ["Google DevFest", "Community", "AI & Gemini", "Cloud", "Developer Ecosystem"],
+    image: "/assets/devfest-bit-mesra.jpg",
+    url: "/devfest-ranchi",
+    overview:
+      "A portfolio showcase for Google DevFest Ranchi 2026 at BIT Mesra Auditorium, Ranchi, highlighting the Community 2.0 theme and developer-focused technology sessions.",
+    challenge:
+      "Present the event, community focus, schedule context and registration pathway as a polished portfolio project.",
+    approach: [
+      "Created a dedicated DevFest Ranchi event experience.",
+      "Added countdown and event status handling for the 31 October 2026 event.",
+      "Highlighted AI with Gemini, Cloud and the wider Google developer ecosystem.",
+      "Connected visitors to the dedicated DevFest page and GDG Ranchi registration.",
+    ],
+    results: [
+      "Dedicated DevFest Ranchi 2026 portfolio experience",
+      "Community 2.0 event storytelling and interactive countdown",
+      "Clear pathway to event information and GDG Ranchi registration",
+    ],
+  },
+  {
+    slug: "sneha-ai-calling-agent",
+    title: "Sneha — AI Calling Agent",
+    company: "Crazy SEO Team",
+    stat: "AI × VOICE",
+    description:
+      "An AI-powered conversational calling agent for Crazy SEO Team that can handle calls, understand requirements, explain services and collect lead details.",
+    tags: ["AI Agent", "Voice AI", "Conversational AI", "Lead Generation", "Automation"],
+    image: "/og-thumbnail.jpg",
+    url: "https://www.crazyseoteam.in/",
+    overview:
+      "Sneha is a conversational AI calling agent created for Crazy SEO Team to represent the team during voice interactions and support lead qualification.",
+    challenge:
+      "Create a natural voice-first experience that can understand a caller's requirements, explain services and capture useful lead information.",
+    approach: [
+      "Designed a conversational voice-agent experience around business enquiries.",
+      "Structured the agent to understand requirements and explain relevant services.",
+      "Included lead-detail collection as part of the conversation flow.",
+      "Connected the agent experience to the Crazy SEO Team digital ecosystem.",
+    ],
+    results: [
+      "Created a dedicated AI calling-agent portfolio project",
+      "Voice-first conversational experience for business enquiries",
+      "Lead qualification and service explanation through AI conversation",
+    ],
+  },
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
