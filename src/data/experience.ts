@@ -16,7 +16,7 @@ export const jobs: Job[] = [
     period: "Mar 2024 – Aug 2026",
     title: "SEO Executive",
     company: "TripzyGo",
-    favicon: "https://www.google.com/s2/favicons?domain=tripzygo.in&sz=64",
+    favicon: "/portfolio/tripzygo-seo.svg",
     tools: ["Google Analytics", "Search Console", "Ahrefs", "Semrush"],
     description:
       "Spearheading the organic growth strategy for a leading travel platform. Deep technical audits, advanced keyword research, and high-impact content strategy.",
@@ -60,7 +60,7 @@ export const jobs: Job[] = [
     period: "Internship",
     title: "Digital Marketing Intern",
     company: "TripzyGo International",
-    favicon: "https://www.google.com/s2/favicons?domain=tripzygo.in&sz=64",
+    favicon: "/portfolio/tripzygo-seo.svg",
     tools: ["Google Analytics", "Canva", "Hootsuite", "WordPress"],
     description:
       "Learned the fundamentals of SEO and digital marketing by supporting senior analysts.",
