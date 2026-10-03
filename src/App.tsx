@@ -72,6 +72,10 @@ const VisitorTracker = () => {
   const sentRef = useRef(false);
 
   useEffect(() => {
+    const warmRoutesTimer = window.setTimeout(() => {
+      Object.values(routePreloaders).forEach((loader) => void loader());
+    }, 1200);
+
     const handleRouteHover = (event: PointerEvent) => {
       const target = event.target as HTMLElement | null;
       const link = target?.closest("a[href]") as HTMLAnchorElement | null;
@@ -79,7 +83,10 @@ const VisitorTracker = () => {
       preloadRoute(link.href);
     };
     document.addEventListener("pointerover", handleRouteHover, { passive: true });
-    return () => document.removeEventListener("pointerover", handleRouteHover);
+    return () => {
+      window.clearTimeout(warmRoutesTimer);
+      document.removeEventListener("pointerover", handleRouteHover);
+    };
   }, []);
 
   useEffect(() => {
