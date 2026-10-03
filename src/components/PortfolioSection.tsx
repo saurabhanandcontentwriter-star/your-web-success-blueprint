@@ -111,7 +111,7 @@ const PortfolioSection = () => {
                     transition={{ duration: .45, delay: index * .06 }}
                     className="portfolio-modern-card"
                   >
-                    <Link to={`/portfolio/${project.slug}`} className="portfolio-modern-card-link" aria-label={`Open ${project.title} case study`}>
+                    <Link to={project.slug === "google-devfest-ranchi-2026" ? "/devfest-ranchi" : `/portfolio/${project.slug}`} className="portfolio-modern-card-link" aria-label={project.slug === "google-devfest-ranchi-2026" ? "Open Google DevFest Ranchi 2026" : `Open ${project.title} case study`}>
                       <div className="portfolio-modern-card-image">
                         <img src={project.image} alt={`${project.title} — ${project.company} project`} loading={index < 3 ? "eager" : "lazy"} decoding="async" />
                         <span className="portfolio-modern-open"><ArrowUpRight size={21} /></span>
@@ -122,6 +122,10 @@ const PortfolioSection = () => {
                         <div className="portfolio-modern-tags">
                           {project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}
                         </div>
+                        <span className="inline-flex w-fit items-center gap-1.5 mt-3 text-xs font-semibold text-primary">
+                          {project.slug === "sneha-ai-calling-agent" ? "Talk to Sneha" : project.slug === "google-devfest-ranchi-2026" ? "Open DevFest" : "View Project"}
+                          <ArrowUpRight size={14} />
+                        </span>
                       </div>
                     </Link>
                   </motion.article>
