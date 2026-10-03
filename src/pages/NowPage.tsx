@@ -19,7 +19,7 @@ const NowPage = () => (
     <Navbar />
 
     <main>
-      <section className="now-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
+      <section className="now-hero container mx-auto px-5 md:px-6 pt-24 md:pt-24">
         <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8 }}>
           <div className="now-kicker"><i /> Live focus · September 2026</div>
           <h1 className="now-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[.95] tracking-[-.05em]">
@@ -54,7 +54,7 @@ const NowPage = () => (
 
       <div className="now-scroll"><ArrowDown size={15} /> Scroll to explore</div>
 
-      <section id="current-focus" className="container mx-auto px-5 md:px-6 pb-24">
+      <section id="current-focus" className="container mx-auto px-5 md:px-6 pb-20">
         <div className="mb-6">
           <p className="section-label mb-2">Current focus</p>
           <h2 className="text-3xl md:text-5xl font-display font-bold">What I’m working on now</h2>
