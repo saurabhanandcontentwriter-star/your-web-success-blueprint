@@ -100,7 +100,7 @@ export const projects: Project[] = [
     description:
       "Google DevFest Ranchi 2026 — Community 2.0, bringing developers and technology enthusiasts together for Google technologies, AI & Gemini, Cloud and developer ecosystem sessions.",
     tags: ["Google DevFest", "Community", "AI & Gemini", "Cloud", "Developer Ecosystem"],
-    image: "/assets/devfest-bit-mesra.jpg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://saurabhanandseo.com/devfest-ranchi",
     url: "/devfest-ranchi",
     overview:
       "A portfolio showcase for Google DevFest Ranchi 2026 at BIT Mesra Auditorium, Ranchi, highlighting the Community 2.0 theme and developer-focused technology sessions.",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered conversational calling agent for Crazy SEO Team that can handle calls, understand requirements, explain services and collect lead details.",
     tags: ["AI Agent", "Voice AI", "Conversational AI", "Lead Generation", "Automation"],
-    image: "/og-thumbnail.jpg",
+    image: "https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.crazyseoteam.in/",
     url: "https://www.crazyseoteam.in/",
     overview:
       "Sneha is a conversational AI calling agent created for Crazy SEO Team to represent the team during voice interactions and support lead qualification.",
