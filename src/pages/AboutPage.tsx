@@ -26,7 +26,7 @@ const AboutPage = () => {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Saurabh Anand",
-    url: "https://saurabh-anand-seo.com/about",
+    url: "https://saurabhanandseo.com/about",
     jobTitle: "AI SEO Consultant, Prompt Engineer, Vibe Coder & AI Automation Expert",
     description: "AI SEO Consultant and Prompt Engineer focused on SEO, GEO, AI search, content systems, automation and practical AI-assisted growth workflows.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "Allama Iqbal College, Bihar Sharif, Nalanda" },
