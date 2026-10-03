@@ -49,7 +49,7 @@ const AboutPage = () => {
       <Navbar />
 
       <main>
-        <section className="about-hero about-modern-hero container mx-auto px-4 md:px-6 pt-24 md:pt-28">
+        <section className="about-hero about-modern-hero container mx-auto px-4 md:px-6 pt-24 md:pt-24">
           <motion.div
             className="about-modern-card"
             initial={{ opacity: 0, y: 28 }}
@@ -157,7 +157,7 @@ const AboutPage = () => {
 
         <div className="about-scroll"><ArrowDown size={15} /> Scroll to explore</div>
 
-        <section id="about-story" className="container mx-auto px-5 md:px-6 pb-24">
+        <section id="about-story" className="container mx-auto px-5 md:px-6 pb-20">
           <div className="about-section-heading">
             <div>
               <p className="section-label mb-2">The story</p>
