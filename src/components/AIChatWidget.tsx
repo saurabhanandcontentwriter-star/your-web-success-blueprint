@@ -41,11 +41,36 @@ const WELCOME: Msg = {
     "Hi! I'm Saurabh's portfolio assistant. Ask me anything about his skills, projects or experience.",
 };
 
-// ---- Speech Recognition (typed loosely; browser-vendored) ----
-const getSR = (): any =>
-  (typeof window !== "undefined" &&
-    ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)) ||
-  null;
+// ---- Speech Recognition (browser-vendored APIs) ----
+type SpeechRecognitionEventLike = {
+  resultIndex: number;
+  results: {
+    length: number;
+    [index: number]: { 0: { transcript: string } };
+  };
+};
+
+type SpeechRecognitionLike = {
+  lang: string;
+  interimResults: boolean;
+  continuous: boolean;
+  onresult: ((event: SpeechRecognitionEventLike) => void) | null;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+};
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionLike;
+
+const getSR = (): SpeechRecognitionConstructor | null => {
+  if (typeof window === "undefined") return null;
+  const speechWindow = window as Window & {
+    SpeechRecognition?: SpeechRecognitionConstructor;
+    webkitSpeechRecognition?: SpeechRecognitionConstructor;
+  };
+  return speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition ?? null;
+};
 
 const AIChatWidget = () => {
   const [open, setOpen] = useState(false);
@@ -62,11 +87,11 @@ const AIChatWidget = () => {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length) return parsed;
       }
-    } catch {}
+    } catch { /* Ignore unavailable browser storage or speech APIs. */ }
     return [WELCOME];
   });
   const scrollRef = useRef<HTMLDivElement>(null);
-  const recogRef = useRef<any>(null);
+  const recogRef = useRef<SpeechRecognitionLike | null>(null);
   const speakBufferRef = useRef<string>("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [firstVisit, setFirstVisit] = useState<boolean>(() => {
@@ -94,7 +119,7 @@ const AIChatWidget = () => {
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-    } catch {}
+    } catch { /* Ignore unavailable browser storage or speech APIs. */ }
   }, [messages]);
 
   // Auto-scroll
@@ -105,7 +130,7 @@ const AIChatWidget = () => {
   // Cleanup speech on close
   useEffect(() => {
     if (!open) {
-      try { recogRef.current?.stop(); } catch {}
+      try { recogRef.current?.stop(); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
       window.speechSynthesis?.cancel?.();
     }
   }, [open]);
@@ -121,7 +146,7 @@ const AIChatWidget = () => {
       u.onend = () => setIsSpeaking(false);
       u.onerror = () => setIsSpeaking(false);
       window.speechSynthesis.speak(u);
-    } catch {}
+    } catch { /* Ignore unavailable browser storage or speech APIs. */ }
   };
 
   const toggleMic = () => {
@@ -131,7 +156,7 @@ const AIChatWidget = () => {
       return;
     }
     if (listening) {
-      try { recogRef.current?.stop(); } catch {}
+      try { recogRef.current?.stop(); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
       setListening(false);
       return;
     }
@@ -139,7 +164,7 @@ const AIChatWidget = () => {
     r.lang = navigator.language?.startsWith("hi") ? "hi-IN" : "en-US";
     r.interimResults = true;
     r.continuous = false;
-    r.onresult = (e: any) => {
+    r.onresult = (e: SpeechRecognitionEventLike) => {
       let txt = "";
       for (let i = e.resultIndex; i < e.results.length; i++) txt += e.results[i][0].transcript;
       setInput(txt);
@@ -213,12 +238,13 @@ const AIChatWidget = () => {
         }
       }
       if (acc) speak(acc);
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Something went wrong.";
       setMessages((prev) => {
         const copy = [...prev];
         copy[copy.length - 1] = {
           role: "assistant",
-          content: `⚠️ ${e.message || "Something went wrong."}`,
+          content: `⚠️ ${message}`,
         };
         return copy;
       });
@@ -230,7 +256,7 @@ const AIChatWidget = () => {
   const clearHistory = () => {
     if (!confirm("Clear this chat?")) return;
     setMessages([WELCOME]);
-    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
   };
 
   const exportChat = () => {
@@ -404,7 +430,7 @@ const AIChatWidget = () => {
               setMinimized(false);
               setShowWelcomePopup(false);
               if (firstVisit) {
-                try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
                 setFirstVisit(false);
               }
             }}
@@ -422,7 +448,7 @@ const AIChatWidget = () => {
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowWelcomePopup(false);
-                  try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                  try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
                   setFirstVisit(false);
                 }}
                 aria-label="Dismiss welcome message"
@@ -447,7 +473,7 @@ const AIChatWidget = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       setShowWelcomePopup(false);
-                      try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+                      try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
                       setFirstVisit(false);
                       if (action.action === "chat") {
                         setOpen(true);
@@ -484,7 +510,7 @@ const AIChatWidget = () => {
             setMinimized(false);
             setShowWelcomePopup(false);
             if (firstVisit) {
-              try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch {}
+              try { localStorage.setItem(FIRST_VISIT_KEY, "1"); } catch { /* Ignore unavailable browser storage or speech APIs. */ }
               setFirstVisit(false);
             }
           }}
