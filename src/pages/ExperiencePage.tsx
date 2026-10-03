@@ -46,7 +46,7 @@ const ExperiencePage = () => {
       <Navbar />
 
       <main>
-        <section className="experience-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
+        <section className="experience-hero container mx-auto px-5 md:px-6 pt-24 md:pt-24">
           <motion.div
             className="experience-hero-copy"
             initial={{ opacity: 0, y: 35 }}
@@ -96,7 +96,7 @@ const ExperiencePage = () => {
 
         <div className="experience-scroll-hint"><ArrowDown size={15} /> Scroll to explore</div>
 
-        <section className="experience-capabilities container mx-auto px-5 md:px-6 pb-24">
+        <section className="experience-capabilities container mx-auto px-5 md:px-6 pb-20">
           <div className="experience-section-heading experience-capabilities-heading">
             <div>
               <p className="section-label mb-2">What I bring</p>
@@ -126,7 +126,7 @@ const ExperiencePage = () => {
           </div>
         </section>
 
-        <section id="career-timeline" className="container mx-auto px-5 md:px-6 pb-24">
+        <section id="career-timeline" className="container mx-auto px-5 md:px-6 pb-20">
           <div className="experience-section-heading">
             <div>
               <p className="section-label mb-2">Career timeline</p>
@@ -138,7 +138,7 @@ const ExperiencePage = () => {
           <div className="experience-timeline-shell"><ExperienceSection /></div>
         </section>
 
-        <section className="experience-bottom container mx-auto px-5 md:px-6 pb-28">
+        <section className="experience-bottom container mx-auto px-5 md:px-6 pb-20">
           <div className="experience-bottom-panel">
             <div className="experience-bottom-glow" />
             <div className="experience-bottom-copy">
