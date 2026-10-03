@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, BookOpen, Code2, Lightbulb, Megaphone, Rocket, Send, Sparkles, TrendingUp, Trophy, UserRound, UsersRound } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
@@ -49,69 +49,106 @@ const AboutPage = () => {
       <Navbar />
 
       <main>
-        <section className="about-hero container mx-auto px-4 md:px-6 pt-24 md:pt-28">
+        <section className="about-hero about-modern-hero container mx-auto px-4 md:px-6 pt-24 md:pt-28">
           <motion.div
-            className="relative grid w-full overflow-hidden rounded-[28px] border border-white/10 bg-[#071225]/90 shadow-2xl lg:grid-cols-[.9fr_1.1fr]"
+            className="about-modern-card"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: .8 }}
           >
-            <div className="relative min-h-[620px] overflow-hidden p-6 md:p-10">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_45%_45%,rgba(34,211,238,.16),transparent_52%)]" />
-              <div className="relative flex h-full min-h-[570px] flex-col items-center justify-center">
-                <div className="absolute left-2 top-8 rounded-full border border-cyan-300/30 bg-[#071225]/90 px-4 py-2 text-xs font-bold tracking-wide text-cyan-100 md:left-5">
-                  DIGITAL MARKETING
-                </div>
-                <div className="absolute bottom-28 right-2 rounded-full border border-violet-400/30 bg-[#071225]/90 px-4 py-2 text-xs font-bold text-violet-100 md:right-5">
-                  SEO STRATEGY
-                </div>
-                <div className="absolute bottom-8 left-2 rounded-full border border-cyan-300/30 bg-[#071225]/90 px-4 py-2 text-xs font-bold text-cyan-100 md:left-5">
-                  AI &amp; AUTOMATION
-                </div>
-                <div className="absolute bottom-2 right-3 rounded-full border border-indigo-400/30 bg-[#071225]/90 px-4 py-2 text-xs font-bold text-indigo-100 md:right-6">
-                  WEB DEVELOPMENT
-                </div>
-                <div className="relative z-10 h-[430px] w-full max-w-[380px] overflow-hidden rounded-[32px] border border-cyan-300/20 bg-slate-900 shadow-[0_30px_80px_rgba(0,0,0,.45)]">
-                  <img
-                    src="/saurabh-anand-hero.webp"
-                    alt="Saurabh Anand"
-                    className="h-full w-full object-cover object-center"
-                    width={800}
-                    height={900}
-                    fetchPriority="high"
-                    decoding="async"
-                  />
-                </div>
+            <div className="about-modern-visual">
+              <div className="about-modern-blob about-modern-blob-one" aria-hidden="true" />
+              <div className="about-modern-blob about-modern-blob-two" aria-hidden="true" />
+
+              <div className="about-signature" aria-hidden="true">
+                <span>Saurabh</span>
+                <span>Anand</span>
               </div>
+
+              <div className="about-portrait-halo" aria-hidden="true" />
+              <div className="about-modern-portrait">
+                <img
+                  src="/saurabh-anand-hero.webp"
+                  alt="Saurabh Anand — SEO Specialist, Digital Marketer and Tech Enthusiast"
+                  width={800}
+                  height={900}
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="about-skill-card about-skill-marketing">
+                <span className="about-skill-icon"><Megaphone size={20} /></span>
+                <span>Digital<br />Marketing</span>
+              </div>
+              <div className="about-skill-card about-skill-seo">
+                <span className="about-skill-icon"><TrendingUp size={20} /></span>
+                <span>SEO<br />Strategy ↗</span>
+              </div>
+              <div className="about-skill-card about-skill-ai">
+                <span className="about-skill-icon"><Lightbulb size={20} /></span>
+                <span>AI &amp;<br />Automation</span>
+              </div>
+              <div className="about-skill-card about-skill-web">
+                <span className="about-skill-icon"><Code2 size={20} /></span>
+                <span>Web<br />Development</span>
+              </div>
+
+              <div className="about-doodle about-doodle-top" aria-hidden="true">╱╲</div>
+              <div className="about-doodle about-doodle-bottom" aria-hidden="true">╲╱</div>
             </div>
 
-            <div className="relative flex flex-col justify-center p-7 md:p-12 lg:p-16">
-              <div className="mb-3 text-sm font-extrabold tracking-[.28em] text-cyan-300">ABOUT ME</div>
-              <div className="mb-6 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-300 to-indigo-500" />
-              <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl xl:text-6xl">Hi, I’m Saurabh Anand</h1>
-              <p className="mt-5 text-sm font-bold tracking-[.12em] text-indigo-200 md:text-base">
-                SEO SPECIALIST | DIGITAL MARKETER | TECH ENTHUSIAST
-              </p>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-                I help businesses grow through data-driven SEO, digital marketing, AI automation and modern web solutions — turning search visibility and technology into practical digital growth.
-              </p>
-
-              <div className="mt-9 grid grid-cols-1 gap-6 border-b border-white/10 pb-8 sm:grid-cols-3">
-                <div><strong className="block text-3xl font-extrabold text-cyan-300">4+</strong><span className="text-[11px] font-semibold tracking-wider text-slate-400">YEARS EXPERIENCE</span></div>
-                <div><strong className="block text-3xl font-extrabold text-violet-300">20K+</strong><span className="text-[11px] font-semibold tracking-wider text-slate-400">LINKEDIN COMMUNITY</span></div>
-                <div><strong className="block text-3xl font-extrabold text-cyan-300">10+</strong><span className="text-[11px] font-semibold tracking-wider text-slate-400">PROJECTS COMPLETED</span></div>
+            <div className="about-modern-copy">
+              <div className="about-modern-kicker">
+                <span><UserRound size={18} /></span>
+                ABOUT ME
               </div>
 
-              <p className="mt-7 max-w-2xl text-sm leading-7 text-slate-400 md:text-base">
-                Focused on continuous learning across AI, SEO, analytics, automation and modern web technologies to build better digital experiences.
+              <div className="about-title-rule" aria-hidden="true" />
+
+              <h1 className="about-modern-title">
+                Hi, I’m<br className="hidden sm:block" /> Saurabh <span>Anand</span>
+              </h1>
+
+              <p className="about-modern-role">
+                SEO SPECIALIST <b>|</b> DIGITAL MARKETER <b>|</b> TECH ENTHUSIAST
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/portfolio" className="rounded-full bg-gradient-to-r from-cyan-300 to-indigo-500 px-6 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-cyan-500/10">
-                  View My Work
+              <p className="about-modern-lead">
+                I help businesses grow with data-driven SEO strategies, digital marketing,
+                AI automation, and modern web solutions. I love building projects, exploring
+                new technologies, and turning ideas into real impact.
+              </p>
+
+              <div className="about-modern-stats">
+                <div className="about-modern-stat">
+                  <span className="about-stat-icon"><Trophy size={25} /></span>
+                  <strong>4+</strong>
+                  <span>Years<br />Experience</span>
+                </div>
+                <div className="about-modern-stat">
+                  <span className="about-stat-icon"><UsersRound size={25} /></span>
+                  <strong>20K+</strong>
+                  <span>LinkedIn<br />Community</span>
+                </div>
+                <div className="about-modern-stat">
+                  <span className="about-stat-icon"><Rocket size={25} /></span>
+                  <strong>10+</strong>
+                  <span>Projects<br />Completed</span>
+                </div>
+                <div className="about-modern-stat">
+                  <span className="about-stat-icon"><BookOpen size={25} /></span>
+                  <strong>AI &amp; SEO</strong>
+                  <span>Continuous<br />Learning</span>
+                </div>
+              </div>
+
+              <div className="about-modern-actions">
+                <Link to="/portfolio" className="about-modern-primary">
+                  <Send size={19} /> View My Work <ArrowRight size={18} />
                 </Link>
-                <a href="/Saurabh-Anand-Resume.pdf" download className="rounded-full border border-indigo-300/40 bg-slate-900/70 px-6 py-3 text-sm font-extrabold text-indigo-100">
-                  Download CV
+                <a href="/Saurabh-Anand-Resume.pdf" download className="about-modern-secondary">
+                  <UserRound size={19} /> Download CV
                 </a>
               </div>
             </div>
