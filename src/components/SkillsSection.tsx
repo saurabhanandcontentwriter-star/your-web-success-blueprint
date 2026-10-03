@@ -198,10 +198,10 @@ const SkillsSection = () => (
             <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.04em] text-slate-950 dark:text-white md:text-5xl">
               Skills That
               <br />
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Power My Work</span>
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Drive My Work</span>
             </h2>
             <p className="mt-5 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
-              A blend of SEO, digital marketing, web development, data analysis and AI tools that help me build, optimize and grow impactful digital solutions.
+              A practical mix of SEO, digital marketing, web development, data analytics and AI that turns ideas into measurable, scalable digital solutions.
             </p>
           </div>
 
