@@ -84,7 +84,7 @@ const EducationPage = () => (
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_17%_45%,rgba(59,130,246,.16),transparent_28%),radial-gradient(circle_at_82%_52%,rgba(99,102,241,.10),transparent_32%)]" />
         <div className="absolute left-0 top-0 h-full w-[52%] bg-gradient-to-br from-blue-50/70 via-white/30 to-transparent" />
 
-        <div className="relative mx-auto grid min-h-[calc(100vh-86px)] max-w-[1550px] items-center gap-6 px-5 pb-8 pt-4 lg:grid-cols-[.9fr_1.1fr] lg:px-8 xl:px-10">
+        <div className="relative mx-auto grid min-h-[calc(100vh-110px)] max-w-[1550px] items-center gap-6 px-5 pb-8 pt-4 lg:grid-cols-[.9fr_1.1fr] lg:px-8 xl:px-10">
           {/* LEFT: supplied visual style */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
