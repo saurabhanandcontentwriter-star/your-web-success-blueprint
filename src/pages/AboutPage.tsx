@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, BrainCircuit, Sparkles, Target, UserRound } from "lucide-react";
+import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import aboutPhoto from "@/assets/about-photo.jpg";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -42,7 +41,7 @@ const AboutPage = () => {
         path="/about"
         isHome
         keywords="About Saurabh Anand, AI SEO Consultant India, Prompt Engineering Expert, GEO Expert, LLMO Specialist, Technical SEO Consultant, Vibe Coder, AI Automation Expert, LinkedIn Top Voice 2024, Google Developer Community, SaaS SEO Consultant"
-        image="/og-thumbnail.jpg"
+        image="/about-modern.svg"
         jsonLd={[personJsonLd, faqJsonLd]}
       />
       <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${spaceBg})` }} />
@@ -50,31 +49,22 @@ const AboutPage = () => {
       <Navbar />
 
       <main>
-        <section className="about-hero container mx-auto px-5 md:px-6 pt-28 md:pt-32">
-          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8 }}>
-            <div className="about-kicker"><UserRound size={14} /> About the builder · SEO · Data · AI</div>
-            <h1 className="about-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[.95] tracking-[-.05em]">
-              I build growth systems.
-              <br /><span>Not just campaigns.</span>
-            </h1>
-            <p className="about-lead mt-7">I’m Saurabh Anand — a data-driven SEO and digital marketing professional working at the intersection of organic growth, analytics, prompt engineering, AI automation and modern search.</p>
-            <div className="about-actions mt-8">
-              <a href="#about-story" className="home-hero-primary">Explore my story <ArrowRight size={16} /></a>
-              <Link to="/contact" className="home-hero-secondary">Let’s work together</Link>
-            </div>
-            <div className="about-stats mt-10">
-              <div><strong>SEO + AI</strong><span>Core focus</span></div>
-              <div><strong>Data-led</strong><span>Decision making</span></div>
-              <div><strong>Builder</strong><span>Mindset</span></div>
-            </div>
-          </motion.div>
-
-          <motion.div className="about-visual" initial={{ opacity: 0, scale: .86, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 1, delay: .1 }}>
-            <div className="about-orbit about-orbit-one" />
-            <div className="about-orbit about-orbit-two" />
-            <div className="about-portrait-frame"><img src={aboutPhoto} alt="Saurabh Anand" /></div>
-            <div className="about-float about-float-one"><BrainCircuit size={15} /> AI-first growth</div>
-            <div className="about-float about-float-two"><Target size={15} /> Search → Visibility → Growth</div>
+        <section className="about-hero container mx-auto px-4 md:px-6 pt-24 md:pt-28">
+          <motion.div
+            className="w-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-2xl"
+            initial={{ opacity: 0, y: 28, scale: .98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: .8 }}
+          >
+            <img
+              src="/about-modern.svg"
+              alt="About Saurabh Anand — SEO Specialist, Digital Marketer and Tech Enthusiast"
+              className="block h-auto w-full"
+              width={1536}
+              height={1024}
+              fetchPriority="high"
+              decoding="async"
+            />
           </motion.div>
         </section>
 
