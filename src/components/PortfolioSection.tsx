@@ -113,7 +113,7 @@ const PortfolioSection = () => {
                   >
                     <Link to={project.slug === "google-devfest-ranchi-2026" ? "/devfest-ranchi" : `/portfolio/${project.slug}`} className="portfolio-modern-card-link" aria-label={project.slug === "google-devfest-ranchi-2026" ? "Open Google DevFest Ranchi 2026" : `Open ${project.title} case study`}>
                       <div className="portfolio-modern-card-image">
-                        <img src={project.image} alt={`${project.title} — ${project.company} project`} loading={index < 3 ? "eager" : "lazy"} decoding="async" />
+                        <img src={project.image} alt={`${project.title} — ${project.company} project`} loading="lazy" decoding="async" />
                         <span className="portfolio-modern-open"><ArrowUpRight size={21} /></span>
                       </div>
                       <div className="portfolio-modern-card-body">
