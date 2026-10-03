@@ -23,10 +23,10 @@ const NewsletterPopup = ({ embedded = false }: { embedded?: boolean }) => {
 
   useEffect(() => {
     if (embedded) return;
-    try { if (localStorage.getItem(STORAGE_KEY)) return; } catch {}
+    try { if (localStorage.getItem(STORAGE_KEY)) return; } catch { /* Ignore unavailable local storage. */ }
     const t = window.setTimeout(() => {
       setOpen(true);
-      try { localStorage.setItem(STORAGE_KEY, "1"); } catch {}
+      try { localStorage.setItem(STORAGE_KEY, "1"); } catch { /* Ignore unavailable local storage. */ }
     }, DELAY_MS);
     return () => window.clearTimeout(t);
   }, [embedded]);
