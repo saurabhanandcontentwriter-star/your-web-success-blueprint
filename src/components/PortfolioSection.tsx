@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, BrainCircuit, Code2, Layers3, MousePointer2, Search, Sparkles, Zap } from "lucide-react";
 import { projects } from "@/data/portfolio";
-import aboutPhoto from "@/assets/about-photo.jpg";
 
 const skills = ["SEO Strategy", "Prompt Engineering", "AI SEO", "GEO & LLMO", "AI Automation", "Data Analytics", "Vibe Coding", "Content Systems", "Growth Marketing"];
 
@@ -76,7 +75,7 @@ const PortfolioSection = () => {
               <div className="portfolio-3d-ring ring-b" />
               <div className="portfolio-3d-ring ring-c" />
               <div className="portfolio-core portfolio-photo-core">
-                <img src={aboutPhoto} alt="Saurabh Anand — SEO, AI, Data and Web portfolio" className="portfolio-core-photo" />
+                <img src="/saurabh-anand-hero.webp" alt="Saurabh Anand — SEO, AI, Data and Web portfolio" className="portfolio-core-photo" />
                 <div className="portfolio-photo-overlay" />
                 <div className="portfolio-core-inner">
                   <span>SEO · AI · DATA · WEB</span>
