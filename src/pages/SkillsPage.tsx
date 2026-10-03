@@ -22,7 +22,7 @@ const SkillsPage = () => (
 
     <Navbar />
 
-    <main className="container mx-auto px-5 pb-20 pt-28 md:px-6 md:pt-32">
+    <main className="container mx-auto px-5 pb-16 pt-24 md:px-6 md:pt-24">
       <motion.header
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
