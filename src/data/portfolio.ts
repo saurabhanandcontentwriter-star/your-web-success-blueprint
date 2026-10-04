@@ -1,4 +1,6 @@
 import crazySeoImg from "@/assets/crazyseo-site.png";
+import campussphereImg from "@/assets/work-campussphere.jpg";
+import devfestImg from "@/assets/devfest-bit-mesra.jpg";
 import personalImg from "@/assets/saurabh-seo.jpg";
 import dataDashboardImg from "@/assets/work-admin-crm.jpg";
 import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent.jpg";
@@ -26,7 +28,7 @@ export const projects: Project[] = [
     stat: "AI + AUTOMATION",
     description: "A 120-page academic project on unified digital services, automation, analytics and responsible AI for academic administration.",
     tags: ["AI", "Automation", "Education", "Analytics"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-campussphere-reference.jpg",
+    image: campussphereImg,
     url: "https://campus-ai-psi-eosin.vercel.app/",
     overview: "CampusSphere AI is an academic project designed around unified digital services, administrative automation, analytics and responsible AI.",
     challenge: "Bring fragmented academic administration workflows together into a more unified digital system.",
@@ -45,7 +47,7 @@ export const projects: Project[] = [
     stat: "COMMUNITY + AI",
     description: "Event website with countdown, speaker listing, agenda and Community 2.0 storytelling for Google DevFest Ranchi 2026.",
     tags: ["React", "Event Management", "UI/UX", "AI & Gemini"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-devfest-reference.jpg",
+    image: devfestImg,
     url: "/devfest-ranchi",
     overview: "A portfolio showcase for Google DevFest Ranchi 2026 at BIT Mesra Auditorium, Ranchi.",
     challenge: "Present the event, community focus and technology sessions as a polished digital experience.",
