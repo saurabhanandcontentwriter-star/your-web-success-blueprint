@@ -1,6 +1,7 @@
 import { ArrowUpRight, Bot, BarChart3, Code2, Database, Gauge, Search, Sparkles, Workflow } from "lucide-react";
 import { Link } from "react-router-dom";
 import "@/styles/home-command-center.css";
+import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent.jpg";
 
 const systems = [
   { id:"01", title:"SEARCH", label:"SEO + GEO", text:"Technical SEO, content systems and AI-search visibility built around real search intent.", icon:Search },
@@ -10,7 +11,7 @@ const systems = [
 const builds = [
   { tag:"AI + AUTOMATION", title:"CampusSphere AI", text:"Academic administration reimagined through unified digital services, automation, analytics and responsible AI.", href:"https://campus-ai-psi-eosin.vercel.app/", image:"/og-thumbnail.jpg", icon:Bot },
   { tag:"COMMUNITY + AI", title:"Google DevFest Ranchi 2026", text:"A Community 2.0 event experience connecting developers with AI, Gemini, Cloud and the Google ecosystem.", href:"/devfest-ranchi", image:"https://image.thum.io/get/width/900/crop/500/noanimate/https://saurabhanandseo.com/devfest-ranchi", icon:Sparkles },
-  { tag:"AI + VOICE", title:"Sneha — AI Calling Agent", text:"A voice-first conversational system designed to understand requirements, explain services and collect leads.", href:"https://www.crazyseoteam.in/", image:"/assets/sneha-ai-calling-agent.jpg", icon:Workflow },
+  { tag:"AI + VOICE", title:"Sneha — AI Calling Agent", text:"A voice-first conversational system designed to understand requirements, explain services and collect leads.", href:"https://www.crazyseoteam.in/", image:snehaAiCallingAgentImg, icon:Workflow },
 ];
 
 const HomeCommandCenter = () => (
