@@ -24,3 +24,140 @@
 .sa-core-chat{position:absolute;right:-1%;bottom:0;display:flex;align-items:center;gap:8px;padding:12px 15px;border-radius:999px;background:linear-gradient(100deg,hsl(var(--primary)),hsl(var(--accent)));color:white;font-size:10px;font-weight:800;box-shadow:0 12px 32px hsl(var(--primary)/.28)}.sa-core-chat span{font-size:8px}
 
 @media (max-width:560px){.sa-core-flow-pill{top:0;font-size:8px;padding:8px 11px;gap:5px}.sa-core-flow-pill svg{width:12px}.sa-core-center{width:132px;height:132px}.sa-core-center strong{font-size:20px}.sa-core-center small{font-size:6px}.sa-core-node{min-width:112px;padding:8px 9px}.sa-core-node svg{width:30px;height:30px;padding:6px}.sa-core-node b{font-size:9px}.sa-core-node small{font-size:6px}.sa-node-left{left:-2%}.sa-node-right{right:-2%}.sa-core-caption{display:none}.sa-core-tools{right:18%;bottom:5%;gap:5px}.sa-core-tools span{width:32px;height:32px;font-size:10px}.sa-core-chat{right:-2%;bottom:-1%;font-size:8px;padding:9px 11px}.sa-core-chat svg{width:11px}}
+
+
+/* 2026 typography + collision-safe responsive pass */
+.sa-command-intro h2{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-weight:750;
+  font-size:clamp(46px,6.2vw,78px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  text-wrap:balance;
+}
+.sa-command-intro-copy>p{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:clamp(15px,1.25vw,18px);
+  line-height:1.72;
+}
+.sa-system-title{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:clamp(28px,2.6vw,32px);
+  font-weight:750;
+  letter-spacing:-.045em;
+  line-height:1;
+}
+.sa-system-card p{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:13px;
+  line-height:1.7;
+}
+.sa-core-center strong{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-weight:800;
+  letter-spacing:.045em;
+}
+.sa-core-node b{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-weight:750;
+}
+.sa-core-node small{
+  line-height:1.25;
+}
+
+/* Keep the growth-loop controls inside their own visual zone. */
+@media (max-width:900px){
+  .sa-command-intro{gap:34px}
+  .sa-command-core{
+    width:min(470px,100%);
+    margin-bottom:66px;
+  }
+}
+
+@media (max-width:560px){
+  .sa-command-intro{gap:26px}
+  .sa-command-intro h2{
+    font-size:clamp(43px,13vw,58px);
+    line-height:.98;
+    letter-spacing:-.052em;
+  }
+  .sa-command-intro-copy>p{
+    font-size:15px;
+    line-height:1.68;
+  }
+
+  /* Give the diagram a fixed safe canvas so side/bottom nodes never collide. */
+  .sa-command-core{
+    width:min(100%,390px);
+    height:430px;
+    aspect-ratio:auto;
+    margin:0 auto 92px;
+  }
+  .sa-core-ring{inset:15% 8% 13%}
+  .sa-core-ring-b{inset:25% 19% 23%}
+  .sa-core-center{width:132px;height:132px}
+  .sa-core-center strong{font-size:20px;line-height:.98}
+  .sa-core-center small{font-size:6px;line-height:1.35}
+
+  .sa-core-node{
+    min-width:118px;
+    max-width:128px;
+    padding:8px 9px;
+    column-gap:7px;
+    border-radius:12px;
+  }
+  .sa-core-node svg{width:30px;height:30px;padding:6px}
+  .sa-core-node b{font-size:9px;line-height:1.05}
+  .sa-core-node small{
+    font-size:6px;
+    line-height:1.2;
+    white-space:normal;
+  }
+  .sa-node-top{top:8%}
+  .sa-node-right{right:-1%;top:48%}
+  .sa-node-bottom{bottom:17%}
+  .sa-node-left{left:-1%;top:48%}
+
+  .sa-core-caption{display:none}
+
+  /* Tools sit below the ring; chat sits below the tools, never over them. */
+  .sa-core-tools{
+    right:50%;
+    bottom:7%;
+    transform:translateX(50%);
+    gap:6px;
+  }
+  .sa-core-tools span{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    font-size:10px;
+  }
+  .sa-core-chat{
+    right:50%;
+    bottom:-13%;
+    transform:translateX(50%);
+    white-space:nowrap;
+    padding:10px 13px;
+    font-size:9px;
+    z-index:8;
+  }
+
+  .sa-system-card{
+    min-height:0;
+    padding:20px;
+  }
+  .sa-system-title{font-size:29px}
+  .sa-system-card p{font-size:13px;line-height:1.65}
+}
+
+@media (max-width:380px){
+  .sa-command-core{height:405px}
+  .sa-core-node{min-width:106px;max-width:112px;padding:7px}
+  .sa-core-node b{font-size:8px}
+  .sa-core-node small{font-size:5.5px}
+  .sa-node-left{left:-3%}
+  .sa-node-right{right:-3%}
+  .sa-core-tools span{width:31px;height:31px}
+  .sa-core-chat{font-size:8px;padding:9px 11px}
+}
