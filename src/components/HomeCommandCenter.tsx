@@ -8,9 +8,9 @@ const systems = [
   { id:"03", title:"BUILD", label:"WEB + AI", text:"Fast web experiences, automation and AI agents that turn strategy into something people can use.", icon:Code2 },
 ];
 const builds = [
-  { tag:"AI + AUTOMATION", title:"CampusSphere AI", text:"Academic administration reimagined through unified digital services, automation, analytics and responsible AI.", href:"https://campus-ai-psi-eosin.vercel.app/", icon:Bot },
-  { tag:"COMMUNITY + AI", title:"Google DevFest Ranchi 2026", text:"A Community 2.0 event experience connecting developers with AI, Gemini, Cloud and the Google ecosystem.", href:"/devfest-ranchi", icon:Sparkles },
-  { tag:"AI + VOICE", title:"Sneha — AI Calling Agent", text:"A voice-first conversational system designed to understand requirements, explain services and collect leads.", href:"https://www.crazyseoteam.in/", icon:Workflow },
+  { tag:"AI + AUTOMATION", title:"CampusSphere AI", text:"Academic administration reimagined through unified digital services, automation, analytics and responsible AI.", href:"https://campus-ai-psi-eosin.vercel.app/", image:"/og-thumbnail.jpg", icon:Bot },
+  { tag:"COMMUNITY + AI", title:"Google DevFest Ranchi 2026", text:"A Community 2.0 event experience connecting developers with AI, Gemini, Cloud and the Google ecosystem.", href:"/devfest-ranchi", image:"https://image.thum.io/get/width/900/crop/500/noanimate/https://saurabhanandseo.com/devfest-ranchi", icon:Sparkles },
+  { tag:"AI + VOICE", title:"Sneha — AI Calling Agent", text:"A voice-first conversational system designed to understand requirements, explain services and collect leads.", href:"https://www.crazyseoteam.in/", image:"https://image.thum.io/get/width/900/crop/500/noanimate/https://www.crazyseoteam.in/", icon:Workflow },
 ];
 
 const HomeCommandCenter = () => (
@@ -52,9 +52,11 @@ const HomeCommandCenter = () => (
         <Link to="/portfolio">View all projects <ArrowUpRight size={16}/></Link>
       </div>
       <div className="sa-build-grid">
-        {builds.map(({tag,title,text,href,icon:Icon},index) => (
+        {builds.map(({tag,title,text,href,image,icon:Icon},index) => (
           <a className="sa-build-card" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} key={title}>
-            <div className="sa-build-number">0{index+1}</div><div className="sa-build-icon"><Icon size={20}/></div>
+            <div className="sa-build-number">0{index+1}</div>
+            <div className="sa-build-image-wrap"><img className="sa-build-image" src={image} alt="" loading="lazy" /></div>
+            <div className="sa-build-icon"><Icon size={20}/></div>
             <span>{tag}</span><h4>{title}</h4><p>{text}</p><div className="sa-build-link">Open build <ArrowUpRight size={15}/></div>
           </a>
         ))}
