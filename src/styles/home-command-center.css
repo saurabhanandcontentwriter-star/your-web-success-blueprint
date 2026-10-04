@@ -383,3 +383,33 @@
   .sa-core-node b{font-size:8px!important;line-height:1.05!important;}
   .sa-core-node small{font-size:5.5px!important;line-height:1.15!important;white-space:normal!important;}
 }
+
+
+/* REFERENCE MATCH — side cards must have a visible gap from the center circle. */
+@media (min-width:561px) and (max-width:900px){
+  .sa-command-core{
+    width:min(560px,calc(100vw - 20px))!important;
+    height:430px!important;
+    overflow:visible!important;
+  }
+  .sa-core-center{
+    width:190px!important;
+    height:190px!important;
+  }
+  .sa-node-left{
+    left:-55px!important;
+    right:auto!important;
+    width:140px!important;
+    min-width:140px!important;
+    max-width:140px!important;
+    transform:translateY(-50%)!important;
+  }
+  .sa-node-right{
+    right:-55px!important;
+    left:auto!important;
+    width:140px!important;
+    min-width:140px!important;
+    max-width:140px!important;
+    transform:translateY(-50%)!important;
+  }
+}
