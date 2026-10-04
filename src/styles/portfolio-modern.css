@@ -471,3 +471,99 @@
 @media(prefers-reduced-motion:reduce){
   .portfolio-modern-card,.portfolio-modern-card-image img,.portfolio-modern-filter{transition:none}
 }
+
+
+/* Featured Projects reference alignment */
+.portfolio-modern-section{
+  background:
+    radial-gradient(circle at 8% 42%,rgba(55,111,245,.10),transparent 25%),
+    radial-gradient(circle at 88% 14%,rgba(98,82,238,.08),transparent 22%),
+    linear-gradient(135deg,#f8fbff 0%,#eef5ff 50%,#ffffff 100%);
+}
+.portfolio-modern-layout{
+  grid-template-columns:minmax(430px,.86fr) minmax(0,1.14fr);
+  gap:2.25rem;
+  padding:2.1rem 0 4.5rem;
+}
+.portfolio-modern-content{padding:1rem 0 0}
+.portfolio-modern-kicker{
+  letter-spacing:.16em;
+  font-size:.78rem;
+  padding:.62rem 1rem;
+}
+.portfolio-modern-title{
+  font-family:"Space Grotesk",Inter,system-ui,sans-serif;
+  font-size:clamp(4.4rem,6vw,6.2rem);
+  line-height:.86;
+  letter-spacing:-.06em;
+}
+.portfolio-modern-intro{
+  max-width:520px;
+  font-size:1.02rem;
+  line-height:1.58;
+}
+.portfolio-modern-filters{
+  gap:.6rem;
+  margin-top:1.45rem;
+}
+.portfolio-modern-filter{
+  min-height:42px;
+  padding:.62rem 1rem;
+  font-size:.76rem;
+}
+.portfolio-modern-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.9rem;
+}
+.portfolio-modern-card{
+  border-radius:16px;
+  background:rgba(255,255,255,.88);
+  box-shadow:0 14px 30px rgba(39,77,131,.08);
+}
+.portfolio-modern-card-image{
+  height:142px;
+  background:#eef4ff;
+}
+.portfolio-modern-card-body{
+  min-height:174px;
+  padding:.85rem .9rem .95rem;
+}
+.portfolio-modern-card-body h2{
+  font-size:.98rem;
+}
+.portfolio-modern-card-body p{
+  font-size:.72rem;
+  line-height:1.45;
+}
+.portfolio-modern-tags span{
+  font-size:.59rem;
+  padding:.32rem .5rem;
+}
+.portfolio-modern-metrics{
+  margin-top:.9rem;
+  border-radius:16px;
+}
+.portfolio-modern-person{
+  min-height:775px;
+}
+.portfolio-modern-photo{
+  width:min(94%,510px);
+  height:745px;
+}
+@media(max-width:1180px){
+  .portfolio-modern-layout{grid-template-columns:minmax(360px,.78fr) minmax(0,1.22fr);gap:1.25rem}
+  .portfolio-modern-person{min-height:700px}
+  .portfolio-modern-photo{height:675px}
+  .portfolio-modern-title{font-size:clamp(3.8rem,6vw,5.3rem)}
+}
+@media(max-width:900px){
+  .portfolio-modern-layout{grid-template-columns:1fr;gap:1.5rem}
+  .portfolio-modern-person{min-height:610px}
+  .portfolio-modern-photo{height:590px}
+}
+@media(max-width:640px){
+  .portfolio-modern-title{font-size:clamp(3rem,13vw,4.1rem)}
+  .portfolio-modern-intro{font-size:.9rem}
+  .portfolio-modern-card-image{height:190px}
+  .portfolio-modern-card-body{padding:1rem;min-height:0}
+}
