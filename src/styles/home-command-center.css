@@ -198,3 +198,65 @@
     z-index:1;
   }
 }
+
+
+/* Final collision fix: AI/Data cards must stay completely outside the center circle. */
+@media (min-width:561px) and (max-width:900px){
+  .sa-command-core{
+    width:min(560px,calc(100vw - 20px));
+    height:430px;
+    overflow:visible;
+  }
+  .sa-core-center{
+    width:180px;
+    height:180px;
+    position:relative;
+    z-index:3;
+  }
+  .sa-core-node{
+    width:150px;
+    min-width:150px;
+    max-width:150px;
+    box-sizing:border-box;
+    z-index:5;
+  }
+  .sa-node-left{
+    left:0;
+    top:49%;
+    transform:translateY(-50%);
+  }
+  .sa-node-right{
+    right:0;
+    top:49%;
+    transform:translateY(-50%);
+  }
+  .sa-node-top{top:7%}
+  .sa-node-bottom{bottom:8%}
+  .sa-core-ring,.sa-core-ring-a,.sa-core-ring-b{z-index:1}
+}
+
+@media (max-width:560px){
+  /* On narrow phones, keep side cards outside the center circle with a hard gap. */
+  .sa-command-core{
+    width:min(100%,360px);
+    height:430px;
+    overflow:visible;
+  }
+  .sa-core-center{
+    width:120px;
+    height:120px;
+    position:relative;
+    z-index:3;
+  }
+  .sa-core-node{
+    width:104px;
+    min-width:104px;
+    max-width:104px;
+    box-sizing:border-box;
+    z-index:5;
+  }
+  .sa-node-left{left:0;top:48%;transform:translateY(-50%)}
+  .sa-node-right{right:0;top:48%;transform:translateY(-50%)}
+  .sa-node-top{top:8%}
+  .sa-node-bottom{bottom:17%}
+}
