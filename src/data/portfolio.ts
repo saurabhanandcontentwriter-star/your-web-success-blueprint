@@ -1,6 +1,3 @@
-import campussphereImg from "@/assets/work-campussphere.jpg";
-import devfestImg from "@/assets/devfest-bit-mesra.jpg";
-import snehaImg from "@/assets/sneha-ai-calling-agent.jpg";
 import crazySeoImg from "@/assets/crazyseo-site.png";
 import personalImg from "@/assets/saurabh-seo.jpg";
 import dataDashboardImg from "@/assets/work-admin-crm.jpg";
@@ -28,7 +25,7 @@ export const projects: Project[] = [
     stat: "AI + AUTOMATION",
     description: "A 120-page academic project on unified digital services, automation, analytics and responsible AI for academic administration.",
     tags: ["AI", "Automation", "Education", "Analytics"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/work-campussphere.jpg",
+    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-campussphere-reference.jpg",
     url: "https://campus-ai-psi-eosin.vercel.app/",
     overview: "CampusSphere AI is an academic project designed around unified digital services, administrative automation, analytics and responsible AI.",
     challenge: "Bring fragmented academic administration workflows together into a more unified digital system.",
@@ -47,7 +44,7 @@ export const projects: Project[] = [
     stat: "COMMUNITY + AI",
     description: "Event website with countdown, speaker listing, agenda and Community 2.0 storytelling for Google DevFest Ranchi 2026.",
     tags: ["React", "Event Management", "UI/UX", "AI & Gemini"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/devfest-bit-mesra.jpg",
+    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-devfest-reference.jpg",
     url: "/devfest-ranchi",
     overview: "A portfolio showcase for Google DevFest Ranchi 2026 at BIT Mesra Auditorium, Ranchi.",
     challenge: "Present the event, community focus and technology sessions as a polished digital experience.",
@@ -66,7 +63,7 @@ export const projects: Project[] = [
     stat: "AI + VOICE",
     description: "A voice-first conversational system designed to understand requirements, explain services and collect leads.",
     tags: ["ElevenLabs", "AI", "Automation", "Voice AI"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/sneha-ai-calling-agent.jpg",
+    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-sneha-reference.jpg",
     url: "https://www.crazyseoteam.in/",
     overview: "Sneha is a conversational AI calling agent created for Crazy SEO Team.",
     challenge: "Create a natural voice-first experience for business enquiries and lead qualification.",
