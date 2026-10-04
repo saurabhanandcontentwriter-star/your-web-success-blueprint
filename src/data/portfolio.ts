@@ -1,6 +1,7 @@
 import crazySeoImg from "@/assets/crazyseo-site.png";
 import personalImg from "@/assets/saurabh-seo.jpg";
 import dataDashboardImg from "@/assets/work-admin-crm.jpg";
+import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent.jpg";
 
 export interface Project {
   slug: string;
@@ -63,7 +64,7 @@ export const projects: Project[] = [
     stat: "AI + VOICE",
     description: "A voice-first conversational system designed to understand requirements, explain services and collect leads.",
     tags: ["ElevenLabs", "AI", "Automation", "Voice AI"],
-    image: "https://raw.githubusercontent.com/saurabhanandcontentwriter-star/your-web-success-blueprint/main/src/assets/portfolio-sneha-reference.jpg",
+    image: snehaAiCallingAgentImg,
     url: "https://www.crazyseoteam.in/",
     overview: "Sneha is a conversational AI calling agent created for Crazy SEO Team.",
     challenge: "Create a natural voice-first experience for business enquiries and lead qualification.",
