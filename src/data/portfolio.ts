@@ -3,7 +3,7 @@ import campussphereImg from "@/assets/work-campussphere.jpg";
 import devfestImg from "@/assets/devfest-bit-mesra.jpg";
 import personalImg from "@/assets/saurabh-seo.jpg";
 import dataDashboardImg from "@/assets/work-admin-crm.jpg";
-import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent.jpg";
+import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent-new.jpg";
 
 export interface Project {
   slug: string;
