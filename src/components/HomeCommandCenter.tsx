@@ -2,6 +2,7 @@ import { ArrowUpRight, Bot, BarChart3, Code2, Database, Gauge, Search, Sparkles,
 import { Link } from "react-router-dom";
 import "@/styles/home-command-center.css";
 import snehaAiCallingAgentImg from "@/assets/sneha-ai-calling-agent.jpg";
+import saurabhSeoImg from "@/assets/saurabh-seo.jpg";
 
 const systems = [
   { id:"01", title:"SEARCH", label:"SEO + GEO", text:"Technical SEO, content systems and AI-search visibility built around real search intent.", icon:Search },
@@ -40,18 +41,19 @@ const HomeCommandCenter = () => (
         </div>
       </div>
       <div className="sa-command-side-note">Build for people first, then make it easy for search engines to understand.</div>
-      <div className="sa-command-core" aria-label="Digital growth loop">
-        <div className="sa-core-flow-pill"><Search size={15}/> Search → Analyze → Build → Grow <Sparkles size={15}/></div>
-        <div className="sa-core-ring sa-core-ring-a" /><div className="sa-core-ring sa-core-ring-b" />
-        <div className="sa-core-center"><span>DIGITAL</span><strong>GROWTH<br/>LOOP</strong><small>SEARCH → DATA →<br/>AI → BUILD → MEASURE</small></div>
-        <div className="sa-core-node sa-node-top"><Search size={15}/> <b>Search</b><small>SEO · Content · GSC</small></div>
-        <div className="sa-core-node sa-node-right"><Database size={15}/> <b>Data</b><small>SQL · Power BI · Analytics</small></div>
-        <div className="sa-core-node sa-node-bottom"><Code2 size={15}/> <b>Build</b><small>Web · Apps · Solutions</small></div>
-        <div className="sa-core-node sa-node-left"><Bot size={15}/> <b>AI</b><small>Automation · LLMs · Agents</small></div>
-        <div className="sa-core-caption">↗ Turning ideas into<br/>measurable digital growth.</div>
-        <div className="sa-core-tools" aria-hidden="true">
-          <span>G</span><span>▥</span><span>◎</span><span>&lt;/&gt;</span><span>☁</span>
+      <div className="sa-command-core sa-growth-visual" aria-label="Digital growth system">
+        <div className="sa-growth-image-frame">
+          <img src={saurabhSeoImg} alt="Saurabh Anand — SEO, AI and digital growth" loading="eager" decoding="async" />
+          <div className="sa-growth-image-shade" />
+          <div className="sa-growth-topline"><span className="sa-growth-live-dot" /> DIGITAL GROWTH SYSTEM</div>
+          <div className="sa-growth-title">SEARCH<br/><em>×</em> DATA <em>×</em> AI</div>
+          <div className="sa-growth-bottom">
+            <span>SEO</span><i>•</i><span>ANALYTICS</span><i>•</i><span>AUTOMATION</span><i>•</i><span>WEB</span>
+          </div>
         </div>
+        <div className="sa-growth-badge sa-growth-badge-one"><Search size={15}/><span>Search visibility</span></div>
+        <div className="sa-growth-badge sa-growth-badge-two"><Sparkles size={15}/><span>AI automation</span></div>
+        <div className="sa-growth-badge sa-growth-badge-three"><Code2 size={15}/><span>Web systems</span></div>
         <div className="sa-core-chat"><Sparkles size={14}/> Hi, I'm Saurabh <span>●</span></div>
       </div>
     </section>
