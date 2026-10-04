@@ -164,16 +164,28 @@
 
 /* Side-node spacing: keep AI/Data cards outside the main growth rings on tablet/small desktop. */
 @media (min-width:561px) and (max-width:900px){
+  /* At tablet widths the side cards must sit completely outside the inner growth circle. */
   .sa-command-core{
     width:min(470px,100%);
   }
+  .sa-core-node{
+    min-width:145px;
+    max-width:145px;
+    z-index:4;
+  }
   .sa-node-left{
-    left:-58px;
+    left:-90px;
   }
   .sa-node-right{
-    right:-58px;
+    right:-90px;
   }
-  .sa-core-node{
-    min-width:138px;
+  .sa-core-center{
+    position:relative;
+    z-index:3;
+  }
+  .sa-core-ring,
+  .sa-core-ring-a,
+  .sa-core-ring-b{
+    z-index:1;
   }
 }
