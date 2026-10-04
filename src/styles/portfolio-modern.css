@@ -35,9 +35,11 @@
   align-items:center;
   gap:2rem;
   padding:2rem 0 4rem;
+  min-width:0;
 }
 .portfolio-modern-person{
   min-height:760px;
+  min-width:0;
   position:relative;
   display:flex;
   align-items:flex-end;
@@ -100,6 +102,7 @@
 .portfolio-modern-photo{
   position:relative;
   width:min(92%,500px);
+  max-width:100%;
   height:730px;
   overflow:hidden;
   z-index:3;
@@ -110,6 +113,7 @@
 .portfolio-modern-photo img{
   width:100%;
   height:100%;
+  max-width:100%;
   display:block;
   object-fit:cover;
   object-position:center top;
@@ -144,6 +148,7 @@
   align-items:center;
   gap:.7rem;
   min-width:160px;
+  max-width:46%;
   padding:.85rem 1rem;
   border:1px solid rgba(125,151,196,.25);
   border-radius:18px;
@@ -197,12 +202,15 @@
 .portfolio-modern-content{
   position:relative;
   z-index:4;
+  min-width:0;
+  max-width:100%;
   padding:2rem 0;
 }
 .portfolio-modern-kicker{
   display:inline-flex;
   align-items:center;
   gap:.65rem;
+  max-width:100%;
   padding:.68rem 1.15rem;
   border-radius:999px;
   background:linear-gradient(90deg,#e5efff,#e1eaff);
@@ -213,6 +221,7 @@
 }
 .portfolio-modern-title{
   margin:1rem 0 0;
+  max-width:100%;
   color:#07183b;
   font-family:"Space Grotesk",system-ui,sans-serif;
   font-size:clamp(4rem,6vw,6.4rem);
@@ -227,15 +236,18 @@
   color:#465b7e;
   font-size:1.03rem;
   line-height:1.65;
+  overflow-wrap:anywhere;
 }
 .portfolio-modern-filters{
   display:flex;
   flex-wrap:wrap;
   gap:.65rem;
+  max-width:100%;
   margin:1.7rem 0 1.1rem;
 }
 .portfolio-modern-filter{
   min-height:43px;
+  max-width:100%;
   padding:.65rem 1.1rem;
   border:1px solid #d8e4f5;
   border-radius:999px;
@@ -261,9 +273,12 @@
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:1rem;
+  min-width:0;
+  max-width:100%;
 }
 .portfolio-modern-card{
   min-width:0;
+  max-width:100%;
   overflow:hidden;
   border:1px solid #dce6f4;
   border-radius:18px;
@@ -275,21 +290,23 @@
   transform:translateY(-5px);
   box-shadow:0 24px 48px rgba(39,77,131,.15);
 }
-.portfolio-modern-card-link{display:flex;height:100%;flex-direction:column}
+.portfolio-modern-card-link{display:flex;height:100%;min-width:0;max-width:100%;flex-direction:column}
 .portfolio-modern-card-image{
   position:relative;
   height:145px;
+  min-width:0;
+  max-width:100%;
   overflow:hidden;
   background:#edf4ff;
 }
 .portfolio-modern-card-image img{
   width:100%;
   height:100%;
+  max-width:100%;
   display:block;
   object-fit:cover;
   transition:transform .5s ease;
 }
-.portfolio-modern-card:hover .portfolio-modern-card-image img{transform:scale(1.045)}
 .portfolio-modern-open{
   position:absolute;
   top:9px;
@@ -306,26 +323,35 @@
 .portfolio-modern-card-body{
   display:flex;
   min-height:185px;
+  min-width:0;
+  max-width:100%;
   flex-direction:column;
   padding:1rem;
 }
 .portfolio-modern-card-body h2{
   margin:0;
+  max-width:100%;
   color:#0b1d46;
   font-size:1rem;
   font-weight:900;
   line-height:1.2;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 .portfolio-modern-card-body p{
+  max-width:100%;
   margin:.5rem 0 0;
   color:#61728e;
   font-size:.74rem;
   line-height:1.45;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 .portfolio-modern-tags{
   display:flex;
   flex-wrap:wrap;
   gap:.35rem;
+  max-width:100%;
   margin-top:auto;
   padding-top:.75rem;
 }
@@ -340,6 +366,7 @@
 .portfolio-modern-metrics{
   display:grid;
   grid-template-columns:repeat(4,1fr);
+  max-width:100%;
   margin-top:1.1rem;
   overflow:hidden;
   border:1px solid #dce6f4;
@@ -349,6 +376,7 @@
 }
 .portfolio-modern-metrics div{
   min-height:82px;
+  min-width:0;
   position:relative;
   display:grid;
   grid-template-columns:auto 1fr;
@@ -410,27 +438,34 @@
   .portfolio-modern-photo{height:590px}
 }
 @media(max-width:640px){
-  .portfolio-modern-layout{padding-bottom:2.5rem}
-  .portfolio-modern-title{font-size:clamp(3.4rem,15vw,4.8rem)}
-  .portfolio-modern-intro{font-size:.95rem}
-  .portfolio-modern-filters{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:.35rem;scrollbar-width:none}
+  .portfolio-modern-section{width:100%;max-width:100%;overflow-x:hidden}
+  .portfolio-modern-layout{width:100%;max-width:100%;min-width:0;gap:1.5rem;padding:1rem 0 2.5rem}
+  .portfolio-modern-content{width:100%;max-width:100%;min-width:0;padding:.5rem 0}
+  .portfolio-modern-title{width:100%;font-size:clamp(2.8rem,13vw,4rem);line-height:.92;letter-spacing:-.045em}
+  .portfolio-modern-intro{width:100%;max-width:100%;font-size:.9rem;line-height:1.55}
+  .portfolio-modern-filters{width:100%;max-width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:.35rem;scrollbar-width:none}
   .portfolio-modern-filters::-webkit-scrollbar{display:none}
-  .portfolio-modern-filter{font-size:.7rem;padding:.6rem .85rem}
-  .portfolio-modern-grid{grid-template-columns:1fr}
-  .portfolio-modern-card-image{height:175px}
-  .portfolio-modern-metrics{grid-template-columns:repeat(2,1fr)}
-  .portfolio-modern-metrics div{min-height:94px;padding:.7rem}
-  .portfolio-modern-metrics div:nth-child(odd):after{display:block}
-  .portfolio-modern-metrics div:nth-child(even):after{display:none}
-  .portfolio-modern-person{min-height:480px}
-  .portfolio-modern-photo{width:84%;height:470px}
+  .portfolio-modern-filter{font-size:.68rem;padding:.58rem .78rem;flex:0 0 auto}
+  .portfolio-modern-grid{width:100%;max-width:100%;min-width:0;grid-template-columns:minmax(0,1fr);gap:.9rem}
+  .portfolio-modern-card{width:100%;max-width:100%;min-width:0}
+  .portfolio-modern-card-link{width:100%;max-width:100%;min-width:0}
+  .portfolio-modern-card-image{width:100%;max-width:100%;height:175px}
+  .portfolio-modern-card-body{width:100%;max-width:100%;min-width:0;min-height:0;padding:.9rem}
+  .portfolio-modern-card-body h2{font-size:.98rem;line-height:1.3}
+  .portfolio-modern-card-body p{font-size:.72rem;line-height:1.5}
+  .portfolio-modern-tags{margin-top:.65rem;padding-top:0}
+  .portfolio-modern-metrics{width:100%;max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portfolio-modern-metrics div{min-width:0;min-height:88px;padding:.65rem}
+  .portfolio-modern-metrics strong,.portfolio-modern-metrics small{min-width:0;overflow-wrap:anywhere}
+  .portfolio-modern-person{width:100%;max-width:100%;min-width:0;min-height:480px}
+  .portfolio-modern-photo{width:84%;max-width:100%;height:470px}
   .portfolio-modern-signature{left:0;top:16%;font-size:1.9rem}
-  .portfolio-person-chip{min-width:120px;padding:.6rem;font-size:.64rem;gap:.4rem}
+  .portfolio-person-chip{min-width:0;max-width:42%;padding:.6rem;font-size:.64rem;gap:.4rem}
   .portfolio-person-chip span{width:34px;height:34px;flex-basis:34px}
-  .portfolio-chip-real{right:-1%;top:12%}
-  .portfolio-chip-build{left:-1%;top:50%;min-width:105px}
-  .portfolio-chip-ideas{left:-1%;bottom:4%}
-  .portfolio-code-mark{right:-2%;top:45%;width:54px;height:54px}
+  .portfolio-chip-real{right:0;top:12%}
+  .portfolio-chip-build{left:0;top:50%;min-width:105px}
+  .portfolio-chip-ideas{left:0;bottom:4%;min-width:105px}
+  .portfolio-code-mark{right:0;top:45%;width:54px;height:54px}
   .portfolio-doodle{font-size:1.8rem}
 }
 @media(prefers-reduced-motion:reduce){
