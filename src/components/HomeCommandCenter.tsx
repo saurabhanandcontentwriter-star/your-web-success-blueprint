@@ -21,11 +21,24 @@ const HomeCommandCenter = () => (
         <div className="sa-command-kicker"><span className="sa-command-pulse" /> SAURABH ANAND / DIGITAL GROWTH CONTROL ROOM</div>
         <h2>Not a résumé.<br /><span>A working system.</span></h2>
         <p>I connect <b>search, data, AI and web development</b> into practical digital systems — then turn the output into growth people can actually measure.</p>
+        <div className="sa-command-tags" aria-label="Core capabilities">
+          <span><Search size={14}/> SEO</span>
+          <span><Database size={14}/> Data Analytics</span>
+          <span><Sparkles size={14}/> AI & Automation</span>
+          <span><Code2 size={14}/> Web Development</span>
+        </div>
         <div className="sa-command-actions">
           <Link to="/portfolio" className="sa-command-main-btn">Explore the system <ArrowUpRight size={17}/></Link>
           <Link to="/experience" className="sa-command-ghost-btn">See experience</Link>
         </div>
+        <div className="sa-command-stats" aria-label="Quick profile stats">
+          <div><strong>4+</strong><span>Years Experience</span></div>
+          <div><strong>50+</strong><span>Projects Built</span></div>
+          <div><strong>10+</strong><span>Tools & Platforms</span></div>
+          <div><strong>100%</strong><span>Growth Focused</span></div>
+        </div>
       </div>
+      <div className="sa-command-side-note">Build for people first, then make it easy for search engines to understand.</div>
       <div className="sa-command-core" aria-label="Digital growth loop">
         <div className="sa-core-ring sa-core-ring-a" /><div className="sa-core-ring sa-core-ring-b" />
         <div className="sa-core-center"><span>GROWTH</span><strong>LOOP</strong><small>SEARCH → DATA → BUILD</small></div>
