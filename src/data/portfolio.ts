@@ -1,6 +1,6 @@
 import campussphereImg from "@/assets/work-campussphere.jpg";
 import devfestImg from "@/assets/devfest-bit-mesra.jpg";
-import snehaImg from "@/assets/ai-avatar.jpg";
+import snehaImg from "@/assets/sneha-ai-calling-agent.jpg";
 import crazySeoImg from "@/assets/crazyseo-site.png";
 import personalImg from "@/assets/saurabh-seo.jpg";
 import dataDashboardImg from "@/assets/work-admin-crm.jpg";
