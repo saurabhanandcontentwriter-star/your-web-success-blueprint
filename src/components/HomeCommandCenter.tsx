@@ -40,12 +40,18 @@ const HomeCommandCenter = () => (
       </div>
       <div className="sa-command-side-note">Build for people first, then make it easy for search engines to understand.</div>
       <div className="sa-command-core" aria-label="Digital growth loop">
+        <div className="sa-core-flow-pill"><Search size={15}/> Search → Analyze → Build → Grow <Sparkles size={15}/></div>
         <div className="sa-core-ring sa-core-ring-a" /><div className="sa-core-ring sa-core-ring-b" />
-        <div className="sa-core-center"><span>GROWTH</span><strong>LOOP</strong><small>SEARCH → DATA → BUILD</small></div>
-        <div className="sa-core-node sa-node-top"><Search size={15}/> Search</div>
-        <div className="sa-core-node sa-node-right"><Database size={15}/> Data</div>
-        <div className="sa-core-node sa-node-bottom"><Gauge size={15}/> Measure</div>
-        <div className="sa-core-node sa-node-left"><Bot size={15}/> AI</div>
+        <div className="sa-core-center"><span>DIGITAL</span><strong>GROWTH<br/>LOOP</strong><small>SEARCH → DATA →<br/>AI → BUILD → MEASURE</small></div>
+        <div className="sa-core-node sa-node-top"><Search size={15}/> <b>Search</b><small>SEO · Content · GSC</small></div>
+        <div className="sa-core-node sa-node-right"><Database size={15}/> <b>Data</b><small>SQL · Power BI · Analytics</small></div>
+        <div className="sa-core-node sa-node-bottom"><Code2 size={15}/> <b>Build</b><small>Web · Apps · Solutions</small></div>
+        <div className="sa-core-node sa-node-left"><Bot size={15}/> <b>AI</b><small>Automation · LLMs · Agents</small></div>
+        <div className="sa-core-caption">↗ Turning ideas into<br/>measurable digital growth.</div>
+        <div className="sa-core-tools" aria-hidden="true">
+          <span>G</span><span>▥</span><span>◎</span><span>&lt;/&gt;</span><span>☁</span>
+        </div>
+        <div className="sa-core-chat"><Sparkles size={14}/> Hi, I'm Saurabh <span>●</span></div>
       </div>
     </section>
 
