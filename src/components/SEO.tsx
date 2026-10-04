@@ -67,7 +67,7 @@ const SEO = ({
     jobTitle: "Data Analyst | SEO & Digital Marketing Professional",
     description: "Data Analyst and SEO & Digital Marketing professional focused on technical SEO, AI search, GEO, AEO, analytics, automation and modern web systems.",
     image: `${BASE_URL}/saurabh-anand-hero.webp`,
-    sameAs: ["https://www.linkedin.com/in/saurabh-anandseo/"],
+    sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     knowsAbout: [
       "Technical SEO",
       "AI SEO",
