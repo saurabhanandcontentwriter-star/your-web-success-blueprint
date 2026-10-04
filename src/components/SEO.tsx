@@ -15,11 +15,11 @@ interface SEOProps {
 
 const BASE_URL = "https://saurabhanandseo.com";
 const DEFAULT_IMAGE = "/og-thumbnail.jpg";
-const DEFAULT_IMAGE_ALT = "Saurabh Anand — SEO, AI search and data analytics professional";
+const DEFAULT_IMAGE_ALT = "Saurabh Anand — SEO, AI search, GEO, AEO and data analytics professional";
 
 const normalizePath = (path: string) => {
   if (!path || path === "/") return "/";
-  return `/${path.replace(/^\/+|\/+$/g, "")}`;
+  return `/${path.replace(/^\\/+|\\/+$/g, "")}`;
 };
 
 const SEO = ({
@@ -49,31 +49,79 @@ const SEO = ({
         { "@type": "ListItem", position: 2, name: title, item: url },
       ];
 
+  const websiteLd = {
+    "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
+    name: "Saurabh Anand",
+    url: BASE_URL,
+    description: "Saurabh Anand's professional website covering SEO, AI search, GEO, AEO, data analytics, digital marketing and web development.",
+    inLanguage: "en-IN",
+    publisher: { "@id": `${BASE_URL}/#person` },
+  };
+
+  const personLd = {
+    "@type": "Person",
+    "@id": `${BASE_URL}/#person`,
+    name: "Saurabh Anand",
+    url: BASE_URL,
+    jobTitle: "Data Analyst | SEO & Digital Marketing Professional",
+    description: "Data Analyst and SEO & Digital Marketing professional focused on technical SEO, AI search, GEO, AEO, analytics, automation and modern web systems.",
+    image: `${BASE_URL}/saurabh-anand-hero.webp`,
+    sameAs: ["https://www.linkedin.com/in/saurabh-anandseo/"],
+    knowsAbout: [
+      "Technical SEO",
+      "AI SEO",
+      "Generative Engine Optimization",
+      "Answer Engine Optimization",
+      "LLM Optimization",
+      "Google Search",
+      "Search Console",
+      "Data Analytics",
+      "SQL",
+      "Python",
+      "Power BI",
+      "Digital Marketing",
+      "AI Automation",
+      "Web Development"
+    ],
+  };
+
   const defaultLd = {
-    "@context": "https://schema.org",
     "@type": isArticle ? "Article" : "WebPage",
+    "@id": `${url}#webpage`,
     name: fullTitle,
     headline: fullTitle,
     description,
     url,
     inLanguage: "en-IN",
-    isPartOf: { "@type": "WebSite", name: "Saurabh Anand", url: BASE_URL },
-    about: { "@type": "Person", name: "Saurabh Anand", url: `${BASE_URL}/about` },
-    primaryImageOfPage: { "@type": "ImageObject", url: imageUrl },
-    ...(isArticle ? { author: { "@type": "Person", name: "Saurabh Anand", url: `${BASE_URL}/about` } } : {}),
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#person` },
+    primaryImageOfPage: { "@type": "ImageObject", url: imageUrl, caption: imageAlt },
+    ...(isArticle
+      ? {
+          author: { "@id": `${BASE_URL}/#person` },
+          mainEntityOfPage: { "@id": `${url}#webpage` },
+        }
+      : {}),
   };
 
   const breadcrumbLd = {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
     itemListElement: breadcrumbItems,
   };
 
-  const ldItems = Array.isArray(jsonLd)
-    ? [defaultLd, breadcrumbLd, ...jsonLd]
-    : jsonLd
-      ? [defaultLd, breadcrumbLd, jsonLd]
-      : [defaultLd, breadcrumbLd];
+  const customLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+  const graph = [
+    { "@context": "https://schema.org", ...defaultLd },
+    websiteLd,
+    personLd,
+    breadcrumbLd,
+    ...customLd.map((item) => {
+      const { "@context": _context, ...rest } = item;
+      return rest;
+    }),
+  ];
 
   return (
     <Helmet>
@@ -104,7 +152,7 @@ const SEO = ({
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
 
-      <script type="application/ld+json">{JSON.stringify(ldItems)}</script>
+      <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}</script>
     </Helmet>
   );
 };
