@@ -1,12 +1,9 @@
 import { lazy, Suspense } from "react";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
-import CredibilityStrip from "@/components/CredibilityStrip";
 import SEO from "@/components/SEO";
-import { useHomeBgSettings } from "@/components/useHomeBgSettings";
-import "@/styles/growth-engine-3d.css";
 
-const BentoSection = lazy(() => import("@/components/BentoSection"));
+const HomeCommandCenter = lazy(() => import("@/components/HomeCommandCenter"));
 const ToolsMarquee = lazy(() => import("@/components/ToolsMarquee"));
 const AIPortfolioCategories = lazy(() => import("@/components/AIPortfolioCategories"));
 const SelectedWork = lazy(() => import("@/components/SelectedWork"));
@@ -27,35 +24,14 @@ const Footer = lazy(() => import("@/components/Footer"));
 const PageBackground = lazy(() => import("@/components/PageBackground"));
 const HomeBgAdmin = lazy(() => import("@/components/HomeBgAdmin"));
 
-const DeferredHomeContent = ({ isAdmin }: { isAdmin: boolean }) => (
+const DeferredHomeContent = () => (
   <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
-    <PageBackground />
-    <BentoSection />
-    <ToolsMarquee />
-    <AIPortfolioCategories />
-    <SelectedWork />
-    <ExperienceSection />
-    <PortfolioSection />
-    <ExperienceProjectCarousel />
-    <DataAnalyticsSection />
-    <VibeCodingSection />
-    <AgenticAISection />
-    <AboutSection />
-    <SkillsSection />
-    <DevFestSection />
-    <GallerySection />
-    <NowSection />
-    <EducationSection />
-    <ContactSection />
+    <HomeCommandCenter />
     <Footer />
-    {isAdmin && <HomeBgAdmin />}
   </Suspense>
 );
 
 const Index = () => {
-  const { settings } = useHomeBgSettings();
-  const isAdmin = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("admin") === "1";
-
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -101,8 +77,7 @@ const Index = () => {
       />
       <Navbar />
       <HeroSection />
-      <CredibilityStrip />
-      <DeferredHomeContent isAdmin={isAdmin} />
+      <DeferredHomeContent />
     </div>
   );
 };
