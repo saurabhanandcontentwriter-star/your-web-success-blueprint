@@ -19,7 +19,7 @@ const DEFAULT_IMAGE_ALT = "Saurabh Anand — SEO, AI search, GEO, AEO and data a
 
 const normalizePath = (path: string) => {
   if (!path || path === "/") return "/";
-  return `/${path.replace(/^\\/+|\\/+$/g, "")}`;
+  return `/${path.replace(/^\/+|\/+$/g, "")}`;
 };
 
 const SEO = ({
