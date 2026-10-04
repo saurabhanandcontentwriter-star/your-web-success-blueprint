@@ -4,25 +4,7 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 
 const HomeCommandCenter = lazy(() => import("@/components/HomeCommandCenter"));
-const ToolsMarquee = lazy(() => import("@/components/ToolsMarquee"));
-const AIPortfolioCategories = lazy(() => import("@/components/AIPortfolioCategories"));
-const SelectedWork = lazy(() => import("@/components/SelectedWork"));
-const ExperienceSection = lazy(() => import("@/components/ExperienceSection"));
-const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
-const ExperienceProjectCarousel = lazy(() => import("@/components/ExperienceProjectCarousel"));
-const DataAnalyticsSection = lazy(() => import("@/components/DataAnalyticsSection"));
-const VibeCodingSection = lazy(() => import("@/components/VibeCodingSection"));
-const AgenticAISection = lazy(() => import("@/components/AgenticAISection"));
-const AboutSection = lazy(() => import("@/components/AboutSection"));
-const SkillsSection = lazy(() => import("@/components/SkillsSection"));
-const DevFestSection = lazy(() => import("@/components/DevFestSection"));
-const GallerySection = lazy(() => import("@/components/GallerySection"));
-const NowSection = lazy(() => import("@/components/NowSection"));
-const EducationSection = lazy(() => import("@/components/EducationSection"));
-const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
-const PageBackground = lazy(() => import("@/components/PageBackground"));
-const HomeBgAdmin = lazy(() => import("@/components/HomeBgAdmin"));
 
 const DeferredHomeContent = () => (
   <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
