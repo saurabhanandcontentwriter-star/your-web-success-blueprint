@@ -313,3 +313,73 @@
     top:48%;
   }
 }
+
+
+/* FINAL HARD SEPARATION — keep AI/Data cards away from the DIGITAL GROWTH LOOP center. */
+@media (max-width:900px){
+  .sa-command-core{overflow:visible!important;}
+  .sa-core-center{
+    position:relative!important;
+    z-index:20!important;
+  }
+  .sa-node-left,
+  .sa-node-right{
+    z-index:5!important;
+  }
+}
+
+@media (min-width:561px) and (max-width:900px){
+  .sa-core-center{width:190px!important;height:190px!important;}
+  .sa-node-left,
+  .sa-node-right{
+    width:140px!important;
+    min-width:140px!important;
+    max-width:140px!important;
+    box-sizing:border-box!important;
+  }
+  .sa-node-left{left:0!important;right:auto!important;}
+  .sa-node-right{right:0!important;left:auto!important;}
+}
+
+@media (max-width:560px){
+  .sa-command-core{
+    width:min(100%,360px)!important;
+    height:430px!important;
+    margin-inline:auto!important;
+    overflow:visible!important;
+  }
+  .sa-core-center{
+    width:132px!important;
+    height:132px!important;
+    position:relative!important;
+    z-index:20!important;
+  }
+  .sa-node-left,
+  .sa-node-right{
+    width:96px!important;
+    min-width:96px!important;
+    max-width:96px!important;
+    box-sizing:border-box!important;
+    z-index:5!important;
+  }
+  .sa-node-left{
+    left:0!important;
+    right:auto!important;
+    top:48%!important;
+    transform:translateY(-50%)!important;
+  }
+  .sa-node-right{
+    right:0!important;
+    left:auto!important;
+    top:48%!important;
+    transform:translateY(-50%)!important;
+  }
+  .sa-core-node{
+    padding:7px!important;
+    column-gap:5px!important;
+    border-radius:10px!important;
+  }
+  .sa-core-node svg{width:27px!important;height:27px!important;padding:5px!important;}
+  .sa-core-node b{font-size:8px!important;line-height:1.05!important;}
+  .sa-core-node small{font-size:5.5px!important;line-height:1.15!important;white-space:normal!important;}
+}
