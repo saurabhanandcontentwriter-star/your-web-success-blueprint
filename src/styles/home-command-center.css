@@ -161,3 +161,19 @@
   .sa-core-tools span{width:31px;height:31px}
   .sa-core-chat{font-size:8px;padding:9px 11px}
 }
+
+/* Side-node spacing: keep AI/Data cards outside the main growth rings on tablet/small desktop. */
+@media (min-width:561px) and (max-width:900px){
+  .sa-command-core{
+    width:min(470px,100%);
+  }
+  .sa-node-left{
+    left:-58px;
+  }
+  .sa-node-right{
+    right:-58px;
+  }
+  .sa-core-node{
+    min-width:138px;
+  }
+}
