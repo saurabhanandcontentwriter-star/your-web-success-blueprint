@@ -42,6 +42,17 @@ const Navbar = () => {
     navigate(link.path);
   };
 
+  const hireTrigger = (
+    <Button
+      type="button"
+      className="site-navbar-hire"
+      onClick={() => logLead({ event: "hire_click" })}
+      aria-label="Open Hire Me contact form"
+    >
+      Hire Me <ArrowRight size={16} />
+    </Button>
+  );
+
   return (
     <motion.nav initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="site-navbar fixed left-0 right-0 z-50">
       <div className="site-navbar-inner container mx-auto flex items-center justify-between px-6 py-4">
@@ -73,7 +84,7 @@ const Navbar = () => {
           ))}
           <ContactDialog trigger={<Button variant="ghost" className="site-navbar-link">Contact</Button>} />
           <ThemeToggle />
-          <Button asChild className="site-navbar-hire"><a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry">Hire Me <ArrowRight size={16} /></a></Button>
+          <ContactDialog trigger={hireTrigger} />
         </div>
 
         <div className="site-navbar-mobile lg:hidden flex items-center gap-2">
@@ -101,7 +112,16 @@ const Navbar = () => {
             </Button>
           ))}
           <ContactDialog trigger={<Button variant="ghost" className="w-full justify-start text-muted-foreground">Contact</Button>} />
-          <a onClick={() => logLead({ event: "hire_click" })} href="mailto:saurabhanandshahi@gmail.com?subject=Hire%20Inquiry" className="text-sm font-medium py-2 text-left">Hire Me</a>
+          <ContactDialog trigger={
+            <Button
+              type="button"
+              variant="ghost"
+              className="text-sm font-medium py-2 text-left justify-start"
+              onClick={() => logLead({ event: "hire_click" })}
+            >
+              Hire Me <ArrowRight size={16} />
+            </Button>
+          } />
         </motion.div>
       )}
     </motion.nav>
