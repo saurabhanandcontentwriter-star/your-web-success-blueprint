@@ -29,66 +29,77 @@ const festivalDays: Record<string, {
   title: string;
   subtitle: string;
   image: string;
+  blessing: string;
 }> = {
   "2026-10-11": {
     day: "Day 1",
     title: "Maa Shailputri",
     subtitle: "Ghatasthapana • Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shailaputri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Strength • stability • new beginnings",
   },
   "2026-10-12": {
     day: "Day 2",
     title: "Maa Brahmacharini",
     subtitle: "Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brahmacharini.jpg",
+    blessing: "Patience • dedication • inner peace",
   },
   "2026-10-13": {
     day: "Day 3",
     title: "Maa Chandraghanta",
     subtitle: "Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Chandraghanta.PNG",
+    blessing: "Courage • positivity • fearlessness",
   },
   "2026-10-14": {
     day: "Day 4",
     title: "Maa Kushmanda",
     subtitle: "Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kushmanda%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Good health • prosperity • positive energy",
   },
   "2026-10-15": {
     day: "Day 5",
     title: "Maa Skandamata",
     subtitle: "Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Skandamata%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Wisdom • care • protection",
   },
   "2026-10-16": {
     day: "Day 6",
     title: "Maa Katyayani",
     subtitle: "Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Katyayani%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Strength • courage • removal of obstacles",
   },
   "2026-10-17": {
     day: "Day 7",
     title: "Maa Kalaratri",
     subtitle: "Saptami • Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kalratri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Protection • courage • victory over negativity",
   },
   "2026-10-18": {
     day: "Day 7",
     title: "Maa Kalaratri",
     subtitle: "Saptami continues • Sharad Navratri",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kalratri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Protection • courage • victory over negativity",
   },
   "2026-10-19": {
     day: "Day 8–9",
     title: "Maa Mahagauri",
     subtitle: "Durga Ashtami • Maha Navami",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mahagauri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Peace • happiness • prosperity",
   },
   "2026-10-20": {
     day: "Vijayadashami",
     title: "Maa Siddhidatri",
     subtitle: "Dussehra • Navratri Parana",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Siddhidatri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+    blessing: "Success • fulfilment • victory of good over evil",
   },
 };
 
@@ -157,6 +168,7 @@ export default function GlobalStatusBar() {
               <span className="global-status-bar__festival-day">{festival.day}</span>
               <span className="global-status-bar__greeting">{festival.title}</span>
               <span className="global-status-bar__festival-subtitle">{festival.subtitle}</span>
+              <span className="global-status-bar__festival-blessing">{festival.blessing}</span>
             </div>
           </>
         ) : (
