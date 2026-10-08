@@ -11,6 +11,7 @@ interface SEOProps {
   image?: string;
   imageAlt?: string;
   noindex?: boolean;
+  dateModified?: string;
 }
 
 const BASE_URL = "https://saurabhanandseo.com";
@@ -33,6 +34,7 @@ const SEO = ({
   image = DEFAULT_IMAGE,
   imageAlt = DEFAULT_IMAGE_ALT,
   noindex = false,
+  dateModified,
 }: SEOProps) => {
   const normalizedPath = normalizePath(path);
   const url = `${BASE_URL}${normalizedPath}`;
@@ -54,9 +56,10 @@ const SEO = ({
     "@id": `${BASE_URL}/#website`,
     name: "Saurabh Anand",
     url: BASE_URL,
-    description: "Saurabh Anand's professional website covering SEO, AI search, GEO, AEO, data analytics, digital marketing and web development.",
+    description: "Official website of Saurabh Anand covering technical SEO, AI SEO, GEO, AEO, LLM optimization, data analytics, digital marketing and AI automation.",
     inLanguage: "en-IN",
     publisher: { "@id": `${BASE_URL}/#person` },
+    keywords: "SEO, AI SEO, GEO, AEO, LLM optimization, technical SEO, data analytics, digital marketing",
   };
 
   const personLd = {
@@ -69,20 +72,11 @@ const SEO = ({
     image: `${BASE_URL}/saurabh-anand-hero.webp`,
     sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
     knowsAbout: [
-      "Technical SEO",
-      "AI SEO",
-      "Generative Engine Optimization",
-      "Answer Engine Optimization",
-      "LLM Optimization",
-      "Google Search",
-      "Search Console",
-      "Data Analytics",
-      "SQL",
-      "Python",
-      "Power BI",
-      "Digital Marketing",
-      "AI Automation",
-      "Web Development"
+      "Technical SEO", "On-page SEO", "JavaScript SEO", "Core Web Vitals",
+      "AI SEO", "Generative Engine Optimization", "Answer Engine Optimization",
+      "LLM Optimization", "Google Search", "Google Search Console",
+      "Data Analytics", "SQL", "Python", "Power BI", "Digital Marketing",
+      "AI Automation", "Web Development"
     ],
   };
 
@@ -96,7 +90,10 @@ const SEO = ({
     inLanguage: "en-IN",
     isPartOf: { "@id": `${BASE_URL}/#website` },
     about: { "@id": `${BASE_URL}/#person` },
+    mainEntity: { "@id": `${BASE_URL}/#person` },
     primaryImageOfPage: { "@type": "ImageObject", url: imageUrl, caption: imageAlt },
+    ...(keywords ? { keywords } : {}),
+    ...(dateModified ? { dateModified } : {}),
     ...(isArticle
       ? {
           author: { "@id": `${BASE_URL}/#person` },
@@ -131,11 +128,14 @@ const SEO = ({
       <meta name="author" content="Saurabh Anand" />
       <meta name="robots" content={robots} />
       <meta name="googlebot" content={robots} />
-      <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
       <link rel="alternate" type="text/plain" href={`${BASE_URL}/llms.txt`} title="LLM-readable site information" />
+      <link rel="alternate" type="text/plain" href={`${BASE_URL}/llms-full.txt`} title="Full LLM-readable site information" />
+      <link rel="alternate" hreflang="en-IN" href={url} />
+      <link rel="alternate" hreflang="x-default" href={url} />
 
       <meta property="og:type" content={isArticle ? "article" : "website"} />
       <meta property="og:url" content={url} />
@@ -143,6 +143,7 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:alt" content={imageAlt} />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:locale" content="en_IN" />
       <meta property="og:site_name" content="Saurabh Anand" />
 
