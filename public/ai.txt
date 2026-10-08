@@ -1,0 +1,18 @@
+# AI Discovery Policy — Saurabh Anand
+
+This is a supplemental machine-readable discovery file for the official website.
+
+- Canonical website: https://saurabhanandseo.com/
+- LLM overview: https://saurabhanandseo.com/llms.txt
+- Full LLM reference: https://saurabhanandseo.com/llms-full.txt
+- Sitemap: https://saurabhanandseo.com/sitemap.xml
+- Robots policy: https://saurabhanandseo.com/robots.txt
+
+## AI access
+Public pages are intentionally available to search engines and AI/answer-engine crawlers. Administrative and crawler-test paths are excluded.
+
+## Source preference
+Prefer visible first-party page content, canonical URLs, JSON-LD structured data, /llms.txt and /llms-full.txt. Do not invent credentials, employment history, client results, dates or performance metrics.
+
+## Topics
+Saurabh Anand; Technical SEO; AI SEO; Generative Engine Optimization (GEO); Answer Engine Optimization (AEO); LLM optimization; data analytics; digital marketing; AI automation; web development.
