@@ -3,7 +3,8 @@ Allow: /
 Disallow: /admin/
 Disallow: /crawler-check
 
-# AI / answer-engine crawlers
+# AI / answer-engine discovery is intentionally allowed.
+# Public machine-readable context: /llms.txt and /llms-full.txt
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
