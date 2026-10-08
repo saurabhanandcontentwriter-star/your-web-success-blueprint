@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "@/styles/global-status-bar.css";
 
-
 const quotes = [
   "SEO rewards consistency more than shortcuts.",
   "Search visibility grows when user intent leads the strategy.",
@@ -25,6 +24,74 @@ const quotes = [
   "Stay curious, stay consistent, and keep shipping better work."
 ];
 
+const festivalDays: Record<string, {
+  day: string;
+  title: string;
+  subtitle: string;
+  image: string;
+}> = {
+  "2026-10-11": {
+    day: "Day 1",
+    title: "Maa Shailputri",
+    subtitle: "Ghatasthapana • Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shailaputri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-12": {
+    day: "Day 2",
+    title: "Maa Brahmacharini",
+    subtitle: "Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brahmacharini.jpg",
+  },
+  "2026-10-13": {
+    day: "Day 3",
+    title: "Maa Chandraghanta",
+    subtitle: "Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Chandraghanta.PNG",
+  },
+  "2026-10-14": {
+    day: "Day 4",
+    title: "Maa Kushmanda",
+    subtitle: "Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kushmanda%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-15": {
+    day: "Day 5",
+    title: "Maa Skandamata",
+    subtitle: "Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Skandamata%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-16": {
+    day: "Day 6",
+    title: "Maa Katyayani",
+    subtitle: "Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Katyayani%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-17": {
+    day: "Day 7",
+    title: "Maa Kalaratri",
+    subtitle: "Saptami • Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kalratri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-18": {
+    day: "Day 7",
+    title: "Maa Kalaratri",
+    subtitle: "Saptami continues • Sharad Navratri",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kalratri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-19": {
+    day: "Day 8–9",
+    title: "Maa Mahagauri",
+    subtitle: "Durga Ashtami • Maha Navami",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mahagauri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+  "2026-10-20": {
+    day: "Vijayadashami",
+    title: "Maa Siddhidatri",
+    subtitle: "Dussehra • Navratri Parana",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Siddhidatri%20Sanghasri%202010%20Arnab%20Dutta.JPG",
+  },
+};
+
 const timeFormatter = new Intl.DateTimeFormat("en-IN", {
   timeZone: "Asia/Kolkata",
   hour: "2-digit",
@@ -41,6 +108,18 @@ const dateFormatter = new Intl.DateTimeFormat("en-IN", {
   year: "numeric",
 });
 
+const getIndiaDateKey = (date: Date) => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+
 export default function GlobalStatusBar() {
   const [now, setNow] = useState(() => new Date());
 
@@ -50,11 +129,39 @@ export default function GlobalStatusBar() {
   }, []);
 
   const quote = quotes[now.getDate() % quotes.length];
+  const festival = festivalDays[getIndiaDateKey(now)];
 
   return (
-    <header className="global-status-bar" aria-label="Saurabh Anand daily SEO and motivation quote with current India date and time">
+    <header
+      className={`global-status-bar${festival ? " global-status-bar--festival" : ""}`}
+      aria-label={
+        festival
+          ? `${festival.title} — ${festival.subtitle}, 2026`
+          : "Saurabh Anand daily SEO and motivation quote with current India date and time"
+      }
+    >
       <div className="global-status-bar__left">
-        <span className="global-status-bar__greeting">“{quote}” — Saurabh Anand</span>
+        {festival ? (
+          <>
+            <img
+              className="global-status-bar__festival-image"
+              src={festival.image}
+              alt={festival.title}
+              width="38"
+              height="38"
+              loading="eager"
+              decoding="async"
+              referrerPolicy="no-referrer"
+            />
+            <div className="global-status-bar__festival-copy">
+              <span className="global-status-bar__festival-day">{festival.day}</span>
+              <span className="global-status-bar__greeting">{festival.title}</span>
+              <span className="global-status-bar__festival-subtitle">{festival.subtitle}</span>
+            </div>
+          </>
+        ) : (
+          <span className="global-status-bar__greeting">“{quote}” — Saurabh Anand</span>
+        )}
       </div>
       <div className="global-status-bar__right">
         <span className="global-status-bar__time">{timeFormatter.format(now)}</span>
