@@ -68,6 +68,17 @@ const AboutPage = () => {
                 <span>Anand</span>
               </div>
 
+              <a
+                href="https://www.ted.com/profiles/50627413"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Saurabh Anand's TED profile"
+                className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border-2 border-red-500 bg-white px-4 py-2 shadow-[0_0_24px_rgba(239,68,68,0.45)] transition-transform hover:scale-105 sm:right-6"
+              >
+                <span className="block bg-black px-2 py-0.5 text-xl font-black leading-none tracking-tight text-red-500">TED<span className="text-white">x</span></span>
+                <span className="mt-1 block text-center text-xs font-bold text-black">TED Profile</span>
+              </a>
+
               <div className="about-portrait-halo" aria-hidden="true" />
               <div className="about-modern-portrait">
                 <img
