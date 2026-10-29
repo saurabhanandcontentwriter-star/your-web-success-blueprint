@@ -73,7 +73,10 @@ const AboutSection = () => {
       name: "Saurabh Anand",
       jobTitle: "AI SEO Consultant, Vibe Coder & AI Automation Expert",
       url: "https://saurabhanandseo.com/about",
-      sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
+      sameAs: [
+        "https://www.linkedin.com/in/saurabhanandseo/",
+        "https://www.ted.com/profiles/50627413",
+      ],
       knowsAbout: [
         "AI SEO", "Technical SEO", "GEO", "LLM Optimization",
         "AI Automation", "Vibe Coding", "SaaS SEO", "Agentic AI",
@@ -102,24 +105,27 @@ const AboutSection = () => {
 
         <div className="space-y-4 text-muted-foreground leading-relaxed mb-12">
           <p>
-            I am <strong>Saurabh Anand</strong>, a <strong>Data Analyst</strong> and
-            <strong> Digital Marketing professional</strong> with experience in SEO, content strategy and
-            performance marketing. I specialize in transforming raw data into actionable business insights
-            using <strong>Excel, SQL, Python, Power BI and Tableau</strong>.
+            I am <strong>Saurabh Anand</strong>, a <strong>Data Analyst</strong>, SEO specialist and
+            <strong> Digital Marketing professional</strong> focused on connecting data, search strategy and
+            practical technology. I turn information into useful business insights with tools such as
+            <strong> Excel, SQL, Python, Power BI and Tableau</strong>, while building search strategies that
+            help people discover relevant businesses, products and ideas.
           </p>
           <p>
-            My background in organic growth and analytics enables me to bridge marketing and data — helping
-            businesses make <strong>data-driven decisions</strong>, improve user experiences and increase
-            measurable results. I am passionate about <strong>dashboard development</strong>,
-            <strong> data visualization</strong>, <strong>business intelligence</strong> and
-            <strong> AI-powered analytics solutions</strong>.
+            My work brings together <strong>analytics, technical SEO, content strategy and performance
+            marketing</strong>. I use data to identify opportunities, understand user behaviour, measure
+            outcomes and guide better decisions. I am especially interested in
+            <strong> dashboard development</strong>, <strong>data visualization</strong>,
+            <strong> business intelligence</strong> and <strong>AI-assisted workflows</strong> that make
+            complex work clearer and more efficient.
           </p>
           <p>
-            Alongside analytics, I work as an <strong>AI SEO Consultant</strong> and
-            <strong> Technical SEO Specialist</strong>, helping brands grow visibility across Google,
-            ChatGPT, Gemini and Perplexity through GEO, LLM Optimization and intelligent automation.
-            Named a <strong>LinkedIn Top Voice 2024</strong>, I sit at the intersection of data, search
-            and AI — building growth engines that are ready for the next decade.
+            Alongside analytics, I work across <strong>Technical SEO, AI SEO, Generative Engine
+            Optimization (GEO), LLM Optimization and AI automation</strong>, with a focus on making websites
+            easier to crawl, understand and discover across search experiences. I share my professional
+            profile on <a href="https://www.ted.com/profiles/50627413" target="_blank" rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4 hover:opacity-80">TED</a> and continue exploring
+            how data, search and emerging AI tools can support useful, measurable growth.
           </p>
         </div>
 
@@ -167,11 +173,20 @@ const AboutSection = () => {
               <span key={c} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm border border-primary/20">{c}</span>
             ))}
           </div>
-          <p className="text-muted-foreground">
-            He regularly shares insights on <strong>AI SEO</strong>, <strong>automation</strong>,
-            <strong> LLM optimization</strong> and emerging search technologies through talks, LinkedIn content,
-            open-source experiments and community meetups.
+          <p className="text-muted-foreground mb-4">
+            He shares ideas about <strong>AI SEO</strong>, <strong>automation</strong>,
+            <strong> LLM optimization</strong> and emerging search technologies through professional
+            communities and online platforms.
           </p>
+          <a
+            href="https://www.ted.com/profiles/50627413"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Saurabh Anand's TED profile (opens in a new tab)"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
+          >
+            View TED Profile <ArrowRight size={15} />
+          </a>
         </motion.div>
 
         {/* Expertise */}
