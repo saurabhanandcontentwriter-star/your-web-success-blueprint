@@ -29,7 +29,10 @@ const AboutPage = () => {
     jobTitle: "AI SEO Consultant, Prompt Engineer, Vibe Coder & AI Automation Expert",
     description: "AI SEO Consultant and Prompt Engineer focused on SEO, GEO, AI search, content systems, automation and practical AI-assisted growth workflows.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "Allama Iqbal College, Bihar Sharif, Nalanda" },
-    sameAs: ["https://www.linkedin.com/in/saurabhanandseo/"],
+    sameAs: [
+      "https://www.linkedin.com/in/saurabhanandseo/",
+      "https://www.ted.com/profiles/50627413",
+    ],
     knowsAbout: ["AI SEO", "Technical SEO", "GEO", "LLM Optimization", "AI Automation", "Vibe Coding", "SaaS SEO", "Agentic AI", "Prompt Engineering", "AI Content Workflows", "AI SEO Automation"],
   };
 
@@ -115,9 +118,10 @@ const AboutPage = () => {
               </p>
 
               <p className="about-modern-lead">
-                I help businesses grow with data-driven SEO strategies, digital marketing,
-                AI automation, and modern web solutions. I love building projects, exploring
-                new technologies, and turning ideas into real impact.
+                I connect data-driven SEO, digital marketing and practical AI automation to help
+                businesses improve discoverability, understand performance and turn ideas into useful
+                digital experiences. My interests span technical SEO, analytics, AI-powered search and
+                modern web solutions.
               </p>
 
               <div className="about-modern-stats">
@@ -147,6 +151,9 @@ const AboutPage = () => {
                 <Link to="/portfolio" className="about-modern-primary">
                   <Send size={19} /> View My Work <ArrowRight size={18} />
                 </Link>
+                <a href="https://www.ted.com/profiles/50627413" target="_blank" rel="noopener noreferrer" className="about-modern-secondary">
+                  <BookOpen size={19} /> TED Profile
+                </a>
                 <a href="/Saurabh-Anand-Resume.pdf" download className="about-modern-secondary">
                   <UserRound size={19} /> Download CV
                 </a>
