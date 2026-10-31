@@ -42,7 +42,7 @@ const NewsletterPopup = ({ embedded = false }: { embedded?: boolean }) => {
     setIsSubmitting(true);
     try {
       const { error } = await supabase
-        .from("anyva_newsletters" as any)
+        .from("anvya_newsletters" as any)
         .upsert(
           { name: name.trim() || null, email: normalizedEmail },
           { onConflict: "email", ignoreDuplicates: true },
