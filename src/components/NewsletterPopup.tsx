@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const STORAGE_KEY = "sa_newsletter_popup_v1";
 const DELAY_MS = 25_000;
@@ -20,6 +21,7 @@ const NewsletterPopup = ({ embedded = false }: { embedded?: boolean }) => {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (embedded) return;
@@ -31,11 +33,30 @@ const NewsletterPopup = ({ embedded = false }: { embedded?: boolean }) => {
     return () => window.clearTimeout(t);
   }, [embedded]);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) { toast.error("Please enter your email."); return; }
-    setSubmitted(true);
-    toast.success("Subscribed! Check your inbox.");
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail) { toast.error("Please enter your email."); return; }
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from("anyva_newsletters" as any)
+        .upsert(
+          { name: name.trim() || null, email: normalizedEmail },
+          { onConflict: "email", ignoreDuplicates: true },
+        );
+
+      if (error) throw error;
+      setSubmitted(true);
+      toast.success("You're subscribed successfully!");
+    } catch (error) {
+      console.error("Newsletter subscription failed:", error);
+      toast.error("Subscription failed. Please try again in a moment.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const card = (
